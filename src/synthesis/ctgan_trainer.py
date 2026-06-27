@@ -117,6 +117,8 @@ class CTGANTrainer:
         table_meta_dict: dict,
         epochs: int | None = None,
         verbose: bool = True,
+        cuda: bool = False,
+        model_name: str | None = None,
     ):
         """Fit a synthesizer on ``df``.
 
@@ -125,26 +127,30 @@ class CTGANTrainer:
             table_meta_dict: The table's sub-dict from metadata.json.
             epochs         : Override config epochs (useful for smoke test).
             verbose        : Whether to print SDV's training progress.
+            cuda           : Pass True to enable GPU acceleration.
+            model_name     : Override the model type (default: cfg.patient_model).
 
         Returns:
             Fitted SDV synthesizer.
         """
-        metadata = build_single_table_metadata(table_meta_dict)
-        n_epochs = epochs if epochs is not None else self.cfg.epochs
+        metadata  = build_single_table_metadata(table_meta_dict)
+        n_epochs  = epochs if epochs is not None else self.cfg.epochs
+        model     = model_name or self.cfg.patient_model
 
         logger.info(
-            "Training %s on %d rows x %d cols for %d epochs ...",
-            self.cfg.patient_model, len(df), len(df.columns), n_epochs,
+            "Training %s on %d rows x %d cols for %d epochs (cuda=%s) ...",
+            model, len(df), len(df.columns), n_epochs, cuda,
         )
         t0 = time.time()
 
         df_prepared = _coerce_booleans(df, table_meta_dict)
         synth = create_single_table_synthesizer(
-            self.cfg.patient_model,
+            model,
             metadata,
             epochs=n_epochs,
             batch_size=self.cfg.batch_size,
             verbose=verbose,
+            cuda=cuda,
         )
         with warnings.catch_warnings():
             warnings.filterwarnings("ignore", category=FutureWarning)

@@ -79,35 +79,58 @@ def reconnect_patient_ids(
 ) -> pd.DataFrame:
     """Reassign patient_id in a child table to match synthetic patient IDs.
 
-    PARSynthesizer preserves the original patient_id values from training.
-    After generating synthetic patients with new IDs, we need to remap.
-
-    Strategy: sort synthetic patients by their generated order and map
-    the original patient_ids (from training data) to the new synthetic IDs
-    in the same order.
-
-    Args:
-        patients_df      : Synthetic patients DataFrame (already has new IDs).
-        child_df         : Synthetic child table (still has training patient_ids).
-        real_patient_ids : Ordered list of patient_ids from the training data.
-
-    Returns:
-        child_df with patient_id remapped to synthetic patient IDs.
+    Legacy helper kept for backwards compatibility. Use
+    ``remap_to_synthetic_patients`` for Phase 4B.
     """
     child_df = child_df.copy()
     synthetic_pids = patients_df["patient_id"].tolist()
-    n_real   = len(real_patient_ids)
-    n_synth  = len(synthetic_pids)
-
-    # Build a mapping from training patient_id → synthetic patient_id
-    # If counts differ, wrap using modulo so every real ID maps to something.
+    n_real  = len(real_patient_ids)
+    n_synth = len(synthetic_pids)
     pid_map = {
         real_pid: synthetic_pids[i % n_synth]
         for i, real_pid in enumerate(real_patient_ids[:n_real])
     }
-
     child_df["patient_id"] = child_df["patient_id"].astype(str).map(pid_map)
     unmapped = child_df["patient_id"].isna().sum()
     if unmapped:
         logger.warning("%d child rows could not be remapped to synthetic patient IDs.", unmapped)
     return child_df
+
+
+def remap_to_synthetic_patients(
+    child_df: pd.DataFrame,
+    synthetic_patients: pd.DataFrame,
+) -> pd.DataFrame:
+    """Map generated patient_ids in a child table to synthetic patient_ids.
+
+    Works for both PAR-generated and CTGAN-generated child tables.
+    Generated patient_ids may be original training IDs (PAR) or random
+    SDV-generated IDs (CTGAN). In both cases we remap unique generated IDs
+    to synthetic patient IDs via round-robin, preserving within-patient
+    grouping structure.
+
+    Args:
+        child_df           : Generated child table (still has generated patient_ids).
+        synthetic_patients : Synthetic patients DataFrame with final patient_ids.
+
+    Returns:
+        child_df with patient_id column replaced by synthetic patient IDs.
+    """
+    df = child_df.copy()
+    # Unique generated patient IDs in order of first appearance
+    gen_pids = list(dict.fromkeys(df["patient_id"].astype(str)))
+    syn_pids = synthetic_patients["patient_id"].tolist()
+
+    if not syn_pids:
+        logger.warning("synthetic_patients is empty — patient_id not remapped.")
+        return df
+
+    pid_map = {
+        gen_pid: syn_pids[i % len(syn_pids)]
+        for i, gen_pid in enumerate(gen_pids)
+    }
+    df["patient_id"] = df["patient_id"].astype(str).map(pid_map)
+    unmapped = df["patient_id"].isna().sum()
+    if unmapped:
+        logger.warning("%d rows could not be remapped to synthetic patient IDs.", unmapped)
+    return df

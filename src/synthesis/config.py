@@ -8,11 +8,23 @@ from pathlib import Path
 import yaml
 
 
+_DEFAULT_TABLE_MODELS = {
+    "patients":     "ctgan",
+    "encounters":   "par",
+    "observations": "ctgan",
+    "conditions":   "par",
+    "medications":  "par",
+}
+
+
 @dataclass(frozen=True)
 class SynthesisConfig:
     # Model selection (factory keys)
     patient_model: str    # "ctgan" | "tvae" | "gaussian_copula"
     sequence_model: str   # "par"   | "ctgan"
+
+    # Per-table model override (set in settings.yaml synthesis.table_models)
+    table_models: dict    # {"patients": "ctgan", "encounters": "par", ...}
 
     # Full training params
     epochs: int
@@ -46,9 +58,12 @@ def load_synthesis_config(settings_path: str | Path) -> SynthesisConfig:
         path = Path(p)
         return path if path.is_absolute() else (project_root / path).resolve()
 
+    table_models = {**_DEFAULT_TABLE_MODELS, **syn.get("table_models", {})}
+
     return SynthesisConfig(
         patient_model=syn.get("patient_model", "ctgan"),
         sequence_model=syn.get("sequence_model", "par"),
+        table_models=table_models,
         epochs=int(syn.get("epochs", 300)),
         batch_size=int(syn.get("batch_size", 500)),
         seed=int(syn.get("seed", 42)),

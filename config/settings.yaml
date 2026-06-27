@@ -43,3 +43,12 @@ synthesis:
   # Output paths (relative to project root)
   synthetic_dir: "outputs/synthetic"
   model_dir:     "outputs/models"
+
+  # Per-table model selection (factory pattern — change here, not in code)
+  # observations uses ctgan: 303K-row PAR sequences exceed Colab T4 timeout
+  table_models:
+    patients:     "ctgan"
+    encounters:   "par"
+    observations: "ctgan"
+    conditions:   "par"
+    medications:  "par"

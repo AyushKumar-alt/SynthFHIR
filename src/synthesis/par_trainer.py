@@ -49,6 +49,7 @@ class PARTrainer:
         table_meta_dict: dict,
         epochs: int | None = None,
         verbose: bool = True,
+        cuda: bool = False,
     ):
         """Fit a PARSynthesizer on ``df``.
 
@@ -59,6 +60,7 @@ class PARTrainer:
             table_meta_dict: Table sub-dict from metadata.json.
             epochs         : Override config epochs.
             verbose        : Whether to print SDV progress.
+            cuda           : Pass True to enable GPU acceleration.
 
         Returns:
             Fitted PARSynthesizer.
@@ -74,19 +76,24 @@ class PARTrainer:
         n_epochs = epochs if epochs is not None else self.cfg.epochs
 
         logger.info(
-            "Training PARSynthesizer on %d rows x %d cols for %d epochs ...",
-            len(df), len(df.columns), n_epochs,
+            "Training PARSynthesizer on %d rows x %d cols for %d epochs (cuda=%s) ...",
+            len(df), len(df.columns), n_epochs, cuda,
         )
         t0 = time.time()
 
-        synth = PARSynthesizer(
-            metadata,
+        par_kwargs: dict = dict(
             context_columns=[],
             sequence_key=_SEQUENCE_KEY,
             sequence_index=_SEQUENCE_INDEX,
             epochs=n_epochs,
             verbose=verbose,
         )
+        try:
+            synth = PARSynthesizer(metadata, cuda=cuda, **par_kwargs)
+        except TypeError:
+            # Older PAR versions don't accept cuda; fall back silently
+            synth = PARSynthesizer(metadata, **par_kwargs)
+
         synth.fit(df)
         elapsed = time.time() - t0
         logger.info("PAR training complete in %.1f s (%.1f min).", elapsed, elapsed / 60)
