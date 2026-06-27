@@ -371,9 +371,10 @@ def plot_heatmap(matrix: pd.DataFrame, title: str) -> go.Figure:
     return theme(fig)
 
 
-def download_button(data: bytes, filename: str, label: str, mime: str = "text/csv") -> None:
+def download_button(data: bytes, filename: str, label: str, mime: str = "text/csv",
+                    key: Optional[str] = None) -> None:
     """Streamlit download button wrapper."""
-    st.download_button(label=label, data=data, file_name=filename, mime=mime)
+    st.download_button(label=label, data=data, file_name=filename, mime=mime, key=key)
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -514,7 +515,7 @@ def page_dashboard() -> None:
         fig.add_trace(go.Bar(x=df_r["Table"], y=df_r["Synthetic"], name="Synthetic",
                              marker_color="#818cf8", marker_line_width=0))
         fig.update_layout(barmode="group", title="", legend=dict(orientation="h", y=1.06))
-        st.plotly_chart(theme(fig), use_container_width=True)
+        st.plotly_chart(theme(fig), use_container_width=True, key="dash_row_counts")
 
     with cr:
         section_title("Overall Quality by Table")
@@ -534,7 +535,7 @@ def page_dashboard() -> None:
                 textposition="outside",
             ))
             fig2.update_layout(yaxis=dict(range=[0, 1.12]), title="")
-            st.plotly_chart(theme(fig2), use_container_width=True)
+            st.plotly_chart(theme(fig2), use_container_width=True, key="dash_quality")
         else:
             st.info("Run `python run_phase5.py` to see quality scores.")
 
@@ -662,7 +663,8 @@ def page_dataset(table: str) -> None:
             st.dataframe(disp.head(500), use_container_width=True, height=360)
             b = read_bytes(orig_path(table))
             if b:
-                download_button(b, f"{table}_ready.csv", f"⬇ Download {title} Original CSV")
+                download_button(b, f"{table}_ready.csv", f"⬇ Download {title} Original CSV",
+                                key=f"tab_dl_orig_{table}")
 
     # ── Synthetic ─────────────────────────────────────────────────────────────
     with tab_s:
@@ -680,7 +682,8 @@ def page_dataset(table: str) -> None:
             st.dataframe(disp2.head(500), use_container_width=True, height=360)
             b2 = read_bytes(synth_path(table))
             if b2:
-                download_button(b2, f"synthetic_{table}.csv", f"⬇ Download {title} Synthetic CSV")
+                download_button(b2, f"synthetic_{table}.csv", f"⬇ Download {title} Synthetic CSV",
+                                key=f"tab_dl_synth_{table}")
 
     # ── Comparison ────────────────────────────────────────────────────────────
     with tab_cmp:
@@ -694,17 +697,19 @@ def page_dataset(table: str) -> None:
                     r = pd.to_numeric(df_o[num_col], errors="coerce").dropna()
                     s = pd.to_numeric(df_s[num_col], errors="coerce").dropna()
                     st.plotly_chart(plot_histogram_compare(r, s, num_col),
-                                    use_container_width=True)
+                                    use_container_width=True, key=f"{table}_cmp_num_hist")
             with c2:
                 cat_col = _cat_col_selector(df_o, df_s, f"cat_{table}")
                 if cat_col:
                     st.plotly_chart(
                         plot_category_compare(df_o[cat_col], df_s[cat_col], cat_col),
                         use_container_width=True,
+                        key=f"{table}_cmp_cat_bar",
                     )
 
             section_title("Missing Values")
-            st.plotly_chart(plot_missing_values(df_o, df_s), use_container_width=True)
+            st.plotly_chart(plot_missing_values(df_o, df_s), use_container_width=True,
+                            key=f"{table}_missing_vals")
 
             # Table-specific visualizations
             _table_specific_charts(table, df_o, df_s)
@@ -728,6 +733,7 @@ def page_dataset(table: str) -> None:
                 st.plotly_chart(
                     plot_heatmap(num_df_o.corr(), "Correlation Matrix (Original)"),
                     use_container_width=True,
+                    key=f"{table}_corr_heatmap",
                 )
 
     render_footer()
@@ -739,11 +745,11 @@ def _table_specific_charts(table: str, df_o: pd.DataFrame, df_s: pd.DataFrame) -
 
     if table == "patients":
         cols = st.columns(3)
-        for col, kw, title in [
-            (cols[0], ("age",),      "Age Distribution"),
-            (cols[1], ("gender","sex"), "Gender Distribution"),
-            (cols[2], ("race","ethnicity"), "Race / Ethnicity"),
-        ]:
+        for i, (col, kw) in enumerate([
+            (cols[0], ("age",)),
+            (cols[1], ("gender", "sex")),
+            (cols[2], ("race", "ethnicity")),
+        ]):
             c = _col_of(df_o, *kw)
             if c is None:
                 continue
@@ -751,13 +757,22 @@ def _table_specific_charts(table: str, df_o: pd.DataFrame, df_s: pd.DataFrame) -
                 if pd.api.types.is_numeric_dtype(df_o[c]):
                     r = pd.to_numeric(df_o[c], errors="coerce").dropna()
                     s = pd.to_numeric(df_s[c], errors="coerce").dropna()
-                    col.plotly_chart(plot_histogram_compare(r, s, c), use_container_width=True)
+                    if len(r) > 0 and len(s) > 0:
+                        col.plotly_chart(plot_histogram_compare(r, s, c),
+                                         use_container_width=True,
+                                         key=f"patients_specific_{i}_hist")
                 else:
-                    col.plotly_chart(plot_category_compare(df_o[c], df_s[c], c), use_container_width=True)
+                    if c in df_s.columns:
+                        col.plotly_chart(plot_category_compare(df_o[c], df_s[c], c),
+                                         use_container_width=True,
+                                         key=f"patients_specific_{i}_cat")
 
     elif table == "encounters":
         cols = st.columns(2)
-        for col, kw in [(cols[0], ("class","type","encounter")), (cols[1], ("duration","length","stay"))]:
+        for i, (col, kw) in enumerate([
+            (cols[0], ("class", "type", "encounter")),
+            (cols[1], ("duration", "length", "stay")),
+        ]):
             c = _col_of(df_o, *kw)
             if c is None:
                 continue
@@ -765,48 +780,59 @@ def _table_specific_charts(table: str, df_o: pd.DataFrame, df_s: pd.DataFrame) -
                 if pd.api.types.is_numeric_dtype(df_o[c]):
                     r = pd.to_numeric(df_o[c], errors="coerce").dropna()
                     s = pd.to_numeric(df_s[c], errors="coerce").dropna()
-                    col.plotly_chart(plot_histogram_compare(r, s, c), use_container_width=True)
+                    if len(r) > 0 and len(s) > 0:
+                        col.plotly_chart(plot_histogram_compare(r, s, c),
+                                         use_container_width=True,
+                                         key=f"encounters_specific_{i}_hist")
                 else:
-                    col.plotly_chart(plot_category_compare(df_o[c], df_s[c], c), use_container_width=True)
+                    if c in df_s.columns:
+                        col.plotly_chart(plot_category_compare(df_o[c], df_s[c], c),
+                                         use_container_width=True,
+                                         key=f"encounters_specific_{i}_cat")
 
     elif table == "observations":
-        val_c  = _col_of(df_o, "value", "result")
-        unit_c = _col_of(df_o, "unit", "units")
-        cat_c  = _col_of(df_o, "description", "category", "type")
-        if val_c and pd.api.types.is_numeric_dtype(df_o[val_c]):
+        val_c = _col_of(df_o, "value", "result")
+        cat_c = _col_of(df_o, "description", "category", "type")
+        if val_c and val_c in df_s.columns and pd.api.types.is_numeric_dtype(df_o[val_c]):
             r = pd.to_numeric(df_o[val_c], errors="coerce").dropna()
             s = pd.to_numeric(df_s[val_c], errors="coerce").dropna()
-            st.plotly_chart(plot_histogram_compare(r, s, val_c), use_container_width=True)
-        if cat_c:
-            st.plotly_chart(plot_category_compare(df_o[cat_c], df_s[cat_c], cat_c), use_container_width=True)
+            if len(r) > 0 and len(s) > 0:
+                st.plotly_chart(plot_histogram_compare(r, s, val_c),
+                                use_container_width=True, key="observations_specific_val_hist")
+        if cat_c and cat_c in df_s.columns:
+            st.plotly_chart(plot_category_compare(df_o[cat_c], df_s[cat_c], cat_c),
+                            use_container_width=True, key="observations_specific_cat_bar")
 
     elif table == "conditions":
         desc_c    = _col_of(df_o, "description", "code", "condition")
         chronic_c = _col_of(df_o, "chronic", "is_chronic")
         cols = st.columns(2)
-        if desc_c:
+        if desc_c and desc_c in df_s.columns:
             with cols[0]:
-                st.plotly_chart(plot_category_compare(df_o[desc_c], df_s[desc_c], desc_c, top_n=12),
-                                use_container_width=True)
-        if chronic_c:
+                st.plotly_chart(
+                    plot_category_compare(df_o[desc_c], df_s[desc_c], desc_c, top_n=12),
+                    use_container_width=True, key="conditions_specific_desc",
+                )
+        if chronic_c and chronic_c in df_s.columns:
             with cols[1]:
-                st.plotly_chart(plot_category_compare(df_o[chronic_c], df_s[chronic_c], chronic_c),
-                                use_container_width=True)
+                st.plotly_chart(
+                    plot_category_compare(df_o[chronic_c], df_s[chronic_c], chronic_c),
+                    use_container_width=True, key="conditions_specific_chronic",
+                )
 
     elif table == "medications":
         med_c    = _col_of(df_o, "description", "medication", "drug")
         route_c  = _col_of(df_o, "route", "dispense")
-        status_c = _col_of(df_o, "status", "active")
-        cols = st.columns(2 if (route_c or status_c) else 1)
-        if med_c:
+        cols = st.columns(2 if route_c else 1)
+        if med_c and med_c in df_s.columns:
             cols[0].plotly_chart(
                 plot_category_compare(df_o[med_c], df_s[med_c], med_c, top_n=12),
-                use_container_width=True,
+                use_container_width=True, key="medications_specific_med",
             )
-        if route_c and len(cols) > 1:
+        if route_c and route_c in df_s.columns and len(cols) > 1:
             cols[1].plotly_chart(
                 plot_category_compare(df_o[route_c], df_s[route_c], route_c),
-                use_container_width=True,
+                use_container_width=True, key="medications_specific_route",
             )
 
 
@@ -860,7 +886,7 @@ def page_evaluation() -> None:
         ))
         fig_g.update_layout(paper_bgcolor="rgba(0,0,0,0)", font=dict(family="Inter"),
                              height=240, margin=dict(l=20, r=20, t=20, b=10))
-        st.plotly_chart(fig_g, use_container_width=True)
+        st.plotly_chart(fig_g, use_container_width=True, key="eval_gauge")
 
     with m_col:
         section_title("Score Interpretation")
@@ -956,7 +982,7 @@ def page_evaluation() -> None:
         paper_bgcolor="rgba(0,0,0,0)", font=dict(color="#94a3b8", family="Inter"),
         legend=dict(orientation="h", y=-0.15), height=420, margin=dict(l=40, r=40, t=10, b=60),
     )
-    st.plotly_chart(fig_r, use_container_width=True)
+    st.plotly_chart(fig_r, use_container_width=True, key="eval_radar")
 
     # ── CSV / JSON download ───────────────────────────────────────────────────
     section_title("Download Evaluation Outputs")
@@ -968,13 +994,16 @@ def page_evaluation() -> None:
 
     with dc1:
         if ev_csv:
-            download_button(ev_csv, "evaluation_summary.csv", "⬇ Evaluation CSV")
+            download_button(ev_csv, "evaluation_summary.csv", "⬇ Evaluation CSV",
+                            key="eval_dl_csv")
     with dc2:
         if ev_json:
-            download_button(ev_json, "evaluation_summary.json", "⬇ Evaluation JSON", mime="application/json")
+            download_button(ev_json, "evaluation_summary.json", "⬇ Evaluation JSON",
+                            mime="application/json", key="eval_dl_json")
     with dc3:
         if ev_html:
-            download_button(ev_html, "synthfhir_report.html", "⬇ HTML Report", mime="text/html")
+            download_button(ev_html, "synthfhir_report.html", "⬇ HTML Report",
+                            mime="text/html", key="eval_dl_html")
 
     # ── Embedded HTML report ──────────────────────────────────────────────────
     html_src = load_html(str(PROJECT_ROOT / "outputs" / "evaluation" / "report.html"))
@@ -1022,32 +1051,40 @@ def page_analytics() -> None:
                 with c1:
                     g_cnt = pts[gender_c].value_counts().reset_index()
                     g_cnt.columns = ["Gender", "Count"]
-                    fig_g = px.pie(g_cnt, names="Gender", values="Count",
-                                   title="Gender Distribution", hole=0.42,
-                                   color_discrete_sequence=_C)
-                    st.plotly_chart(theme(fig_g), use_container_width=True)
+                    if not g_cnt.empty:
+                        fig_g = px.pie(g_cnt, names="Gender", values="Count",
+                                       title="Gender Distribution", hole=0.42,
+                                       color_discrete_sequence=_C)
+                        st.plotly_chart(theme(fig_g), use_container_width=True,
+                                        key="analytics_pt_gender_pie")
 
             if age_c:
                 with c2:
                     ages = pd.to_numeric(pts[age_c], errors="coerce").dropna()
-                    fig_a = px.histogram(ages, nbins=30, title="Age Distribution",
-                                         color_discrete_sequence=["#38bdf8"],
-                                         labels={"value": "Age", "count": "Count"})
-                    st.plotly_chart(theme(fig_a), use_container_width=True)
+                    if len(ages) > 0:
+                        fig_a = px.histogram(ages, nbins=30, title="Age Distribution",
+                                             color_discrete_sequence=["#38bdf8"],
+                                             labels={"value": "Age", "count": "Count"})
+                        st.plotly_chart(theme(fig_a), use_container_width=True,
+                                        key="analytics_pt_age_hist")
 
             if race_c:
                 rc = pts[race_c].value_counts().head(10).reset_index()
                 rc.columns = ["Race", "Count"]
-                fig_r = px.bar(rc, x="Race", y="Count", title="Race / Ethnicity",
-                               color="Count", color_continuous_scale=["#0c1a2e", "#38bdf8"])
-                st.plotly_chart(theme(fig_r), use_container_width=True)
+                if not rc.empty:
+                    fig_race = px.bar(rc, x="Race", y="Count", title="Race / Ethnicity",
+                                      color="Count", color_continuous_scale=["#0c1a2e", "#38bdf8"])
+                    st.plotly_chart(theme(fig_race), use_container_width=True,
+                                    key="analytics_pt_race_bar")
 
             if state_c:
                 sc = pts[state_c].value_counts().head(15).reset_index()
                 sc.columns = ["State", "Count"]
-                fig_s = px.bar(sc, x="Count", y="State", orientation="h",
-                               title="Top 15 States", color_discrete_sequence=["#818cf8"])
-                st.plotly_chart(theme(fig_s), use_container_width=True)
+                if not sc.empty:
+                    fig_s = px.bar(sc, x="Count", y="State", orientation="h",
+                                   title="Top 15 States", color_discrete_sequence=["#818cf8"])
+                    st.plotly_chart(theme(fig_s), use_container_width=True,
+                                    key="analytics_pt_state_bar")
 
     # ── Encounter analytics ───────────────────────────────────────────────────
     with tab_enc:
@@ -1064,25 +1101,31 @@ def page_analytics() -> None:
                 with c1:
                     ec = enc[cls_c].value_counts().head(12).reset_index()
                     ec.columns = ["Type", "Count"]
-                    fig_ec = px.bar(ec, x="Count", y="Type", orientation="h",
-                                    title="Encounter Types", color_discrete_sequence=["#06b6d4"])
-                    st.plotly_chart(theme(fig_ec), use_container_width=True)
+                    if not ec.empty:
+                        fig_ec = px.bar(ec, x="Count", y="Type", orientation="h",
+                                        title="Encounter Types", color_discrete_sequence=["#06b6d4"])
+                        st.plotly_chart(theme(fig_ec), use_container_width=True,
+                                        key="analytics_enc_type_bar")
 
             if cost_c:
                 with c2:
                     costs = pd.to_numeric(enc[cost_c], errors="coerce").dropna()
-                    costs = costs.clip(0, costs.quantile(0.99))
-                    fig_co = px.histogram(costs, nbins=40, title=f"Cost Distribution ({cost_c})",
-                                          color_discrete_sequence=["#34d399"])
-                    st.plotly_chart(theme(fig_co), use_container_width=True)
+                    if len(costs) > 0:
+                        costs = costs.clip(0, costs.quantile(0.99))
+                        fig_co = px.histogram(costs, nbins=40, title=f"Cost Distribution ({cost_c})",
+                                              color_discrete_sequence=["#34d399"])
+                        st.plotly_chart(theme(fig_co), use_container_width=True,
+                                        key="analytics_enc_cost_hist")
 
             if dur_c:
                 dur = pd.to_numeric(enc[dur_c], errors="coerce").dropna()
-                fig_dur = go.Figure(go.Box(y=dur, name="Duration", marker_color="#f472b6",
-                                           boxpoints="outliers",
-                                           hovertemplate="Value: %{y}<extra></extra>"))
-                fig_dur.update_layout(title=f"Length of Stay — {dur_c}", showlegend=False)
-                st.plotly_chart(theme(fig_dur), use_container_width=True)
+                if len(dur) > 0:
+                    fig_dur = go.Figure(go.Box(y=dur, name="Duration", marker_color="#f472b6",
+                                               boxpoints="outliers",
+                                               hovertemplate="Value: %{y}<extra></extra>"))
+                    fig_dur.update_layout(title=f"Length of Stay — {dur_c}", showlegend=False)
+                    st.plotly_chart(theme(fig_dur), use_container_width=True,
+                                    key="analytics_enc_dur_box")
 
     # ── Clinical analytics ────────────────────────────────────────────────────
     with tab_clin:
@@ -1097,9 +1140,11 @@ def page_analytics() -> None:
                 if dc:
                     top_c = cond[dc].value_counts().head(12).reset_index()
                     top_c.columns = ["Condition", "Count"]
-                    fig_c = px.bar(top_c, x="Count", y="Condition", orientation="h",
-                                   title="Top 12 Conditions", color_discrete_sequence=["#f59e0b"])
-                    st.plotly_chart(theme(fig_c), use_container_width=True)
+                    if not top_c.empty:
+                        fig_c = px.bar(top_c, x="Count", y="Condition", orientation="h",
+                                       title="Top 12 Conditions", color_discrete_sequence=["#f59e0b"])
+                        st.plotly_chart(theme(fig_c), use_container_width=True,
+                                        key="analytics_clin_cond_bar")
 
         with c2:
             if meds is not None:
@@ -1107,22 +1152,26 @@ def page_analytics() -> None:
                 if dm:
                     top_m = meds[dm].value_counts().head(12).reset_index()
                     top_m.columns = ["Medication", "Count"]
-                    fig_m = px.bar(top_m, x="Count", y="Medication", orientation="h",
-                                   title="Top 12 Medications", color_discrete_sequence=["#ec4899"])
-                    st.plotly_chart(theme(fig_m), use_container_width=True)
+                    if not top_m.empty:
+                        fig_m = px.bar(top_m, x="Count", y="Medication", orientation="h",
+                                       title="Top 12 Medications", color_discrete_sequence=["#ec4899"])
+                        st.plotly_chart(theme(fig_m), use_container_width=True,
+                                        key="analytics_clin_meds_bar")
 
         if obs is not None:
             desc_c = _col_of(obs, "description", "category")
             val_c  = _col_of(obs, "value", "result")
             if desc_c and val_c and pd.api.types.is_numeric_dtype(obs[val_c]):
                 top_types = obs[desc_c].value_counts().head(8).index.tolist()
-                sel_type  = st.selectbox("Observation type", top_types, key="obs_type_analytics")
-                sub_obs   = obs[obs[desc_c] == sel_type]
-                vals      = pd.to_numeric(sub_obs[val_c], errors="coerce").dropna()
-                if len(vals) > 0:
-                    fig_ov = px.histogram(vals, nbins=35, title=f"Values: {sel_type}",
-                                          color_discrete_sequence=["#818cf8"])
-                    st.plotly_chart(theme(fig_ov), use_container_width=True)
+                if top_types:
+                    sel_type = st.selectbox("Observation type", top_types, key="obs_type_analytics")
+                    sub_obs  = obs[obs[desc_c] == sel_type]
+                    vals     = pd.to_numeric(sub_obs[val_c], errors="coerce").dropna()
+                    if len(vals) > 0:
+                        fig_ov = px.histogram(vals, nbins=35, title=f"Values: {sel_type}",
+                                              color_discrete_sequence=["#818cf8"])
+                        st.plotly_chart(theme(fig_ov), use_container_width=True,
+                                        key="analytics_obs_val_hist")
 
     # ── Cross-table analytics ─────────────────────────────────────────────────
     with tab_cross:
@@ -1134,32 +1183,36 @@ def page_analytics() -> None:
                                 title="Synthetic Dataset — Record Distribution",
                                 color="Rows",
                                 color_continuous_scale=["#05101f", "#0ea5e9", "#e2e8f0"])
-            st.plotly_chart(theme(fig_tm), use_container_width=True)
+            st.plotly_chart(theme(fig_tm), use_container_width=True,
+                            key="analytics_cross_treemap")
+        else:
+            st.info("No synthetic tables found to render treemap.")
 
         # Evaluation score heatmap
-        ev = load_json(str(PROJECT_ROOT / "outputs" / "evaluation" / "evaluation_summary.json"))
-        if ev:
-            ev_ts = ev.get("scores", {}).get("tables", {})
+        ev_cross = load_json(str(PROJECT_ROOT / "outputs" / "evaluation" / "evaluation_summary.json"))
+        if ev_cross:
+            ev_ts = ev_cross.get("scores", {}).get("tables", {})
             heat_rows = []
             for t in TABLES:
                 s = ev_ts.get(t, {})
                 heat_rows.append({
                     "Table":       t.capitalize(),
-                    "Numeric":     s.get("numeric_similarity")     or 0,
-                    "Categorical": s.get("categorical_similarity") or 0,
+                    "Numeric":     s.get("numeric_similarity")       or 0,
+                    "Categorical": s.get("categorical_similarity")   or 0,
                     "Correlation": s.get("correlation_preservation") or 0,
-                    "Privacy":     s.get("privacy_score")          or 0,
-                    "Overall":     s.get("overall")                or 0,
+                    "Privacy":     s.get("privacy_score")            or 0,
+                    "Overall":     s.get("overall")                  or 0,
                 })
             df_h = pd.DataFrame(heat_rows).set_index("Table")
-            st.plotly_chart(plot_heatmap(df_h, "Evaluation Score Heatmap"), use_container_width=True)
+            st.plotly_chart(plot_heatmap(df_h, "Evaluation Score Heatmap"),
+                            use_container_width=True, key="analytics_cross_heatmap")
 
         # Scatter: original rows vs overall score
-        if ev:
+        if ev_cross:
             scatter_pts = []
             for t in TABLES:
                 o  = load_csv(orig_path(t))
-                ov = ev.get("scores", {}).get("tables", {}).get(t, {}).get("overall")
+                ov = ev_cross.get("scores", {}).get("tables", {}).get(t, {}).get("overall")
                 if o is not None and ov is not None:
                     scatter_pts.append({"Table": t.capitalize(), "Rows": len(o), "Score": ov})
             if scatter_pts:
@@ -1170,7 +1223,8 @@ def page_analytics() -> None:
                                     color_continuous_scale=["#7f1d1d", "#713f12", "#14532d"],
                                     size_max=18)
                 fig_sc.update_traces(textposition="top center", marker_size=14)
-                st.plotly_chart(theme(fig_sc), use_container_width=True)
+                st.plotly_chart(theme(fig_sc), use_container_width=True,
+                                key="analytics_cross_scatter")
 
     render_footer()
 
@@ -1212,12 +1266,14 @@ def page_downloads() -> None:
             c1, c2, _ = st.columns([1, 1, 3])
             with c1:
                 if bs:
-                    download_button(bs, f"synthetic_{t}.csv", f"⬇ Synthetic {t.capitalize()}")
+                    download_button(bs, f"synthetic_{t}.csv", f"⬇ Synthetic {t.capitalize()}",
+                                    key=f"dl_synth_{t}")
                 else:
                     st.caption("Synthetic CSV not found")
             with c2:
                 if bo:
-                    download_button(bo, f"{t}_ready.csv", f"⬇ Original {t.capitalize()}")
+                    download_button(bo, f"{t}_ready.csv", f"⬇ Original {t.capitalize()}",
+                                    key=f"dl_orig_{t}")
                 else:
                     st.caption("Original CSV not found")
 
@@ -1231,9 +1287,10 @@ def page_downloads() -> None:
     ecols = st.columns(len(ev_files))
     for col, (fname, label, mime) in zip(ecols, ev_files):
         b = read_bytes(str(PROJECT_ROOT / "outputs" / "evaluation" / fname))
+        safe_key = fname.replace(".", "_").replace("-", "_")
         with col:
             if b:
-                download_button(b, fname, label, mime=mime)
+                download_button(b, fname, label, mime=mime, key=f"dl_ev_{safe_key}")
             else:
                 st.caption(f"{fname} not found")
 
