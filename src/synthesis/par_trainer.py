@@ -1,35 +1,51 @@
 """PARSynthesizer trainer for sequential clinical event tables.
 
-PARSynthesizer models within-patient event sequences. Each patient is one
-sequence; ``sequence_key`` groups rows by patient; ``sequence_index`` orders
-events within that patient chronologically.
+SDV 1.37.2 API — critical notes
+--------------------------------
+PARSynthesizer.__init__(metadata, context_columns, segment_size,
+                        epochs, sample_size, cuda, verbose)
+
+``sequence_key`` and ``sequence_index`` are NOT constructor arguments.
+They must be embedded in the metadata object BEFORE construction:
+
+    SingleTableMetadata.load_from_dict({
+        ...
+        "sequence_key":   "patient_id",
+        "sequence_index": "sequence_index",
+    })
+
+PARSynthesizer reads them internally from
+    self._get_table_metadata().sequence_key
+    self._get_table_metadata().sequence_index
+
+Using the new ``Metadata`` class returned by
+``Metadata.get_table_metadata()`` does NOT work here because that
+class exposes ``set_sequence_key`` but not ``.sequence_key`` as a
+plain attribute — PAR's internal read fails.
+
+Resolution: ``build_par_metadata()`` injects the sequence keys
+into a ``SingleTableMetadata`` dict before loading.
 
 Applied tables
 --------------
 encounters   : sequence_key=patient_id, sequence_index=sequence_index
-observations : sequence_key=patient_id, sequence_index=sequence_index
 conditions   : sequence_key=patient_id, sequence_index=sequence_index
 medications  : sequence_key=patient_id, sequence_index=sequence_index
 
-Design note
------------
-PARSynthesizer can accept ``context_columns`` — attributes that are constant
-within a sequence (same for every row of a patient). We pass an empty list
-here because patient demographics live in the separate patients table.
-For Phase 4B, patient-level context can be merged in to condition the
-sequence generation on age, gender, etc.
+(observations uses CTGANSynthesizer — 303K rows × 300 epochs exceeds
+ practical PAR training time even on T4 GPU.)
 """
 
 from __future__ import annotations
 
 import logging
 import time
+import warnings
 from pathlib import Path
 
 import pandas as pd
 
 from .config import SynthesisConfig
-from .ctgan_trainer import build_single_table_metadata
 
 logger = logging.getLogger(__name__)
 
@@ -37,8 +53,46 @@ _SEQUENCE_KEY   = "patient_id"
 _SEQUENCE_INDEX = "sequence_index"
 
 
+# ── Metadata builder (PAR-specific) ──────────────────────────────────────────
+
+def build_par_metadata(table_meta_dict: dict):
+    """Build a SingleTableMetadata with sequence_key and sequence_index set.
+
+    PAR reads sequence_key and sequence_index from the metadata object,
+    not from its constructor. We inject them into the dict before loading
+    so that PARSynthesizer can find them via _get_table_metadata().
+
+    Args:
+        table_meta_dict: One table entry from metadata.json
+                         (keys: primary_key, columns, …).
+
+    Returns:
+        SingleTableMetadata instance with .sequence_key and .sequence_index set.
+    """
+    from sdv.metadata import SingleTableMetadata
+
+    st_dict = {
+        **table_meta_dict,
+        "METADATA_SPEC_VERSION": "V1",
+        "sequence_key":   _SEQUENCE_KEY,
+        "sequence_index": _SEQUENCE_INDEX,
+    }
+    with warnings.catch_warnings():
+        warnings.filterwarnings("ignore", category=FutureWarning)
+        meta = SingleTableMetadata.load_from_dict(st_dict)
+
+    return meta
+
+
+# ── Trainer ────────────────────────────────────────────────────────────────────
+
 class PARTrainer:
-    """Train, save, and load a PARSynthesizer for one sequential table."""
+    """Train, save, and load a PARSynthesizer for one sequential table.
+
+    The training DataFrame must contain columns ``patient_id`` (sequence
+    grouping key) and ``sequence_index`` (within-patient sort order).
+    Both are produced by Phase 3 feature engineering for all child tables.
+    """
 
     def __init__(self, synth_config: SynthesisConfig) -> None:
         self.cfg = synth_config
@@ -53,50 +107,61 @@ class PARTrainer:
     ):
         """Fit a PARSynthesizer on ``df``.
 
-        The table must contain ``patient_id`` and ``sequence_index`` columns.
-
         Args:
-            df             : Training DataFrame (a ready table with sequences).
-            table_meta_dict: Table sub-dict from metadata.json.
-            epochs         : Override config epochs.
-            verbose        : Whether to print SDV progress.
-            cuda           : Pass True to enable GPU acceleration.
+            df             : Training DataFrame with patient_id + sequence_index.
+            table_meta_dict: Table entry from metadata.json (columns, primary_key).
+            epochs         : Epoch count override; falls back to cfg.epochs.
+            verbose        : Whether to print SDV's per-epoch progress.
+            cuda           : True to use GPU (passed directly to PARSynthesizer).
 
         Returns:
             Fitted PARSynthesizer.
+
+        Raises:
+            ValueError if patient_id or sequence_index columns are missing.
         """
         from sdv.sequential import PARSynthesizer
 
         if _SEQUENCE_KEY not in df.columns:
-            raise ValueError(f"PAR training requires '{_SEQUENCE_KEY}' column.")
+            raise ValueError(
+                f"PAR training requires column '{_SEQUENCE_KEY}'. "
+                f"Available: {list(df.columns)}"
+            )
         if _SEQUENCE_INDEX not in df.columns:
-            raise ValueError(f"PAR training requires '{_SEQUENCE_INDEX}' column.")
+            raise ValueError(
+                f"PAR training requires column '{_SEQUENCE_INDEX}'. "
+                f"Available: {list(df.columns)}"
+            )
 
-        metadata = build_single_table_metadata(table_meta_dict)
-        n_epochs = epochs if epochs is not None else self.cfg.epochs
+        n_epochs  = epochs if epochs is not None else self.cfg.epochs
+        n_seqs    = df[_SEQUENCE_KEY].nunique()
+        metadata  = build_par_metadata(table_meta_dict)
 
         logger.info(
-            "Training PARSynthesizer on %d rows x %d cols for %d epochs (cuda=%s) ...",
-            len(df), len(df.columns), n_epochs, cuda,
+            "Training PARSynthesizer on %d rows / %d sequences x %d cols "
+            "for %d epochs (cuda=%s) ...",
+            len(df), n_seqs, len(df.columns), n_epochs, cuda,
         )
         t0 = time.time()
 
-        par_kwargs: dict = dict(
+        # sequence_key and sequence_index come from metadata, NOT from the
+        # constructor.  context_columns=[] because patient demographics live
+        # in the separate patients table (not merged here).
+        synth = PARSynthesizer(
+            metadata,
             context_columns=[],
-            sequence_key=_SEQUENCE_KEY,
-            sequence_index=_SEQUENCE_INDEX,
+            segment_size=None,
             epochs=n_epochs,
+            sample_size=1,
+            cuda=cuda,
             verbose=verbose,
         )
-        try:
-            synth = PARSynthesizer(metadata, cuda=cuda, **par_kwargs)
-        except TypeError:
-            # Older PAR versions don't accept cuda; fall back silently
-            synth = PARSynthesizer(metadata, **par_kwargs)
-
         synth.fit(df)
+
         elapsed = time.time() - t0
-        logger.info("PAR training complete in %.1f s (%.1f min).", elapsed, elapsed / 60)
+        logger.info(
+            "PAR training complete in %.1f s (%.1f min).", elapsed, elapsed / 60
+        )
         return synth
 
     def save(self, synth, path: Path) -> None:
