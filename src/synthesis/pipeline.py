@@ -98,7 +98,7 @@ from .evaluator import (
     save_smoke_report,
 )
 from . import memory as mem
-from .sequence_sanitizer import sanitize_sequences
+from .sequence_sanitizer import sample_par_patients, sanitize_sequences
 
 logger = logging.getLogger(__name__)
 
@@ -266,19 +266,31 @@ class SynthesisPipeline:
         df   = self._load_table(table_name)
         meta = self._meta["tables"][table_name]
 
-        # ── Sequence length control (PAR only) ────────────────────────────
-        # Must run BEFORE training so PARSynthesizer never sees sequences
-        # longer than max_seq_len.  CTGAN tables (patients, observations)
-        # are not sequential and skip this step entirely.
+        # ── PAR memory-safety layer (two-stage, PAR tables only) ─────────
+        # CTGAN tables (patients, observations) skip both stages.
+        # Stage 1: sample patients  → bounds n_sequences (outer VRAM axis)
+        # Stage 2: clip seq length  → bounds max_seq_len (inner VRAM axis)
+        # Together: peak VRAM = O(par_max_patients × max_seq_len × batch)
         seq_stats: dict = {}
         if model_type == "par":
-            df, seq_stats = sanitize_sequences(
+            if self.cfg.par_max_patients is not None:
+                df, _ps = sample_par_patients(
+                    df,
+                    sequence_key="patient_id",
+                    max_patients=self.cfg.par_max_patients,
+                    seed=self.cfg.seed,
+                    table_name=table_name,
+                )
+                seq_stats.update(_ps)
+
+            df, _cs = sanitize_sequences(
                 df,
                 sequence_key="patient_id",
                 max_seq_len=self.cfg.max_seq_len,
                 sort_col="sequence_index",
                 table_name=table_name,
             )
+            seq_stats.update(_cs)
 
         n_rows = len(df)
         logger.info("[START] %s  model=%s  rows=%d", table_name, model_type, n_rows)

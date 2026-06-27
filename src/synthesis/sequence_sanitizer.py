@@ -1,47 +1,58 @@
-"""Sequence length control layer for PAR training — GPU memory safety.
+"""Sequence memory-safety layer for PAR training.
 
 WHY THIS MODULE EXISTS
 ----------------------
-PARSynthesizer (PyTorch-based) pads every sequence in a mini-batch to the
-length of the *longest* sequence in that batch.  Without clipping:
+PARSynthesizer (PyTorch-based) allocates a padded tensor of shape
 
-    Patient A: 420 conditions  →  420-step padded tensor allocated for
-    Patient B:   3 conditions     BOTH patients, even the one with 3.
+    [max_seq_len_in_batch, n_sequences, hidden_dim]
 
-With 998 patients, one outlier with 420 events forces the GPU to hold
-420 × batch_size × hidden_dim × dtype_bytes in VRAM simultaneously.
-At float32, hidden=128, batch_size=32:
-    420 × 32 × 128 × 4 bytes ≈ 6.9 MB  per layer per forward pass
-    Multiply by 2–4 PAR LSTM layers + backward gradients → OOM.
+before each forward pass.  Two independent dimensions drive VRAM:
 
-THE FIX
--------
-Clip each patient's history to the most-recent ``max_seq_len`` events
-BEFORE the data reaches PARSynthesizer.fit().  This bounds GPU allocation
-to O(max_seq_len × batch_size) regardless of outlier patients.
+  (A) n_sequences  — number of patients in the training set.
+  (B) max_seq_len  — longest event history among those patients.
+
+Either dimension alone can cause CUDA OOM:
+
+    998 patients × 50 events × 128 hidden × float32 × grad overhead ≈ OOM
+    400 patients × 420 events × 128 hidden × float32 × grad overhead ≈ OOM
+
+Both must be bounded before fit() is called.
+
+TWO-STAGE CONTROL
+-----------------
+Stage 1 — ``sample_par_patients()``
+    Randomly samples a reproducible subset of ``par_max_patients`` patients.
+    All events for each sampled patient are retained (complete histories).
+    This shrinks the n_sequences axis.
+
+Stage 2 — ``sanitize_sequences()``
+    For each remaining patient, keeps only the most-recent ``max_seq_len``
+    events.  This shrinks the max_seq_len axis.
+
+Together they bound peak VRAM to:
+    O(par_max_patients × max_seq_len × batch_size × hidden_dim)
 
 DESIGN DECISIONS
 ----------------
-Keep most-recent events (not oldest, not random).
-    Recent events are more predictive of current clinical state.  A
-    patient's last 50 encounters contain richer signal for a generative
-    model than their first 50 encounters 20 years ago.
+Patient sampling uses fixed seed → reproducible across runs.
+
+Keep most-recent events (Stage 2).
+    Recent events are more clinically relevant than older ones.
 
 sequence_index is the canonical sort column.
-    Phase 3 feature engineering writes a 0-based per-patient chronological
-    index (sequence_index) into every PAR table.  Sorting by it is always
-    correct, even if underlying temporal columns have NaN values.
+    Phase 3 writes a 0-based per-patient chronological index into every
+    PAR table.  Sorting by it is correct even when temporal columns have NaN.
 
-No-op fast path.
-    If every sequence already has ≤ max_seq_len events, the original
-    DataFrame is returned without copying.  The profiling log still runs
-    so operators can verify the assumption.
+No-op fast paths.
+    If n_patients ≤ par_max_patients, no sampling is applied.
+    If max_seq_len_in_table ≤ max_seq_len, no clipping is applied.
 
 HARD RULE FOR ALL FUTURE MODELS
 ---------------------------------
 Any sequence-based model in this project MUST pass data through
-``sanitize_sequences()`` before fitting.  Memory must never be the
-limiting factor.  Sequence size is controlled here, not inside the model.
+``sample_par_patients()`` then ``sanitize_sequences()`` before fitting.
+Memory must NEVER be the limiting factor.  Sequence count and sequence
+length are controlled here, not inside the model.
 """
 
 from __future__ import annotations
@@ -118,7 +129,96 @@ def log_sequence_profile(
     logger.info(sep)
 
 
-# ── Clipping ──────────────────────────────────────────────────────────────────
+# ── Patient sampling (Stage 1) ────────────────────────────────────────────────
+
+def sample_par_patients(
+    df: pd.DataFrame,
+    sequence_key: str,
+    max_patients: int,
+    seed: int = 42,
+    table_name: str = "",
+) -> tuple[pd.DataFrame, dict]:
+    """Sample a reproducible subset of patients to bound PAR sequence count.
+
+    PAR VRAM scales with n_sequences.  Sampling ``max_patients`` patients
+    from the full training set is the coarsest but most effective lever for
+    reducing peak GPU memory when sequence-length clipping alone is insufficient.
+
+    All events for each selected patient are retained in full — histories are
+    complete, just fewer patients.  The same ``seed`` always produces the same
+    patient subset across runs.
+
+    Args:
+        df           : Training DataFrame (one row per event).
+        sequence_key : Grouping column (``'patient_id'`` for all PAR tables).
+        max_patients : Maximum number of patients to retain.  Must be > 0.
+        seed         : Random seed passed to pandas sample().  Use
+                       ``cfg.seed`` from SynthesisConfig for reproducibility.
+        table_name   : Used in log messages only.
+
+    Returns:
+        ``(sampled_df, stats_dict)``
+
+        ``sampled_df``  — DataFrame containing only rows for the sampled
+                          patients, with index reset.  Equals the original df
+                          (not a copy) when n_patients ≤ max_patients.
+        ``stats_dict``  — Dict of before/after metrics, merged into the
+                          training_time.json manifest by the pipeline.
+    """
+    if max_patients <= 0:
+        raise ValueError(f"max_patients must be > 0, got {max_patients!r}")
+
+    label = table_name or "table"
+    all_patients = df[sequence_key].unique()
+    n_patients   = int(len(all_patients))
+
+    logger.info(
+        "[PAT-SAMPLE] %s: n_patients=%d  limit=%d  seed=%d",
+        label, n_patients, max_patients, seed,
+    )
+
+    base_stats = {
+        "pat_max_patients_cfg": max_patients,
+        "pat_n_before":         n_patients,
+    }
+
+    # Fast-path: already within limit
+    if n_patients <= max_patients:
+        logger.info(
+            "[PAT-SAMPLE] %s: n_patients=%d ≤ limit=%d — no sampling applied.",
+            label, n_patients, max_patients,
+        )
+        return df, {**base_stats, "pat_n_after": n_patients, "pat_n_dropped": 0}
+
+    # Reproducible random sample of patient IDs (no replacement)
+    sampled_ids = set(
+        pd.Series(all_patients).sample(n=max_patients, random_state=seed, replace=False)
+    )
+    df_sampled = df[df[sequence_key].isin(sampled_ids)].reset_index(drop=True)
+
+    n_dropped   = n_patients - max_patients
+    rows_before = len(df)
+    rows_after  = len(df_sampled)
+
+    logger.info(
+        "[PAT-SAMPLE] %s: sampled %d/%d patients  "
+        "(dropped %d, %.1f%%)  rows %d → %d",
+        label,
+        max_patients, n_patients,
+        n_dropped, 100 * n_dropped / max(n_patients, 1),
+        rows_before, rows_after,
+    )
+
+    return df_sampled, {
+        **base_stats,
+        "pat_n_after":   max_patients,
+        "pat_n_dropped": n_dropped,
+        "pat_rows_before": rows_before,
+        "pat_rows_after":  rows_after,
+    }
+
+
+# ── Sequence clipping (Stage 2) ───────────────────────────────────────────────
 
 def sanitize_sequences(
     df: pd.DataFrame,

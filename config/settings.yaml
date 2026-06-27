@@ -40,13 +40,20 @@ synthesis:
   smoke_test_epochs: 5
   smoke_test_n_rows: 20
 
-  # Sequence length control — PAR GPU memory safety (HARD LIMIT)
-  # All PAR tables (encounters, conditions, medications) are clipped to this
-  # many events per patient BEFORE training.  One outlier patient with 420
-  # encounters forces PyTorch to allocate 420-step padded tensors for every
-  # shorter sequence in the batch, causing CUDA OOM.  This setting caps GPU
-  # allocation at O(max_seq_len × batch_size) regardless of outlier patients.
-  # Tune upward only if VRAM permits (T4 = 15 GB; safe range: 30–100).
+  # ── PAR GPU memory safety (TWO-AXIS control) ──────────────────────────────
+  # PAR allocates a padded tensor: [max_seq_len, n_sequences, hidden_dim].
+  # Both axes must be bounded; either alone can cause CUDA OOM.
+  #
+  # par_max_patients (Stage 1 — outer axis):
+  #   Randomly sample this many patients BEFORE training.
+  #   All events for each sampled patient are retained (complete histories).
+  #   Set to null to disable and use all patients.
+  #   Tuning: T4 (15 GB) → 400 safe; A100 (40 GB) → 700–800.
+  par_max_patients: 400
+  #
+  # max_seq_len (Stage 2 — inner axis):
+  #   For each remaining patient, keep only the most-recent N events.
+  #   Tuning: T4 → 50 safe; A100 → 80–100.
   max_seq_len: 50
 
   # Output paths (relative to project root)
