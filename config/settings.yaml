@@ -45,10 +45,21 @@ synthesis:
   model_dir:     "outputs/models"
 
   # Per-table model selection (factory pattern — change here, not in code)
-  # observations uses ctgan: 303K-row PAR sequences exceed Colab T4 timeout
+  # observations uses ctgan (not par: 303K PAR sequences exceed T4 timeout;
+  # not gaussian_copula: cannot model value_quantity | loinc_display conditional
+  # distributions; not tvae: same DataTransformer RAM issue as ctgan with no
+  # utility benefit for mixed categorical/numerical LOINC-coded data).
+  # The joblib sequential backend in pipeline.py eliminates DataTransformer OOM.
   table_models:
     patients:     "ctgan"
     encounters:   "par"
     observations: "ctgan"
     conditions:   "par"
     medications:  "par"
+
+  # Backup configuration — controls where per-table ZIPs are distributed.
+  # gdrive_dir: if null, auto-detected (/content/drive/MyDrive/SynthFHIR on Colab)
+  # set gdrive_dir explicitly with --gdrive-dir CLI arg or PROJECT_ROOT env var
+  backup:
+    zip_after_each_table: true
+    gdrive_dir: null
