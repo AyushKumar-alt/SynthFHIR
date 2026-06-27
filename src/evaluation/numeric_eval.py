@@ -58,8 +58,8 @@ def _evaluate_table(
     results  = []
 
     for col in num_cols:
-        real_vals  = pd.to_numeric(original[col],  errors="coerce").dropna()
-        synth_vals = pd.to_numeric(synthetic[col], errors="coerce").dropna()
+        real_vals  = _to_safe_numeric(pd.to_numeric(original[col],  errors="coerce").dropna())
+        synth_vals = _to_safe_numeric(pd.to_numeric(synthetic[col], errors="coerce").dropna())
 
         if len(real_vals) < _MIN_VALUES or len(synth_vals) < _MIN_VALUES:
             continue
@@ -90,20 +90,38 @@ def _evaluate_table(
 def _numeric_columns(original: pd.DataFrame, synthetic: pd.DataFrame) -> list[str]:
     """Return numeric columns present in both frames, excluding IDs and booleans.
 
-    pandas.select_dtypes(include="number") includes bool columns because numpy
-    treats bool as a numeric subtype.  Booleans must be excluded here so they
-    are evaluated by the categorical evaluator (TVD) instead.  Passing a bool
-    Series to ks_2samp or quantile triggers "numpy boolean subtract is not
-    supported".
+    pandas.select_dtypes(include="number") may include bool columns because
+    numpy treats bool as a numeric subtype.  We must check BOTH frames:
+
+    * original[c] may be int64 (Phase 3 CSV written before the astype(int)
+      removal) while synthetic[c] is bool (generated after enforce_boolean_columns).
+      Checking only original[c] was the root cause of the surviving crash.
+
+    * pd.to_numeric(bool_series) preserves bool dtype — it does not convert to
+      int — so the bool reaches _desc_stats and crashes at quantile().
+
+    Boolean columns are handled by categorical_eval (TVD + bar charts).
     """
     num = [
         c for c in original.select_dtypes(include="number").columns
         if c in synthetic.columns
         and c not in EXCLUDED_COLUMNS
         and not pd.api.types.is_bool_dtype(original[c])
+        and not pd.api.types.is_bool_dtype(synthetic[c])
         and not _is_id_like(original[c])
     ]
     return num
+
+
+def _to_safe_numeric(s: pd.Series) -> pd.Series:
+    """Cast bool dtype to int8 so quantile/subtract never operate on booleans.
+
+    pd.to_numeric(bool_series, errors='coerce') preserves bool dtype.
+    This function is the second line of defence after _numeric_columns().
+    """
+    if pd.api.types.is_bool_dtype(s):
+        return s.astype(np.int8)
+    return s
 
 
 def _is_id_like(series: pd.Series) -> bool:
@@ -117,6 +135,12 @@ def _is_id_like(series: pd.Series) -> bool:
 # ── Descriptive statistics ────────────────────────────────────────────────────
 
 def _desc_stats(s: pd.Series) -> dict:
+    # Last-resort guard: bool must never reach quantile().
+    # pd.to_numeric() preserves bool dtype; _to_safe_numeric() should have
+    # already cast it, but this ensures the function is crash-proof regardless
+    # of how it is called.
+    if pd.api.types.is_bool_dtype(s):
+        s = s.astype(np.int8)
     return {
         "count":  int(len(s)),
         "mean":   _r(s.mean()),
