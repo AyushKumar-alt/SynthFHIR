@@ -27,6 +27,7 @@ from tqdm import tqdm
 from .config import SynthesisConfig
 from .ctgan_trainer import CTGANTrainer
 from .par_trainer import PARTrainer
+from .progress import EpochSniffer, ProgressTracker
 from .sampler import sample_patients, sample_sequences, assign_synthetic_ids, remap_to_synthetic_patients
 from .evaluator import (
     run_smoke_test,
@@ -125,15 +126,26 @@ class SynthesisPipeline:
 
     # ── Phase 4B: Full training ───────────────────────────────────────────
 
-    def run_full(self, use_cuda: bool = False, device_name: str = "CPU") -> None:
-        """Train all tables and generate complete synthetic dataset.
+    def run_full(
+        self,
+        use_cuda:     bool = False,
+        device_name:  str  = "CPU",
+        tracker:      ProgressTracker | None = None,
+        project_root: Path | None = None,
+        outputs_dir:  Path | None = None,
+    ) -> None:
+        """Train all tables and generate the complete synthetic dataset.
 
-        Resumes automatically if a previous run was interrupted: any table
-        whose synthetic CSV already exists in synthetic_dir is skipped.
+        Resumes automatically: tables whose synthetic CSV already exists are
+        skipped, so re-running after a disconnect continues from the next table.
 
         Args:
-            use_cuda    : True to enable GPU acceleration (torch.cuda).
-            device_name : Human-readable device label for logs/stats.
+            use_cuda     : Enable GPU acceleration (torch.cuda).
+            device_name  : Human-readable device label for display/stats.
+            tracker      : Optional ProgressTracker for production-grade UI.
+                           If None, falls back to plain logger output.
+            project_root : Project root directory (needed for ZIP creation).
+            outputs_dir  : Parent of models/, synthetic/, logs/ directories.
         """
         TABLE_SEQUENCE = [
             ("patients",     "patient_id"),
@@ -142,6 +154,7 @@ class SynthesisPipeline:
             ("conditions",   "condition_id"),
             ("medications",  "medication_id"),
         ]
+        n_tables = len(TABLE_SEQUENCE)
 
         self.cfg.model_dir.mkdir(parents=True, exist_ok=True)
         self.cfg.synthetic_dir.mkdir(parents=True, exist_ok=True)
@@ -149,19 +162,24 @@ class SynthesisPipeline:
         stats_path = self.cfg.model_dir / "training_time.json"
         log_path   = self.cfg.model_dir / "training_log.txt"
         stats      = _load_stats(stats_path, device_name)
+        start_time = datetime.datetime.now()
 
-        # Cache synthetic patients so child tables can remap patient_ids
+        # GPU monitoring thread (no-op on CPU)
+        if tracker:
+            tracker.start_gpu_monitor(interval_s=60)
+
+        # Cache synthetic patients for FK remapping in child tables
         synthetic_patients: pd.DataFrame | None = None
         sp_path = self.cfg.synthetic_dir / "synthetic_patients.csv"
         if sp_path.exists():
             synthetic_patients = pd.read_csv(sp_path)
 
         # Real patient count for proportional CTGAN row sampling
-        real_patients_df  = self._load_table("patients")
-        n_real_patients   = len(real_patients_df)
+        real_patients_df = self._load_table("patients")
+        n_real_patients  = len(real_patients_df)
 
         logger.info("=" * 60)
-        logger.info("  PHASE 4B - FULL TRAINING")
+        logger.info("  PHASE 4B — FULL TRAINING")
         logger.info("  device=%s  epochs=%d  n_patients=%d",
                     device_name, self.cfg.epochs, self.cfg.n_synthetic_patients)
         logger.info("=" * 60)
@@ -171,74 +189,79 @@ class SynthesisPipeline:
                    f"epochs={self.cfg.epochs} | "
                    f"n_patients={self.cfg.n_synthetic_patients}")
 
-        for table_name, pk_col in tqdm(TABLE_SEQUENCE, desc="Tables", unit="table"):
+        for idx, (table_name, pk_col) in enumerate(TABLE_SEQUENCE, start=1):
             synth_path = self.cfg.synthetic_dir / f"synthetic_{table_name}.csv"
-            model_path = self.cfg.model_dir / f"{table_name}_model.pkl"
+            model_path = self.cfg.model_dir    / f"{table_name}_model.pkl"
+            model_type = self.cfg.table_models.get(table_name, "ctgan")
 
             # ── Checkpoint: skip already-completed tables ──────────────────
             if synth_path.exists():
-                logger.info("[SKIP] %s: checkpoint found (%s)", table_name, synth_path.name)
+                logger.info("[SKIP] %s: checkpoint found", table_name)
                 _log_event(log_path, f"SKIP {table_name} | checkpoint exists")
                 if table_name == "patients" and synthetic_patients is None:
                     synthetic_patients = pd.read_csv(synth_path)
+                if tracker:
+                    tracker.skip_table(table_name)
                 continue
 
             # ── Load real table ────────────────────────────────────────────
             df   = self._load_table(table_name)
             meta = self._meta["tables"][table_name]
-            model_type = self.cfg.table_models.get(table_name, "ctgan")
 
             logger.info("[START] %s  model=%s  rows=%d", table_name, model_type, len(df))
+
+            if tracker:
+                tracker.begin_table(table_name, model_type, len(df),
+                                    self.cfg.epochs, idx, n_tables)
             t0 = time.time()
 
-            # ── Train ──────────────────────────────────────────────────────
+            # ── Train (EpochSniffer intercepts tqdm for per-epoch metrics) ─
+            epoch_cb = tracker.record_epoch if tracker else lambda *_: None
+            with EpochSniffer(on_epoch=epoch_cb, model_type=model_type):
+                if model_type == "par":
+                    trainer   = PARTrainer(self.cfg)
+                    synth     = trainer.train(df, meta,
+                                              epochs=self.cfg.epochs,
+                                              verbose=True,
+                                              cuda=use_cuda)
+                else:
+                    if table_name == "patients":
+                        n_rows = self.cfg.n_synthetic_patients
+                    else:
+                        ratio  = self.cfg.n_synthetic_patients / max(n_real_patients, 1)
+                        n_rows = max(1, int(len(df) * ratio))
+
+                    cfg_for_table = dataclasses.replace(self.cfg, patient_model=model_type)
+                    trainer       = CTGANTrainer(cfg_for_table)
+                    synth         = trainer.train(df, meta,
+                                                  epochs=self.cfg.epochs,
+                                                  verbose=True,
+                                                  cuda=use_cuda,
+                                                  model_name=model_type)
+
+            # ── Sample ─────────────────────────────────────────────────────
             if model_type == "par":
-                trainer   = PARTrainer(self.cfg)
-                synth     = trainer.train(df, meta,
-                                          epochs=self.cfg.epochs,
-                                          verbose=True,
-                                          cuda=use_cuda)
                 synthetic = sample_sequences(synth, self.cfg.n_synthetic_patients)
                 if synthetic_patients is not None:
                     synthetic = remap_to_synthetic_patients(synthetic, synthetic_patients)
             else:
-                # Determine how many rows to generate
-                if table_name == "patients":
-                    n_rows = self.cfg.n_synthetic_patients
-                else:
-                    # Keep the same observation density as real data
-                    ratio  = self.cfg.n_synthetic_patients / max(n_real_patients, 1)
-                    n_rows = max(1, int(len(df) * ratio))
-
-                # Use the per-table model name (may differ from patient_model)
-                cfg_for_table = dataclasses.replace(self.cfg, patient_model=model_type)
-                trainer   = CTGANTrainer(cfg_for_table)
-                synth     = trainer.train(df, meta,
-                                          epochs=self.cfg.epochs,
-                                          verbose=True,
-                                          cuda=use_cuda,
-                                          model_name=model_type)
                 synthetic = sample_patients(synth, n_rows)
                 if table_name != "patients" and synthetic_patients is not None:
                     synthetic = remap_to_synthetic_patients(synthetic, synthetic_patients)
 
-            # ── Assign fresh synthetic primary keys ────────────────────────
             synthetic = assign_synthetic_ids(synthetic, pk_col, prefix="syn")
+            elapsed   = time.time() - t0
 
-            elapsed = time.time() - t0
-
-            # ── Save model ─────────────────────────────────────────────────
+            # ── Save model and CSV ─────────────────────────────────────────
             trainer.save(synth, model_path)
-
-            # ── Save synthetic CSV ─────────────────────────────────────────
             synthetic.to_csv(synth_path, index=False)
-            logger.info("[DONE] %s: %d synthetic rows saved to %s",
-                        table_name, len(synthetic), synth_path.name)
+            logger.info("[DONE] %s: %d synthetic rows in %.1f s",
+                        table_name, len(synthetic), elapsed)
 
             if table_name == "patients":
                 synthetic_patients = synthetic
 
-            # ── Update checkpoint log and stats ────────────────────────────
+            # ── Checkpoint log and stats ───────────────────────────────────
             _log_event(log_path,
                        f"DONE {table_name} | duration={elapsed:.1f}s | "
                        f"synthetic_rows={len(synthetic)} | model={model_type}")
@@ -253,6 +276,10 @@ class SynthesisPipeline:
             }
             _save_stats(stats_path, stats)
 
+            if tracker:
+                tracker.complete_table(table_name, elapsed, len(synthetic),
+                                       model_path, synth_path)
+
             # ── Memory cleanup ─────────────────────────────────────────────
             del synth, df
             gc.collect()
@@ -263,16 +290,30 @@ class SynthesisPipeline:
             except ImportError:
                 pass
 
-        # ── Final summary ──────────────────────────────────────────────────
+        # ── Wrap up ────────────────────────────────────────────────────────
         total_s = sum(
             t.get("training_duration_s", 0) for t in stats["tables"].values()
         )
         stats["total_duration_s"] = round(total_s, 1)
         _save_stats(stats_path, stats)
-
-        _log_event(log_path, f"COMPLETE Phase 4B | total={total_s:.1f}s ({total_s/60:.1f} min)")
+        _log_event(log_path,
+                   f"COMPLETE Phase 4B | total={total_s:.1f}s ({total_s/60:.1f} min)")
         logger.info("Phase 4B complete. Total time: %.1f min", total_s / 60)
-        logger.info("Stats saved: %s", stats_path)
+
+        if tracker:
+            tracker.stop_gpu_monitor()
+            tracker.save_statistics()
+            if project_root and outputs_dir:
+                tracker.create_zip(project_root, outputs_dir)
+
+            # CUDA version for final summary
+            cuda_ver = "n/a"
+            try:
+                import torch
+                cuda_ver = torch.version.cuda or "n/a"
+            except ImportError:
+                pass
+            tracker.print_final_summary(device_name, cuda_ver, start_time)
 
 
 # ── Checkpoint helpers ────────────────────────────────────────────────────────
