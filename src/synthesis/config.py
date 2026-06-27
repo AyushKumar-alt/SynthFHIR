@@ -36,6 +36,11 @@ class SynthesisConfig:
     smoke_test_epochs: int
     smoke_test_n_rows: int
 
+    # Sequence length control (PAR GPU memory safety)
+    # All PAR tables are clipped to this many events per patient before training.
+    # Prevents CUDA OOM from outlier patients with hundreds of encounters.
+    max_seq_len: int
+
     # Output directories (absolute)
     synthetic_dir: Path
     model_dir: Path
@@ -70,6 +75,7 @@ def load_synthesis_config(settings_path: str | Path) -> SynthesisConfig:
         n_synthetic_patients=int(syn.get("n_synthetic_patients", 1000)),
         smoke_test_epochs=int(syn.get("smoke_test_epochs", 5)),
         smoke_test_n_rows=int(syn.get("smoke_test_n_rows", 20)),
+        max_seq_len=int(syn.get("max_seq_len", 50)),
         synthetic_dir=resolve(syn.get("synthetic_dir", "outputs/synthetic")),
         model_dir=resolve(syn.get("model_dir", "outputs/models")),
     )

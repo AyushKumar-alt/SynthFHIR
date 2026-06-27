@@ -37,6 +37,15 @@ CTGAN for observations (not TVAE or GaussianCopula).
     mode is the correct choice: it handles mixed categorical/numerical tables and
     can capture the loinc_display-conditioned value_quantity distributions.
 
+Sequence length control before PAR training.
+    PARSynthesizer pads every sequence in a batch to the longest sequence in
+    that batch.  One patient with 420 encounters forces 420-step tensors for
+    all shorter sequences, causing CUDA OOM.  sanitize_sequences() clips each
+    patient's history to the most-recent cfg.max_seq_len events (default 50)
+    before any data reaches PARSynthesizer.fit().  This bounds GPU allocation
+    to O(max_seq_len × batch_size).  CTGAN tables (patients, observations) are
+    not sequential and are never passed through the sanitizer.
+
 MemoryError → GaussianCopula fallback.
     With joblib sequential, an OOM now raises Python MemoryError (catchable)
     rather than SIGKILL(-9) (not catchable). If CTGAN OOMs even in sequential
@@ -89,6 +98,7 @@ from .evaluator import (
     save_smoke_report,
 )
 from . import memory as mem
+from .sequence_sanitizer import sanitize_sequences
 
 logger = logging.getLogger(__name__)
 
@@ -255,8 +265,22 @@ class SynthesisPipeline:
         # ── Load real table ────────────────────────────────────────────────
         df   = self._load_table(table_name)
         meta = self._meta["tables"][table_name]
-        n_rows = len(df)
 
+        # ── Sequence length control (PAR only) ────────────────────────────
+        # Must run BEFORE training so PARSynthesizer never sees sequences
+        # longer than max_seq_len.  CTGAN tables (patients, observations)
+        # are not sequential and skip this step entirely.
+        seq_stats: dict = {}
+        if model_type == "par":
+            df, seq_stats = sanitize_sequences(
+                df,
+                sequence_key="patient_id",
+                max_seq_len=self.cfg.max_seq_len,
+                sort_col="sequence_index",
+                table_name=table_name,
+            )
+
+        n_rows = len(df)
         logger.info("[START] %s  model=%s  rows=%d", table_name, model_type, n_rows)
 
         if checkpoint_mgr:
@@ -358,6 +382,7 @@ class SynthesisPipeline:
             "csv_size_mb":         round(synth_path.stat().st_size  / 1024 ** 2, 3),
             "model_path":          str(model_path),
             "csv_path":            str(synth_path),
+            **seq_stats,  # sequence clipping metrics (empty for CTGAN tables)
         }
 
         # ── Checkpoint update ─────────────────────────────────────────────
