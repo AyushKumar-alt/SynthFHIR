@@ -9,6 +9,15 @@ Supported models
 ctgan             : CTGANSynthesizer  (default for patients)
 tvae              : TVAESynthesizer
 gaussian_copula   : GaussianCopulaSynthesizer
+
+Kwarg filtering
+---------------
+Each synthesizer accepts a different set of constructor parameters.
+CTGANTrainer.train() passes a uniform set of kwargs (epochs, batch_size,
+verbose, cuda) to create_single_table_synthesizer() regardless of model type.
+The factory filters to the per-synthesizer whitelist defined in _*_KWARGS
+constants, logs any dropped kwargs at WARNING level, and never forwards
+unsupported arguments.  This prevents TypeError on GaussianCopula fallback.
 """
 
 from __future__ import annotations
@@ -26,17 +35,61 @@ logger = logging.getLogger(__name__)
 
 _SUPPORTED_MODELS = ("ctgan", "tvae", "gaussian_copula")
 
+# Per-synthesizer constructor parameter whitelists (SDV 1.x public API).
+# Only kwargs present in the relevant frozenset are forwarded.
+# Everything else is logged at WARNING and silently dropped.
+_CTGAN_KWARGS: frozenset[str] = frozenset({
+    "enforce_min_max_values", "enforce_rounding", "locales",
+    "epochs", "log_frequency", "embedding_dim",
+    "generator_dim", "discriminator_dim",
+    "generator_lr", "generator_decay",
+    "discriminator_lr", "discriminator_decay",
+    "batch_size", "discriminator_steps",
+    "verbose", "cuda", "pac",
+})
+
+_TVAE_KWARGS: frozenset[str] = frozenset({
+    "enforce_min_max_values", "enforce_rounding", "locales",
+    "epochs", "batch_size", "embedding_dim",
+    "compress_dims", "decompress_dims",
+    "l2scale", "loss_factor",
+    "cuda", "verbose",
+})
+
+# GaussianCopula is a statistical copula — no training loop.
+# It accepts NO epochs, batch_size, verbose, or cuda.
+_GAUSSIAN_COPULA_KWARGS: frozenset[str] = frozenset({
+    "enforce_min_max_values", "enforce_rounding", "locales",
+    "default_distribution", "numerical_distributions",
+})
+
+
+def _filter_kwargs(display_name: str, allowed: frozenset[str], kwargs: dict) -> dict:
+    """Return only the kwargs in ``allowed``, logging any that are dropped."""
+    dropped = sorted(k for k in kwargs if k not in allowed)
+    if dropped:
+        logger.warning(
+            "Ignoring unsupported kwargs for %s: %s",
+            display_name,
+            ", ".join(dropped),
+        )
+    return {k: v for k, v in kwargs.items() if k in allowed}
+
 
 # ── Factory ───────────────────────────────────────────────────────────────────
 
 def create_single_table_synthesizer(model_name: str, metadata, **kwargs):
     """Instantiate an SDV single-table synthesizer by name.
 
+    Each synthesizer receives ONLY the constructor parameters it supports.
+    Unsupported kwargs are logged at WARNING level and silently dropped, so
+    callers can pass a uniform kwarg set regardless of which model is
+    ultimately constructed — including the GaussianCopula OOM fallback path.
+
     Args:
         model_name : One of ``_SUPPORTED_MODELS``.
         metadata   : SDV ``SingleTableMetadata`` instance.
-        **kwargs   : Passed directly to the synthesizer constructor
-                     (e.g. ``epochs``, ``batch_size``, ``cuda``).
+        **kwargs   : Candidate parameters — filtered per synthesizer whitelist.
 
     Returns:
         Configured (but not yet fitted) SDV synthesizer instance.
@@ -44,13 +97,13 @@ def create_single_table_synthesizer(model_name: str, metadata, **kwargs):
     model_name = model_name.lower().strip()
     if model_name == "ctgan":
         from sdv.single_table import CTGANSynthesizer
-        return CTGANSynthesizer(metadata, **kwargs)
+        return CTGANSynthesizer(metadata, **_filter_kwargs("CTGANSynthesizer", _CTGAN_KWARGS, kwargs))
     if model_name == "tvae":
         from sdv.single_table import TVAESynthesizer
-        return TVAESynthesizer(metadata, **kwargs)
+        return TVAESynthesizer(metadata, **_filter_kwargs("TVAESynthesizer", _TVAE_KWARGS, kwargs))
     if model_name == "gaussian_copula":
         from sdv.single_table import GaussianCopulaSynthesizer
-        return GaussianCopulaSynthesizer(metadata, **kwargs)
+        return GaussianCopulaSynthesizer(metadata, **_filter_kwargs("GaussianCopulaSynthesizer", _GAUSSIAN_COPULA_KWARGS, kwargs))
     raise ValueError(
         f"Unknown model '{model_name}'. Choose from: {_SUPPORTED_MODELS}"
     )
