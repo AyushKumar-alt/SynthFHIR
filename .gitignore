@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# VS Code
+.vscode/
+
+# JetBrains
+.idea/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Trained models
+models/
+*.pkl
+*.pt
+*.pth
+
+# Generated outputs
+outputs/
+
+# Environment variables
+.env
+
+
+
+# Generated datasets
+data/processed/
+data/ready/
+
+# Generated outputs
+outputs/
+
+# Models
+models/

@@ -1,0 +1,45 @@
+paths:
+  # Path to the folder containing the 1000 Synthea FHIR JSON files.
+  # Can be absolute or relative to the project root.
+  raw_data_dir: "C:/Users/calpo/Downloads/dataset"
+
+  # All output paths below are relative to the project root.
+  processed_dir: "data/processed"
+  ready_dir: "data/ready"
+  reports_dir: "outputs/reports"
+  figures_dir: "outputs/figures"
+  logs_dir: "outputs/logs"
+  log_file: "outputs/logs/phase2.log"
+
+logging:
+  level: "INFO"   # DEBUG | INFO | WARNING | ERROR
+
+extraction:
+  file_extension: ".json"
+
+profiling:
+  top_n: 20   # How many top items to show in profile reports and charts
+
+preprocessing:
+  top_n_loinc: 30          # Top LOINC codes to keep in observations_ready.csv
+  min_loinc_frequency: 100  # Drop LOINC codes with fewer than this many records
+  temporal_anchor: "birth"  # Temporal delta anchor: "birth" = days since birth date
+
+synthesis:
+  # Model selection — change these strings to swap models without touching code
+  patient_model: "ctgan"    # ctgan | tvae | gaussian_copula
+  sequence_model: "par"     # par | ctgan
+
+  # Full training hyperparameters
+  epochs: 300
+  batch_size: 500
+  seed: 42
+  n_synthetic_patients: 1000
+
+  # Smoke test (Phase 4A) — fast validation before committing to full training
+  smoke_test_epochs: 5
+  smoke_test_n_rows: 20
+
+  # Output paths (relative to project root)
+  synthetic_dir: "outputs/synthetic"
+  model_dir:     "outputs/models"
