@@ -25,6 +25,71 @@ import pandas as pd
 
 logger = logging.getLogger(__name__)
 
+# ── Boolean coercion ──────────────────────────────────────────────────────────
+
+# Values considered truthy / falsy when coercing to Python bool.
+# Due to Python hashing (hash(1) == hash(True) == hash(1.0)), the frozensets
+# de-duplicate numeric duplicates — membership checks still work correctly.
+_BOOL_TRUTHY: frozenset = frozenset({1, 1.0, True, "1", "True", "true", "TRUE"})
+_BOOL_FALSY:  frozenset = frozenset({0, 0.0, False, "0", "False", "false", "FALSE"})
+
+
+def _coerce_bool_value(x) -> bool | None:
+    """Coerce a single value to Python bool (or None for NA).
+
+    Handles every representation that arises in this pipeline:
+      int/float 0/1  →  False/True
+      str "0"/"1"    →  False/True
+      str "True"/"False" (CSV round-trip) →  True/False
+      NaN / None / pd.NA  →  None
+    """
+    if pd.isna(x):
+        return None
+    if x in _BOOL_TRUTHY:
+        return True
+    if x in _BOOL_FALSY:
+        return False
+    return bool(x)
+
+
+def enforce_boolean_columns(df: pd.DataFrame, cols: list[str]) -> pd.DataFrame:
+    """Coerce boolean-like columns to Python True/False for SDV compatibility.
+
+    SDV 1.x validates boolean-typed columns strictly and rejects integer 0/1.
+    This function handles every representation that may appear after feature
+    engineering or CSV round-trips:
+
+        Input              Output
+        ─────────────────────────────
+        0, 1   (int)    →  False, True
+        0.0, 1.0        →  False, True
+        True, False     →  True, False  (no-op path)
+        "0", "1"        →  False, True
+        "True","False"  →  True, False
+        NaN/None/pd.NA  →  None  (preserved as nullable)
+
+    Args:
+        df   : DataFrame to transform. A copy is returned; the input is unchanged.
+        cols : Column names to coerce. Columns absent from df are silently skipped.
+
+    Returns:
+        Copy of df with specified columns coerced to Python bool (or None).
+    """
+    present = [c for c in cols if c in df.columns]
+    if not present:
+        return df
+    df = df.copy()
+    for col in present:
+        before_sample = sorted({str(v) for v in df[col].dropna().unique()[:8]})
+        df[col] = df[col].map(_coerce_bool_value)
+        after_sample = sorted({str(v) for v in df[col].dropna().unique()[:8]})
+        logger.info(
+            "enforce_boolean_columns: '%s'  %s → %s",
+            col, before_sample, after_sample,
+        )
+    return df
+
+
 # ── Datetime helpers ──────────────────────────────────────────────────────────
 
 def _parse_dt(series: pd.Series) -> pd.Series:
@@ -104,7 +169,7 @@ def clean_patients(df: pd.DataFrame) -> pd.DataFrame:
     df["age"] = ((today - birth_dt).dt.days / 365.25).round(1)
 
     deceased_dt = _parse_dt(df["deceased_datetime"]) if "deceased_datetime" in df.columns else pd.NaT
-    df["is_deceased"] = deceased_dt.notna().astype(int)
+    df["is_deceased"] = deceased_dt.notna()
     df["age_at_death"] = np.where(
         deceased_dt.notna(),
         ((deceased_dt - birth_dt).dt.days / 365.25).round(1),
@@ -393,7 +458,7 @@ def engineer_conditions(
     df["duration_days"] = (
         df["abatement_days_since_birth"] - df["onset_days_since_birth"]
     ).clip(lower=0)
-    df["is_chronic"] = df["abatement_datetime"].isna().astype(int)
+    df["is_chronic"] = df["abatement_datetime"].isna()
 
     # ── Drop raw datetime columns ─────────────────────────────────────────
     df = df.drop(
@@ -456,7 +521,7 @@ def engineer_medications(
     # ── Clinical flag ─────────────────────────────────────────────────────
     df["is_active"] = (
         df["status"].astype(str).str.lower().str.strip() == "active"
-    ).astype(int)
+    )
 
     # ── Sort and index ────────────────────────────────────────────────────
     df = df.sort_values(["patient_id", "days_since_birth"]).reset_index(drop=True)

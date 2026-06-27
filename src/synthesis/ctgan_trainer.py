@@ -112,24 +112,19 @@ def create_single_table_synthesizer(model_name: str, metadata, **kwargs):
 # ── Boolean coercion ──────────────────────────────────────────────────────────
 
 def _coerce_booleans(df: pd.DataFrame, table_meta_dict: dict) -> pd.DataFrame:
-    """Convert 0/1 integer columns typed as boolean to Python True/False.
+    """Coerce all boolean-typed columns in df to Python True/False.
 
-    SDV 1.37+ validates boolean columns strictly: values must be True/False,
-    not 0/1 integers. We stored them as int for CSV compatibility; convert
-    them here before passing to SDV.
+    Reads which columns are boolean from table_meta_dict (sdtype='boolean'),
+    then delegates to enforce_boolean_columns() for the actual conversion.
+    Handles 0/1 integers, "True"/"False" strings from CSV round-trips, and
+    Python booleans — all representations that arise in this pipeline.
     """
+    from ..feature_engineering import enforce_boolean_columns
     bool_cols = [
         col for col, info in table_meta_dict.get("columns", {}).items()
         if info.get("sdtype") == "boolean" and col in df.columns
     ]
-    if not bool_cols:
-        return df
-    df = df.copy()
-    for col in bool_cols:
-        df[col] = df[col].map(
-            lambda x: None if pd.isna(x) else bool(int(x))
-        )
-    return df
+    return enforce_boolean_columns(df, bool_cols)
 
 
 # ── Metadata builder ──────────────────────────────────────────────────────────

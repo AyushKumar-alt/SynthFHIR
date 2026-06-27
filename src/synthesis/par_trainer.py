@@ -46,6 +46,7 @@ from pathlib import Path
 import pandas as pd
 
 from .config import SynthesisConfig
+from .ctgan_trainer import _coerce_booleans
 
 logger = logging.getLogger(__name__)
 
@@ -156,7 +157,11 @@ class PARTrainer:
             cuda=cuda,
             verbose=verbose,
         )
-        synth.fit(df)
+        # Coerce boolean columns (is_chronic, is_active, etc.) from 0/1
+        # integers or "True"/"False" strings to Python True/False.
+        # SDV 1.x rejects any other representation for boolean-typed columns.
+        df_prepared = _coerce_booleans(df, table_meta_dict)
+        synth.fit(df_prepared)
 
         elapsed = time.time() - t0
         logger.info(
