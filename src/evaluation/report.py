@@ -301,11 +301,13 @@ def _score_table_html(scores: dict) -> str:
 
         orig  = s.get("original_rows")
         synth = s.get("synthetic_rows")
+        orig_str  = f"{orig:,}"  if orig  is not None else "N/A"
+        synth_str = f"{synth:,}" if synth is not None else "N/A"
         rows += f"""
 <tr>
   <td><b>{table}</b></td>
-  <td>{orig:,  if orig else 'N/A'}</td>
-  <td>{synth:, if synth else 'N/A'}</td>
+  <td>{orig_str}</td>
+  <td>{synth_str}</td>
   {_cell(s.get('numeric_similarity'))}
   {_cell(s.get('categorical_similarity'))}
   {_cell(s.get('correlation_preservation'))}
@@ -345,11 +347,13 @@ def _dataset_summary_html(dataset_summary: list[dict]) -> str:
             '<span class="bad">✗</span>'  if col_match is False else
             '<span class="na">N/A</span>'
         )
+        orig_rows_str  = f"{orig_rows:,}"  if isinstance(orig_rows,  int) else str(orig_rows)
+        synth_rows_str = f"{synth_rows:,}" if isinstance(synth_rows, int) else str(synth_rows)
         rows += f"""
 <tr>
   <td><b>{table}</b></td>
-  <td>{orig_rows:, if isinstance(orig_rows, int) else orig_rows}</td>
-  <td>{synth_rows:, if isinstance(synth_rows, int) else synth_rows}</td>
+  <td>{orig_rows_str}</td>
+  <td>{synth_rows_str}</td>
   <td>{orig_cols}</td><td>{synth_cols}</td>
   <td>{match_str}</td>
   <td>{orig_miss}%</td><td>{synth_miss}%</td>
