@@ -32,4 +32,4 @@ streamlit>=1.28.0
 # Statistics (Phase 5 — utility + privacy evaluation)
 scikit-learn>=1.3.0
 scipy>=1.10.0
-anonymeter>=1.0.0
+#anonymeter>=1.0.0
