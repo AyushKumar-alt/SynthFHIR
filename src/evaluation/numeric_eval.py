@@ -88,11 +88,19 @@ def _evaluate_table(
 # ── Column selection ──────────────────────────────────────────────────────────
 
 def _numeric_columns(original: pd.DataFrame, synthetic: pd.DataFrame) -> list[str]:
-    """Return numeric columns present in both frames, excluding IDs."""
+    """Return numeric columns present in both frames, excluding IDs and booleans.
+
+    pandas.select_dtypes(include="number") includes bool columns because numpy
+    treats bool as a numeric subtype.  Booleans must be excluded here so they
+    are evaluated by the categorical evaluator (TVD) instead.  Passing a bool
+    Series to ks_2samp or quantile triggers "numpy boolean subtract is not
+    supported".
+    """
     num = [
         c for c in original.select_dtypes(include="number").columns
         if c in synthetic.columns
         and c not in EXCLUDED_COLUMNS
+        and not pd.api.types.is_bool_dtype(original[c])
         and not _is_id_like(original[c])
     ]
     return num
