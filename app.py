@@ -846,7 +846,7 @@ def page_evaluation() -> None:
         """
 <div class="hero">
   <div class="hero-title">📊 Phase 5 Evaluation</div>
-  <p class="hero-sub">KS similarity · TVD · Pearson correlation preservation · Privacy score · SDV quality</p>
+  <p class="hero-sub">KS similarity · TVD · Correlation · Privacy · SDV quality · k-Anonymity · TSTR</p>
 </div>
 """,
         unsafe_allow_html=True,
@@ -983,6 +983,253 @@ def page_evaluation() -> None:
         legend=dict(orientation="h", y=-0.15), height=420, margin=dict(l=40, r=40, t=10, b=60),
     )
     st.plotly_chart(fig_r, use_container_width=True, key="eval_radar")
+
+    # ── Extended Evaluation Metrics (G · H · I) ───────────────────────────────
+    section_title("Extended Evaluation Metrics")
+    tab_ks, tab_kanon, tab_tstr = st.tabs(["📐 KS Test", "🔒 k-Anonymity", "🤖 TSTR"])
+
+    _ev_dir = PROJECT_ROOT / "outputs" / "evaluation"
+
+    # ── G: KS Test ─────────────────────────────────────────────────────────────
+    with tab_ks:
+        ks_json = load_json(str(_ev_dir / "ks_results.json"))
+        ks_csv  = read_bytes(str(_ev_dir / "ks_results.csv"))
+        if ks_json is None:
+            st.info("KS results not found. Run `python run_phase5.py` to generate them.")
+        else:
+            ks_tables = [t for t in TABLES if ks_json.get(t, {}).get("status") == "ok"]
+            if ks_tables:
+                st.markdown("**Mean KS Similarity per table** (1 = perfect, 0 = disjoint)")
+                kc = st.columns(len(ks_tables))
+                for col, t in zip(kc, ks_tables):
+                    sim = ks_json[t].get("mean_similarity")
+                    clr = ("#4ade80" if sim and sim >= .80
+                           else "#fde68a" if sim and sim >= .60
+                           else "#f87171" if sim is not None else "#475569")
+                    col.markdown(
+                        f'<div class="kcard">'
+                        f'<div class="kval" style="font-size:1.4rem;background:none;'
+                        f'-webkit-text-fill-color:{clr};color:{clr}">'
+                        f'{f"{sim:.3f}" if sim is not None else "—"}</div>'
+                        f'<div class="klabel">{TABLE_ICONS.get(t,"")} {t.capitalize()}</div></div>',
+                        unsafe_allow_html=True,
+                    )
+
+            st.markdown("<br>", unsafe_allow_html=True)
+            ks_df_all = load_csv(str(_ev_dir / "ks_results.csv"))
+            if ks_df_all is not None and not ks_df_all.empty:
+                sel_table_ks = st.selectbox(
+                    "Filter by table", ["All"] + TABLES, key="ks_table_select"
+                )
+                df_show_ks = (
+                    ks_df_all if sel_table_ks == "All"
+                    else ks_df_all[ks_df_all["table"] == sel_table_ks]
+                )
+                if df_show_ks.empty:
+                    st.info("No KS results for this table.")
+                else:
+                    fig_ks = px.bar(
+                        df_show_ks.sort_values("similarity"),
+                        x="similarity", y="column", orientation="h",
+                        color="similarity",
+                        color_continuous_scale=["#ef4444", "#f59e0b", "#22c55e"],
+                        range_color=[0, 1],
+                        title="KS Similarity by Column (higher = better)",
+                        labels={"similarity": "Similarity (1−KS)", "column": "Column"},
+                        text_auto=".3f",
+                    )
+                    fig_ks.update_layout(
+                        paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
+                        font=dict(color="#94a3b8", family="Inter"),
+                        coloraxis_showscale=False,
+                        height=max(300, len(df_show_ks) * 28 + 80),
+                        margin=dict(l=10, r=10, t=40, b=10),
+                    )
+                    fig_ks.update_xaxes(range=[0, 1], gridcolor="rgba(255,255,255,0.05)")
+                    fig_ks.update_yaxes(gridcolor="rgba(255,255,255,0.03)")
+                    st.plotly_chart(fig_ks, use_container_width=True, key="eval_ks_bar")
+                    st.dataframe(df_show_ks, use_container_width=True, hide_index=True)
+
+            if ks_csv:
+                download_button(ks_csv, "ks_results.csv", "⬇ KS Results CSV",
+                                key="eval_dl_ks_csv")
+
+    # ── H: k-Anonymity ─────────────────────────────────────────────────────────
+    with tab_kanon:
+        kanon_json = load_json(str(_ev_dir / "kanonymity.json"))
+        kanon_csv  = read_bytes(str(_ev_dir / "kanonymity.csv"))
+        if kanon_json is None:
+            st.info("k-Anonymity results not found. Run `python run_phase5.py`.")
+        else:
+            kanon_ok = [t for t in TABLES if kanon_json.get(t, {}).get("status") == "ok"]
+            if not kanon_ok:
+                st.info(
+                    "No k-Anonymity results (no quasi-identifier columns detected). "
+                    "Expected columns containing: age, gender, race, city, state, zip, etc."
+                )
+            else:
+                st.markdown("**Minimum k per table** (higher = lower re-identification risk)")
+                kac = st.columns(len(kanon_ok))
+                for col, t in zip(kac, kanon_ok):
+                    mk  = kanon_json[t].get("min_k")
+                    clr = "#4ade80" if mk and mk >= 5 else "#f87171"
+                    col.markdown(
+                        f'<div class="kcard">'
+                        f'<div class="kval" style="font-size:1.8rem;background:none;'
+                        f'-webkit-text-fill-color:{clr};color:{clr}">'
+                        f'{mk if mk is not None else "—"}</div>'
+                        f'<div class="klabel">{TABLE_ICONS.get(t,"")} {t.capitalize()} min k</div></div>',
+                        unsafe_allow_html=True,
+                    )
+
+                st.markdown("<br>", unsafe_allow_html=True)
+
+                for t in kanon_ok:
+                    r      = kanon_json[t]
+                    qi_str = ", ".join(r.get("quasi_identifiers", [])) or "none"
+                    with st.expander(
+                        f"{TABLE_ICONS.get(t,'')}  {t.capitalize()}  —  "
+                        f"min_k={r.get('min_k','?')}  mean_k={r.get('mean_k','?')}  "
+                        f"QI: {qi_str}",
+                        expanded=False,
+                    ):
+                        c1, c2, c3, c4, c5 = st.columns(5)
+                        c1.metric("min k",     r.get("min_k",  "N/A"))
+                        c2.metric("mean k",    r.get("mean_k", "N/A"))
+                        c3.metric("max k",     r.get("max_k",  "N/A"))
+                        c4.metric("% k ≥ 5",  f"{r.get('pct_k_ge_5','N/A')}%")
+                        c5.metric("% k ≥ 10", f"{r.get('pct_k_ge_10','N/A')}%")
+                        n_recs = r.get("n_records", "N/A")
+                        n_recs_str = f"{n_recs:,}" if isinstance(n_recs, int) else str(n_recs)
+                        st.caption(
+                            f"Records: {n_recs_str} | "
+                            f"Equivalence groups: {r.get('n_groups','N/A')} | "
+                            f"QI: {qi_str}"
+                        )
+
+                kanon_bar_data = {
+                    "table": kanon_ok,
+                    "min_k": [kanon_json[t].get("min_k", 0) for t in kanon_ok],
+                }
+                fig_kanon = px.bar(
+                    kanon_bar_data, x="table", y="min_k",
+                    color="min_k",
+                    color_continuous_scale=["#ef4444", "#f59e0b", "#22c55e"],
+                    title="Minimum k-Anonymity by Table (k ≥ 5 = acceptable)",
+                    text_auto=True,
+                )
+                fig_kanon.add_hline(
+                    y=5, line_dash="dash", line_color="#22c55e",
+                    annotation_text="k=5 threshold", annotation_font_color="#22c55e",
+                )
+                fig_kanon.add_hline(
+                    y=10, line_dash="dot", line_color="#38bdf8",
+                    annotation_text="k=10", annotation_font_color="#38bdf8",
+                )
+                fig_kanon.update_layout(
+                    paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
+                    font=dict(color="#94a3b8", family="Inter"),
+                    coloraxis_showscale=False, height=340,
+                    margin=dict(l=10, r=10, t=40, b=10),
+                )
+                fig_kanon.update_yaxes(gridcolor="rgba(255,255,255,0.05)")
+                st.plotly_chart(fig_kanon, use_container_width=True, key="eval_kanon_bar")
+
+            if kanon_csv:
+                download_button(kanon_csv, "kanonymity.csv", "⬇ k-Anonymity CSV",
+                                key="eval_dl_kanon_csv")
+
+    # ── I: TSTR ────────────────────────────────────────────────────────────────
+    with tab_tstr:
+        tstr_json = load_json(str(_ev_dir / "tstr_results.json"))
+        tstr_csv  = read_bytes(str(_ev_dir / "tstr_results.csv"))
+        if tstr_json is None:
+            st.info("TSTR results not found. Run `python run_phase5.py`.")
+        else:
+            tstr_ok = [t for t in TABLES if tstr_json.get(t, {}).get("status") == "ok"]
+            if not tstr_ok:
+                st.info(
+                    "No TSTR results — no suitable binary target column found "
+                    "(is_deceased / is_chronic / is_active) in the evaluated tables."
+                )
+            else:
+                st.markdown("**F1 Score per table** (model trained on synthetic, tested on real)")
+                tc = st.columns(len(tstr_ok))
+                for col, t in zip(tc, tstr_ok):
+                    r   = tstr_json[t]
+                    f1  = r.get("f1")
+                    tgt = r.get("target_column", "?")
+                    clr = ("#4ade80" if f1 and f1 >= .80
+                           else "#fde68a" if f1 and f1 >= .60
+                           else "#f87171" if f1 is not None else "#475569")
+                    col.markdown(
+                        f'<div class="kcard">'
+                        f'<div class="kval" style="font-size:1.4rem;background:none;'
+                        f'-webkit-text-fill-color:{clr};color:{clr}">'
+                        f'{f"{f1:.3f}" if f1 is not None else "—"}</div>'
+                        f'<div class="klabel">{TABLE_ICONS.get(t,"")} {t.capitalize()} F1</div>'
+                        f'<div class="klabel" style="font-size:.68rem">target: {tgt}</div></div>',
+                        unsafe_allow_html=True,
+                    )
+
+                st.markdown("<br>", unsafe_allow_html=True)
+
+                tstr_metrics = ["accuracy", "precision", "recall", "f1", "roc_auc"]
+                chart_rows   = []
+                for t in tstr_ok:
+                    r = tstr_json[t]
+                    for metric in tstr_metrics:
+                        v = r.get(metric)
+                        if v is not None:
+                            chart_rows.append({
+                                "table":  t.capitalize(),
+                                "metric": metric.upper().replace("_", " "),
+                                "value":  v,
+                            })
+                if chart_rows:
+                    fig_tstr = px.bar(
+                        chart_rows, x="table", y="value", color="metric",
+                        barmode="group",
+                        color_discrete_sequence=_C,
+                        title="TSTR Metrics by Table (train on synthetic, test on real)",
+                        labels={"value": "Score", "table": "Table", "metric": "Metric"},
+                    )
+                    fig_tstr.update_layout(
+                        paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
+                        font=dict(color="#94a3b8", family="Inter"),
+                        legend=dict(orientation="h", y=1.08),
+                        yaxis=dict(range=[0, 1.05], gridcolor="rgba(255,255,255,0.05)"),
+                        height=380, margin=dict(l=10, r=10, t=50, b=10),
+                    )
+                    st.plotly_chart(fig_tstr, use_container_width=True,
+                                    key="eval_tstr_grouped_bar")
+
+                for t in tstr_ok:
+                    r   = tstr_json[t]
+                    tgt = r.get("target_column", "?")
+                    with st.expander(
+                        f"{TABLE_ICONS.get(t,'')}  {t.capitalize()}  —  "
+                        f"target: {tgt}  F1: {r.get('f1','?')}  AUC: {r.get('roc_auc','?')}",
+                        expanded=False,
+                    ):
+                        c1, c2, c3, c4, c5 = st.columns(5)
+                        c1.metric("Accuracy",  r.get("accuracy",  "N/A"))
+                        c2.metric("Precision", r.get("precision", "N/A"))
+                        c3.metric("Recall",    r.get("recall",    "N/A"))
+                        c4.metric("F1 Score",  r.get("f1",        "N/A"))
+                        c5.metric("ROC-AUC",   r.get("roc_auc",   "N/A"))
+                        n_train = r.get("n_train", "N/A")
+                        n_test  = r.get("n_test",  "N/A")
+                        n_train_str = f"{n_train:,}" if isinstance(n_train, int) else str(n_train)
+                        n_test_str  = f"{n_test:,}"  if isinstance(n_test,  int) else str(n_test)
+                        st.caption(
+                            f"Train: {n_train_str} synthetic rows | "
+                            f"Test: {n_test_str} real rows | Target: {tgt}"
+                        )
+
+            if tstr_csv:
+                download_button(tstr_csv, "tstr_results.csv", "⬇ TSTR Results CSV",
+                                key="eval_dl_tstr_csv")
 
     # ── CSV / JSON download ───────────────────────────────────────────────────
     section_title("Download Evaluation Outputs")

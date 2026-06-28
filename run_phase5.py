@@ -107,6 +107,9 @@ def _print_finish_banner(
     print(f"  Outputs       : {output_dir}")
     print(f"    · evaluation_summary.json")
     print(f"    · evaluation_summary.csv")
+    print(f"    · ks_results.csv / .json")
+    print(f"    · kanonymity.csv / .json")
+    print(f"    · tstr_results.csv / .json")
     print(f"    · plots/")
     print(f"    · report.html")
     print(sep)
@@ -161,12 +164,15 @@ def main() -> None:
     # ── Imports (after sys.path is set) ──────────────────────────────────
     from src.evaluation.config  import load_evaluation_config, TABLE_SEQUENCE
     from src.evaluation.loader  import load_all_pairs
-    from src.evaluation.dataset_summary  import run_dataset_summary
-    from src.evaluation.numeric_eval     import run_numeric_evaluation
-    from src.evaluation.categorical_eval import run_categorical_evaluation
-    from src.evaluation.correlation_eval import run_correlation_evaluation
-    from src.evaluation.privacy_eval     import run_privacy_evaluation
-    from src.evaluation.sdv_quality      import run_sdv_quality
+    from src.evaluation.dataset_summary     import run_dataset_summary
+    from src.evaluation.numeric_eval        import run_numeric_evaluation
+    from src.evaluation.categorical_eval    import run_categorical_evaluation
+    from src.evaluation.correlation_eval    import run_correlation_evaluation
+    from src.evaluation.privacy_eval        import run_privacy_evaluation
+    from src.evaluation.sdv_quality         import run_sdv_quality
+    from src.evaluation.ks_eval             import run_ks_evaluation
+    from src.evaluation.privacy_k_anonymity import run_k_anonymity
+    from src.evaluation.tstr_eval           import run_tstr_evaluation
     from src.evaluation.report import (
         compute_scores,
         save_summary_json,
@@ -206,6 +212,7 @@ def main() -> None:
         (cfg.plots_dir / "numeric").mkdir(parents=True, exist_ok=True)
         (cfg.plots_dir / "categorical").mkdir(parents=True, exist_ok=True)
         (cfg.plots_dir / "correlation").mkdir(parents=True, exist_ok=True)
+        (cfg.plots_dir / "ks").mkdir(parents=True, exist_ok=True)
 
     # ── Load CSVs ────────────────────────────────────────────────────────
     logger.info("=" * 56)
@@ -252,6 +259,24 @@ def main() -> None:
     logger.info("=" * 56)
     sdv_quality_results = run_sdv_quality(pairs, cfg.metadata_path)
 
+    # ── G: KS Test ───────────────────────────────────────────────────────────
+    logger.info("=" * 56)
+    logger.info("  G. KS Test Evaluation")
+    logger.info("=" * 56)
+    ks_results = run_ks_evaluation(pairs, cfg.output_dir, plots_dir)
+
+    # ── H: k-Anonymity ───────────────────────────────────────────────────────
+    logger.info("=" * 56)
+    logger.info("  H. k-Anonymity")
+    logger.info("=" * 56)
+    kanon_results = run_k_anonymity(pairs, cfg.output_dir)
+
+    # ── I: TSTR ──────────────────────────────────────────────────────────────
+    logger.info("=" * 56)
+    logger.info("  I. Train on Synthetic, Test on Real (TSTR)")
+    logger.info("=" * 56)
+    tstr_results = run_tstr_evaluation(pairs, cfg.output_dir)
+
     # ── Compute scores ────────────────────────────────────────────────────
     scores = compute_scores(
         numeric_results,
@@ -280,10 +305,18 @@ def main() -> None:
         "correlation_results":   correlation_results,
         "privacy_results":       privacy_results,
         "sdv_quality_results":   sdv_quality_results,
+        "ks_results":            ks_results,
+        "kanon_results":         kanon_results,
+        "tstr_results":          tstr_results,
     }
 
     save_summary_json(cfg.output_dir, all_results)
-    save_summary_csv(cfg.output_dir, scores)
+    save_summary_csv(
+        cfg.output_dir, scores,
+        ks_results    = ks_results,
+        kanon_results = kanon_results,
+        tstr_results  = tstr_results,
+    )
 
     generate_html_report(
         output_dir          = cfg.output_dir,
@@ -295,6 +328,9 @@ def main() -> None:
         correlation_results = correlation_results,
         privacy_results     = privacy_results,
         sdv_quality_results = sdv_quality_results,
+        ks_results          = ks_results,
+        kanon_results       = kanon_results,
+        tstr_results        = tstr_results,
     )
 
     # ── Console score summary ─────────────────────────────────────────────

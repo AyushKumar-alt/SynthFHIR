@@ -29,6 +29,10 @@ _CSV_COLUMNS = [
     "correlation_preservation",
     "privacy_score",
     "sdv_quality_score",
+    "ks_mean_similarity",
+    "kanon_min_k",
+    "tstr_f1",
+    "tstr_roc_auc",
     "overall_score",
 ]
 
@@ -129,10 +133,21 @@ def save_summary_json(output_dir: Path, all_results: dict) -> Path:
 
 # ── CSV output ────────────────────────────────────────────────────────────────
 
-def save_summary_csv(output_dir: Path, scores: dict) -> Path:
+def save_summary_csv(
+    output_dir:    Path,
+    scores:        dict,
+    *,
+    ks_results:    dict | None = None,
+    kanon_results: dict | None = None,
+    tstr_results:  dict | None = None,
+) -> Path:
     path = output_dir / "evaluation_summary.csv"
     rows = []
     for table, s in scores["tables"].items():
+        ks_sim    = (ks_results or {}).get(table, {}).get("mean_similarity")
+        kanon_min = (kanon_results or {}).get(table, {}).get("min_k")
+        tstr_f1   = (tstr_results  or {}).get(table, {}).get("f1")
+        tstr_auc  = (tstr_results  or {}).get(table, {}).get("roc_auc")
         rows.append({
             "table":                    table,
             "original_rows":            s.get("original_rows"),
@@ -142,6 +157,10 @@ def save_summary_csv(output_dir: Path, scores: dict) -> Path:
             "correlation_preservation": s.get("correlation_preservation"),
             "privacy_score":            s.get("privacy_score"),
             "sdv_quality_score":        s.get("sdv_quality_score"),
+            "ks_mean_similarity":       ks_sim,
+            "kanon_min_k":              kanon_min,
+            "tstr_f1":                  tstr_f1,
+            "tstr_roc_auc":             tstr_auc,
             "overall_score":            s.get("overall"),
         })
     df = pd.DataFrame(rows, columns=_CSV_COLUMNS)
@@ -162,12 +181,19 @@ def generate_html_report(
     correlation_results: dict[str, dict],
     privacy_results:     dict[str, dict],
     sdv_quality_results: dict[str, dict],
+    *,
+    ks_results:    dict[str, dict] | None = None,
+    kanon_results: dict[str, dict] | None = None,
+    tstr_results:  dict[str, dict] | None = None,
 ) -> Path:
     path = output_dir / "report.html"
     html = _build_html(
         plots_dir, scores, dataset_summary,
         numeric_results, categorical_results,
         correlation_results, privacy_results, sdv_quality_results,
+        ks_results=ks_results,
+        kanon_results=kanon_results,
+        tstr_results=tstr_results,
     )
     path.write_text(html, encoding="utf-8")
     logger.info("Saved: %s", path)
@@ -185,6 +211,10 @@ def _build_html(
     correlation_results: dict[str, dict],
     privacy_results:     dict[str, dict],
     sdv_quality_results: dict[str, dict],
+    *,
+    ks_results:    dict[str, dict] | None = None,
+    kanon_results: dict[str, dict] | None = None,
+    tstr_results:  dict[str, dict] | None = None,
 ) -> str:
     now          = datetime.now().strftime("%Y-%m-%d %H:%M")
     global_score = scores.get("global_score")
@@ -194,25 +224,22 @@ def _build_html(
         _html_head(),
         "<body>",
         f'<div class="container">',
-        # Title
         f'<h1>SynthFHIR — Phase 5 Evaluation Report</h1>',
         f'<p class="meta">Generated: {now}</p>',
-        # Global score banner
         _banner_html(global_score, score_color),
-        # Overall score table
         _score_table_html(scores),
-        # Dataset summary
         _dataset_summary_html(dataset_summary),
-        # Per-table sections
         *[
             _table_section_html(
                 table, scores, plots_dir,
                 numeric_results, categorical_results,
                 correlation_results, privacy_results, sdv_quality_results,
+                ks_results=(ks_results or {}).get(table),
+                kanon_result=(kanon_results or {}).get(table),
+                tstr_result=(tstr_results or {}).get(table),
             )
             for table in scores.get("tables", {})
         ],
-        # Phase 5.2 TODO
         _todo_section_html(),
         "</div>",
         "</body></html>",
@@ -383,8 +410,12 @@ def _table_section_html(
     correlation_results: dict,
     privacy_results:     dict,
     sdv_quality_results: dict,
+    *,
+    ks_results:   dict | None = None,
+    kanon_result: dict | None = None,
+    tstr_result:  dict | None = None,
 ) -> str:
-    s      = scores.get("tables", {}).get(table, {})
+    s       = scores.get("tables", {}).get(table, {})
     overall = s.get("overall")
 
     parts = [
@@ -395,6 +426,9 @@ def _table_section_html(
         _correlation_section_html(table, correlation_results.get(table, {}), plots_dir),
         _privacy_section_html(table, privacy_results.get(table, {})),
         _sdv_section_html(table, sdv_quality_results.get(table, {})),
+        _ks_section_html(table, ks_results, plots_dir),
+        _kanonymity_section_html(table, kanon_result),
+        _tstr_section_html(table, tstr_result),
         "</section>",
     ]
     return "\n".join(parts)
@@ -559,15 +593,136 @@ def _sdv_section_html(table: str, result: dict) -> str:
 </div>"""
 
 
+def _ks_section_html(table: str, result: dict | None, plots_dir: Path) -> str:
+    if not result or result.get("status") != "ok":
+        status = result.get("status", "not run") if result else "not run"
+        return f'<div class="card"><h3>G. KS Test</h3><p class="na">{status}</p></div>'
+
+    cols      = result.get("columns", [])
+    mean_sim  = result.get("mean_similarity")
+    pill      = _pill(mean_sim) if mean_sim is not None else '<span class="na">N/A</span>'
+    sorted_c  = sorted(cols, key=lambda r: r.get("ks_stat", 0), reverse=True)
+
+    rows = ""
+    for r in sorted_c:
+        rows += f"""
+<tr>
+  <td>{r['column']}</td>
+  <td>{r.get('ks_stat','N/A')}</td>
+  <td>{_pill(r.get('similarity'))}</td>
+  <td>{r.get('mean_real','')}</td><td>{r.get('mean_synth','')}</td>
+  <td>{r.get('std_real','')}</td><td>{r.get('std_synth','')}</td>
+  <td>{r.get('n_real','')}</td><td>{r.get('n_synthetic','')}</td>
+</tr>"""
+
+    plots_html = _embed_plots(
+        plots_dir / "ks",
+        [f"{table}_{_safe_name(r['column'])}_kde.png" for r in sorted_c[:5]],
+        [f"{r['column']} — KDE (KS={r.get('ks_stat','?')})" for r in sorted_c[:5]],
+    )
+
+    return f"""
+<div class="card">
+<h3>G. KS Test (per-column) &nbsp; {pill}</h3>
+<p>Mean KS stat: <b>{result.get('mean_ks_stat','N/A')}</b> &nbsp;|&nbsp;
+   Mean similarity: {pill} &nbsp;|&nbsp;
+   Columns evaluated: <b>{len(cols)}</b>
+</p>
+<table>
+<tr>
+  <th>Column</th><th>KS Stat</th><th>Similarity</th>
+  <th>Mean (Real)</th><th>Mean (Synth)</th>
+  <th>Std (Real)</th><th>Std (Synth)</th>
+  <th>N Real</th><th>N Synth</th>
+</tr>
+{rows}
+</table>
+{plots_html}
+</div>"""
+
+
+def _kanonymity_section_html(table: str, result: dict | None) -> str:
+    if not result:
+        return '<div class="card"><h3>H. k-Anonymity</h3><p class="na">not run</p></div>'
+    status = result.get("status")
+    if status == "ok":
+        min_k   = result.get("min_k", "N/A")
+        mean_k  = result.get("mean_k", "N/A")
+        max_k   = result.get("max_k", "N/A")
+        pct5    = result.get("pct_k_ge_5", "N/A")
+        pct10   = result.get("pct_k_ge_10", "N/A")
+        qi_str  = ", ".join(result.get("quasi_identifiers", [])) or "none"
+        n_recs  = result.get("n_records", "N/A")
+        n_grp   = result.get("n_groups", "N/A")
+        k_color = "#276749" if isinstance(min_k, int) and min_k >= 5 else "#742a2a"
+        return f"""
+<div class="card">
+<h3>H. k-Anonymity</h3>
+<p>Quasi-identifiers: <code>{qi_str}</code></p>
+<table>
+<tr><th>Metric</th><th>Value</th></tr>
+<tr><td>Records</td><td>{n_recs:,}</td></tr>
+<tr><td>Equivalence groups</td><td>{n_grp}</td></tr>
+<tr><td>Min k <small>(re-ID risk indicator)</small></td>
+    <td><b style="color:{k_color}">{min_k}</b></td></tr>
+<tr><td>Mean k</td><td>{mean_k}</td></tr>
+<tr><td>Max k</td><td>{max_k}</td></tr>
+<tr><td>% records in groups ≥ 5</td><td>{pct5}%</td></tr>
+<tr><td>% records in groups ≥ 10</td><td>{pct10}%</td></tr>
+</table>
+</div>"""
+    return f'<div class="card"><h3>H. k-Anonymity</h3><p class="na">{status}</p></div>'
+
+
+def _tstr_section_html(table: str, result: dict | None) -> str:
+    if not result:
+        return '<div class="card"><h3>I. TSTR</h3><p class="na">not run</p></div>'
+    status = result.get("status")
+    if status == "ok":
+        target  = result.get("target_column", "?")
+        acc     = result.get("accuracy",  "N/A")
+        prec    = result.get("precision", "N/A")
+        rec     = result.get("recall",    "N/A")
+        f1      = result.get("f1",        "N/A")
+        auc     = result.get("roc_auc",   "N/A")
+        n_train = result.get("n_train",   "N/A")
+        n_test  = result.get("n_test",    "N/A")
+        auc_str = f"{auc:.3f}" if isinstance(auc, float) else "N/A"
+        f1_pill = _pill(f1) if isinstance(f1, float) else '<span class="na">N/A</span>'
+        auc_pill = _pill(auc) if isinstance(auc, float) else '<span class="na">N/A</span>'
+        return f"""
+<div class="card">
+<h3>I. Train on Synthetic / Test on Real (TSTR)</h3>
+<p>Target: <code>{target}</code> &nbsp;|&nbsp;
+   Train: <b>{n_train}</b> synthetic rows &nbsp;|&nbsp;
+   Test: <b>{n_test}</b> real rows
+</p>
+<table>
+<tr><th>Metric</th><th>Value</th></tr>
+<tr><td>Accuracy</td><td><b>{acc}</b></td></tr>
+<tr><td>Precision</td><td><b>{prec}</b></td></tr>
+<tr><td>Recall</td><td><b>{rec}</b></td></tr>
+<tr><td>F1 Score</td><td>{f1_pill}</td></tr>
+<tr><td>ROC-AUC</td><td>{auc_pill}</td></tr>
+</table>
+<p style="font-size:.85rem;color:#718096">
+  A model trained on synthetic data achieves an F1 of {f1_pill} on held-out
+  real data, indicating that the synthetic distribution preserves predictive
+  signal for <code>{target}</code>.
+</p>
+</div>"""
+    if status == "no_target":
+        return '<div class="card"><h3>I. TSTR</h3><p class="na">No binary target column found in this table.</p></div>'
+    return f'<div class="card"><h3>I. TSTR</h3><p class="na">{status}</p></div>'
+
+
 def _todo_section_html() -> str:
     return """
 <section>
-<h2>Phase 5.2 — Advanced Evaluation (TODO)</h2>
+<h2>Phase 5.2 — Advanced Evaluation (Remaining TODO)</h2>
 <div class="todo-box">
-  <p><b>The following evaluations are scoped for Phase 5.2 and not yet implemented:</b></p>
+  <p><b>The following evaluations are scoped for future phases:</b></p>
   <ul>
-    <li><b>TSTR</b> — Train on Synthetic, Test on Real: ML efficacy benchmark
-        (e.g. mortality prediction AUC on real vs synthetic training data).</li>
     <li><b>Anonymeter: Singling-out risk</b> — probability that an attacker can
         uniquely identify a real record from the synthetic dataset.</li>
     <li><b>Anonymeter: Linkability risk</b> — probability that an attacker can
@@ -579,9 +734,13 @@ def _todo_section_html() -> str:
     <li><b>Temporal pattern evaluation</b> — inter-visit gap distributions,
         temporal autocorrelation of lab values, ICD code co-occurrence over time.</li>
   </ul>
+  <p style="color:#276749;font-size:.9rem">
+    <b>Implemented in Phase 5.1:</b> KS Test (Module G), k-Anonymity (Module H),
+    TSTR with RandomForestClassifier (Module I).
+  </p>
   <p style="color:#744210;font-size:.9rem">
     Install <code>anonymeter</code> and uncomment the dependency in
-    <code>requirements.txt</code> when Phase 5.2 is ready.
+    <code>requirements.txt</code> when singling-out/linkability evaluation is ready.
   </p>
 </div>
 </section>"""
