@@ -26,12 +26,12 @@ import plotly.graph_objects as go
 import streamlit as st
 import streamlit.components.v1 as components
 
-# ─── Project root resolution ───────────────────────────────────────────────────
-_DEFAULT_ROOT = Path(__file__).parent.resolve()
-PROJECT_ROOT  = Path(
-    next((sys.argv[i + 1] for i, a in enumerate(sys.argv) if a == "--project-root"), None)
-    or os.environ.get("PROJECT_ROOT", str(_DEFAULT_ROOT))
-).resolve()
+# ─── Project root — always relative to this file, never cwd() ────────────────
+ROOT      = Path(__file__).resolve().parent
+READY_DIR = ROOT / "data"    / "ready"
+SYNTH_DIR = ROOT / "outputs" / "synthetic"
+EVAL_DIR  = ROOT / "outputs" / "evaluation"
+MODEL_DIR = ROOT / "outputs" / "models"
 
 TABLES: list[str] = ["patients", "encounters", "observations", "conditions", "medications"]
 
@@ -167,28 +167,42 @@ hr { border-color:rgba(255,255,255,0.07) !important; margin:1.2rem 0 !important;
 #  Data loaders  (all cached)
 # ══════════════════════════════════════════════════════════════════════════════
 
+import logging as _logging
+_log = _logging.getLogger("synthfhir")
+
+
 @st.cache_data(ttl=300, show_spinner=False)
 def load_csv(path: str) -> Optional[pd.DataFrame]:
-    """Load a CSV file into a DataFrame, returning None if missing or unreadable."""
+    """Load a CSV; return None and log if missing."""
     p = Path(path)
+    print(f"[SynthFHIR] load_csv: {p}", flush=True)
     if not p.exists():
+        print(f"[SynthFHIR] MISSING csv: {p}", flush=True)
         return None
     try:
-        return pd.read_csv(p, low_memory=False)
-    except Exception:
+        df = pd.read_csv(p, low_memory=False)
+        print(f"[SynthFHIR] OK csv: {p.name} ({len(df):,} rows)", flush=True)
+        return df
+    except Exception as exc:
+        print(f"[SynthFHIR] ERROR csv {p}: {exc}", flush=True)
         return None
 
 
 @st.cache_data(ttl=300, show_spinner=False)
 def load_json(path: str) -> Optional[dict]:
-    """Load a JSON file, returning None if missing or unreadable."""
+    """Load a JSON file; return None and log if missing."""
     p = Path(path)
+    print(f"[SynthFHIR] load_json: {p}", flush=True)
     if not p.exists():
+        print(f"[SynthFHIR] MISSING json: {p}", flush=True)
         return None
     try:
         with open(p, encoding="utf-8") as f:
-            return json.load(f)
-    except Exception:
+            data = json.load(f)
+        print(f"[SynthFHIR] OK json: {p.name}", flush=True)
+        return data
+    except Exception as exc:
+        print(f"[SynthFHIR] ERROR json {p}: {exc}", flush=True)
         return None
 
 
@@ -196,26 +210,32 @@ def load_json(path: str) -> Optional[dict]:
 def load_html(path: str) -> Optional[str]:
     """Load an HTML file as a string."""
     p = Path(path)
-    return p.read_text(encoding="utf-8") if p.exists() else None
+    print(f"[SynthFHIR] load_html: {p}", flush=True)
+    if not p.exists():
+        print(f"[SynthFHIR] MISSING html: {p}", flush=True)
+        return None
+    return p.read_text(encoding="utf-8")
 
 
 @st.cache_data(ttl=300, show_spinner=False)
 def read_bytes(path: str) -> Optional[bytes]:
-    """Read raw bytes from a file."""
+    """Read raw bytes; return None if missing."""
     p = Path(path)
-    return p.read_bytes() if p.exists() else None
+    if not p.exists():
+        return None
+    return p.read_bytes()
 
 
 def synth_path(table: str) -> str:
-    return str(PROJECT_ROOT / "outputs" / "synthetic" / f"synthetic_{table}.csv")
+    return str(SYNTH_DIR / f"synthetic_{table}.csv")
 
 
 def orig_path(table: str) -> str:
-    return str(PROJECT_ROOT / "data" / "ready" / f"{table}_ready.csv")
+    return str(READY_DIR / f"{table}_ready.csv")
 
 
 def model_path(table: str) -> str:
-    return str(PROJECT_ROOT / "outputs" / "models" / f"{table}_model.pkl")
+    return str(MODEL_DIR / f"{table}_model.pkl")
 
 
 # ══════════════════════════════════════════════════════════════════════════════
@@ -397,7 +417,7 @@ def render_sidebar() -> str:
         )
 
         # Global score badge
-        ev = load_json(str(PROJECT_ROOT / "outputs" / "evaluation" / "evaluation_summary.json"))
+        ev = load_json(str(EVAL_DIR / "evaluation_summary.json"))
         gs = ev.get("global_score") if ev else None
         pill = score_pill(gs)
         st.markdown(
@@ -477,7 +497,7 @@ def page_dashboard() -> None:
         o = load_csv(orig_path(t));  total_orig  += len(o)  if o  is not None else 0
         s = load_csv(synth_path(t)); total_synth += len(s)  if s  is not None else 0
 
-    ev   = load_json(str(PROJECT_ROOT / "outputs" / "evaluation" / "evaluation_summary.json"))
+    ev   = load_json(str(EVAL_DIR / "evaluation_summary.json"))
     gs   = ev.get("global_score") if ev else None
     n_models = sum(1 for t in TABLES if Path(model_path(t)).exists())
     n_synth  = sum(1 for t in TABLES if Path(synth_path(t)).exists())
@@ -586,6 +606,65 @@ def page_dashboard() -> None:
             unsafe_allow_html=True,
         )
 
+    # ── Deployment Diagnostics ────────────────────────────────────────────────
+    with st.expander("🔧 Deployment Diagnostics", expanded=False):
+        st.markdown("**Path Resolution**")
+        st.code(
+            f"__file__  : {__file__}\n"
+            f"ROOT      : {ROOT}\n"
+            f"cwd       : {os.getcwd()}",
+            language="text",
+        )
+        st.markdown("**Directory Status**")
+        dir_info = []
+        for _dname, _dpath in [
+            ("READY_DIR",  READY_DIR),
+            ("SYNTH_DIR",  SYNTH_DIR),
+            ("EVAL_DIR",   EVAL_DIR),
+            ("MODEL_DIR",  MODEL_DIR),
+        ]:
+            _exists = _dpath.exists()
+            if _exists:
+                _files   = sorted(f for f in _dpath.iterdir() if f.is_file())
+                _csv_n   = sum(1 for f in _files if f.suffix == ".csv")
+                _json_n  = sum(1 for f in _files if f.suffix == ".json")
+                _html_n  = sum(1 for f in _files if f.suffix == ".html")
+                _pkl_n   = sum(1 for f in _files if f.suffix == ".pkl")
+                _names   = ", ".join(f.name for f in _files[:12])
+                if len(_files) > 12:
+                    _names += f" … (+{len(_files)-12} more)"
+            else:
+                _csv_n = _json_n = _html_n = _pkl_n = 0
+                _names = "—"
+            dir_info.append({
+                "Constant": _dname,
+                "Path":     str(_dpath),
+                "Exists":   "✅" if _exists else "❌",
+                "CSV":      _csv_n,
+                "JSON":     _json_n,
+                "HTML":     _html_n,
+                "PKL":      _pkl_n,
+                "Files":    _names,
+            })
+        st.dataframe(pd.DataFrame(dir_info), use_container_width=True, hide_index=True)
+
+        st.markdown("**Expected File Check**")
+        file_checks = []
+        for _table in TABLES:
+            file_checks += [
+                (f"READY_DIR/{_table}_ready.csv",            READY_DIR  / f"{_table}_ready.csv"),
+                (f"SYNTH_DIR/synthetic_{_table}.csv",        SYNTH_DIR  / f"synthetic_{_table}.csv"),
+                (f"MODEL_DIR/{_table}_model.pkl",            MODEL_DIR  / f"{_table}_model.pkl"),
+            ]
+        for _fname in ["evaluation_summary.csv", "evaluation_summary.json",
+                       "ks_results.csv", "kanonymity.csv", "tstr_results.csv", "report.html"]:
+            file_checks.append((f"EVAL_DIR/{_fname}", EVAL_DIR / _fname))
+        st.dataframe(
+            pd.DataFrame([{"File": n, "Status": "✅ found" if p.exists() else "❌ missing"}
+                          for n, p in file_checks]),
+            use_container_width=True, hide_index=True,
+        )
+
     render_footer()
 
 
@@ -650,7 +729,7 @@ def page_dataset(table: str) -> None:
     # ── Original ──────────────────────────────────────────────────────────────
     with tab_o:
         if df_o is None:
-            st.warning(f"`data/ready/{table}_ready.csv` not found.")
+            st.warning(f"Missing: `{READY_DIR / f'{table}_ready.csv'}`")
         else:
             col_sel = st.multiselect("Columns", df_o.columns.tolist(),
                                      default=df_o.columns[:8].tolist(), key=f"cols_o_{table}")
@@ -669,7 +748,7 @@ def page_dataset(table: str) -> None:
     # ── Synthetic ─────────────────────────────────────────────────────────────
     with tab_s:
         if df_s is None:
-            st.warning(f"`outputs/synthetic/synthetic_{table}.csv` not found. Run Phase 4B.")
+            st.warning(f"Missing: `{SYNTH_DIR / f'synthetic_{table}.csv'}` — run Phase 4B to generate.")
         else:
             col_sel2 = st.multiselect("Columns", df_s.columns.tolist(),
                                       default=df_s.columns[:8].tolist(), key=f"cols_s_{table}")
@@ -852,10 +931,13 @@ def page_evaluation() -> None:
         unsafe_allow_html=True,
     )
 
-    ev = load_json(str(PROJECT_ROOT / "outputs" / "evaluation" / "evaluation_summary.json"))
+    ev = load_json(str(EVAL_DIR / "evaluation_summary.json"))
 
     if ev is None:
-        st.warning("No evaluation results. Run `python run_phase5.py` to generate them.")
+        st.warning(
+            f"Evaluation results not found at `{EVAL_DIR / 'evaluation_summary.json'}`.\n\n"
+            "Run `python run_phase5.py` to generate them."
+        )
         render_footer()
         return
 
@@ -988,7 +1070,7 @@ def page_evaluation() -> None:
     section_title("Extended Evaluation Metrics")
     tab_ks, tab_kanon, tab_tstr = st.tabs(["📐 KS Test", "🔒 k-Anonymity", "🤖 TSTR"])
 
-    _ev_dir = PROJECT_ROOT / "outputs" / "evaluation"
+    _ev_dir = EVAL_DIR
 
     # ── G: KS Test ─────────────────────────────────────────────────────────────
     with tab_ks:
@@ -1235,9 +1317,9 @@ def page_evaluation() -> None:
     section_title("Download Evaluation Outputs")
     dc1, dc2, dc3 = st.columns(3)
 
-    ev_csv  = read_bytes(str(PROJECT_ROOT / "outputs" / "evaluation" / "evaluation_summary.csv"))
-    ev_json = read_bytes(str(PROJECT_ROOT / "outputs" / "evaluation" / "evaluation_summary.json"))
-    ev_html = read_bytes(str(PROJECT_ROOT / "outputs" / "evaluation" / "report.html"))
+    ev_csv  = read_bytes(str(EVAL_DIR / "evaluation_summary.csv"))
+    ev_json = read_bytes(str(EVAL_DIR / "evaluation_summary.json"))
+    ev_html = read_bytes(str(EVAL_DIR / "report.html"))
 
     with dc1:
         if ev_csv:
@@ -1253,7 +1335,7 @@ def page_evaluation() -> None:
                             mime="text/html", key="eval_dl_html")
 
     # ── Embedded HTML report ──────────────────────────────────────────────────
-    html_src = load_html(str(PROJECT_ROOT / "outputs" / "evaluation" / "report.html"))
+    html_src = load_html(str(EVAL_DIR / "report.html"))
     if html_src:
         section_title("Embedded Evaluation Report")
         with st.expander("Expand full HTML report", expanded=False):
@@ -1286,7 +1368,7 @@ def page_analytics() -> None:
     with tab_pt:
         pts = load_csv(synth_path("patients"))
         if pts is None:
-            st.info("Synthetic patients not available.")
+            st.warning(f"Missing: `{SYNTH_DIR / 'synthetic_patients.csv'}`")
         else:
             c1, c2 = st.columns(2)
             gender_c = _col_of(pts, "gender", "sex")
@@ -1337,7 +1419,7 @@ def page_analytics() -> None:
     with tab_enc:
         enc = load_csv(synth_path("encounters"))
         if enc is None:
-            st.info("Synthetic encounters not available.")
+            st.warning(f"Missing: `{SYNTH_DIR / 'synthetic_encounters.csv'}`")
         else:
             c1, c2 = st.columns(2)
             cls_c  = _col_of(enc, "class", "type", "encounter")
@@ -1436,7 +1518,7 @@ def page_analytics() -> None:
             st.info("No synthetic tables found to render treemap.")
 
         # Evaluation score heatmap
-        ev_cross = load_json(str(PROJECT_ROOT / "outputs" / "evaluation" / "evaluation_summary.json"))
+        ev_cross = load_json(str(EVAL_DIR / "evaluation_summary.json"))
         if ev_cross:
             ev_ts = ev_cross.get("scores", {}).get("tables", {})
             heat_rows = []
@@ -1533,7 +1615,7 @@ def page_downloads() -> None:
     ]
     ecols = st.columns(len(ev_files))
     for col, (fname, label, mime) in zip(ecols, ev_files):
-        b = read_bytes(str(PROJECT_ROOT / "outputs" / "evaluation" / fname))
+        b = read_bytes(str(EVAL_DIR / fname))
         safe_key = fname.replace(".", "_").replace("-", "_")
         with col:
             if b:
@@ -1557,7 +1639,7 @@ def page_downloads() -> None:
                         ]:
                             if Path(src).exists():
                                 zf.write(src, dest)
-                    ev_dir = PROJECT_ROOT / "outputs" / "evaluation"
+                    ev_dir = EVAL_DIR
                     for fname in ["evaluation_summary.csv", "evaluation_summary.json", "report.html"]:
                         p = ev_dir / fname
                         if p.exists():
@@ -1676,10 +1758,12 @@ def page_about() -> None:
             "</div>"
         )
 
-    section_title("Phase 5.2 Roadmap")
+    section_title("Phase 5.1 / 5.2 Roadmap")
     glass_card(
         '<div style="font-size:.82rem;color:#94a3b8;line-height:1.95">'
-        "🔲 <b style='color:#e2e8f0'>TSTR</b> — Train-on-Synthetic, Test-on-Real downstream ML benchmark<br>"
+        "✅ <b style='color:#4ade80'>KS Test</b> — per-column Kolmogorov–Smirnov evaluation with KDE plots<br>"
+        "✅ <b style='color:#4ade80'>k-Anonymity</b> — quasi-identifier detection and re-identification risk<br>"
+        "✅ <b style='color:#4ade80'>TSTR</b> — Train-on-Synthetic, Test-on-Real RandomForest benchmark<br>"
         "🔲 <b style='color:#e2e8f0'>Anonymeter</b> — singling-out, linkability and inference risk scores<br>"
         "🔲 <b style='color:#e2e8f0'>Membership Inference Attack</b> — shadow model privacy audit<br>"
         "🔲 <b style='color:#e2e8f0'>Temporal Pattern Evaluation</b> — ICD-10 sequence fidelity<br>"
