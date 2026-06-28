@@ -1,0 +1,999 @@
+patient_id,gender,race,ethnicity,birth_sex,marital_code,marital_status,city,birth_place_state,language,daly,qaly,age,is_deceased,age_at_death,encounter_count,condition_count,medication_count
+617a71a9-1df5-4a2d-277b-1f89906ee9e0,female,white,not hispanic or latino,f,m,married,Arlington,Massachusetts,english (united states),20.567913413228595,84.4320865867714,107.2,0,,486,455,2272
+54b685f3-71ea-26e1-583e-dc60e65a4e71,male,asian,not hispanic or latino,m,m,married,Mansfield,Massachusetts,english (united states),5.705983936163503,78.2940160638365,110.6,1,84.9,500,263,545
+9f23872b-9e3a-b3d2-1cab-0a3efe3db08b,female,white,hispanic or latino,f,m,married,Boston,Capital District,spanish,0.144765704422517,83.85523429557749,86.4,0,,95,48,57
+f5b18bab-8b9d-3955-f400-eb1c7d792049,male,white,not hispanic or latino,m,m,married,Bellingham,Massachusetts,english (united states),0.1137050325868384,35.886294967413164,37.5,0,,11,12,0
+6775a61c-479c-6554-e3da-e38a503fa646,female,white,not hispanic or latino,f,s,never married,Hingham,Massachusetts,english (united states),0.3566017522366788,67.64339824776332,70.4,1,68.9,134,40,42
+dd37214b-08ff-bf0d-ef46-b6eb5d9d4830,male,white,not hispanic or latino,m,m,married,Hingham,Massachusetts,english (united states),2.565522299056843,61.43447770094316,66.2,0,,52,71,38
+2477ce5a-7209-4593-e134-31aa44dd59d7,female,white,not hispanic or latino,f,m,married,Boston,Massachusetts,english (united states),14.08390781840618,30.916092181593815,47.1,0,,129,51,80
+4ba4e479-a76a-11d0-6f18-ee2aa40672d8,male,white,not hispanic or latino,m,m,married,Lowell,Massachusetts,english (united states),3.457237595351258,64.54276240464874,70.4,0,,35,48,119
+bb16ed0c-e165-5b62-e7d4-629595e57e16,female,white,not hispanic or latino,f,m,married,Boston,Massachusetts,english (united states),3.073220198220433,58.92677980177957,63.5,0,,60,72,130
+f3ea7408-f3af-39de-ec77-7558d8dd73f5,female,white,not hispanic or latino,f,m,married,Boylston,Massachusetts,english (united states),7.487684783808749,77.51231521619125,99.8,1,85.3,60,66,36
+7dc95ea3-49ef-9634-9f9f-4528b79bb4e8,male,white,not hispanic or latino,m,d,divorced,Agawam,Massachusetts,english (united states),1.0468700304925638,49.95312996950744,64.6,1,51.8,75,39,35
+cd54a3c5-f782-1bb0-964b-7fb2c6239a18,male,black or african american,not hispanic or latino,m,d,divorced,Mattapoisett,Massachusetts,english (united states),0.1394776269905467,73.86052237300946,110.8,1,75.1,65,53,86
+9a11243e-c8d0-7e9f-96b0-999f68559068,male,white,not hispanic or latino,m,d,divorced,Worcester,Massachusetts,english (united states),0.0045273512801816,64.99547264871981,67.3,0,,46,48,53
+1ecd3bee-36b9-7907-6036-c062bc9da002,male,white,not hispanic or latino,m,m,married,Amesbury,Massachusetts,english (united states),9.808313182917818,55.191686817082186,67.0,0,,349,242,645
+1c2d23a3-fcfb-2444-5ba9-b42d37358745,female,white,not hispanic or latino,f,m,married,Natick,Massachusetts,english (united states),0.3677024302901847,58.63229756970981,76.0,1,60.5,123,52,35
+517bd67d-2b55-5e6a-5084-fd76ca4ada3c,female,white,not hispanic or latino,f,m,married,Somerset,Massachusetts,english (united states),0.1317308817968206,74.86826911820317,76.5,0,,43,49,52
+5823c2df-e79f-e7f9-56b6-82a29595aed6,female,white,not hispanic or latino,f,m,married,Milford,Massachusetts,english (united states),0.02014495219517,49.97985504780483,63.3,1,51.4,136,29,28
+b2e74a32-0281-f767-3dd1-d4ae7b492864,female,asian,not hispanic or latino,f,m,married,Bridgewater,Massachusetts,english (united states),1.0370555529549734,78.96294444704503,82.0,0,,43,51,54
+c4cf6be1-c9f8-224f-1ff6-a418938b0082,female,white,not hispanic or latino,f,s,never married,Boylston,Massachusetts,english (united states),0.993800743557705,97.0061992564423,99.8,0,,48,58,65
+5159cb70-edc9-8305-9020-93c6999964f7,male,white,hispanic or latino,m,m,married,Templeton,Massachusetts,english (united states),1.980109040918259,80.01989095908174,84.1,0,,61,65,51
+9718741d-43e4-c351-59b5-d79baede710f,female,white,not hispanic or latino,f,m,married,South Yarmouth,Massachusetts,english (united states),1.1286766902228855,63.87132330977711,67.0,0,,27,39,79
+0b373140-6642-8f3e-eb47-5fd5fd490bfb,male,white,not hispanic or latino,m,m,married,Pocasset,Massachusetts,english (united states),3.6440687079935,70.3559312920065,76.5,0,,51,58,73
+40513c6f-158c-f2b4-4365-8503aeec7ab8,male,white,not hispanic or latino,m,m,married,Lawrence,Massachusetts,english (united states),0.205161289837735,62.79483871016227,65.4,0,,42,39,46
+ae81ac45-87d6-db56-f671-2521ec259c98,female,black or african american,not hispanic or latino,f,s,never married,Boston,Massachusetts,english (united states),2.56994047032136,48.43005952967864,67.9,1,51.9,95,46,53
+6d6a0303-9745-daa3-cbdd-8764d0f3f00f,male,white,hispanic or latino,m,s,never married,Saugus,Massachusetts,english (united states),31.13367075099899,49.86632924900101,82.9,0,,413,195,985
+6b6dc465-05e6-2784-889c-ffa672682fd4,male,white,not hispanic or latino,m,s,never married,Barnstable,Massachusetts,english (united states),12.002668205969629,57.99733179403037,71.7,0,,117,65,36
+73fec505-96f7-a834-8c8e-fa206fc00df4,female,black or african american,not hispanic or latino,f,s,never married,Boston,Massachusetts,english (united states),1.204683066900248,24.795316933099752,67.3,1,27.7,122,36,40
+554e0a70-4d72-b828-d017-2894071c8b9b,female,asian,not hispanic or latino,f,m,married,Cambridge,Massachusetts,english (united states),3.3700685889674524,52.629931411032544,58.3,0,,46,42,73
+e364ceae-63fa-beb5-422e-2a11a17420b9,female,white,not hispanic or latino,f,s,never married,Arlington,Massachusetts,english (united states),0.0,22.0,24.2,0,,38,36,57
+5f5bef55-c879-c223-45a3-f44bb027d241,female,white,not hispanic or latino,f,m,married,Barnstable,Massachusetts,english (united states),0.7001401114623671,32.29985988853763,34.8,0,,66,41,57
+1f98710a-e4b2-0506-4685-6c3c7cc2ea3d,male,white,not hispanic or latino,m,d,divorced,Hudson,Massachusetts,english (united states),0.5009806158827051,57.4990193841173,84.0,1,59.4,40,32,52
+ad3c32ef-89ae-408c-c328-e13236187a32,female,white,not hispanic or latino,f,d,divorced,Saugus,Massachusetts,english (united states),1.483180561295676,34.516819438704324,37.9,0,,104,49,45
+d49e83dd-f79f-28e0-1083-e8792b17a8ff,male,black or african american,hispanic or latino,m,m,married,Boston,Saint Andrew Parish,spanish,3.4675360706067804,40.53246392939322,45.6,0,,42,57,55
+a91945fc-e100-f2f9-3924-8c4c56aaf835,female,asian,not hispanic or latino,f,w,widowed,Quincy,Massachusetts,english (united states),1.032964574608131,70.96703542539187,73.9,0,,63,51,48
+6e0f9030-7479-1436-3fb1-ce7a2992efb0,female,white,not hispanic or latino,f,d,divorced,Hull,Massachusetts,english (united states),1.4516481488148187,46.54835185118518,49.5,0,,68,39,93
+732dfaa1-e306-b6c2-e9a9-f71715856bf6,male,black or african american,not hispanic or latino,m,m,married,Mattapoisett,Massachusetts,english (united states),33.682345111754955,62.317654888245045,110.8,1,96.5,684,98,670
+ce88c3ee-50ac-c2c8-2bba-4daf55259c6e,male,asian,hispanic or latino,m,m,married,Wellesley,Massachusetts,english (united states),0.4309964373517064,43.56900356264829,45.7,0,,21,44,69
+4bd60f2c-f933-b5d2-3dc2-a6ce29d83b37,female,other,not hispanic or latino,f,m,married,Townsend,Massachusetts,english (united states),0.3464931377980045,83.653506862202,91.8,1,84.3,53,47,53
+c3387cb1-382a-d643-25ec-3073636fb586,male,white,not hispanic or latino,m,m,married,Lawrence,Massachusetts,english (united states),15.469983307443538,31.530016692556465,49.1,0,,98,54,52
+5ac7550c-c0a5-a7e7-3ded-811febb7eaa9,male,white,not hispanic or latino,m,d,divorced,Warren,Massachusetts,english (united states),0.0381093408155465,36.961890659184455,40.3,1,38.4,31,45,49
+b29d5c39-026f-83b0-9e74-963143634b97,male,asian,not hispanic or latino,m,m,married,Groton,Gia Định,vietnamese,4.334470118284036,37.66552988171596,44.4,0,,43,51,79
+e4e88cc1-d929-7fbf-07fa-76f994bd4be8,male,white,not hispanic or latino,m,s,never married,Hanover,Massachusetts,english (united states),12.984940302566775,51.01505969743322,66.1,0,,75,33,29
+fdaf1f8b-8e10-7712-ffe2-c7c3cedbd6b0,male,asian,not hispanic or latino,m,m,married,Walpole,Cần Thơ,vietnamese,0.7049732130445493,63.295026786955454,99.3,1,65.8,45,50,56
+1d98b4d6-7e33-ba0c-2e7a-87e9b6ab3ff9,female,black or african american,not hispanic or latino,f,s,never married,Lynnfield,Massachusetts,english (united states),4.352369035873395,66.6476309641266,81.9,1,71.5,50,52,71
+1f670e8a-50a9-66af-b891-381e7646cf46,male,white,not hispanic or latino,m,d,divorced,Quincy,Massachusetts,english (united states),1.1916202476443112,98.80837975235568,102.0,0,,60,51,85
+1100c9b6-cab5-c00f-4983-8f141d252561,female,white,not hispanic or latino,f,d,divorced,Westwood,Massachusetts,english (united states),0.0242076157388041,57.9757923842612,59.6,0,,38,53,32
+7cf079d3-93ca-ddde-9368-7801ceffe786,male,white,not hispanic or latino,m,m,married,Andover,Massachusetts,english (united states),9.845270326350189,56.15472967364981,67.5,0,,575,121,575
+9ea60113-bed0-834f-f602-aa70f014dfbb,female,white,not hispanic or latino,f,m,married,Brockton,Massachusetts,english (united states),0.2669753069693126,54.733024693030686,64.8,1,56.1,68,31,37
+2af45e6a-d836-0f6c-0c7b-6b0b8034c60f,female,white,not hispanic or latino,f,m,married,Saugus,Massachusetts,english (united states),0.5505939487132387,61.44940605128676,64.0,0,,45,60,34
+b3d82620-8a3c-719d-1be8-6623642612ba,female,white,not hispanic or latino,f,m,married,Harwich,Massachusetts,english (united states),15.6317056176368,50.3682943823632,67.9,0,,99,45,23
+bf457310-e89b-f37f-cc26-f6d6e28acb56,male,white,not hispanic or latino,m,m,married,Somerville,Massachusetts,english (united states),4.680295821803938,33.31970417819606,40.1,0,,37,59,50
+f18adfcb-6269-9780-2bab-c00d93369ce2,male,white,not hispanic or latino,m,m,married,Falmouth,Massachusetts,english (united states),18.380050623571865,49.61994937642814,69.6,0,,64,56,70
+c539a94c-f309-d2da-ef80-f69a4bfe7c71,male,asian,not hispanic or latino,m,m,married,Westport,Beijing Municipality,chinese,2.333379148283189,62.666620851716814,66.6,0,,53,49,160
+9affffc3-2b5b-6aca-ce31-d0d2e88b88f3,male,asian,not hispanic or latino,m,m,married,Walpole,Cần Thơ,vietnamese,22.001448503538157,74.99855149646184,99.3,0,,58,57,60
+208e85e8-29a6-e330-7b7f-25eec41ba096,female,white,not hispanic or latino,f,w,widowed,East Douglas,Massachusetts,english (united states),1.4674600333610934,61.53253996663891,65.1,0,,56,43,86
+7b33aba3-7002-56b8-ba44-06559be4ccc8,female,white,not hispanic or latino,f,m,married,Worcester,Massachusetts,english (united states),0.2965748501034395,66.70342514989656,69.4,0,,41,47,37
+9def4e07-d15d-0615-378f-399295a43145,female,white,hispanic or latino,f,m,married,Reading,National District,spanish,0.7848759706294947,64.2151240293705,67.0,0,,59,45,89
+112d38fc-a907-6e37-6524-d3226eceebc6,male,white,not hispanic or latino,m,w,widowed,Medford,Massachusetts,english (united states),9.735329214468,47.264670785532,59.0,0,,216,252,447
+ef41757a-cbe0-d3a8-6dfb-8849a655a6a8,male,white,not hispanic or latino,m,s,never married,Cambridge,Massachusetts,english (united states),4.77522645788913,35.22477354211087,41.9,0,,61,61,52
+0d03cc3c-5fc3-79bf-1e7c-982cff303066,male,white,not hispanic or latino,m,s,never married,Brewster,Massachusetts,english (united states),0.6298002291106006,58.3701997708894,61.0,0,,49,50,55
+8ed08efa-a8c8-e8d7-9791-4911b2a9d3b4,female,white,not hispanic or latino,f,s,never married,Boston,Massachusetts,english (united states),0.2861194178267086,20.71388058217329,22.5,0,,116,26,55
+c4ec0f6e-e684-c272-5209-54302ff117e3,female,white,not hispanic or latino,f,d,divorced,Middleton,Massachusetts,english (united states),12.98444241606053,49.01555758393947,64.0,0,,94,59,29
+0033e7f5-91d2-4997-6dab-aee714b45330,female,white,not hispanic or latino,f,s,never married,Somerville,Massachusetts,english (united states),1.3763453694599708,31.62365463054003,35.4,0,,91,45,15
+7e3c1399-d084-0e4c-35de-b34606790508,male,white,not hispanic or latino,m,s,never married,North Westport,Massachusetts,english (united states),1.6692866886663078,57.33071331133369,73.9,1,59.9,55,42,59
+7743d451-6a65-2f75-92ed-eb356000b8a2,male,white,not hispanic or latino,m,s,never married,Sharon,Massachusetts,english (united states),0.7340184422813057,69.26598155771869,71.5,0,,82,65,9
+32f4c838-c75d-3507-76fc-fe5112865e69,female,asian,not hispanic or latino,f,m,married,Everett,Massachusetts,english (united states),45.76124495368836,26.238755046311645,74.2,0,,43,36,17
+11b01e91-fb22-6cf2-6fa5-462ebaa2d96f,female,asian,not hispanic or latino,f,m,married,Becket,Massachusetts,english (united states),0.5413606545090741,67.45863934549092,69.6,0,,31,41,50
+28d7b56c-6056-d0a2-2991-39d6e917216c,female,white,not hispanic or latino,f,m,married,South Yarmouth,Massachusetts,english (united states),1.3996233902958777,77.60037660970413,81.3,0,,34,32,20
+30331d41-809d-eae7-bf16-e1e6d8749de2,male,white,hispanic or latino,m,m,married,Randolph,Capital District,spanish,51.90333200303285,32.09666799696716,107.1,1,85.1,250,221,752
+12328950-1a9d-3de8-714c-b4c5b29a3749,male,white,not hispanic or latino,m,m,married,Cheshire,Massachusetts,english (united states),3.3844924451685983,44.6155075548314,49.5,0,,37,45,38
+0fe1d67a-8e37-4954-6342-581d59bf3c14,female,white,not hispanic or latino,f,s,never married,Tewksbury,Massachusetts,english (united states),0.2759385009121839,22.724061499087817,25.3,0,,108,41,42
+ef7a05b2-9a93-f26c-8b68-a1097d342460,male,white,not hispanic or latino,m,m,married,Cambridge,Massachusetts,english (united states),5.098118655014979,68.90188134498501,76.4,0,,56,43,54
+23d37ce2-36c9-a8cb-0ff2-38dae59a91a0,female,asian,not hispanic or latino,f,m,married,Newton,Massachusetts,english (united states),0.875483646166066,80.12451635383394,82.8,0,,54,44,61
+c2edbc1f-f34d-6d2a-e643-ff2df7e8e94a,female,white,not hispanic or latino,f,m,married,Stoneham,Massachusetts,english (united states),0.0527778175570736,50.94722218244293,52.7,0,,78,37,26
+cf5956bb-34f2-841b-2505-57b99991c377,female,white,not hispanic or latino,f,m,married,Acton,Massachusetts,english (united states),0.5482620657143359,32.45173793428567,35.2,0,,79,47,26
+90d4e7f2-aa26-db2f-d5fd-dcd33721782c,male,white,not hispanic or latino,m,m,married,Walpole,Massachusetts,english (united states),8.722768895844837,24.277231104155163,35.2,0,,62,54,100
+8b1ad309-243d-5f55-ffdf-d5d565acc885,female,white,not hispanic or latino,f,s,never married,Taunton,Massachusetts,english (united states),0.2786173784317575,26.72138262156824,28.6,0,,90,43,22
+6c6d3524-5a22-924a-d01b-c27945f94395,male,white,not hispanic or latino,m,m,married,Amherst,Massachusetts,english (united states),0.7549117325363758,63.24508826746362,65.5,0,,33,35,27
+eb4b67ca-a02e-8e5f-b9b4-a8a88545d6f9,male,asian,not hispanic or latino,m,m,married,Brookline,Massachusetts,english (united states),0.04035900289977,61.95964099710023,67.0,1,63.0,70,37,34
+7307af1b-ec1e-c1bc-68f5-483098ea322b,female,white,not hispanic or latino,f,m,married,Natick,Massachusetts,english (united states),13.226604572403776,60.77339542759623,76.0,1,74.8,507,147,513
+2bd3be23-e445-8756-4aea-836f48fd8c37,female,asian,not hispanic or latino,f,m,married,Millis,Massachusetts,english (united states),0.3654172665487361,67.63458273345127,69.9,0,,49,37,17
+ac24b5ec-8a7c-3413-9f5d-f52b9d7fc260,female,white,not hispanic or latino,f,s,never married,Abington,Massachusetts,english (united states),0.4276535153440439,42.57234648465596,45.9,1,43.6,73,29,62
+c4ce558c-5a4a-0949-601a-523c3b045e56,female,white,hispanic or latino,f,m,married,Boston,Capital District,spanish,3.998015930737592,55.001984069262406,60.6,0,,76,38,63
+c25a2c14-958e-dcba-62b1-f2ee7dd24e88,female,white,not hispanic or latino,f,d,divorced,Randolph,Massachusetts,english (united states),5.193797263307015,70.80620273669298,78.4,0,,86,34,27
+a5b2af18-fa65-617e-0a76-577c3479c7cf,female,white,hispanic or latino,f,m,married,Newton,Massachusetts,english (united states),3.250763554910644,41.74923644508936,46.5,0,,43,42,63
+e843d336-e1d6-70f2-fdcf-1a3dc849fbb8,female,white,hispanic or latino,f,s,never married,Springfield,Kingston,spanish,0.765843564332821,24.234156435667177,27.2,0,,80,47,36
+737f5ccb-8bc2-8d25-99b3-d62355d3e21e,male,white,not hispanic or latino,m,m,married,Walpole,Massachusetts,english (united states),2.999764693059717,69.00023530694028,74.6,1,72.3,62,49,47
+9edc8f4d-1124-ab9d-7ee6-f42a860bc981,female,white,not hispanic or latino,f,s,never married,Brookline,Massachusetts,english (united states),1.1346353574286696,81.86536464257134,85.4,0,,57,50,58
+901aa80e-92d4-dda1-6a88-28e7e5b15103,female,white,not hispanic or latino,f,d,divorced,Billerica,Massachusetts,english (united states),3.4872786911233264,74.51272130887668,79.9,0,,70,49,9
+43572a24-9819-e7cf-cd4a-28e97a82dfca,female,white,not hispanic or latino,f,s,never married,Attleboro,Massachusetts,english (united states),0.0598620909097615,19.94013790909024,22.2,0,,112,37,20
+ea12cacd-6654-6062-f78a-a16b1525480d,male,asian,not hispanic or latino,m,d,divorced,Mansfield,Massachusetts,english (united states),12.49917137880452,67.50082862119548,110.6,1,80.9,620,99,642
+9fed0d81-c550-8b43-2713-87d9c01781ed,female,white,not hispanic or latino,f,m,married,Uxbridge,Massachusetts,english (united states),0.3760465700155458,30.623953429984454,33.2,0,,85,38,20
+f59ae636-195f-7743-a3c9-d0ef029dc9e3,female,white,not hispanic or latino,f,s,never married,Acushnet,Massachusetts,english (united states),0.6534488642930871,30.346551135706918,32.6,0,,69,49,38
+1461ba9e-147f-a57b-8293-1dff1e62f523,male,asian,not hispanic or latino,m,w,widowed,Chelmsford,Massachusetts,english (united states),0.2389191919417237,70.76108080805828,73.3,0,,57,57,52
+07cd1b77-1b6b-e867-6c51-689184dd9354,male,asian,not hispanic or latino,m,m,married,Revere,Massachusetts,english (united states),2.05050967912193,43.94949032087807,47.7,0,,33,39,25
+a9585cf3-ae5f-01cd-406e-c3cd4d2ea0c2,female,white,not hispanic or latino,f,m,married,Framingham,Massachusetts,english (united states),1.9621727005168017,69.0378272994832,73.1,0,,55,37,57
+85758392-30b6-0a0e-ca31-c281ffaf93ab,male,white,hispanic or latino,m,m,married,Boston,Massachusetts,english (united states),0.5191185747387654,35.48088142526124,37.9,0,,52,55,53
+957b3ac4-b10e-7c76-45b4-588781b8254c,female,black or african american,not hispanic or latino,f,s,never married,Bridgewater,Massachusetts,english (united states),0.2825771543356969,77.7174228456643,80.4,0,,45,35,53
+c81b605b-ada7-3080-3260-33fb65706573,female,white,not hispanic or latino,f,s,never married,Ocean Bluff-Brant Rock,Massachusetts,english (united states),0.0,69.0,71.2,0,,43,46,30
+0b97041f-b7ad-b29c-1ffe-aa93ae2f26ff,male,white,not hispanic or latino,m,m,married,Mashpee,Massachusetts,english (united states),5.642748399055571,53.35725160094443,62.1,1,60.2,56,47,31
+2c66ea54-4535-34a9-c504-ee6a3840e43a,male,white,not hispanic or latino,m,m,married,Worcester,Massachusetts,english (united states),0.2107401205717382,60.789259879428265,63.4,0,,76,39,19
+c0527554-a673-baad-d9e6-a8c371ce5396,female,asian,not hispanic or latino,f,d,divorced,Springfield,Massachusetts,english (united states),12.354667654041354,44.64533234595865,59.0,0,,403,158,509
+96d0e297-97bd-e7b2-204e-a61f09556e09,female,white,not hispanic or latino,f,m,married,Greenfield,Massachusetts,english (united states),0.831434817074173,73.16856518292583,77.1,1,75.2,76,41,15
+62d56cb6-e31c-b3ca-b8dc-ab9403004db9,female,white,not hispanic or latino,f,m,married,North Andover,Massachusetts,english (united states),9.368676136772336,57.631323863227664,68.6,0,,59,52,50
+48587bfa-b72e-3664-51f8-497adc4761ff,female,white,not hispanic or latino,f,m,married,Falmouth,Massachusetts,english (united states),12.01029532825972,56.98970467174028,70.8,0,,94,34,6
+ce6bb58d-ca11-bd5e-3067-3adc5ddf481a,male,white,not hispanic or latino,m,m,married,Framingham,Massachusetts,english (united states),0.4746867775254426,76.52531322247455,78.5,0,,41,40,60
+1e08b1f8-8cc2-1602-b8a7-8a3626c46171,male,white,not hispanic or latino,m,w,widowed,Quincy,Massachusetts,english (united states),0.5234210657904002,79.4765789342096,82.3,0,,53,39,74
+fd848b53-a30a-4a50-044a-4aec2578a82b,female,white,not hispanic or latino,f,m,married,Reading,Massachusetts,english (united states),24.366837269243742,25.633162730756258,52.2,0,,74,46,31
+e90af1fe-2abb-e64c-39e9-ce706e273ca1,female,white,hispanic or latino,f,m,married,Nantucket,Massachusetts,english (united states),11.659326270325003,27.340673729675,41.4,0,,107,45,7
+b00823c6-6df8-491d-5898-7dbca685293f,female,asian,not hispanic or latino,f,w,widowed,Millis,Massachusetts,english (united states),0.5331404440816105,63.46685955591839,69.9,1,64.4,47,49,54
+1a187a7d-3945-64fc-0d85-05f702c921fd,male,white,not hispanic or latino,m,m,married,Winchendon,Massachusetts,english (united states),14.898798832907344,42.101201167092654,58.5,0,,71,54,42
+1444bcdc-2ada-aebf-41dd-85f12d852bc1,male,white,hispanic or latino,m,d,divorced,Boston,Puerto Rico,spanish,1.2604410873845946,67.73955891261541,70.5,0,,43,47,35
+1a04060c-9612-6516-b40d-005bda78111f,female,white,not hispanic or latino,f,d,divorced,Worcester,Massachusetts,english (united states),23.5472274734539,42.4527725265461,69.4,1,67.7,566,294,800
+564c35f3-206b-b74b-ca7f-e3bc97ea6730,female,white,not hispanic or latino,f,s,never married,Douglas,Massachusetts,english (united states),8.18022183936518,53.81977816063482,64.1,0,,227,248,192
+bc32ca33-1074-db53-33a3-94e6a6762ff1,male,white,not hispanic or latino,m,m,married,Fairhaven,Massachusetts,english (united states),0.7148374762530217,47.285162523746976,49.9,0,,39,50,64
+dd7b82c0-817d-8285-9b5b-d997c6b13fe3,female,white,not hispanic or latino,f,m,married,Arlington,Massachusetts,english (united states),0.5954622913666355,58.40453770863336,84.6,1,59.9,80,34,13
+d46218b7-c937-901c-d75d-0d9da45fccaf,female,black or african american,hispanic or latino,f,m,married,Boston,Santiago Province,spanish,0.0346639575630824,53.96533604243692,56.3,0,,65,32,47
+5f48397e-a81f-88c0-7445-06b79688e807,female,white,not hispanic or latino,f,m,married,Saugus,Massachusetts,english (united states),0.6536921277891964,44.3463078722108,46.8,0,,41,50,46
+3b9deb41-c74b-d82e-9b6d-74537d12766e,male,white,not hispanic or latino,m,s,never married,Amherst,Massachusetts,english (united states),1.262719970619964,55.73728002938004,59.3,0,,52,49,60
+43ce9dc6-9333-e1c5-8aa5-4d9514e57b94,male,white,not hispanic or latino,m,m,married,Worcester,Massachusetts,english (united states),0.3453133249867758,62.65468667501322,67.3,1,64.4,34,34,48
+17a1017a-e4c6-0bcd-4876-b7021956bcb2,female,white,not hispanic or latino,f,d,divorced,Fitchburg,Massachusetts,english (united states),1.137743795461627,75.86225620453837,79.0,0,,53,39,23
+eb76c027-3233-acb1-fd9a-099047ca7cb4,female,white,not hispanic or latino,f,s,never married,Medfield,Massachusetts,english (united states),0.266737625515183,64.73326237448482,67.1,0,,57,49,30
+bcca69fc-1af5-24b8-b523-de469db2363a,male,white,not hispanic or latino,m,m,married,Quincy,Massachusetts,english (united states),0.7092773694013179,43.29072263059868,46.0,0,,18,36,39
+056ded2d-827e-1cf1-199c-5561d7884437,female,white,not hispanic or latino,f,s,never married,Arlington,Massachusetts,english (united states),0.6481335179454345,91.35186648205456,107.2,1,93.2,42,45,48
+ac07fa44-4724-15c1-3a51-f9e8810392b4,male,white,not hispanic or latino,m,m,married,Walpole,Massachusetts,english (united states),9.599159058216893,61.40084094178311,72.9,0,,215,205,413
+4d060b3b-d0aa-8af0-0105-0cfd369dbcc8,male,white,not hispanic or latino,m,m,married,Brockton,Massachusetts,english (united states),17.306179353307208,27.693820646692792,46.6,0,,76,48,23
+bbace40f-75d6-5c10-5c1e-fd7347741f47,male,white,not hispanic or latino,m,m,married,Hanover,Massachusetts,english (united states),6.372465624530082,56.62753437546992,64.9,0,,43,49,32
+6a108123-a2bd-aa5f-cd25-de9cd93e93c3,female,white,not hispanic or latino,f,m,married,Natick,Massachusetts,english (united states),0.3579213518340273,62.64207864816597,76.0,1,63.9,94,33,18
+2b54a723-61f9-0ea8-acb1-347f134ce432,male,white,not hispanic or latino,m,s,never married,Sturbridge,Massachusetts,english (united states),0.690288780786589,72.30971121921341,75.4,0,,49,49,48
+6565486a-566f-2324-edfc-60f86785bd31,female,white,not hispanic or latino,f,s,never married,Worcester,Massachusetts,english (united states),0.6767881686749777,67.32321183132503,69.7,0,,50,45,57
+8bdb8dfc-4ddf-7215-0343-f39815a39b65,female,white,not hispanic or latino,f,m,married,Malden,Massachusetts,english (united states),1.0918357618787502,43.90816423812125,47.3,0,,62,39,44
+b85c480b-eed9-f9ab-1d29-e9a9c93eef36,female,black or african american,not hispanic or latino,f,s,never married,Boston,Massachusetts,english (united states),0.33680179349521,23.66319820650479,26.2,0,,69,36,21
+1ad0f341-e2bc-36ac-9dce-b7524bf7ab0b,male,asian,not hispanic or latino,m,d,divorced,Walpole,Gia Định,vietnamese,27.052658271213843,46.94734172878616,99.3,1,75.1,48,40,59
+9bb7b857-5bed-93c8-b07c-0838c0e53f23,male,white,not hispanic or latino,m,s,never married,Easthampton,Massachusetts,english (united states),0.5389342655227193,62.46106573447728,64.7,0,,48,38,49
+9f7a4ba5-2071-3f9e-7460-81e2648e0a62,male,white,hispanic or latino,m,s,never married,Tewksbury,El Salvador,spanish,0.4639776194381131,67.53602238056189,69.5,0,,52,32,48
+82d9715f-1cfb-2fe1-c2ec-4e642cd6ef15,male,white,not hispanic or latino,m,s,never married,Quincy,Massachusetts,english (united states),17.405147754756417,71.59485224524359,102.0,1,90.1,454,139,502
+19b5e21f-74f0-af3e-51ce-569b21f6e546,female,white,not hispanic or latino,f,m,married,Norwood,Massachusetts,english (united states),1.2265126054506843,75.77348739454932,78.6,0,,40,53,36
+d144213e-9033-7d9a-5d55-e5cdc8018bdf,male,white,hispanic or latino,m,s,never married,Southbridge,Massachusetts,english (united states),5.703393070120789,20.29660692987921,27.7,0,,80,53,18
+033ac3bf-7b74-1cd6-084c-1ba26e39510b,male,white,not hispanic or latino,m,s,never married,West Dennis,Massachusetts,english (united states),1.3316439617477291,64.66835603825227,67.5,0,,49,44,31
+536b1941-f55b-5f08-ca4c-e41cbdfeabb3,female,white,hispanic or latino,f,s,never married,Boston,Ciudad de Buenos Aires,spanish,0.211958386078504,24.788041613921497,26.6,0,,71,44,25
+22602fa2-cffc-93da-1fa1-7c93a2479fbb,male,white,not hispanic or latino,m,m,married,Quincy,Massachusetts,english (united states),0.1728325140834431,72.82716748591656,102.0,1,74.3,96,27,11
+24f4d2f1-b4ef-0654-25a3-bdce21e7ceef,female,white,not hispanic or latino,f,s,never married,Oxford,Massachusetts,english (united states),0.0,20.0,22.4,0,,23,24,33
+9d8fb73d-eaae-3d1a-65cb-9983a64bbcc3,female,white,hispanic or latino,f,m,married,Newton,Massachusetts,english (united states),0.5181932823781099,39.48180671762189,42.2,0,,61,39,35
+58b65b35-b73f-e0ff-1feb-4517cdacd118,female,black or african american,not hispanic or latino,f,m,married,Boston,Massachusetts,english (united states),0.9884338139246972,74.0115661860753,77.0,0,,39,46,70
+1af1d4b4-f29f-5f9e-cd42-414d947ee2e4,male,white,not hispanic or latino,m,m,married,Quincy,Massachusetts,english (united states),0.2663304634083334,45.73366953659167,82.3,1,47.4,36,46,34
+6872def5-772f-427c-3053-de6e1c71ce0a,male,white,hispanic or latino,m,m,married,Belmont,Massachusetts,english (united states),1.6455101706715072,67.35448982932849,71.2,0,,52,44,23
+509acf6b-ef54-fc75-32c0-3b542ba71495,male,asian,not hispanic or latino,m,w,widowed,Braintree,Massachusetts,english (united states),11.146420110532889,35.85357988946711,57.2,1,48.2,749,83,79
+f66bf42d-3646-63d8-728b-5bcb262517bc,male,white,not hispanic or latino,m,m,married,Chicopee,Massachusetts,english (united states),0.4870774915656781,58.51292250843432,60.9,0,,38,48,82
+fc294aae-dfb6-6bb0-40f7-40d35f5fc708,male,white,not hispanic or latino,m,m,married,Scituate,Massachusetts,english (united states),0.2815708288051169,50.71842917119488,58.3,1,52.7,36,35,43
+c7f1fa08-48ce-ad31-7d9b-625bb6c21c5a,male,white,not hispanic or latino,m,s,never married,New Bedford,Massachusetts,english (united states),0.6558287754691776,63.344171224530825,69.6,1,64.7,49,43,35
+648adc7e-f0b5-d054-de8e-21af710e1b6b,male,black or african american,not hispanic or latino,m,m,married,Revere,Massachusetts,english (united states),1.8556431604190209,61.14435683958098,65.3,0,,44,37,35
+adc5a922-c738-1569-7c2c-501a176eaa6b,male,white,not hispanic or latino,m,d,divorced,Mashpee,Massachusetts,english (united states),4.192606172144616,55.807393827855385,62.1,0,,39,41,43
+b8926499-3eeb-74cd-235a-c0eadc67a1b0,female,white,not hispanic or latino,f,m,married,Boston,Massachusetts,english (united states),1.6844009716995123,63.31559902830049,66.5,0,,40,51,7
+26608f7e-903a-5cf5-e88e-cb72fef47b66,male,white,not hispanic or latino,m,s,never married,Amherst,Massachusetts,english (united states),0.3922200494690211,20.60777995053098,23.1,0,,107,29,35
+4113255f-4e35-506a-ddef-4429caa17ffc,female,black or african american,not hispanic or latino,f,m,married,Boston,Massachusetts,english (united states),2.957624199548912,60.04237580045109,64.8,0,,67,37,17
+a59cec27-c3dc-2b88-ac1a-70a162a6919e,male,white,not hispanic or latino,m,m,married,Belmont,Massachusetts,english (united states),3.469330922170715,58.53066907782929,63.9,0,,52,42,35
+e5e76633-00d7-6d64-6d45-bfca1f11af1c,female,white,not hispanic or latino,f,d,divorced,Sudbury,Massachusetts,english (united states),2.055955329583615,34.94404467041638,38.7,0,,32,42,36
+46e23cbe-5c0d-02eb-e291-1047b54ddc8f,male,white,not hispanic or latino,m,m,married,Sturbridge,Massachusetts,english (united states),10.73127570173484,60.26872429826516,75.4,1,72.3,590,55,574
+5b991d08-fc52-3fb3-e4c4-9ccbbd00d330,female,white,not hispanic or latino,f,s,never married,Haverhill,Massachusetts,english (united states),0.040697214882833,33.95930278511717,35.7,0,,108,18,9
+e0b758ad-b2b3-8de6-ea86-e7cfb37eeaa4,female,white,not hispanic or latino,f,m,married,West Springfield,Massachusetts,english (united states),0.8949845825301093,76.10501541746989,78.5,0,,58,41,30
+5f3161f0-cdb5-5b55-bbd9-031f6f520f19,female,asian,not hispanic or latino,f,m,married,Fall River,Massachusetts,english (united states),0.8855237169963395,49.11447628300366,52.2,0,,55,39,38
+3b267b74-9efd-03ac-135b-402deff305ed,male,white,not hispanic or latino,m,s,never married,Quincy,Massachusetts,english (united states),1.0508949025687122,69.94910509743129,73.1,0,,47,35,41
+9ed7ce67-ebfa-69df-5348-86af402f637d,female,white,not hispanic or latino,f,m,married,Fairhaven,Massachusetts,english (united states),0.2642675910564021,56.7357324089436,58.8,0,,45,43,43
+c204c55f-ddad-e67d-fb4a-7f8598b74e2b,female,white,not hispanic or latino,f,m,married,Belchertown,Massachusetts,english (united states),2.204972435006155,80.79502756499384,85.1,0,,70,41,11
+9caa9b96-586d-7916-b7d5-020d19a30cf5,female,white,not hispanic or latino,f,s,never married,Rockland,Massachusetts,english (united states),0.005477761773323,15.994522238226676,18.1,0,,94,18,11
+428faf14-f4db-66fa-7e16-e5ae16bfcf20,female,white,not hispanic or latino,f,w,widowed,Needham,Massachusetts,english (united states),0.6838616000691948,78.31613839993081,80.6,0,,46,44,31
+037c7992-b467-a1bc-41a5-8a9f30cb7745,female,white,not hispanic or latino,f,s,never married,Littleton,Massachusetts,english (united states),1.0269245599199774,20.973075440080024,24.2,0,,71,34,54
+29a881f7-152d-da1b-5015-02af7445ef52,female,white,not hispanic or latino,f,m,married,Lawrence,Massachusetts,english (united states),2.6608735119799194,55.33912648802008,59.7,0,,47,48,23
+7119f9b9-6a49-7fe0-3b71-d9b353355d7c,female,white,not hispanic or latino,f,m,married,Bliss Corner,Massachusetts,english (united states),21.401869409160597,40.5981305908394,74.6,1,62.7,187,219,275
+727b264a-44ba-71b5-74b0-ed432339d075,female,white,not hispanic or latino,f,m,married,Boston,Massachusetts,english (united states),11.640831853425643,27.359168146574355,41.5,0,,91,29,40
+06690140-afe1-14bf-0e89-3c1925fbe5c1,female,white,hispanic or latino,f,m,married,Beverly,Massachusetts,english (united states),0.0628339288084166,50.937166071191584,53.0,0,,50,44,45
+5394b401-112a-7d77-4548-9442e3d73988,female,white,not hispanic or latino,f,s,never married,Marlborough,Massachusetts,english (united states),0.3262671412882637,36.67373285871174,39.0,0,,58,35,28
+03770d04-938a-91b0-b8b5-0b92f71795fb,female,white,not hispanic or latino,f,d,divorced,Boylston,Massachusetts,english (united states),0.694340966523929,97.30565903347608,99.8,1,98.5,44,50,26
+79afd2df-5e40-3ac1-71a9-b785ac97fbff,female,white,not hispanic or latino,f,s,never married,Amherst,Massachusetts,english (united states),1.4130705989823795,73.58692940101761,89.4,1,76.1,41,43,43
+6b060c17-b5af-82b5-0417-38644cf1fef5,male,black or african american,not hispanic or latino,m,s,never married,Plymouth,Massachusetts,english (united states),4.729843243868873,54.27015675613113,60.8,0,,42,50,26
+99249ff1-59a9-dc6e-c152-4ca393cd57c5,female,white,not hispanic or latino,f,s,never married,Bridgewater,Massachusetts,english (united states),0.1650834570256778,22.834916542974323,25.1,0,,66,36,43
+d6909fca-2ea9-c6ae-cc66-2c8e0d597067,female,white,not hispanic or latino,f,s,never married,Sandwich,Massachusetts,english (united states),0.7925227786587067,57.20747722134129,59.6,0,,71,54,27
+449f89c1-6698-74d6-19e4-52c04f958e22,female,native hawaiian or other pacific islander,not hispanic or latino,f,s,never married,Newton,Massachusetts,english (united states),1.2268475938376369,65.77315240616237,69.5,0,,63,44,35
+d9fb22dd-45ab-41e3-7c6c-393d74805e67,female,asian,not hispanic or latino,f,m,married,Everett,Maharashtra,hindi,22.556218024747245,48.44378197525276,72.9,0,,38,40,53
+dfb21061-3865-5220-3edb-a03622f8c685,female,asian,not hispanic or latino,f,m,married,Everett,Massachusetts,english (united states),4.70256062424254,62.29743937575746,74.2,1,68.3,419,82,620
+71b79209-656c-d450-650d-b517951bbae0,male,white,hispanic or latino,m,m,married,Randolph,Jalisco,spanish,0.0822769147830959,104.9177230852169,107.1,0,,44,33,18
+f57eb07c-d9ef-5be6-732a-895af7c99fa7,male,white,not hispanic or latino,m,d,divorced,North Westport,Massachusetts,english (united states),0.3627020754229091,71.6372979245771,73.9,0,,41,36,26
+036849b8-a068-6879-8112-ca967833a5dd,male,asian,not hispanic or latino,m,m,married,Walpole,Gia Định,vietnamese,0.2430763180626243,42.75692368193737,99.3,1,44.6,34,24,38
+050acb3c-430b-7747-f758-c70313fd71b0,female,white,not hispanic or latino,f,s,never married,Lowell,Massachusetts,english (united states),4.417221418862272,61.58277858113773,67.6,0,,69,40,3
+b7ad6c7b-d563-e48d-bf5d-48c74163cfc9,female,asian,not hispanic or latino,f,s,never married,Stoneham,Massachusetts,english (united states),0.0858472408244359,24.914152759175565,26.7,0,,70,30,11
+2839f0e0-b830-0236-ac0c-d5d768568c5c,male,white,not hispanic or latino,m,s,never married,Tewksbury,Massachusetts,english (united states),0.2945965442393445,19.705403455760656,21.9,0,,95,21,35
+fc33a0c3-d0e7-c4e7-3f56-a555c9629ea1,female,white,not hispanic or latino,f,m,married,Newton,Massachusetts,english (united states),15.293763733038396,38.7062362669616,55.8,0,,102,32,22
+138f901c-235d-c5a7-a31e-1e634da15552,male,white,not hispanic or latino,m,m,married,Chicopee,Massachusetts,english (united states),0.7338564698572851,65.26614353014271,68.0,0,,42,42,58
+bf751cfc-bc6c-a053-50e8-eecb99160fb1,female,white,not hispanic or latino,f,d,divorced,Stoughton,Massachusetts,english (united states),0.3602595879667787,68.63974041203322,70.9,0,,37,32,38
+16a388ac-33bc-6ba4-ea56-036201cb53dd,female,white,not hispanic or latino,f,m,married,North Adams,Massachusetts,english (united states),0.364438146615695,39.6355618533843,41.9,0,,55,34,54
+92675303-ca5b-136a-169b-e764c5753f06,male,white,hispanic or latino,m,w,widowed,Chicopee,Puerto Rico,spanish,10.5927706309801,45.4072293690199,57.9,0,,656,81,66
+1fb4bb7b-40bf-f804-d279-af873cb24729,female,black or african american,not hispanic or latino,f,m,married,Boston,Massachusetts,english (united states),2.4973977912144383,80.50260220878556,85.1,0,,43,36,63
+9f6a80af-4fa3-bd0f-750b-94b7c3f7046d,female,white,not hispanic or latino,f,m,married,Barnstable,Massachusetts,english (united states),0.5591900504926076,56.44080994950739,75.9,1,58.0,54,34,15
+ce4019f0-2bc3-4355-883e-b506a620ff01,male,white,not hispanic or latino,m,d,divorced,Sharon,Massachusetts,english (united states),0.7364568789657819,67.26354312103422,71.5,1,68.8,41,33,16
+88c5fa64-84e0-84fe-06e7-c51e10bcf68a,female,black or african american,not hispanic or latino,f,s,never married,Danvers,Massachusetts,english (united states),0.3695071175234835,49.63049288247652,56.1,1,51.6,41,42,37
+f3a8a10c-fa37-e58c-a4bd-1eed83ab1834,male,white,not hispanic or latino,m,m,married,Northwest Harwich,Massachusetts,english (united states),0.9975167196195608,65.00248328038045,67.5,0,,45,36,44
+f2f3b340-cbbc-9a25-67a1-67cd75f01ca2,female,black or african american,not hispanic or latino,f,s,never married,Lynn,Mexico City,spanish,5.583458577620849,20.41654142237915,28.3,0,,97,32,3
+fad88ba7-7fd5-539b-594e-ddd10d69d70a,female,white,not hispanic or latino,f,s,never married,Amherst,Massachusetts,english (united states),0.1247345091675496,20.87526549083245,23.0,0,,59,36,17
+ae8722c8-8fe3-3bf6-9ae3-d25954bcb8b8,female,white,not hispanic or latino,f,s,never married,Lawrence,Massachusetts,english (united states),11.172547043196635,47.82745295680336,61.2,0,,43,47,15
+61fa4c1d-1cfe-d3b9-688f-79671ae1d000,male,white,not hispanic or latino,m,m,married,Hudson,Massachusetts,english (united states),0.8264740948509647,53.17352590514904,56.0,0,,33,44,39
+154f4d4d-c7c7-78a1-725f-4651e7d59e67,female,white,not hispanic or latino,f,m,married,Easthampton,Massachusetts,english (united states),0.204660457502129,65.79533954249787,68.4,0,,43,40,10
+30b0c118-65c7-1c67-1198-d1163b8f1119,male,white,not hispanic or latino,m,m,married,Lowell,Massachusetts,english (united states),18.52539520787709,47.47460479212292,67.5,0,,241,210,172
+034f046f-3748-0335-ec12-bfdb877de02d,female,black or african american,not hispanic or latino,f,m,married,Boston,Massachusetts,english (united states),0.5873481768227142,64.41265182317728,67.3,0,,46,37,23
+499ae29c-c5f7-76d5-f19b-6fa9715ffef9,female,white,not hispanic or latino,f,m,married,Bliss Corner,Massachusetts,english (united states),0.5309296365661218,72.46907036343387,74.6,0,,39,35,36
+abc59f62-dc5a-5095-1141-80b4ee8be73b,female,white,not hispanic or latino,f,s,never married,Shrewsbury,Massachusetts,english (united states),0.3048857093776279,27.69511429062237,29.8,0,,68,29,22
+7771b5d4-4e29-61a3-125c-fe681e6e78f9,male,white,not hispanic or latino,m,s,never married,Newton,Massachusetts,english (united states),0.2097002850711899,15.79029971492881,17.8,0,,91,23,34
+59844213-b884-17cb-59e9-c07a73a06f41,male,black or african american,not hispanic or latino,m,m,married,Whitman,Massachusetts,english (united states),14.89341419705302,32.10658580294698,49.5,0,,39,42,25
+e95769b0-47cf-6fe2-0f79-fe9756c68732,female,black or african american,not hispanic or latino,f,m,married,Boston,Massachusetts,english (united states),4.503849979784752,48.49615002021525,85.1,1,54.0,69,40,28
+ead2f496-2df0-2bc0-c446-9110f0453c02,male,white,not hispanic or latino,m,m,married,Teaticket,Massachusetts,english (united states),1.148656795707883,63.851343204292114,66.6,0,,45,32,27
+9df4460a-2f66-2d07-de9e-0afaf84bb157,male,white,not hispanic or latino,m,d,divorced,Dalton,Massachusetts,english (united states),3.316865742354409,48.68313425764559,53.5,0,,43,47,43
+88c1ae20-d330-2751-61a7-4bde46a66e49,female,asian,not hispanic or latino,f,m,married,Everett,Massachusetts,english (united states),0.7736223189988698,58.22637768100113,61.0,0,,39,40,29
+c6eee35d-f187-b5a1-1b84-092de92ead30,male,white,not hispanic or latino,m,d,divorced,Millbury,Massachusetts,english (united states),0.2586135161527029,69.7413864838473,72.1,0,,44,35,17
+8aa301fa-e8f5-19d1-7669-b68b162749af,female,white,not hispanic or latino,f,d,divorced,Lynn,Massachusetts,english (united states),9.509598513534144,49.490401486465856,60.7,0,,498,86,503
+564c2f44-41e8-81f7-3017-686069dae2c0,female,white,not hispanic or latino,f,d,divorced,Colrain,Massachusetts,english (united states),0.6816112233722621,68.31838877662774,70.7,0,,48,41,19
+1022284b-d87f-f7da-2d5e-d760d6d38555,female,white,not hispanic or latino,f,m,married,West Falmouth,Massachusetts,english (united states),0.1329210879963095,81.86707891200369,83.9,0,,63,38,8
+62e8114d-ff49-30fa-cf8d-263eaf8046f7,female,white,not hispanic or latino,f,m,married,Gloucester,Massachusetts,english (united states),0.5241220083025602,51.47587799169744,53.8,0,,68,37,26
+74ea33ef-37c3-2f56-860a-0d729615eae2,male,asian,not hispanic or latino,m,m,married,Waltham,Massachusetts,english (united states),0.0990036764174015,40.9009963235826,43.0,0,,53,24,24
+d0010f70-81ad-7f1d-ddf7-187ff499ac35,male,white,not hispanic or latino,m,d,divorced,Leominster,Massachusetts,english (united states),0.3642190436378268,44.635780956362176,47.1,0,,44,34,35
+ff7afb45-4baf-dd51-c412-d32be71f1be6,female,asian,not hispanic or latino,f,s,never married,Sudbury,Chongqing Municipality,chinese,1.160376721000681,60.83962327899932,64.5,0,,54,51,53
+cd7b39c6-fff3-ebe2-626f-0f69355b4bd8,female,asian,not hispanic or latino,f,m,married,Boston,Beijing Municipality,chinese,11.286832116733017,51.71316788326698,64.9,0,,43,38,30
+3df50da9-3be5-b9d0-a176-d5c604bfa780,female,white,not hispanic or latino,f,m,married,Natick,Massachusetts,english (united states),0.469884119386,69.530115880614,76.0,1,71.4,44,33,40
+37c37954-2a0c-ee3e-0499-4729f3583329,female,white,not hispanic or latino,f,m,married,Boston,Massachusetts,english (united states),0.8624315957205492,35.13756840427945,41.5,1,37.4,68,40,29
+76d1b0b0-7fe0-6046-467f-9e3811c1c3ee,male,white,not hispanic or latino,m,m,married,Lawrence,Massachusetts,english (united states),2.7194229129271275,57.28057708707287,62.0,0,,48,41,80
+3bdd4abf-fbe0-7a73-cded-b91e89ebfcf1,male,white,not hispanic or latino,m,m,married,Quincy,Massachusetts,english (united states),11.686727541851022,44.31327245814898,102.0,1,56.7,614,236,906
+5ad1c62a-ade8-708d-f1eb-8feee0aaf050,male,white,not hispanic or latino,m,m,married,Mansfield,Massachusetts,english (united states),8.266409199705047,62.73359080029496,72.8,0,,152,198,311
+20d37765-60d6-c5bf-3ece-b2febd422674,female,white,not hispanic or latino,f,m,married,Amherst,Massachusetts,english (united states),0.3570191181047851,39.64298088189521,42.4,0,,51,40,43
+d4a04b91-6468-eb1b-c815-7e2b8524e129,male,asian,not hispanic or latino,m,s,never married,Walpole,Kiến An,vietnamese,0.6412220651022885,84.35877793489772,99.3,1,86.5,63,40,23
+3d80ad5c-a3ea-7679-8a39-2609c4ae7370,male,asian,not hispanic or latino,m,s,never married,Brookline,Massachusetts,english (united states),0.2467204877854688,64.75327951221453,67.0,0,,42,51,32
+dc892d20-b6f8-9ed5-6afa-e6417600251a,female,white,not hispanic or latino,f,s,never married,Medway,Massachusetts,english (united states),0.1030829624903539,48.896917037509645,51.2,0,,55,37,24
+f9bb342b-8b4b-18e1-8c41-6f0f63df6448,male,white,not hispanic or latino,m,s,never married,Scituate,Massachusetts,english (united states),0.4351314433397267,55.56486855666027,58.3,0,,38,34,61
+84962c7d-d95a-0897-f692-99deec73b5e8,male,asian,not hispanic or latino,m,m,married,Barnstable,Massachusetts,english (united states),0.2860833705656172,66.71391662943438,69.1,0,,41,41,47
+91f01def-aab1-5a81-7b92-d7660a5248f8,female,white,not hispanic or latino,f,m,married,Billerica,Massachusetts,english (united states),0.0,34.0,36.2,0,,70,32,6
+d5e7e0cf-f267-bb55-e80f-c8e38c9a2bdf,male,white,not hispanic or latino,m,s,never married,Walpole,Massachusetts,english (united states),1.3572667364470437,71.64273326355296,74.6,0,,64,39,18
+8730763c-ffb4-68cc-51d8-da68c49d25f6,female,white,not hispanic or latino,f,s,never married,Fall River,Massachusetts,english (united states),0.3789456526109444,32.621054347389055,34.6,0,,61,26,17
+5e6196aa-d304-018f-6f27-9ca182a916e9,female,white,not hispanic or latino,f,s,never married,Brockton,Massachusetts,english (united states),0.0374010740276756,58.96259892597232,60.6,0,,74,35,16
+14bae5da-5392-dc93-3e22-19fb678d5b34,male,white,not hispanic or latino,m,m,married,Foxborough,Massachusetts,english (united states),2.822041462392276,71.17795853760772,75.8,0,,249,159,341
+80062b63-f901-d1f9-963f-a1ec366e84f0,male,asian,not hispanic or latino,m,m,married,Braintree,Massachusetts,english (united states),0.5482058281637172,54.45179417183628,57.2,0,,43,41,31
+f521abab-da69-04c6-9d9d-24d1667c3980,male,white,not hispanic or latino,m,s,never married,Framingham,Massachusetts,english (united states),0.0504036516014793,60.94959634839852,78.5,1,61.2,34,31,37
+3927e058-7f50-7a72-e4e3-756f31635439,male,white,not hispanic or latino,m,m,married,Melrose,Massachusetts,english (united states),0.2581932934090079,54.74180670659099,56.5,0,,37,40,29
+4b9c1991-8733-d3f6-777d-6310b5dd7af2,female,asian,not hispanic or latino,f,d,divorced,Quincy,Massachusetts,english (united states),1.0631720773010072,54.936827922699,57.9,0,,41,42,41
+563a5786-48d1-26b7-becf-df486edcec8d,male,black or african american,hispanic or latino,m,m,married,Boston,Puebla,spanish,0.2759385009121839,40.72406149908782,45.6,1,41.6,54,36,41
+39fead11-fa20-901c-9cc3-9ebc034273b0,female,asian,not hispanic or latino,f,m,married,Belmont,Massachusetts,english (united states),0.5531620826952534,53.44683791730475,56.1,0,,54,40,40
+5ec9dcae-92ca-c816-7b7c-397ad2972a9c,male,white,not hispanic or latino,m,m,married,Springfield,Massachusetts,english (united states),0.4766493450969415,66.52335065490306,69.3,0,,37,35,17
+0748aac2-ae00-81a6-1fb4-7ccb4cbb2edb,female,white,not hispanic or latino,f,s,never married,Somerville,Massachusetts,english (united states),0.7322060094934778,19.26779399050652,22.3,0,,55,39,18
+a4288b99-25a1-7759-bd91-7fc86f08cf31,male,white,not hispanic or latino,m,d,divorced,West Newbury,Massachusetts,english (united states),0.1704088906023589,77.82959110939764,79.8,0,,34,34,27
+008bcca4-c5d3-da0c-1745-e8eaa02a4e89,male,white,not hispanic or latino,m,m,married,Kingston,Massachusetts,english (united states),0.0763528334187835,67.92364716658122,70.2,0,,46,42,16
+6712be3d-237d-a57c-90a2-d748cce14a8a,female,american indian or alaska native,not hispanic or latino,f,m,married,Easton,Massachusetts,english (united states),5.070004796179745,72.92999520382025,80.2,0,,162,181,439
+c8be6296-ba4e-9f65-e724-d763229821fb,female,white,hispanic or latino,f,m,married,Gloucester,Guatemala,spanish,0.2988649848589678,68.70113501514103,71.4,0,,41,34,26
+f8209352-53fe-621d-b281-946cc1868985,male,white,not hispanic or latino,m,m,married,Marlborough,Massachusetts,english (united states),0.7528460815951626,80.24715391840483,82.8,0,,39,38,30
+97fa35c8-1752-eb3e-875d-bcbd7cb0e469,male,white,not hispanic or latino,m,m,married,Cambridge,Massachusetts,english (united states),0.142702838325326,40.85729716167467,50.7,1,41.6,31,29,25
+5ad9f80a-4574-acaf-ec7e-a82651493c5a,male,white,hispanic or latino,m,m,married,Boston,Santiago,spanish,0.4591112094322566,62.54088879056774,64.9,0,,41,33,56
+ea774728-8425-7387-d96f-ed41d14a71d8,male,white,not hispanic or latino,m,m,married,New Bedford,Massachusetts,english (united states),12.087187190692214,44.91281280930779,59.0,0,,42,43,41
+9aa2fcd6-9ab9-0863-6321-56b7f8093e1d,female,white,not hispanic or latino,f,s,never married,Halifax,Massachusetts,english (united states),1.2152266169350068,62.784773383064994,65.9,0,,44,37,55
+cd5e9ee8-99b8-d46c-27a3-08253c6a9faf,female,white,not hispanic or latino,f,m,married,Springfield,Massachusetts,english (united states),9.024418948397194,23.97558105160281,34.5,0,,93,38,7
+55f6cf70-c4d4-9112-d1cf-1c8aeee48166,male,black or african american,not hispanic or latino,m,d,divorced,Pembroke,Massachusetts,english (united states),0.7014252431087802,56.29857475689122,58.7,0,,69,40,20
+9cb5a91e-6d01-1996-6b45-a6ddd9b7076c,male,white,hispanic or latino,m,m,married,Lowell,Baja California,spanish,0.3604487100195818,57.63955128998042,60.0,0,,42,36,38
+392c3390-e26c-1e4f-0805-3cbfe50536b8,female,black or african american,not hispanic or latino,f,s,never married,North Andover,Havana,spanish,0.1490991204687765,21.850900879531224,24.1,0,,58,27,13
+6589312d-40b6-4a24-1fba-e4e0377cdac5,male,asian,not hispanic or latino,m,s,never married,Mansfield,Massachusetts,english (united states),1.1711625634067242,107.82883743659328,110.6,0,,165,187,233
+44aee4e9-a855-80e9-0e6a-aa22faf30946,male,white,not hispanic or latino,m,d,divorced,Melrose,Massachusetts,english (united states),2.1242385392004377,48.87576146079956,56.5,1,51.6,42,41,20
+37da4ac9-e443-4af2-504f-1b791eaad28c,female,white,not hispanic or latino,f,s,never married,Braintree,Massachusetts,english (united states),0.15706658159072,22.84293341840928,24.6,0,,97,21,7
+6f696f18-88da-a343-973e-c5c7ea4ec95f,female,white,not hispanic or latino,f,m,married,Fitchburg,Massachusetts,english (united states),6.446959302369992,96.55304069763,105.2,0,,62,34,3
+4e72ef29-f0e4-35a7-ff7f-b09e2e3110e0,female,white,not hispanic or latino,f,s,never married,Hopedale,Massachusetts,english (united states),0.0411373990405484,24.958862600959453,26.5,0,,83,20,12
+6a638349-4d85-7671-110b-41c3347b1d97,female,white,not hispanic or latino,f,s,never married,Lynn,Massachusetts,english (united states),0.7892470486577157,21.21075295134229,60.7,1,22.7,54,37,39
+d6b2e1d8-f8f2-9a79-6981-e770d5ba1689,female,white,not hispanic or latino,f,w,widowed,Boylston,Massachusetts,english (united states),2.2716862171165326,50.72831378288347,99.8,1,53.7,41,39,16
+a191e434-e2ac-3340-65d7-d47bf011d821,female,asian,not hispanic or latino,f,m,married,Reading,Daegu,korean,0.1232561118320385,57.87674388816796,60.0,0,,51,37,30
+34cb0db6-f0fb-4371-177f-e1f732d2b444,female,white,not hispanic or latino,f,m,married,Concord,Massachusetts,english (united states),12.608142537972634,29.391857462027367,43.9,0,,81,38,4
+f039a531-0885-c211-b943-fa1f0a06c89b,female,white,not hispanic or latino,f,s,never married,Lenox,Massachusetts,english (united states),0.1556414363653799,19.84435856363462,21.5,0,,70,27,12
+5a4beb2a-3577-ad82-30e2-75e84f771d67,male,white,not hispanic or latino,m,s,never married,North Andover,Massachusetts,english (united states),0.2341887155081346,15.765811284491866,17.8,0,,86,18,35
+3ba51040-7d6a-bdc8-56a6-a393899c4f86,male,black or african american,not hispanic or latino,m,d,divorced,Mattapoisett,Massachusetts,english (united states),12.261426072671622,63.738573927328375,110.8,1,76.4,159,139,530
+7f2794d8-c916-9cb3-8635-456b7629d31f,female,white,not hispanic or latino,f,d,divorced,Brookline,Massachusetts,english (united states),0.8480687892088095,55.15193121079119,61.6,1,56.5,43,32,48
+d172514a-6703-7f8e-b76d-a9ddc6e49a5b,male,white,not hispanic or latino,m,s,never married,Westfield,Massachusetts,english (united states),0.0367918001216245,21.963208199878377,23.6,0,,85,24,6
+cffde5f5-9625-13a2-e8a5-a6cba4da2386,female,white,hispanic or latino,f,m,married,Newbury,Massachusetts,english (united states),0.3047097923884704,50.69529020761153,53.0,0,,75,30,19
+2d7d000e-0cab-90b9-d38c-0aaadeb7f170,male,white,not hispanic or latino,m,m,married,Gloucester,Massachusetts,english (united states),29.056877433143992,22.943122566856008,54.3,0,,36,38,37
+156f6800-9c5f-5fbf-6fc1-6b3c2ecb34b7,female,white,hispanic or latino,f,m,married,Westfield,Santiago,spanish,0.5618133701968896,57.43818662980311,60.4,0,,39,32,37
+18568e00-dec1-1bd2-9610-ab98829261eb,female,white,hispanic or latino,f,m,married,Norfolk,Saint Joseph Parish,spanish,0.0229743510220651,30.977025648977936,33.3,0,,69,20,7
+229a1e6d-1714-f0cd-8253-a8729632291e,male,white,not hispanic or latino,m,w,widowed,Boston,Massachusetts,english (united states),0.837739480985653,60.162260519014346,62.8,0,,42,44,17
+8e06552e-0baf-0325-324f-2fe667c2cd98,female,black or african american,not hispanic or latino,f,s,never married,Boston,Massachusetts,english (united states),0.3067681190459417,17.69323188095406,19.8,0,,62,23,11
+d0854ff6-3f99-671d-895a-331fcc61baad,male,black or african american,not hispanic or latino,m,m,married,Yarmouth,Massachusetts,english (united states),1.847566240945024,56.15243375905498,60.2,0,,37,42,20
+d92132ce-06ac-3ab4-217f-97257a290b22,female,white,not hispanic or latino,f,m,married,Newbury,Massachusetts,english (united states),0.4433568053934104,57.556643194606586,59.5,0,,43,35,66
+73e66e72-699f-232b-c6ca-28aad2fd523f,female,white,not hispanic or latino,f,d,divorced,Norwood,Massachusetts,english (united states),7.216142299072714,52.783857700927285,78.6,1,60.3,204,200,259
+98265eb5-a609-e5fe-3764-7117e2ca0695,female,black or african american,not hispanic or latino,f,m,married,Bridgewater,Massachusetts,english (united states),0.19072825092945,63.80927174907055,80.4,1,65.3,34,34,24
+f9de2f2f-2f18-08f4-fc45-a97645b5a1ff,male,white,not hispanic or latino,m,d,divorced,Teaticket,Massachusetts,english (united states),0.132714747545734,46.867285252454266,78.8,1,47.5,53,25,18
+9a8a8cdd-d5e2-e69a-c5cf-4a09eecb37dc,male,white,not hispanic or latino,m,s,never married,Revere,Massachusetts,english (united states),0.5780291098607396,78.42197089013926,80.7,0,,34,37,40
+fcbed1c8-e0b0-8d1b-c1e8-e34dc9eb68c0,female,white,not hispanic or latino,f,m,married,Ipswich,Massachusetts,english (united states),0.0341395453263839,35.96586045467362,37.9,0,,68,21,11
+ad4e7bf8-70fb-b0fe-0804-ca5e248458e2,male,white,not hispanic or latino,m,d,divorced,Ipswich,Massachusetts,english (united states),0.4266124287572541,42.57338757124275,45.1,0,,30,37,38
+c0fae4e0-7d98-df7d-ffe6-bf68100cf5cc,female,white,not hispanic or latino,f,s,never married,Bourne,Massachusetts,english (united states),0.8012861193318959,59.1987138806681,61.5,0,,36,45,22
+4bfd1cb9-8984-249c-c37f-2353c74f66a6,female,white,not hispanic or latino,f,w,widowed,Springfield,Massachusetts,english (united states),0.6656524341786644,77.33434756582133,79.7,0,,33,34,30
+e3515198-93bd-7da0-ba21-3dd7b89ec595,male,asian,not hispanic or latino,m,d,divorced,Dedham,Massachusetts,english (united states),0.5124536150610283,34.48754638493897,37.4,0,,31,47,42
+95a42c1d-dce6-e4b0-5a51-3408f433c248,female,white,not hispanic or latino,f,s,never married,Westborough,Massachusetts,english (united states),0.008975432310752,31.991024567689248,33.9,0,,66,32,8
+acf6d316-7254-766e-e805-a3418b7caa3d,male,white,not hispanic or latino,m,s,never married,Brockton,Massachusetts,english (united states),0.2693996965344168,50.73060030346559,53.1,0,,32,46,39
+fa094489-093c-f542-93e5-3922089a3df5,male,white,not hispanic or latino,m,m,married,Quincy,Massachusetts,english (united states),0.7759075112339691,62.22409248876603,82.3,1,64.0,95,37,544
+5a9d98df-4309-437e-c91f-6d45126e6101,female,white,not hispanic or latino,f,m,married,Attleboro,Massachusetts,english (united states),1.6683875075196188,63.33161249248038,66.5,0,,39,36,37
+3e5bfc73-33e6-5548-ed7f-9ed42e715de8,female,white,not hispanic or latino,f,d,divorced,Beverly,Massachusetts,english (united states),0.1390796365767247,72.86092036342328,75.2,0,,41,41,11
+117acfef-2a46-3a74-17d0-dc71a2bcccac,female,black or african american,hispanic or latino,f,s,never married,Halifax,Ciudad de Buenos Aires,spanish,0.1871319783232996,22.8128680216767,24.5,0,,67,20,9
+4241e7cb-ab7c-57e2-a443-b01f6b86cbdd,female,white,hispanic or latino,f,w,widowed,Dracut,Santiago Province,spanish,0.1316056117929827,66.86839438820702,69.0,0,,40,47,5
+8d46f76d-f9b6-b78b-5c37-217ba316d073,male,asian,not hispanic or latino,m,m,married,Bedford,Massachusetts,english (united states),0.0763555987999342,33.923644401200065,35.6,0,,35,38,47
+e2433c57-a6d6-f14d-cd70-aedaac9abc58,female,white,not hispanic or latino,f,s,never married,Woburn,Massachusetts,english (united states),0.0598620909097615,19.94013790909024,22.0,0,,52,28,16
+3e6584cd-5e14-f543-963f-073b57978742,female,white,hispanic or latino,f,s,never married,Beverly,Guatemala,spanish,0.2386274484918918,47.76137255150811,49.6,0,,70,31,11
+6423f4fb-02dc-7e98-2688-21924d336db2,male,white,hispanic or latino,m,s,never married,Boston,Capital District,spanish,0.5137164936902667,57.48628350630973,59.7,0,,37,48,17
+efbc6738-7f43-117f-95b6-752b7bb069c0,female,white,not hispanic or latino,f,m,married,Sutton,Massachusetts,english (united states),0.4721025754112128,47.52789742458879,49.7,0,,73,22,8
+07ed9e9d-0b57-73c9-7869-51d48c9cf762,female,asian,not hispanic or latino,f,s,never married,Waltham,Shanghai Municipality,chinese,0.211958386078504,24.788041613921497,27.4,0,,55,33,21
+917ab922-ccf7-7849-a879-d42d4df326e4,male,white,hispanic or latino,m,m,married,South Dennis,Francisco Morazán,spanish,7.266800010765609,44.73319998923439,61.8,1,53.2,96,78,407
+319a6201-16de-3bbd-3334-97d3ef9585b7,male,white,not hispanic or latino,m,s,never married,Southampton,Massachusetts,english (united states),0.1283795286310862,57.871620471368914,59.5,0,,49,40,19
+3067c955-ad80-e0d9-fbc3-f954f200d35a,male,white,hispanic or latino,m,m,married,Boston,Massachusetts,english (united states),0.3074784026271452,60.69252159737285,63.2,0,,31,33,59
+4b700b67-9eb3-005d-f28a-afbcb95d3d16,female,asian,not hispanic or latino,f,s,never married,Haverhill,Massachusetts,english (united states),0.3364259199980268,28.66357408000197,31.3,0,,62,28,7
+67773be8-22f0-b24a-04af-37d8b015124a,female,white,not hispanic or latino,f,m,married,Tyngsborough,Massachusetts,english (united states),0.2552142824318373,40.74478571756816,42.8,0,,62,20,15
+36911525-cfcd-2da7-430f-d06c5c64a092,female,black or african american,not hispanic or latino,f,s,never married,Wilmington,Massachusetts,english (united states),0.0050286307842596,22.99497136921574,24.9,0,,57,31,9
+2e735e2a-a004-2386-4701-58cd8114769b,male,white,hispanic or latino,m,s,never married,Worcester,Jalisco,spanish,0.1635806129113834,20.83641938708862,22.9,0,,84,20,10
+3237ddd9-55c0-a584-90cc-83b1d1ae39bf,female,black or african american,hispanic or latino,f,s,never married,Rockport,Saint Andrew Parish,spanish,0.2316551676761918,75.7683448323238,78.1,0,,41,45,22
+62a832c5-d56d-f57d-c07f-446a80de1330,male,white,not hispanic or latino,m,m,married,Grafton,Massachusetts,english (united states),1.3921467381990729,53.607853261800926,57.4,0,,30,35,52
+74e6e0a5-4f52-0316-c366-9024ad92ce62,female,white,not hispanic or latino,f,s,never married,Leicester,Massachusetts,english (united states),0.0251101802390012,59.974889819761,62.1,0,,43,38,17
+fe88120b-9a72-acc9-5ffa-bcc20f3dbd9a,female,white,not hispanic or latino,f,s,never married,Ayer,Massachusetts,english (united states),0.1728251831906144,31.827174816809386,33.8,0,,68,19,5
+69cfd4b1-c8d3-a395-7aea-cfddf136a45a,female,white,not hispanic or latino,f,s,never married,Cambridge,Massachusetts,english (united states),8.38381314592571,64.61618685407429,74.7,0,,584,65,74
+6c434506-fb4b-3e3f-c19d-553dec3b6c17,female,white,hispanic or latino,f,m,married,Lynn,Baja California,spanish,0.2813163311293085,63.71868366887069,65.6,0,,43,44,27
+ae3f13aa-1008-37e4-f5e2-1d5516815efe,female,black or african american,not hispanic or latino,f,s,never married,Brockton,Massachusetts,english (united states),0.1004340333313225,20.89956596666868,22.9,0,,47,42,19
+82c40cea-e9e3-0eac-d56e-01e6475928da,female,white,not hispanic or latino,f,m,married,Arlington,Hesse,german (germany),0.2410813593286862,57.75891864067131,60.1,0,,45,33,21
+e1023705-8bfa-838d-05e3-2616cc2ad182,female,white,not hispanic or latino,f,s,never married,Malden,Massachusetts,english (united states),0.0304483437595581,25.96955165624044,27.6,0,,55,29,7
+0f77e3b6-f35c-375d-1b0e-1b21eea9f7a8,female,white,not hispanic or latino,f,m,married,Medford,Massachusetts,english (united states),0.3311277463848422,31.66887225361516,34.1,0,,48,43,29
+52c236b9-402f-4e8f-170b-13f9b56626bf,female,white,not hispanic or latino,f,d,divorced,Fall River,Massachusetts,english (united states),0.9859444021181548,64.01405559788185,67.3,0,,33,40,17
+c9be63bc-33dd-15fd-5e04-177e9518637d,female,white,not hispanic or latino,f,d,divorced,Carver,Massachusetts,english (united states),0.4255765264660997,50.5744234735339,52.8,0,,57,44,16
+e083c607-7d9b-458b-53ce-09fc27e00532,male,white,not hispanic or latino,m,d,divorced,Lowell,Massachusetts,english (united states),0.7592767497937704,39.24072325020623,42.3,0,,43,40,37
+0b17c51f-e991-4f60-99be-f067e315bfa3,female,white,not hispanic or latino,f,m,married,Pittsfield,Massachusetts,english (united states),0.1815304189382844,49.81846958106171,52.1,0,,72,38,9
+9797b13c-969b-c309-fe3d-afe67c3edcb6,female,white,not hispanic or latino,f,m,married,Holliston,Massachusetts,english (united states),0.0,27.0,29.4,0,,56,29,11
+ebce5729-aeae-ddf6-45ce-ec0a35aa619d,female,white,not hispanic or latino,f,m,married,North Westport,Massachusetts,english (united states),7.657560012947082,58.34243998705292,68.4,0,,368,76,425
+7c6b54c6-e307-d9ed-cda1-d47666b11500,female,white,not hispanic or latino,f,s,never married,Seekonk,Massachusetts,english (united states),0.0006122107609236,14.999387789239076,16.9,0,,73,20,10
+26019caf-a74c-ccdc-e150-e8ff6ec86f3a,female,white,not hispanic or latino,f,s,never married,Boston,Massachusetts,english (united states),0.2421710587348681,14.757828941265132,17.1,0,,80,21,38
+ed7ce592-2b87-494b-8df2-a7a99d839f61,female,white,hispanic or latino,f,m,married,Haverhill,Massachusetts,english (united states),0.4631955605499412,57.53680443945006,60.4,0,,38,47,31
+408ec456-fba8-4f2e-5d42-699d23e2f0f7,male,white,not hispanic or latino,m,m,married,Egremont,Massachusetts,english (united states),0.4785244808753243,44.52147551912468,46.6,0,,31,37,67
+bfd62a79-b0f7-f674-3359-99324800a1e6,male,white,not hispanic or latino,m,d,divorced,Boston,Massachusetts,english (united states),1.248178972955393,75.75182102704461,78.5,0,,38,41,31
+b597b4fa-55af-7d72-bbbd-b66ee10da651,female,white,not hispanic or latino,f,d,divorced,West Yarmouth,Massachusetts,english (united states),0.2896928573691524,55.710307142630846,58.0,0,,32,32,43
+6b592080-0445-950b-f73d-43675c38d03d,male,white,not hispanic or latino,m,w,widowed,Dracut,Massachusetts,english (united states),0.7684802616499833,58.231519738350016,60.6,0,,30,45,23
+e9ab9cf7-b649-a4ee-c20c-67510f7df11a,female,white,not hispanic or latino,f,m,married,Natick,Massachusetts,english (united states),0.3338772402681117,33.66612275973189,36.2,0,,51,29,18
+acba2e81-e45b-23fe-29d7-a17f194fd773,female,black or african american,not hispanic or latino,f,s,never married,Hudson,Massachusetts,english (united states),0.0374893537096573,61.96251064629034,63.7,0,,38,40,15
+dd45bbae-9517-0884-b17d-b64b7cab2632,male,white,not hispanic or latino,m,m,married,South Dennis,Massachusetts,english (united states),0.007539688222439,59.99246031177756,61.5,0,,39,37,39
+18c3c493-71f7-1bc7-5845-bb824b561ec9,male,white,not hispanic or latino,m,d,divorced,Haverhill,Massachusetts,english (united states),18.23021761781022,87.76978238218979,108.5,0,,310,333,888
+62628a15-b94e-99b4-62ee-0c2891d27146,male,asian,not hispanic or latino,m,m,married,Walpole,Hà Đông,vietnamese,8.336897657959575,70.66310234204042,99.3,1,80.5,147,140,532
+8797e093-b8eb-282a-39fd-67e79fe5950b,female,white,not hispanic or latino,f,s,never married,Auburn,Massachusetts,english (united states),0.0406833555846869,21.959316644415317,23.7,0,,55,26,10
+9ad34074-38df-a19c-ba98-6a1360e37d45,female,white,not hispanic or latino,f,s,never married,Fitchburg,Berlin,german (germany),2.5366851304849902,55.46331486951501,60.3,0,,46,44,42
+177f7879-abb1-abc8-1b92-5b3c3cb24da8,male,white,not hispanic or latino,m,m,married,Scituate,Massachusetts,english (united states),9.037777739019509,43.9622222609805,54.6,0,,36,39,28
+9b0e0b02-5799-724e-d565-f58cb3ab75c8,male,white,not hispanic or latino,m,m,married,Hudson,Massachusetts,english (united states),0.6121491798648413,81.38785082013516,84.0,0,,35,39,28
+e5b68186-039e-7139-435d-de20ce112061,female,white,not hispanic or latino,f,s,never married,Lynnfield,Massachusetts,english (united states),0.1814849372187458,23.818515062781252,26.0,0,,40,29,30
+26827a07-38b2-0b35-461d-eeba026ffdac,female,black or african american,not hispanic or latino,f,s,never married,Plymouth,Massachusetts,english (united states),0.1123064611551028,60.8876935388449,63.4,0,,40,36,10
+71ffad9e-07a1-da49-7728-3115ceecdb54,female,white,not hispanic or latino,f,m,married,Melrose,Massachusetts,english (united states),0.3600505494079703,66.63994945059203,69.0,0,,35,41,33
+330c8f73-b209-7725-f752-5514540a61da,female,white,not hispanic or latino,f,s,never married,Pittsfield,Massachusetts,english (united states),0.2315907592280854,25.76840924077192,27.6,0,,62,25,15
+54d82315-a6f5-92ae-1190-ae7f88f3cc43,male,white,not hispanic or latino,m,w,widowed,Lawrence,Massachusetts,english (united states),0.3224267043981969,40.6775732956018,42.8,0,,36,38,22
+1967e9fc-bf90-4d06-b907-5364bd83d533,male,asian,not hispanic or latino,m,m,married,Walpole,Kiến An,vietnamese,6.771392952794195,49.228607047205806,99.3,1,56.9,452,101,180
+2ab606f3-2e40-8e18-62d5-554b6d437a6b,male,white,not hispanic or latino,m,s,never married,Marlborough,Massachusetts,english (united states),0.7606770849292122,24.239322915070787,26.9,0,,51,30,32
+8391f6ce-a05d-bfb5-dc2f-eacfbc9862dc,male,white,not hispanic or latino,m,s,never married,Hubbardston,Massachusetts,english (united states),0.5932242827110985,53.4067757172889,55.6,0,,40,33,39
+3d7bb9f7-28aa-497a-bf85-e4f7da8566ec,female,white,not hispanic or latino,f,s,never married,South Hadley,Massachusetts,english (united states),0.0,20.0,22.3,0,,55,20,10
+2fa9e9cc-068e-09cc-1d8b-dc9246f3b6f1,female,black or african american,not hispanic or latino,f,s,never married,Boston,Massachusetts,english (united states),0.2134541491588502,22.78654585084115,24.9,0,,56,29,12
+e4657a6d-7a97-f86b-dd2e-092c9cf24ac6,male,white,hispanic or latino,m,m,married,Beverly,Massachusetts,english (united states),0.1182875356343166,68.88171246436568,71.2,0,,32,30,31
+fe354eea-6117-9545-357b-7f5f0350a07e,female,black or african american,not hispanic or latino,f,m,married,Woburn,Ile-de-France,french (france),0.358414425615729,65.64158557438427,68.0,0,,31,39,7
+b5ee241c-8d9f-67a4-437a-5665fb026da3,female,white,not hispanic or latino,f,m,married,Rehoboth,Massachusetts,english (united states),0.4033205070852347,54.59667949291477,57.0,0,,35,32,51
+8f977b03-5995-90b5-f0de-7580fda95ad1,female,white,not hispanic or latino,f,m,married,Boston,Massachusetts,english (united states),0.0529436311467637,27.94705636885324,29.8,0,,59,26,9
+316dc774-ca5c-c391-81a5-4dcbd577e211,female,asian,hispanic or latino,f,m,married,Dracut,Massachusetts,english (united states),0.4476525330799557,66.55234746692004,68.9,0,,39,43,30
+16100f10-b180-80d8-7293-192b331e1a4c,female,white,not hispanic or latino,f,m,married,Pembroke,Massachusetts,english (united states),1.0534836882547896,37.946516311745214,40.9,0,,42,26,23
+7622724f-c1cc-cb56-4d51-e6f954d016d9,male,white,not hispanic or latino,m,m,married,Nantucket,Massachusetts,english (united states),3.484969205092189,52.51503079490781,57.9,0,,172,151,302
+2362ed81-5df2-4159-335f-e7ce4dd5ee80,male,white,not hispanic or latino,m,d,divorced,Norwood,Massachusetts,english (united states),3.0396219036920296,36.96037809630797,55.2,1,41.5,35,33,16
+b845789d-a1f9-7d97-dfae-0554184b9a7d,male,asian,not hispanic or latino,m,s,never married,Chelmsford,Massachusetts,english (united states),0.2611999571792106,62.73880004282079,73.3,1,64.4,36,37,29
+3cb00951-f5a6-8180-00d2-ae0322d2ea7d,male,white,not hispanic or latino,m,m,married,Somerville,Massachusetts,english (united states),0.1203159549123434,53.87968404508766,55.8,0,,38,36,18
+9d5736fd-327c-6280-f02b-b0e9da138f7f,male,white,not hispanic or latino,m,d,divorced,Teaticket,Massachusetts,english (united states),0.0008823084504462,76.99911769154956,78.8,0,,33,37,21
+6f45a011-c655-e1b0-3a31-356afcde4554,female,white,not hispanic or latino,f,m,married,Milford,Massachusetts,english (united states),0.745651654556016,60.25434834544399,63.3,0,,33,38,48
+bd0ee38a-4f71-94af-7bd9-6af99e696f66,male,white,not hispanic or latino,m,m,married,Marlborough,Massachusetts,english (united states),0.1652256114864806,41.83477438851352,82.8,1,42.4,28,31,28
+d0000caa-5eb6-16ed-7043-3c4e6851cea8,male,white,not hispanic or latino,m,m,married,Hopkinton,Massachusetts,english (united states),0.7283321032494477,49.27166789675055,52.3,0,,27,31,55
+379e487a-9006-a08f-64c6-583806db7f5f,female,white,not hispanic or latino,f,s,never married,Ocean Bluff-Brant Rock,Massachusetts,english (united states),0.0,25.0,27.2,0,,52,33,5
+04024a05-3f44-17a5-480a-c0bda8f4461b,female,white,not hispanic or latino,f,m,married,New Bedford,Massachusetts,english (united states),1.1324825644489005,61.8675174355511,65.4,0,,44,45,9
+a08803cf-a0f2-dcda-5dce-bf718d0b6927,male,black or african american,not hispanic or latino,m,s,never married,Auburn,Massachusetts,english (united states),0.7325870826617634,37.26741291733824,40.0,0,,26,41,18
+6b04fe32-5403-d11e-5c49-9e33f655e4b2,male,black or african american,not hispanic or latino,m,w,widowed,Wareham,Massachusetts,english (united states),10.097316115862682,48.90268388413732,61.0,0,,233,126,249
+c8452881-2b25-f4ad-50ca-0872b51bbdb0,female,white,not hispanic or latino,f,s,never married,Amherst,Massachusetts,english (united states),0.0256808380457166,20.974319161954284,22.6,0,,87,16,12
+217d4200-9b97-fb83-797b-79db4c3e3730,male,white,not hispanic or latino,m,m,married,Chicopee,Massachusetts,english (united states),0.7464844992851001,48.2535155007149,51.2,0,,34,35,24
+398d92f3-cab5-6b69-1cfb-73a4b2f95aed,female,white,not hispanic or latino,f,s,never married,Hingham,Massachusetts,english (united states),0.899591278832422,67.10040872116758,70.4,0,,35,34,17
+9ef446cc-d378-c369-c361-a0a375e1c7fc,female,asian,not hispanic or latino,f,w,widowed,Waltham,Hong Kong Special Administrative Region,chinese,0.2758144609338733,47.72418553906613,49.6,0,,48,33,25
+470a9649-0b87-5138-f484-811bcb30840e,male,white,hispanic or latino,m,d,divorced,Auburn,Massachusetts,english (united states),0.2682938933007098,52.73170610669929,55.0,0,,36,41,37
+0c230560-2bde-69b4-ad26-811691cfc9ee,female,american indian or alaska native,hispanic or latino,f,m,married,Revere,Puerto Rico,spanish,11.615436064271025,52.38456393572898,65.5,0,,39,38,6
+1a83ffa9-e757-0687-e2c1-f3cf8f7a877c,male,white,not hispanic or latino,m,d,divorced,Attleboro,Massachusetts,english (united states),0.2142853703595189,51.78571462964048,54.2,0,,37,42,18
+ff4cbbd6-e159-7dd2-bd13-225e92920aa9,male,white,not hispanic or latino,m,m,married,Southampton,Massachusetts,english (united states),12.15804188928468,43.841958110715325,58.1,0,,36,36,20
+53c89079-86ea-04fa-d6c0-cfbb3adc2730,female,white,not hispanic or latino,f,m,married,Pepperell,Massachusetts,english (united states),0.0060994411346225,36.99390055886538,39.4,0,,57,20,4
+58c267c0-fbd1-ba71-848b-81f2169ecb65,male,white,not hispanic or latino,m,d,divorced,West Newbury,Massachusetts,english (united states),0.2496326987326826,47.75036730126732,79.8,1,48.8,44,39,9
+ee9436b0-a383-569b-843b-849756bc0c8a,male,black or african american,not hispanic or latino,m,s,never married,Duxbury,Massachusetts,english (united states),6.227759612060962,44.77224038793904,58.5,1,52.0,122,142,305
+699d8767-d40c-29f9-fd9a-e995c274f614,male,white,not hispanic or latino,m,s,never married,Franklin,Massachusetts,english (united states),0.2791146409367328,13.720885359063267,15.6,0,,59,25,41
+05454827-bc91-434e-733b-36278720bf99,female,white,not hispanic or latino,f,d,divorced,Reading,Massachusetts,english (united states),0.84156643603659,57.15843356396341,60.2,0,,43,33,38
+86c7af85-469a-cc16-dc68-77471be7951e,female,black or african american,not hispanic or latino,f,m,married,Boston,Massachusetts,english (united states),0.0886679451290997,65.9113320548709,67.9,0,,34,38,19
+ddb9abbc-7862-3bf7-3953-9e5a2f6d42ad,male,other,not hispanic or latino,m,s,never married,Winthrop,Massachusetts,english (united states),0.0,18.0,19.8,0,,54,21,4
+3fd90f94-bdbe-2bfa-1187-86602908bea4,female,white,not hispanic or latino,f,s,never married,Reading,Massachusetts,english (united states),0.4964261974774343,70.50357380252257,73.4,0,,39,41,11
+44a1e7bd-af71-5bcc-2b30-a6510289411b,female,black or african american,not hispanic or latino,f,s,never married,Danvers,Massachusetts,english (united states),0.3866550137563612,53.61334498624364,56.1,0,,32,28,30
+121245d3-a0c6-3806-1570-9866f53424e9,male,white,not hispanic or latino,m,s,never married,Lincoln,Massachusetts,english (united states),0.358232851842451,42.64176714815755,44.5,0,,37,42,34
+cb8fec64-fa1d-a69d-e12a-1d9d1088ea59,male,white,not hispanic or latino,m,s,never married,Boston,Massachusetts,english (united states),0.0030062594009507,20.99699374059905,23.4,0,,86,22,4
+c5e2662f-42b9-8282-11ed-e914ebdc2b84,female,white,not hispanic or latino,f,m,married,Raynham,Massachusetts,english (united states),0.146219622222354,35.853780377777646,37.8,0,,71,22,9
+4b2add01-29fc-dc36-5edd-3f7c41d9bb59,male,white,not hispanic or latino,m,d,divorced,Barnstable,Massachusetts,english (united states),19.715214774855145,46.28478522514486,71.7,1,66.6,178,145,216
+50f1671b-01ee-67bd-0f5e-5f960a9b3c39,female,other,not hispanic or latino,f,m,married,Townsend,Massachusetts,english (united states),0.4960634749948285,55.50393652500517,91.8,1,57.3,30,35,29
+8196e80b-2dd7-6f13-8bd2-432e7b14e47b,male,white,not hispanic or latino,m,m,married,Boston,Massachusetts,english (united states),0.3932686158820073,30.606731384117992,33.2,0,,31,39,57
+68023077-64c4-6aee-4c12-90c8063032f0,female,white,not hispanic or latino,f,s,never married,Woburn,Massachusetts,english (united states),0.0039559923258967,19.996044007674104,21.5,0,,40,26,9
+533647d5-199f-15fe-2b42-2b88d6b2f37a,male,white,not hispanic or latino,m,m,married,Saugus,Massachusetts,english (united states),1.3319721102154742,64.66802788978453,67.6,0,,31,35,42
+ce1a9697-c4b7-1215-802a-041e8b418df9,female,black or african american,not hispanic or latino,f,s,never married,Chelsea,Massachusetts,english (united states),0.0242376469290758,22.975762353070923,24.5,0,,49,21,13
+0eacdb81-1a02-1704-aec9-b49840109d38,female,white,not hispanic or latino,f,m,married,East Bridgewater,Massachusetts,english (united states),0.0890016439617721,71.91099835603823,73.7,0,,36,38,3
+aa2339fc-067e-9971-59a3-dd387220c95b,male,white,not hispanic or latino,m,m,married,Agawam,Massachusetts,english (united states),0.4052879354645864,62.594712064535415,64.6,0,,32,26,37
+4380ef4d-c4c0-2c93-6c67-e87579ab9991,male,white,not hispanic or latino,m,m,married,Cambridge,Massachusetts,english (united states),0.4091057751336572,46.59089422486634,48.5,0,,30,32,57
+5d8bd6a6-dff0-111e-4b10-2aa443d148e0,female,white,not hispanic or latino,f,m,married,Natick,Massachusetts,english (united states),0.4203033566121202,73.57969664338788,76.0,0,,33,31,18
+c039ec1b-8626-704c-7cca-7423949ebfc3,male,white,not hispanic or latino,m,m,married,Warren,Massachusetts,english (united states),0.078443438482261,74.92155656151773,77.1,0,,35,40,6
+69b22c2f-61d1-22cf-3335-bed11a71930d,male,white,not hispanic or latino,m,d,divorced,Sturbridge,Massachusetts,english (united states),4.1284020821994,51.8715979178006,75.4,1,57.7,245,82,316
+0fdae229-3150-c892-1ced-6aed200669d9,female,white,not hispanic or latino,f,s,never married,Boston,Massachusetts,english (united states),0.0013574555886032,18.9986425444114,20.8,0,,43,24,12
+21a470c5-e9e6-ec48-f25f-aed693b23592,male,white,not hispanic or latino,m,m,married,Lee,Massachusetts,english (united states),0.9402978858461198,62.05970211415388,65.1,0,,35,46,20
+267c053e-b151-0004-72fc-b265b289c653,male,white,not hispanic or latino,m,s,never married,Brewster,North Rhine-Westphalia,german (germany),0.1333287167706942,21.866671283229305,24.3,0,,79,22,4
+eedc8633-a75d-3184-c4ec-8be68652497f,male,white,not hispanic or latino,m,s,never married,Mattapoisett,Massachusetts,english (united states),0.6569074154829809,56.34309258451702,58.8,0,,40,37,37
+318ab8c8-e50e-b598-f598-027a7ea2d3a1,male,white,not hispanic or latino,m,m,married,Amesbury,Massachusetts,english (united states),0.8086797103232053,51.1913202896768,67.0,1,53.5,31,30,26
+704121b2-faf8-6fc0-6b6b-1dc03ffa32a9,male,white,not hispanic or latino,m,s,never married,Amherst Center,Massachusetts,english (united states),0.029472880549184,15.970527119450816,18.1,0,,54,16,6
+96c6853e-cd1f-162d-6a17-212af2f3a00f,female,white,not hispanic or latino,f,m,married,Ayer,Massachusetts,english (united states),0.0097916093975097,34.99020839060249,37.2,0,,57,23,1
+e126d858-770b-0d8a-271a-5304512d491b,male,white,not hispanic or latino,m,m,married,Milton,Massachusetts,english (united states),0.7659051893763307,55.23409481062367,58.1,0,,32,34,32
+8ce0e669-1130-56fd-0661-687500d3953b,male,black or african american,not hispanic or latino,m,m,married,Boston,Massachusetts,english (united states),0.1783353976267413,53.82166460237326,55.7,0,,34,37,16
+b6434e12-d48f-c9f1-7738-6fb5282c74f1,female,other,not hispanic or latino,f,m,married,Newton,Massachusetts,english (united states),0.1274075559658457,65.87259244403415,67.9,0,,32,38,5
+7badd160-39bd-eaff-01ea-faafb6a0f055,female,white,not hispanic or latino,f,d,divorced,Boylston,Massachusetts,english (united states),2.9880353190754154,84.01196468092458,99.8,1,87.3,151,144,116
+8f2b6179-ed3c-00c1-13a2-cd0d7b1a4d9a,female,white,not hispanic or latino,f,s,never married,Palmer,Massachusetts,english (united states),0.5458449140298632,14.454155085970136,17.0,0,,78,10,28
+026637b9-3872-e541-eeac-a5edd07067d0,female,white,not hispanic or latino,f,m,married,South Lancaster,Massachusetts,english (united states),0.0026517809580117,54.99734821904199,56.6,0,,39,27,21
+a9f5b1b0-c354-9b2c-2025-be7f5d50bf6f,male,white,not hispanic or latino,m,s,never married,Hudson,Massachusetts,english (united states),0.2179696817550727,76.78203031824492,84.0,1,77.8,33,35,7
+e8ab517f-2b2b-e9ea-8ef0-d29883031d89,female,white,not hispanic or latino,f,s,never married,Kingston,Masovian,polish,0.3941231296388318,45.605876870361165,47.5,0,,48,33,8
+370cd74d-3b74-af7a-6864-e1bb516d0a0a,female,white,not hispanic or latino,f,m,married,Colrain,Massachusetts,english (united states),0.6882689488553958,50.311731051144605,52.9,0,,49,39,12
+44a8ca45-6c6e-38bb-fac0-ddbf7a7ee3a4,male,white,not hispanic or latino,m,d,divorced,Avon,Massachusetts,english (united states),3.0919776177033165,48.908022382296686,53.6,0,,37,47,38
+75fb2995-e47a-a65c-6a0c-baf0a57c59d2,female,white,not hispanic or latino,f,m,married,Fitchburg,Massachusetts,english (united states),0.4279352359589921,50.57206476404101,105.2,1,52.1,22,20,24
+cd2c1acf-13c2-37b1-2fdb-e60c566129f0,female,white,not hispanic or latino,f,d,divorced,Fitchburg,Massachusetts,english (united states),0.7544537210990514,53.24554627890095,105.2,1,55.5,33,27,14
+3539905f-6c8e-a43c-0c1e-e1a6e5cfb2d5,female,white,hispanic or latino,f,d,divorced,Worcester,Massachusetts,english (united states),0.7321282218689622,61.26787177813104,64.1,0,,30,37,14
+d6552760-be62-7e8d-edf0-954bc7b1cb07,female,white,not hispanic or latino,f,m,married,Woburn,Massachusetts,english (united states),0.2433616598401873,61.75663834015981,64.0,0,,34,31,16
+65420217-7bec-9f62-ea6c-9f059e9ee87c,male,asian,not hispanic or latino,m,m,married,Walpole,Gia Định,vietnamese,3.756834089482929,65.24316591051706,99.3,1,70.3,293,72,289
+03d0bd09-66fc-3927-9022-35d13ba5fd0e,female,black or african american,hispanic or latino,f,m,married,Boston,Massachusetts,english (united states),0.0422676825622332,28.957732317437767,31.4,0,,53,25,7
+6653a385-7135-4c02-b57f-341f0b2aeec5,female,white,not hispanic or latino,f,m,married,Sutton,Massachusetts,english (united states),0.0755012893862951,30.924498710613705,49.7,1,31.3,59,33,9
+e49f8d06-32cd-f4a1-61b2-6d1d4a5151ce,female,black or african american,hispanic or latino,f,s,never married,Boston,Massachusetts,english (united states),0.005477761773323,23.99452223822668,26.2,0,,45,26,9
+3ddd71c8-83e0-c783-f26d-d838d2beab65,male,white,not hispanic or latino,m,d,divorced,Plymouth,Massachusetts,english (united states),0.135591759699687,64.8644082403003,67.3,0,,37,32,16
+3278e0a7-9ee4-4146-e560-13c1c78ccd08,female,asian,not hispanic or latino,f,s,never married,Boston,Massachusetts,english (united states),0.0092642773438101,22.99073572265619,24.6,0,,55,26,12
+2d544964-de01-4845-78b0-c447ceac2ea4,male,white,not hispanic or latino,m,m,married,Agawam,Massachusetts,english (united states),0.4875099660954197,65.51249003390458,67.6,0,,37,40,5
+822322de-2d45-46e6-7f2c-abe2a6760ead,female,asian,not hispanic or latino,f,m,married,Boston,Massachusetts,english (united states),0.6668117869376062,57.33318821306239,60.0,0,,36,45,27
+7d4b6374-266e-b65c-5b12-b8013b29b9ff,female,white,not hispanic or latino,f,s,never married,Dudley,Massachusetts,english (united states),0.0443102205046622,54.95568977949534,57.2,0,,62,21,1
+a77dc2c4-1903-3022-f550-30aead28adbc,female,white,not hispanic or latino,f,s,never married,Kingston,Massachusetts,english (united states),0.4360202396250792,49.56397976037492,51.8,0,,34,31,21
+767e77c0-1c2f-5dda-6843-ae7ee21b0950,female,black or african american,not hispanic or latino,f,m,married,Boston,Massachusetts,english (united states),0.0,33.0,35.5,0,,48,24,7
+ff66a61f-b0aa-a309-f2d6-9e1c529a7095,female,asian,not hispanic or latino,f,d,divorced,Worcester,Massachusetts,english (united states),10.160197996277388,60.83980200372261,73.3,0,,115,130,219
+d844b617-7200-3872-d23d-67ae59e57d77,female,white,not hispanic or latino,f,m,married,Waltham,Massachusetts,english (united states),0.0812130187032108,28.91878698129679,30.6,0,,50,29,8
+d38fcea8-da88-4b39-acb1-5cd531bf39ca,male,white,not hispanic or latino,m,d,divorced,New Bedford,Massachusetts,english (united states),0.0,68.0,69.6,0,,33,40,34
+c4b4a40b-8166-2377-97d4-64abb62d43db,female,white,not hispanic or latino,f,s,never married,Dedham,Massachusetts,english (united states),0.2776062204775,22.7223937795225,25.4,0,,43,23,13
+c2a8c983-78fe-d3e8-3a74-aa9f75deadd3,female,white,not hispanic or latino,f,m,married,Wilmington,Massachusetts,english (united states),3.759222193466632,50.240777806533366,56.3,0,,53,27,4
+39cd2046-7e13-b330-9cff-841dd177d75c,male,white,not hispanic or latino,m,s,never married,Ashland,Massachusetts,english (united states),0.0896692586736769,25.910330741326323,28.2,0,,80,17,3
+a3a7e16c-0aab-14bf-1632-38bc2e3b0dc1,female,white,not hispanic or latino,f,m,married,Lexington,Massachusetts,english (united states),11.95098084275064,65.04901915724936,83.6,1,77.7,32,35,6
+3c07423d-ff56-29e4-25c6-e81ebd84d986,male,white,not hispanic or latino,m,m,married,Andover,Massachusetts,english (united states),0.288201563054235,30.711798436945767,33.0,0,,28,35,32
+92ff2f01-6e5e-ecce-de7d-4cf97975fe63,male,white,not hispanic or latino,m,s,never married,Haverhill,Massachusetts,english (united states),0.0455641536850017,48.954435846315,50.5,0,,32,42,17
+7502a987-a721-cf82-9080-456f66a88529,male,white,not hispanic or latino,m,d,divorced,Winchester,Massachusetts,english (united states),0.3478265647407402,46.65217343525926,48.6,0,,28,34,26
+ff74ac4b-3aba-e86f-16e5-34e3a555d34e,female,white,not hispanic or latino,f,d,divorced,North Reading,Massachusetts,english (united states),0.1496867818421851,61.850313218157815,63.7,0,,34,37,3
+2b283224-3047-1486-e2fa-f7044e5ab67e,male,white,not hispanic or latino,m,m,married,Springfield,Massachusetts,english (united states),9.278011091354342,52.721988908645656,64.2,0,,468,338,393
+325c01bd-a825-af1c-d37a-974b5708d049,female,white,not hispanic or latino,f,w,widowed,Bourne,Massachusetts,english (united states),1.4867834592952958,71.5132165407047,75.4,0,,109,127,262
+9997b8ce-f9ed-19b2-c67c-9e0ae75862a7,female,white,not hispanic or latino,f,s,never married,Hadley,Massachusetts,english (united states),0.0028559013093633,19.99714409869064,22.3,0,,45,27,7
+9c3a8ba0-fc94-6b35-5ed0-0c38e59c74e1,male,white,not hispanic or latino,m,m,married,West Springfield,Massachusetts,english (united states),0.5386341614827862,58.46136583851722,60.5,0,,29,28,6
+c6d2e514-6578-553e-8c6f-3c315c232ae5,female,asian,not hispanic or latino,f,m,married,Boston,Massachusetts,english (united states),0.2920541368421051,61.707945863157896,64.1,0,,36,36,33
+22fb55ed-29d4-9126-4e4f-9ca24df613b2,female,white,not hispanic or latino,f,s,never married,Rockland,Massachusetts,english (united states),25.56544989400076,25.43455010599924,53.1,0,,69,40,9
+f5111027-5333-ae89-2d50-bfe2b5627c15,male,white,not hispanic or latino,m,m,married,Salem,Massachusetts,english (united states),1.1800921705560334,42.81990782944396,46.0,0,,70,40,11
+e0081639-a626-faa8-f227-6942381a6526,female,white,not hispanic or latino,f,m,married,Springfield,Massachusetts,english (united states),0.482628470240267,54.517371529759735,57.4,0,,45,38,8
+6207d867-1e47-c53e-07c2-a0684e7f7522,female,white,not hispanic or latino,f,s,never married,Boston,Massachusetts,english (united states),2.290203651590792,16.709796348409206,47.1,1,19.8,46,30,16
+a625944d-72fe-4793-6c57-e78f7bffa3bd,male,white,not hispanic or latino,m,m,married,Billerica,Massachusetts,english (united states),0.0429999397652023,34.9570000602348,36.6,0,,65,40,3
+e9f6fba9-2005-d6cc-8ec2-2ec2a85fe688,female,white,not hispanic or latino,f,m,married,Worcester,Massachusetts,english (united states),0.0057873925273703,61.99421260747263,64.4,0,,35,49,7
+12e6dd54-169a-78f9-02f0-e7e41b07b0eb,female,white,not hispanic or latino,f,s,never married,Scituate,Massachusetts,english (united states),0.1947772975424334,18.805222702457566,21.2,0,,39,28,8
+4ac83e70-be50-3f77-d9ae-775a062b3431,male,black or african american,not hispanic or latino,m,m,married,Duxbury,Massachusetts,english (united states),12.129784431344008,44.87021556865599,58.5,0,,99,118,427
+145a0a79-d56f-2a6d-fcec-f6b0786f3fdf,male,white,not hispanic or latino,m,s,never married,Douglas,Massachusetts,english (united states),0.211958386078504,24.788041613921497,26.9,0,,51,31,14
+354ec06c-de9d-bd30-d66a-003dddc1ccb8,male,white,not hispanic or latino,m,m,married,Athol,Massachusetts,english (united states),0.547047526963993,44.45295247303601,46.7,0,,28,33,21
+b3982cd2-f1ec-d97c-848c-a019a07bff69,female,white,not hispanic or latino,f,m,married,Plainville,Massachusetts,english (united states),0.0536252354307855,48.946374764569214,51.2,0,,64,26,12
+f64ce1fe-1931-6641-1850-2fd3e263becf,female,white,not hispanic or latino,f,m,married,North Westport,Massachusetts,english (united states),0.4244881824937891,59.57551181750621,61.7,0,,34,38,4
+f6aae6ae-c382-593c-1330-6d6598282031,male,white,not hispanic or latino,m,s,never married,Arlington,Massachusetts,english (united states),5.685910739274073,20.31408926072593,27.8,0,,63,37,5
+6cff0e20-18ad-74bc-c5f9-439b70336bec,male,white,hispanic or latino,m,m,married,Somerville,Massachusetts,english (united states),0.1121488660159455,59.88785113398406,62.3,0,,31,32,6
+7621c614-a87a-29c1-2e8f-9b644af66048,female,white,not hispanic or latino,f,s,never married,Adams,Massachusetts,english (united states),0.0,21.0,22.9,0,,40,21,8
+faa9061d-d7d8-dc62-a403-21ae2582ea52,female,white,not hispanic or latino,f,w,widowed,Longmeadow,Massachusetts,english (united states),0.1423457995017783,42.857654200498224,45.1,0,,41,35,16
+0d72c0f4-1eb2-0a9a-e6be-d01460e992d0,male,asian,not hispanic or latino,m,m,married,Arlington,Massachusetts,english (united states),0.1791265057198744,65.82087349428012,67.7,0,,31,32,6
+1e68f844-7d27-2169-b0b0-f7a98c4271b0,female,white,not hispanic or latino,f,m,married,Woburn,Massachusetts,english (united states),0.4248521753300261,66.57514782466997,68.9,0,,30,34,7
+cb137490-b248-cb4f-4868-e5bfa54a2bb8,female,white,not hispanic or latino,f,m,married,Lowell,Massachusetts,english (united states),3.328270810368493,60.67172918963151,66.0,0,,97,104,374
+1019675f-d980-cb20-1199-e4607742f8a4,female,white,not hispanic or latino,f,m,married,Melrose,Massachusetts,english (united states),0.0836716098484647,57.916328390151534,69.0,1,59.5,34,30,31
+391be8d2-d91b-1dcd-5c74-16a9f301b256,male,white,not hispanic or latino,m,m,married,Plymouth,Massachusetts,english (united states),0.3305221978388384,53.66947780216116,55.8,0,,35,28,8
+a1dc578b-3dbd-38d8-0488-76a452094da8,female,white,not hispanic or latino,f,s,never married,Lexington,Massachusetts,english (united states),0.8478617189254307,81.15213828107457,83.6,0,,34,38,32
+c48b9753-b40c-4b47-b7bd-8012807b1d21,female,white,not hispanic or latino,f,s,never married,Cambridge,Massachusetts,english (united states),0.1032403302057088,14.89675966979429,16.6,0,,60,20,11
+74a3371b-8878-c6d5-32ea-3e5e07b60fda,female,white,not hispanic or latino,f,m,married,Taunton,Massachusetts,english (united states),2.8283556639939094,57.17164433600609,61.7,0,,33,35,28
+4f067e02-3079-9044-3d62-68100f53939c,female,white,not hispanic or latino,f,s,never married,Amherst,Massachusetts,english (united states),0.029862745595127,47.97013725440488,50.0,0,,68,18,5
+21f92730-8315-212a-3b16-63c3ac32fff5,female,white,not hispanic or latino,f,s,never married,Somerville,Massachusetts,english (united states),0.0159153294502684,56.98408467054973,59.1,0,,34,37,7
+33d477d9-1fe8-91c1-cba0-6bd8f8415e65,male,white,not hispanic or latino,m,s,never married,Chicopee,Massachusetts,english (united states),0.1555609441706091,13.84443905582939,15.8,0,,57,18,40
+7e888e03-f8f7-a058-29b8-361967a2d81d,male,black or african american,not hispanic or latino,m,m,married,Fall River,Massachusetts,english (united states),0.256052169143564,41.74394783085644,44.2,0,,25,21,35
+9b548a0f-34e9-a068-90ae-77c1a865e137,male,asian,not hispanic or latino,m,w,widowed,Lancaster,Massachusetts,english (united states),0.3975292958596492,58.60247070414035,61.4,0,,30,37,5
+a8ab8530-d764-7bc1-c997-e2de5a04eb40,female,white,not hispanic or latino,f,d,divorced,Wakefield,Massachusetts,english (united states),5.51241538474337,74.48758461525662,82.5,0,,408,39,30
+25bc147b-7e14-a829-9b51-76f9fb63fd5c,male,black or african american,not hispanic or latino,m,m,married,Malden,Massachusetts,english (united states),0.1857026908465632,56.81429730915344,59.3,0,,32,35,7
+090a43d1-a2da-9b68-4356-762974ab77c5,male,white,not hispanic or latino,m,w,widowed,Blackstone,Massachusetts,english (united states),0.8965734046891887,44.103426595310815,46.8,0,,38,33,33
+c0030758-11ef-5daa-6437-e0f2d246f33a,female,white,not hispanic or latino,f,m,married,Taunton,Massachusetts,english (united states),1.7247659908809552,35.275234009119046,39.4,0,,37,22,9
+f21b096b-1141-16d5-c9c7-554d02c6f119,female,white,not hispanic or latino,f,d,divorced,Attleboro,Massachusetts,english (united states),0.5878135878770391,108.41218641212296,110.7,0,,38,32,10
+62cfcab7-ace5-da4f-9106-d7531e624dfb,male,white,not hispanic or latino,m,s,never married,Springfield,Massachusetts,english (united states),0.5041217924062453,44.49587820759376,46.6,0,,33,39,20
+86841984-1f63-9edf-6d6b-e377fc569090,male,asian,not hispanic or latino,m,m,married,Westwood,Chongqing Municipality,chinese,0.3025811304922261,44.69741886950777,46.5,0,,33,33,16
+bf1f2309-4112-d8c0-a800-0b2a205b6ec3,male,asian,not hispanic or latino,m,m,married,Somerville,Incheon,korean,0.0978733731089369,45.90212662689106,48.3,0,,25,36,9
+5c5adcd5-286c-6804-7f0e-189322f7f25a,female,white,not hispanic or latino,f,s,never married,Taunton,Massachusetts,english (united states),0.0913915521256143,9.908608447874386,12.1,0,,48,25,38
+8f4db69b-8ada-f997-af3d-cbd41645de7b,male,white,not hispanic or latino,m,m,married,Auburn,Massachusetts,english (united states),0.2801425795476491,48.71985742045235,50.8,0,,29,33,38
+fb00b97e-91b2-234e-4c91-09276b3d8366,female,white,not hispanic or latino,f,d,divorced,Waltham,Massachusetts,english (united states),0.8448608032054875,57.15513919679452,59.6,0,,29,32,6
+653475c7-2f20-f902-4e24-379c7e0cfc4b,female,white,hispanic or latino,f,m,married,Sterling,Saint Andrew Parish,spanish,6.004199090285521,56.99580090971448,64.6,0,,132,80,226
+61794065-23e6-8a08-be33-592cf42b2144,female,white,not hispanic or latino,f,m,married,Revere,Massachusetts,english (united states),0.0160047086723874,31.983995291327613,34.3,0,,52,28,7
+afc05825-7553-a616-058b-daa2ebb34054,male,white,not hispanic or latino,m,s,never married,North Adams,Massachusetts,english (united states),0.2620714917078524,11.737928508292148,14.4,0,,49,26,13
+5a438936-9fc0-e879-af7f-f7b628a8e506,male,black or african american,not hispanic or latino,m,m,married,Boston,Massachusetts,english (united states),0.3492073793259151,36.65079262067408,39.2,0,,26,33,39
+7aefc7b2-707a-c73f-09dc-85f109c7e6d1,male,white,not hispanic or latino,m,s,never married,Everett,Massachusetts,english (united states),1.1229283477558811,20.87707165224412,23.9,0,,39,29,31
+cd9819c3-4969-be74-23b1-e52f74db4c81,male,black or african american,not hispanic or latino,m,s,never married,Winthrop,Massachusetts,english (united states),0.0,25.0,27.4,0,,31,39,32
+8ded18e2-cdf6-1cea-96ec-c148069ff9a3,female,white,not hispanic or latino,f,d,divorced,Boston,Massachusetts,english (united states),0.292360977757027,41.70763902224297,72.5,1,42.7,56,25,7
+ed95baea-6b99-fbd8-5dde-6b6402221cfb,female,white,not hispanic or latino,f,m,married,Winchester,Massachusetts,english (united states),0.0755553728312909,60.92444462716871,62.5,0,,32,33,10
+c8cbe91f-0a8b-9054-fc19-69e5e25c02b2,female,white,not hispanic or latino,f,m,married,Dartmouth,Massachusetts,english (united states),0.0,52.0,53.5,0,,54,27,5
+4aa2635f-3681-d575-7333-6aa2bc130bc2,male,white,not hispanic or latino,m,m,married,Norton,Massachusetts,english (united states),0.503395626058324,40.49660437394168,42.9,0,,30,40,17
+28f8c7f8-74a2-6e53-bd8a-174b74022097,female,black or african american,not hispanic or latino,f,s,never married,Amherst,Massachusetts,english (united states),0.0132567236053703,18.98674327639463,20.8,0,,44,21,7
+dabdb000-28eb-c5a5-14e1-5ca4acd5f9b1,female,white,not hispanic or latino,f,w,widowed,Boston,Massachusetts,english (united states),2.4709678232124235,68.52903217678758,72.5,0,,120,107,178
+2e1010a4-bf9d-dddc-4d07-d60816ab1a85,male,asian,not hispanic or latino,m,m,married,Braintree,Beijing Municipality,chinese,0.2490415537543521,64.75095844624565,67.3,0,,29,34,5
+c836033e-7556-7c59-963a-5e67a903cebf,male,white,not hispanic or latino,m,d,divorced,Shelburne,Massachusetts,english (united states),0.0967492768952251,44.903250723104776,46.7,0,,30,34,23
+883c2b4d-c229-8805-bd31-369ecff9fd92,female,white,not hispanic or latino,f,s,never married,Needham,Massachusetts,english (united states),0.0494092732249887,22.95059072677501,24.7,0,,44,24,9
+ffda3cf9-d1d3-24ea-db27-ce6db73d4590,female,white,not hispanic or latino,f,m,married,Brockton,Massachusetts,english (united states),3.217228228110553,59.78277177188944,64.8,0,,33,29,40
+0d7f673c-e7ef-53d0-f561-1a7e9dd15d0c,female,white,not hispanic or latino,f,m,married,Taunton,Massachusetts,english (united states),0.360197587663622,55.63980241233638,58.3,0,,33,31,29
+1ac12666-674b-e796-cac9-79d1f5bd7e8d,female,white,not hispanic or latino,f,m,married,Pembroke,Massachusetts,english (united states),0.1106294244858526,30.889370575514143,33.0,0,,50,19,8
+8993a93d-d0a9-1d95-769e-c441747964e2,male,white,not hispanic or latino,m,m,married,Lynn,Massachusetts,english (united states),0.4115117287712559,46.58848827122874,49.1,0,,25,34,48
+0665f4a3-e63e-beba-2266-ad0f6264e368,female,white,not hispanic or latino,f,d,divorced,Middleborough,Massachusetts,english (united states),0.1765753536732178,41.82342464632679,44.5,0,,61,29,6
+4dacbbe6-9dbe-3fef-79e1-b8edb0ed15c7,female,white,not hispanic or latino,f,s,never married,Andover,Massachusetts,english (united states),0.0869516485110325,7.913048351488968,10.4,0,,44,30,37
+a0fda026-78ff-c903-f738-100ff593f6b4,male,white,not hispanic or latino,m,d,divorced,Fitchburg,Massachusetts,english (united states),0.5347407546329708,56.46525924536703,59.2,0,,28,34,14
+ee5cc5eb-38a7-ed2c-cc72-fb2e4eab7419,female,white,not hispanic or latino,f,s,never married,Lynn,Massachusetts,english (united states),9.330915525209123,64.66908447479088,76.2,0,,91,103,116
+c83bda26-a024-79a2-663b-948cca9038af,male,white,not hispanic or latino,m,s,never married,Shrewsbury,Massachusetts,english (united states),0.2745838072172558,26.725416192782745,29.2,0,,34,36,17
+a89bf1cb-e014-0243-c671-7df0230da865,female,white,hispanic or latino,f,m,married,Wilbraham,Massachusetts,english (united states),0.4467738069701933,58.55322619302981,61.4,0,,28,43,5
+dbc6f81f-254d-de29-fa5f-1d4af059d11d,female,white,not hispanic or latino,f,w,widowed,Lynn,Massachusetts,english (united states),0.1011751838580665,52.89882481614193,54.5,0,,57,28,8
+54f1059e-6250-3949-6dd0-1dda9b85d22a,female,white,not hispanic or latino,f,s,never married,Malden,Massachusetts,english (united states),0.2231003481062098,20.77689965189379,23.2,0,,39,27,7
+8aabb9b9-e5b6-d3c9-ad27-46d0aea45cfa,female,white,not hispanic or latino,f,m,married,Newton,Massachusetts,english (united states),0.7708999493548006,58.2291000506452,60.7,0,,30,38,9
+4e5a3b35-5cbb-f960-ebfb-671bb75740ae,female,white,not hispanic or latino,f,m,married,Amesbury,Massachusetts,english (united states),0.1427828723719421,57.85721712762806,60.1,0,,32,23,11
+5bb262b8-6ab9-c3d6-5c84-49d6c7ef9555,female,asian,not hispanic or latino,f,s,never married,Peabody,Incheon,korean,0.0381124788768372,28.961887521123163,30.6,0,,52,21,7
+88484ab3-c310-c8d6-9f58-434a024a95b4,female,white,not hispanic or latino,f,m,married,Fall River,Massachusetts,english (united states),0.2160221176793884,52.78397788232061,55.0,0,,39,31,19
+ef8df187-dc9d-6835-3b16-393b9344eb04,female,white,not hispanic or latino,f,m,married,Ashland,Massachusetts,english (united states),0.9037128957462256,35.096287104253776,37.9,0,,66,30,2
+5c03902c-9753-841f-abca-3a8c0c97d618,male,white,not hispanic or latino,m,w,widowed,Fitchburg,Douro Litoral,portuguese,0.3058162973667797,53.69418370263322,56.1,0,,33,40,9
+88ccc6b4-d666-2a3c-3262-a29f110fc710,male,white,not hispanic or latino,m,w,widowed,Mashpee,Massachusetts,english (united states),22.05747103053203,32.94252896946797,57.0,0,,219,55,215
+895335c3-cbd6-5636-9bf7-3725cc81aee1,female,white,not hispanic or latino,f,m,married,Cambridge,Massachusetts,english (united states),0.0368502196370453,45.96314978036296,48.3,0,,42,25,11
+c72d4723-f668-22d2-fc4a-5435cdd890d0,female,white,not hispanic or latino,f,m,married,Stoughton,Massachusetts,english (united states),0.1628121026656317,42.83718789733437,70.9,1,43.7,33,27,11
+1bdb2445-4cab-2601-d6c2-86cc725d7e25,male,white,hispanic or latino,m,s,never married,Saugus,San Jose,spanish,0.5055645437594741,42.49443545624053,44.8,0,,24,31,15
+9d40b361-9e2c-9bb0-2d74-e9d12a67342f,female,white,not hispanic or latino,f,m,married,Dartmouth,Massachusetts,english (united states),0.2176412435669005,59.7823587564331,62.1,0,,28,27,61
+85ad2ba3-3ae9-b49a-3bda-89335e38be1d,female,white,not hispanic or latino,f,s,never married,Westwood,Massachusetts,english (united states),0.0852167716320659,46.91478322836793,49.2,0,,60,24,12
+e01ffe4c-12a0-e8be-73f1-cc8b0a6f52b9,male,black or african american,not hispanic or latino,m,m,married,Mattapoisett,Massachusetts,english (united states),0.0500616870915531,50.94993831290844,110.8,1,51.8,30,31,12
+8f64bb2c-2064-d1c0-3d44-88fa2ee0ee75,male,white,hispanic or latino,m,m,married,Saugus,Massachusetts,english (united states),0.0441803681266636,39.95581963187334,82.9,1,41.2,29,29,12
+eb625b63-88fa-786c-93aa-7263d3247774,male,white,not hispanic or latino,m,s,never married,Medford,Massachusetts,english (united states),0.6395559681927746,34.360444031807226,36.8,0,,26,38,22
+f0de1852-3ea8-3cc4-14d6-1d28f706df48,female,white,not hispanic or latino,f,s,never married,Attleboro,Massachusetts,english (united states),0.0,18.0,110.7,1,19.2,34,26,5
+84fd0882-e176-6560-2380-284ab4da8e91,male,white,not hispanic or latino,m,s,never married,Abington,Massachusetts,english (united states),0.0455069541017522,18.954493045898246,21.1,0,,38,22,12
+70ea2908-b9b4-f4bb-beef-c65d58d8462b,male,white,not hispanic or latino,m,s,never married,Cambridge,Massachusetts,english (united states),5.77233038482523,66.22766961517478,76.4,1,73.1,111,97,139
+a559e74f-3a37-260f-f008-5a44b18bad54,male,white,not hispanic or latino,m,d,divorced,Stoneham,Massachusetts,english (united states),0.1833102487231518,54.81668975127685,57.4,0,,30,33,3
+a8e0ed3e-b413-baa2-b428-ec52e0ab2ace,female,white,not hispanic or latino,f,s,never married,Waltham,Massachusetts,english (united states),0.5513301578518233,11.448669842148178,14.1,0,,36,14,33
+a57bee94-e730-b510-59c9-a377414b4f02,female,white,not hispanic or latino,f,w,widowed,Taunton,Massachusetts,english (united states),0.397724471142116,66.60227552885789,68.7,0,,32,32,18
+1de05242-d775-2861-3bb4-4b052fbad613,male,white,hispanic or latino,m,w,widowed,Hopkinton,Massachusetts,english (united states),0.6341512798186826,55.36584872018132,58.0,0,,31,35,4
+75a6b100-52f2-8674-480c-274bbc0246dd,female,white,not hispanic or latino,f,m,married,Taunton,Massachusetts,english (united states),4.652400927068473,22.347599072931526,29.3,0,,55,31,4
+16199a64-4f51-23e9-8103-d992fff334fc,male,white,not hispanic or latino,m,m,married,Boston,Massachusetts,english (united states),0.4140255731479683,27.585974426852037,29.8,0,,23,38,15
+ffd1b1fe-313a-2f01-7ac2-3eecf93f772b,male,white,hispanic or latino,m,m,married,Springfield,Saint Andrew Parish,spanish,0.2758144609338733,47.72418553906613,50.1,0,,29,34,16
+df99888c-bfe7-bbe0-a5bd-c2c65ebbc5f0,female,white,not hispanic or latino,f,s,never married,Malden,Hamburg,german (germany),0.0071397532734082,15.992860246726591,18.0,0,,39,21,11
+8f6ec47c-9485-1fe9-f8ba-30c141953689,female,black or african american,not hispanic or latino,f,s,never married,Boston,Chihuahua,spanish,0.0,18.0,19.9,0,,35,27,12
+fbfc84ed-5cc1-2ec7-2388-809766504a15,female,white,not hispanic or latino,f,m,married,Blackstone,Massachusetts,english (united states),0.1438777099853958,34.8561222900146,36.7,0,,30,25,10
+932ec607-56e1-14c6-bbf7-fe967331e184,female,asian,hispanic or latino,f,m,married,Methuen,Massachusetts,english (united states),2.280645883479548,65.71935411652045,69.9,0,,88,84,100
+38933438-06c3-7104-1261-35dae650348a,male,asian,not hispanic or latino,m,d,divorced,Medford,Massachusetts,english (united states),0.161619680091029,52.83838031990897,54.9,0,,34,36,14
+91ea2609-141e-d705-a0a7-c8951c533bf0,female,white,not hispanic or latino,f,s,never married,Waltham,Massachusetts,english (united states),0.0412452467268291,31.95875475327317,33.5,0,,51,29,3
+f69b3a22-336e-e9b4-7216-3503fc0e3efc,male,white,not hispanic or latino,m,s,never married,Kingston,Massachusetts,english (united states),0.1455952731710291,11.854404726828973,14.3,0,,39,23,43
+ee351022-e70b-486b-de7f-208db1391ff1,female,white,not hispanic or latino,f,m,married,Boston,Massachusetts,english (united states),0.1221844180083576,31.87781558199164,34.2,0,,54,24,9
+b4094487-ec2b-99d0-85e9-1418403fbe1e,female,white,not hispanic or latino,f,m,married,Greenfield,Massachusetts,english (united states),0.0627692372267202,74.93723076277328,77.1,0,,29,22,3
+5320b8ca-dee3-6252-0424-107e31ade8b0,female,white,hispanic or latino,f,s,never married,Lawrence,Santiago,spanish,0.2159370109596721,20.78406298904033,22.5,0,,31,30,13
+f74ab305-10bc-d8f0-f8cc-0da474d47806,male,white,not hispanic or latino,m,s,never married,Malden,Massachusetts,english (united states),0.0063172353952615,62.99368276460474,65.3,0,,34,32,8
+f87c237f-5b7c-4994-4fd1-03299c7bbb6e,female,white,not hispanic or latino,f,m,married,Pittsfield,Massachusetts,english (united states),0.3584530170967616,64.64154698290324,66.9,0,,30,34,2
+cdcdd708-5b8e-28e1-6f6b-ed786009f7a2,female,white,hispanic or latino,f,s,never married,Boston,Puerto Rico,spanish,0.1089198497201738,32.89108015027983,34.7,0,,40,23,14
+54e7e761-19ca-72bc-b8d8-9d32c94eebed,male,white,not hispanic or latino,m,m,married,Framingham,Massachusetts,english (united states),0.2128682453339354,60.78713175466606,62.7,0,,24,30,38
+2add8cb0-9ec4-15de-4e5b-e812509a5068,female,white,hispanic or latino,f,m,married,Gardner,Mexico City,spanish,9.427817179947176,44.57218282005282,56.0,0,,432,227,528
+bbc06275-1d30-c95b-2a7f-20d8620570a5,male,asian,not hispanic or latino,m,m,married,Mansfield,Massachusetts,english (united states),5.043168705447061,71.95683129455294,110.6,1,77.7,148,91,140
+3f09d39d-41dc-6164-5e24-5f8135246bda,female,white,not hispanic or latino,f,m,married,Watertown,Massachusetts,english (united states),0.3476462626927969,49.6523537373072,51.6,0,,36,33,17
+3337c737-a709-58ff-a8dc-9be7109c48ac,male,white,not hispanic or latino,m,m,married,Grafton,Massachusetts,english (united states),9.198951975157732,50.80104802484227,61.9,0,,28,29,5
+11d6d004-5107-6a5c-a340-728939ca8e79,female,white,not hispanic or latino,f,m,married,Dartmouth,Massachusetts,english (united states),0.5512924067724271,35.448707593227574,38.4,0,,49,26,8
+6c52c774-934f-40d1-5637-858f2b873f0f,female,white,not hispanic or latino,f,s,never married,Franklin,Massachusetts,english (united states),0.0,22.0,23.6,0,,37,27,6
+b6c6ddb9-d527-7cf6-ef42-64b855348f14,female,white,not hispanic or latino,f,s,never married,Brookline,Massachusetts,english (united states),0.014648241983168,80.98535175801683,83.2,0,,27,26,6
+64325625-13ed-9a9f-f5a0-1a5270a139eb,male,white,not hispanic or latino,m,m,married,Salisbury,Massachusetts,english (united states),0.0118620281862098,55.98813797181379,58.4,0,,28,28,6
+58e59ace-3f72-66b3-9fa3-1f7583afb4c2,female,white,not hispanic or latino,f,m,married,Worcester,Massachusetts,english (united states),0.0659928843568121,31.934007115643187,33.9,0,,39,25,11
+d57c0e6a-f232-c17b-23b0-fb49bce39a87,male,other,hispanic or latino,m,s,never married,Melrose,Saint Joseph Parish,spanish,0.0047510945601115,15.995248905439889,18.3,0,,28,27,6
+68ce6e7f-1a82-e256-89b9-41f21c604e7b,female,asian,not hispanic or latino,f,s,never married,Boston,Massachusetts,english (united states),0.0024622628726749,13.997537737127326,16.2,0,,56,16,7
+0303c05a-5465-c2c7-22dd-b12df74ef629,female,white,not hispanic or latino,f,s,never married,Ashfield,Massachusetts,english (united states),0.0612195464983648,19.93878045350164,22.1,0,,39,30,11
+97e13678-f9ce-af53-56ad-fff4b3bc4384,female,white,not hispanic or latino,f,m,married,Needham,Massachusetts,english (united states),7.824008467500637,38.17599153249936,47.7,0,,126,88,176
+9a36bba7-9a37-1a54-83e0-4673525f26a8,female,black or african american,not hispanic or latino,f,s,never married,Boston,Massachusetts,english (united states),0.0189789752184644,18.981021024781537,77.0,1,20.3,32,24,10
+8b02510f-6ec2-a5ac-54db-3a6eb0e83625,female,white,not hispanic or latino,f,s,never married,Boston,Massachusetts,english (united states),0.0,19.0,21.4,0,,38,23,6
+8d091ce8-ac29-a58d-a09a-50cf5aff34b6,female,native hawaiian or other pacific islander,not hispanic or latino,f,m,married,Tewksbury,Massachusetts,english (united states),0.1699398422262258,49.83006015777377,52.2,0,,32,36,6
+478341e1-7eba-aed6-beeb-3bdcae641380,male,white,not hispanic or latino,m,m,married,Lynn,Massachusetts,english (united states),0.2453487195041978,58.7546512804958,60.8,0,,26,35,1
+1a015d2b-80ba-978c-ec82-2b3843261ece,female,white,not hispanic or latino,f,m,married,Franklin,Massachusetts,english (united states),0.1151514624973183,34.884848537502684,37.3,0,,36,25,21
+57aee294-c157-5296-b6fc-433a6fed7b76,male,black or african american,hispanic or latino,m,s,never married,Uxbridge,Saint George,spanish,0.0722334726274976,30.9277665273725,33.0,0,,23,32,7
+207ee6bf-615f-c481-f073-65d45051e472,female,white,not hispanic or latino,f,s,never married,Ipswich,Massachusetts,english (united states),0.1878245505986134,6.812175449401386,8.5,0,,41,18,33
+ca6a23ee-a918-66b5-175d-baec5aba23f1,female,white,not hispanic or latino,f,m,married,Cambridge,Massachusetts,english (united states),0.0050894584399438,50.99491054156005,52.7,0,,29,22,14
+b4876d6a-b35a-67b4-4166-3534d0de3f1b,female,white,not hispanic or latino,f,s,never married,Holden,Massachusetts,english (united states),0.0350764170123625,5.9649235829876375,7.8,0,,36,20,28
+9ecb78eb-1783-f5e7-2527-05dcb17916d8,male,white,not hispanic or latino,m,w,widowed,Ashburnham,Massachusetts,english (united states),0.3129277620984437,53.68707223790155,55.8,0,,27,30,4
+472e40b9-741d-5ac2-4448-9afabd9aeaac,male,white,not hispanic or latino,m,d,divorced,Cambridge,Massachusetts,english (united states),8.256289500268513,39.743710499731485,50.2,0,,81,105,149
+da2cc732-b7a1-3fd6-be04-2a48fa457a28,male,white,hispanic or latino,m,d,divorced,South Dennis,Francisco Morazán,spanish,0.2491636136948602,59.75083638630514,61.8,0,,26,31,4
+8f48bcc9-693d-5a6e-2ed2-1bc7f7251579,female,white,not hispanic or latino,f,w,widowed,Brockton,Massachusetts,english (united states),0.3002457960563638,64.69975420394364,67.2,0,,27,29,5
+45c227d1-47d4-a03c-d1c8-a03f4c157245,female,white,not hispanic or latino,f,d,divorced,Rehoboth,Massachusetts,english (united states),0.7706327512821131,57.229367248717885,59.9,0,,34,33,18
+d141033b-f16a-37ea-165d-66bc0869ae74,male,white,hispanic or latino,m,m,married,Marblehead,National District,spanish,0.3256046374412041,34.6743953625588,37.0,0,,24,27,39
+c4046233-ec75-e2bf-4f3d-4ce6626c02da,male,white,not hispanic or latino,m,s,never married,Wayland,Massachusetts,english (united states),0.0,17.0,18.7,0,,32,28,7
+5511bc33-72d9-5115-f06c-86bbecd30785,female,white,not hispanic or latino,f,m,married,Cambridge,Massachusetts,english (united states),0.2559845718246245,30.744015428175377,32.5,0,,46,20,6
+68748799-b74d-47da-a8a3-6b84d4affa00,male,white,not hispanic or latino,m,m,married,Lawrence,Massachusetts,english (united states),0.4800349486669408,54.51996505133306,57.2,0,,30,29,14
+bdb9eddb-2599-2ad2-22fc-623a24917508,male,white,not hispanic or latino,m,s,never married,Westminster,Massachusetts,english (united states),0.3590839376480623,18.640916062351938,20.6,0,,34,27,11
+91c0bec5-5982-b179-be40-de7e9e26ec38,male,white,not hispanic or latino,m,s,never married,New Bedford,Massachusetts,english (united states),0.2043573862572883,20.79564261374271,22.6,0,,35,28,10
+c9a9cf00-3c92-afda-4c31-69dcfad15fec,female,white,not hispanic or latino,f,s,never married,Weston,Massachusetts,english (united states),0.1358707352207236,18.86412926477928,21.0,0,,34,22,12
+943f2a44-c646-f0dd-5bb4-4e3a33489918,female,white,not hispanic or latino,f,d,divorced,Arlington,Massachusetts,english (united states),3.861893814121749,79.13810618587826,84.6,0,,82,95,207
+67d19d8e-111e-1630-091c-a74cd08eadf6,male,white,not hispanic or latino,m,s,never married,Bourne,Massachusetts,english (united states),2.653847193309894,30.346152806690107,35.3,0,,24,35,38
+42cf62bc-f52a-fe2e-83f1-2c6923a77554,female,white,hispanic or latino,f,m,married,Lawrence,Guatemala,spanish,6.445655910972771,24.55434408902723,33.0,0,,44,22,7
+5b487563-d72d-1d1e-8964-fec6508febbd,male,white,not hispanic or latino,m,m,married,Maynard,Massachusetts,english (united states),0.1044416332977771,62.89555836670223,65.4,0,,27,29,11
+943a880d-5b64-0c86-2b5a-1fdd609b2bbd,female,white,not hispanic or latino,f,s,never married,Williamstown,Massachusetts,english (united states),0.052248001783147,22.94775199821685,24.8,0,,39,28,9
+27262ece-381a-7c6d-b025-1edab394ff5a,male,white,not hispanic or latino,m,s,never married,Westborough,Massachusetts,english (united states),0.4680320082666556,42.53196799173335,44.6,0,,27,22,14
+690cb699-1595-0342-0327-d8b73969660c,male,white,not hispanic or latino,m,s,never married,Worcester,Massachusetts,english (united states),0.1045131550305913,18.89548684496941,20.9,0,,34,24,6
+79e22b06-fb4c-c9dd-fc49-8402ce5e5147,female,white,not hispanic or latino,f,s,never married,Quincy,Massachusetts,english (united states),0.1189456842207291,15.88105431577927,18.4,0,,27,23,11
+bb64b13d-82c8-1f33-6eb0-473e95b39559,male,white,not hispanic or latino,m,d,divorced,Townsend,Massachusetts,english (united states),0.0531986106086818,52.94680138939132,55.4,0,,24,32,4
+054e3811-276c-6db7-4663-67e2f89486e7,male,white,not hispanic or latino,m,s,never married,Duxbury,Massachusetts,english (united states),0.1986446081441246,70.80135539185588,72.9,0,,28,27,18
+6e7b2121-8131-8908-29b1-e815f92aadcb,female,white,not hispanic or latino,f,m,married,Boston,Massachusetts,english (united states),0.0092135755497837,31.990786424450217,33.8,0,,40,23,8
+70ec764b-0b2a-d15f-b7c5-befe5065f882,male,white,not hispanic or latino,m,d,divorced,Chicopee,Massachusetts,english (united states),0.2881741901354961,60.71182580986451,68.0,1,62.5,326,32,68
+9e3b0b3e-c9c2-1eb9-a3b7-7fd243a5b3a1,female,white,not hispanic or latino,f,m,married,Lynn,North Rhine-Westphalia,german (germany),0.1317062378235491,48.86829376217645,51.1,0,,38,22,5
+e8736c9c-b2d5-71a7-471a-18f8322a7504,female,white,not hispanic or latino,f,s,never married,Braintree,Massachusetts,english (united states),0.0736170938730644,7.926382906126935,9.9,0,,37,19,33
+ade152c3-c73a-0886-57fc-79a87aaac565,female,white,not hispanic or latino,f,s,never married,Ocean Bluff-Brant Rock,Massachusetts,english (united states),0.0029799496900254,23.99702005030997,25.9,0,,34,22,12
+9a48f5b8-2b7f-9826-10d3-3682079c2b7c,female,white,not hispanic or latino,f,s,never married,Amherst Center,Massachusetts,english (united states),5.998271272856387,11.001728727143613,19.3,0,,32,18,10
+cc713baa-89ee-9a60-111e-a561fe4b3f82,male,white,hispanic or latino,m,s,never married,Gardner,Massachusetts,english (united states),14.804922721232025,33.195077278767975,49.9,0,,56,24,4
+3feca0e5-f75f-0d2b-078b-68de08481aeb,female,asian,not hispanic or latino,f,s,never married,New Bedford,Massachusetts,english (united states),0.0845478821558136,16.915452117844186,18.5,0,,30,19,10
+09cb2781-0423-a0ee-11ab-c1346c23e865,female,white,not hispanic or latino,f,s,never married,Hull,Massachusetts,english (united states),0.0961731824773552,20.90382681752265,23.4,0,,28,26,13
+39d8d96c-8db0-ff9b-625a-80771a28adf6,male,american indian or alaska native,not hispanic or latino,m,s,never married,North Andover,Massachusetts,english (united states),0.5964098500691473,25.403590149930853,27.7,0,,29,31,9
+7be3cf87-2055-de8b-2011-f8bcc689a31f,female,white,not hispanic or latino,f,d,divorced,Lawrence,Massachusetts,english (united states),0.4421858376832593,37.55781416231674,40.3,0,,23,37,14
+a9f46e6c-5c7a-601c-a5d3-5b045db9990b,male,white,hispanic or latino,m,s,never married,Dartmouth,National District,spanish,0.0226463633213389,21.97735363667866,23.7,0,,26,25,4
+a02a3f43-b6f4-d209-4062-af0cec3b22c1,male,white,not hispanic or latino,m,d,divorced,Sandwich,Massachusetts,english (united states),2.185743789219459,76.81425621078054,80.7,0,,105,94,127
+0255e447-8975-9a0a-965f-75266aaa37f1,female,white,not hispanic or latino,f,m,married,West Concord,Massachusetts,english (united states),0.016534426705229,36.98346557329477,39.0,0,,54,20,2
+57d67608-3fed-2fd2-60db-97271395b21a,male,white,not hispanic or latino,m,s,never married,Randolph,Massachusetts,english (united states),0.0153598891868044,11.984640110813196,14.5,0,,31,21,6
+b31a493b-775d-5d29-d57e-3b396641334b,female,white,not hispanic or latino,f,m,married,Barnstable,Massachusetts,english (united states),0.0371527360462306,36.96284726395377,38.6,0,,39,23,12
+7ac6b3c7-cdd7-23c4-52bf-a6cd4440a9d6,female,white,not hispanic or latino,f,s,never married,Westford,Massachusetts,english (united states),0.0537951653460898,49.94620483465391,51.9,0,,37,31,7
+045fd467-ba8b-a3f0-c1ff-51afbc8a320d,male,black or african american,hispanic or latino,m,s,never married,Boston,Massachusetts,english (united states),0.0038600725996164,18.996139927400385,21.1,0,,31,27,7
+177dedde-09b3-49cb-cca8-14255dcfdc6a,male,white,not hispanic or latino,m,s,never married,Amesbury,Massachusetts,english (united states),0.0383958170254075,5.961604182974592,8.3,0,,37,16,28
+1bfb9114-432d-9b04-dfac-e035c2121a40,male,white,not hispanic or latino,m,s,never married,Sturbridge,Massachusetts,english (united states),0.0,17.0,19.0,0,,28,24,7
+63a7dc6b-174c-af4f-9d42-3b96fff82bc5,male,white,hispanic or latino,m,s,never married,Worcester,Lima Province,spanish,0.623619423638222,20.37638057636178,22.9,0,,30,27,11
+a3850b0a-d3ce-678b-902c-32e1702f92d0,female,white,not hispanic or latino,f,m,married,Pittsfield,Massachusetts,english (united states),0.0,33.0,35.3,0,,45,14,8
+1d160445-8ffa-1726-bf23-f1f9ba79163a,male,white,hispanic or latino,m,s,never married,Fall River,Bogota,spanish,0.0,15.0,16.7,0,,29,21,9
+bb08c35e-bdbd-7b4f-3a83-da52a4089a9b,female,other,not hispanic or latino,f,m,married,Townsend,Massachusetts,english (united states),2.208211646102804,87.7917883538972,91.8,0,,84,66,156
+12134bae-6b95-bc14-0f22-a10377dd2366,male,black or african american,not hispanic or latino,m,s,never married,Boston,Massachusetts,english (united states),0.1311249238947163,10.868875076105285,13.5,0,,34,18,40
+a706ce03-289f-1f5e-709f-f8ce082fbae8,male,asian,not hispanic or latino,m,s,never married,Boston,Osaka,japanese,0.0142761720150283,48.98572382798497,51.1,0,,26,32,14
+2a2fbd55-1bae-f148-7116-08abf4f5120b,female,white,not hispanic or latino,f,s,never married,Groveland,Massachusetts,english (united states),0.1182154223205355,25.881784577679465,27.5,0,,40,30,11
+d77ede6d-cbb1-e410-928b-2673a48b0b87,male,white,not hispanic or latino,m,s,never married,Leominster,Massachusetts,english (united states),0.7325788923718519,56.26742110762815,59.2,0,,30,37,5
+d03724eb-b982-9dd3-a83c-061ff8e4f086,male,white,not hispanic or latino,m,m,married,Boston,Massachusetts,english (united states),0.8478258427661927,41.15217415723381,44.0,0,,26,26,17
+615443c0-243d-6424-d38c-410a54137b97,female,white,not hispanic or latino,f,s,never married,Everett,Massachusetts,english (united states),0.4894343158354961,35.510565684164504,37.5,0,,37,28,8
+ca286431-e75a-ccdb-f1bf-b3d1bf3e6ef1,female,white,not hispanic or latino,f,m,married,Arlington,Massachusetts,english (united states),0.0178426868587955,30.982157313141204,33.1,0,,53,15,3
+1cf9d584-ec4b-7aa5-b562-54afa9ab777e,male,white,not hispanic or latino,m,s,never married,Boston,Massachusetts,english (united states),0.3638575807302598,17.63614241926974,20.1,0,,27,23,9
+1ca1f2a1-9af7-66ab-baac-c44d591a6682,male,asian,not hispanic or latino,m,w,widowed,Brockton,Massachusetts,english (united states),0.5970040839381754,36.40299591606183,39.2,0,,25,32,13
+84a99edf-73d8-c61a-2187-eb88362b15cb,male,white,not hispanic or latino,m,m,married,Worcester,Massachusetts,english (united states),0.0645866871796424,56.93541331282036,59.4,0,,27,27,4
+c3784d62-d244-25d0-525e-8cf7c4b52755,female,white,not hispanic or latino,f,s,never married,Amherst,Massachusetts,english (united states),24.859785447585605,62.14021455241439,89.4,0,,118,88,261
+9ac1c1c0-5791-b24e-0329-0b6ded11193c,male,white,not hispanic or latino,m,s,never married,Weston,Massachusetts,english (united states),0.0791490559211254,21.920850944078875,23.5,0,,40,17,4
+3172f06c-f0d6-05f9-8d54-a2fd033ca802,female,white,not hispanic or latino,f,s,never married,West Brookfield,Massachusetts,english (united states),7.559266399849306,38.44073360015069,47.7,0,,34,28,12
+54f7ec15-2557-49dd-7bcb-324152d854f1,female,white,not hispanic or latino,f,s,never married,Lowell,Massachusetts,english (united states),0.3795915037411412,25.620408496258857,27.7,0,,39,28,13
+fc596259-4c0c-9ee9-3fc1-ba597e564ec1,male,asian,not hispanic or latino,m,m,married,Holyoke,Massachusetts,english (united states),0.3467384251254055,43.65326157487459,45.8,0,,22,27,11
+3bf112cd-b075-7532-407e-bdd3a878d0b2,female,white,not hispanic or latino,f,s,never married,Lynn,Massachusetts,english (united states),0.1119041074001119,16.88809589259989,18.9,0,,29,17,8
+b6684707-1110-b596-2e08-254ece245d46,male,white,not hispanic or latino,m,s,never married,Medfield,Massachusetts,english (united states),0.0030880795765617,13.996911920423438,15.7,0,,46,12,4
+ed6a1da0-1603-e24d-6574-8949b9521c81,male,white,not hispanic or latino,m,s,never married,Hopkinton,Massachusetts,english (united states),0.0130739708941824,16.986926029105817,19.1,0,,29,18,7
+09c675aa-d3cc-1d3d-f25a-6f400cb323bb,male,white,not hispanic or latino,m,d,divorced,Arlington,Massachusetts,english (united states),0.165627826604265,51.834372173395735,53.9,0,,23,30,4
+47a09a92-ead2-b13a-c858-5adb5b8613ad,male,white,not hispanic or latino,m,s,never married,Weston,Massachusetts,english (united states),0.0,19.0,21.1,0,,25,24,6
+5ce07fe1-921b-15ba-79af-3563a45503cb,male,white,not hispanic or latino,m,s,never married,Lowell,Massachusetts,english (united states),0.0,11.0,12.8,0,,33,27,9
+25361c6e-e7a5-ef54-7fcc-f0c7014c291b,female,white,not hispanic or latino,f,m,married,Peabody,Massachusetts,english (united states),6.968920793691625,50.03107920630838,59.3,0,,94,79,121
+03c8b85f-db4e-5992-5082-31bda27afb86,male,black or african american,not hispanic or latino,m,s,never married,Somerville,Massachusetts,english (united states),0.0297994969002541,18.970200503099747,21.4,0,,29,19,5
+7fd03432-5666-245e-3224-f3e36076c689,male,white,not hispanic or latino,m,s,never married,Boston,Massachusetts,english (united states),0.0774459123195845,8.922554087680416,11.1,0,,36,16,25
+3f72026b-66a5-6dce-b2d2-72f9cad564b4,female,white,not hispanic or latino,f,m,married,Middleborough,Massachusetts,english (united states),0.1293289118199819,62.87067108818002,65.4,0,,29,35,4
+581fa1e2-d0d7-64d2-aa82-02ebf762fbdc,female,white,not hispanic or latino,f,s,never married,Boston,Massachusetts,english (united states),0.6117722871078557,45.38822771289215,48.3,0,,21,29,7
+e49ed460-df7c-9857-e6ef-c941c0e7cb50,male,black or african american,hispanic or latino,m,s,never married,Chelsea,Massachusetts,english (united states),0.0,15.0,16.5,0,,30,18,8
+e0117ea0-b6fb-7e40-33af-458ee3ba00c7,female,white,not hispanic or latino,f,m,married,Easton,Massachusetts,english (united states),0.1174133635471786,53.88258663645282,56.2,0,,29,18,7
+2aca0b05-0f31-7054-ef5b-09082cc0617b,male,white,not hispanic or latino,m,s,never married,Milford,Massachusetts,english (united states),0.1119041074001119,18.88809589259989,20.5,0,,26,15,9
+3cb20726-ef7e-cc33-7fa8-21797dd6de75,male,black or african american,hispanic or latino,m,m,married,Boston,Massachusetts,english (united states),0.1368936012660497,52.86310639873395,54.8,0,,25,22,10
+8b1a2a95-d669-ba5c-e976-4579855c737f,female,white,not hispanic or latino,f,m,married,Brookline,Massachusetts,english (united states),0.1119041074001119,54.888095892599885,56.9,0,,24,28,4
+327a2604-2a06-a8d2-1939-f46533a05821,male,white,not hispanic or latino,m,s,never married,Shrewsbury,Massachusetts,english (united states),0.022110829284347,14.977889170715653,17.1,0,,26,22,6
+50b1da67-59d8-8d7f-44e7-030072cf2fcc,male,black or african american,not hispanic or latino,m,s,never married,Yarmouth,Massachusetts,english (united states),0.9554354791558766,53.044564520844126,60.2,1,55.7,75,47,89
+c74a32ce-ee5b-7e4d-c4ea-cba4daa9540f,male,white,not hispanic or latino,m,m,married,Boston,Massachusetts,english (united states),0.2270573316412798,43.77294266835872,45.8,0,,24,27,19
+2f455cf4-be82-4361-a433-2550dce67539,female,white,hispanic or latino,f,s,never married,Salem,Puebla,spanish,0.0140957254800445,17.985904274519957,19.6,0,,22,15,6
+1430c5ce-aacb-45c3-6ffe-ff517a569541,male,native hawaiian or other pacific islander,not hispanic or latino,m,m,married,Hudson,Massachusetts,english (united states),0.2045171977194005,52.7954828022806,54.8,0,,26,26,2
+8c93a315-1f27-8f07-50a3-130b32d1aeee,female,other,not hispanic or latino,f,s,never married,Groton,Massachusetts,english (united states),0.0,18.0,19.9,0,,27,20,5
+82340b68-7f78-8d50-15ba-0396be76a381,male,white,not hispanic or latino,m,s,never married,Fall River,Massachusetts,english (united states),0.0029799496900254,23.99702005030997,26.4,0,,24,36,8
+96827059-209e-4d44-f718-a5693aceca38,male,white,hispanic or latino,m,s,never married,Westfield,Massachusetts,english (united states),0.0730049619068231,12.926995038093176,15.2,0,,45,16,6
+4bba60dc-7f17-ef9b-bd29-4ff4b2c194ac,female,white,not hispanic or latino,f,m,married,Fitchburg,Massachusetts,english (united states),0.0077797344542896,30.99222026554571,32.7,0,,33,26,5
+3a54174b-e71a-ebbe-e945-2b960b7bb3f7,male,native hawaiian or other pacific islander,not hispanic or latino,m,s,never married,Westford,Massachusetts,english (united states),0.2780177193014839,14.721982280698516,17.5,0,,28,21,6
+566bea79-55b9-e207-3721-7c679634cb19,male,white,not hispanic or latino,m,m,married,Bellingham,Massachusetts,english (united states),0.1286611260117093,52.87133887398829,54.8,0,,25,23,8
+285fb32b-958b-0d92-086d-f0ff2c4c3c68,female,black or african american,not hispanic or latino,f,s,never married,Chelsea,Massachusetts,english (united states),0.0,20.0,22.3,0,,25,21,8
+b82d5eaa-224c-3167-c73e-eafc25bf2398,male,white,not hispanic or latino,m,m,married,Chatham,Massachusetts,english (united states),59.179125739069406,21.820874260930594,83.3,0,,286,271,644
+4744a53f-3a40-94cc-e6fd-d2d167bf2b9f,male,asian,not hispanic or latino,m,m,married,Mansfield,Massachusetts,english (united states),6.902731876647643,79.09726812335236,110.6,1,86.5,77,94,108
+d6cf05d4-cf6b-1ecc-d176-396e53f23827,male,white,not hispanic or latino,m,d,divorced,Yarmouth,Massachusetts,english (united states),0.1643438037377685,53.83565619626223,56.4,0,,22,27,5
+dac2c29e-8333-0963-289a-630cf2d3289e,female,white,not hispanic or latino,f,m,married,Mashpee,Massachusetts,english (united states),0.2244849840070735,52.77551501599292,55.2,0,,31,27,8
+65d0a8b6-453b-b771-fea8-a3e46ef81da1,male,white,hispanic or latino,m,m,married,Mansfield,Massachusetts,english (united states),0.9964180932519652,48.00358190674803,51.0,0,,23,28,3
+d9fc8614-b80d-2458-0a3b-e34f8c39ea3a,male,white,not hispanic or latino,m,s,never married,Boston,Massachusetts,english (united states),1.417478904446258,50.582521095553744,54.4,0,,23,42,3
+dc73989f-45c2-ad41-7d97-3e2468c31cb8,female,asian,hispanic or latino,f,s,never married,Boston,National District,spanish,0.0,10.0,11.8,0,,27,23,6
+6e3c803e-eb62-e93c-937c-fba5bb1a5685,male,white,hispanic or latino,m,m,married,Hopkinton,Massachusetts,english (united states),0.2120609845981197,32.78793901540188,58.0,1,34.3,23,28,9
+4a2b93e0-1a4e-8115-290d-b655ba657c66,male,white,not hispanic or latino,m,s,never married,Haverhill,Massachusetts,english (united states),0.0,8.0,10.0,0,,32,22,10
+90924dc2-d870-0e14-927c-c86db46293ec,male,white,not hispanic or latino,m,s,never married,Ocean Bluff-Brant Rock,Massachusetts,english (united states),0.0,22.0,24.3,0,,21,21,6
+02746da0-9aef-430d-5e9d-0d311a37f329,female,asian,not hispanic or latino,f,s,never married,Watertown,Massachusetts,english (united states),0.9550181138546432,37.04498188614536,40.0,0,,39,21,9
+d94f3603-e4fa-d00d-ebbb-8666869c6d8a,male,white,not hispanic or latino,m,s,never married,Lowell,Massachusetts,english (united states),0.1140469960618769,9.885953003938123,12.1,0,,34,12,39
+17213fbe-643f-164c-1166-807a6490fab4,female,white,not hispanic or latino,f,m,married,Harwich,Massachusetts,english (united states),2.994221562930234,79.00577843706976,83.6,0,,66,86,106
+94019eba-43e5-f846-6777-4fd5a98ec79e,female,black or african american,not hispanic or latino,f,s,never married,Milton,Massachusetts,english (united states),5.178892090346413,8.821107909653588,15.9,0,,42,22,4
+867d2a90-363f-a124-2168-0b83251d620e,female,asian,not hispanic or latino,f,s,never married,Newton,Massachusetts,english (united states),0.0284618790188821,20.97153812098112,82.8,1,21.6,25,27,10
+60fdc6d3-06c6-9875-1451-260e94babab6,female,white,not hispanic or latino,f,s,never married,Waltham,Massachusetts,english (united states),0.0,23.0,25.3,0,,30,22,9
+e8d77a23-1b0f-dca9-3bd1-da9c29bc7440,female,white,not hispanic or latino,f,s,never married,Chelmsford,Massachusetts,english (united states),0.0086179200543624,22.99138207994564,24.9,0,,25,18,15
+448ae7a1-6fde-b522-3448-86809e057693,female,white,hispanic or latino,f,s,never married,Tyngsborough,Bogota,spanish,0.0,16.0,18.3,0,,27,17,9
+157bf9c4-0644-7caf-09ef-c4cb919c852b,female,white,not hispanic or latino,f,s,never married,Hull,Massachusetts,english (united states),0.0656092510960713,39.93439074890393,42.2,0,,38,24,11
+00abd633-654a-7bee-dbcf-ca9a235cc1f2,male,white,not hispanic or latino,m,s,never married,Framingham,Massachusetts,english (united states),0.0297994969002541,18.970200503099747,20.5,0,,25,22,7
+ed5a925e-f6fe-c60b-59d0-3bf75d3078d8,male,white,not hispanic or latino,m,s,never married,Cohasset,Massachusetts,english (united states),0.0352267253292465,20.964773274670755,23.2,0,,23,19,7
+07f15180-87de-4dc6-8620-ee26b86d3974,female,asian,not hispanic or latino,f,m,married,Woburn,Massachusetts,english (united states),0.2380204325635849,39.76197956743641,42.5,0,,35,23,1
+ca53bd63-587e-ad37-737b-c65aa92e9297,male,white,not hispanic or latino,m,s,never married,Cambridge,Massachusetts,english (united states),0.0115383725031279,48.98846162749688,50.7,0,,33,30,3
+17b68fee-cc77-2984-3eb2-b7bfee062619,male,white,not hispanic or latino,m,m,married,Worcester,Massachusetts,english (united states),1.612681612094685,69.38731838790531,73.4,0,,114,87,73
+909d7c54-34f6-1697-3d19-9168c41f0af2,male,white,not hispanic or latino,m,s,never married,Fall River,Massachusetts,english (united states),0.0452113408673913,7.954788659132609,10.5,0,,34,25,13
+b82f9d04-14b4-943b-b40c-c635da1e3c9b,male,white,hispanic or latino,m,s,never married,Pembroke,Massachusetts,english (united states),0.0939674899817146,18.906032510018285,21.0,0,,27,25,5
+389b8516-6021-9be5-034b-e6c7991a4582,female,white,not hispanic or latino,f,s,never married,South Duxbury,Massachusetts,english (united states),0.0,13.0,15.2,0,,26,14,10
+f4317c8c-f417-a01c-685c-a94a0f20dfbd,male,white,not hispanic or latino,m,m,married,Fairhaven,Massachusetts,english (united states),10.045711845326924,24.95428815467308,37.4,0,,53,22,2
+5395d2eb-cd9b-5ea0-9276-916aca83ce48,male,white,not hispanic or latino,m,m,married,Shelburne Falls,Massachusetts,english (united states),0.0,43.0,45.3,0,,22,28,8
+239ae86a-96db-6211-9042-d3f2850aabb8,male,white,not hispanic or latino,m,m,married,Lowell,Massachusetts,english (united states),0.1870010055602655,53.81299899443974,55.8,0,,20,26,5
+6a6c9c45-b0ed-c296-c855-8fb0eb7e0204,female,white,not hispanic or latino,f,d,divorced,Brookline,Massachusetts,english (united states),0.0258439666117362,59.97415603338826,61.6,0,,25,34,12
+fee921be-1d6d-22b4-8e07-2d39d250586c,male,white,not hispanic or latino,m,s,never married,Whitinsville,Massachusetts,english (united states),0.0,11.0,13.5,0,,28,17,9
+f0e85620-4591-b85e-37d7-75bc0cc860d5,male,white,not hispanic or latino,m,m,married,North Plymouth,Massachusetts,english (united states),0.0,45.0,48.5,1,46.8,26,26,3
+5f03fac2-da07-f610-fb90-0eb30d62cc2a,female,white,not hispanic or latino,f,s,never married,Spencer,Massachusetts,english (united states),0.0021427376632326,7.997857262336767,10.2,0,,30,15,6
+6ae87f84-2cf0-b0af-8413-0d2b39537bce,male,black or african american,not hispanic or latino,m,w,widowed,Mattapoisett,Massachusetts,english (united states),3.227886862893872,105.77211313710612,110.8,0,,71,77,160
+e233be19-af79-8648-4bff-67df87dff74a,female,white,not hispanic or latino,f,w,widowed,Amherst,Massachusetts,english (united states),0.3348304316360365,56.665169568363964,58.7,0,,24,26,2
+e97e6df8-f3f5-05b9-05c3-47fb6158bf0c,female,white,not hispanic or latino,f,s,never married,Sharon,Massachusetts,english (united states),0.0182885603940628,24.981711439605935,26.8,0,,33,17,5
+a76a954c-0a5c-4a2a-816f-8f2a2c9abb14,male,black or african american,not hispanic or latino,m,s,never married,Maynard,Massachusetts,english (united states),0.038082725060267,24.961917274939733,26.6,0,,23,23,8
+c3796943-be73-3642-0041-83be27e3f082,male,white,hispanic or latino,m,d,divorced,Cambridge,Puerto Rico,spanish,1.0063372553310033,46.993662744669,49.6,0,,25,31,9
+804eef90-ddec-8b39-57bb-d54cb77f65b7,female,white,not hispanic or latino,f,s,never married,Ashland,Massachusetts,english (united states),0.0118998419283175,9.988100158071685,12.0,0,,36,18,6
+f8e1d06c-32a9-c265-0730-fa4649680942,female,white,not hispanic or latino,f,s,never married,Sandwich,Massachusetts,english (united states),0.3565485610174369,7.643451438982563,59.6,1,8.7,31,20,12
+c7136557-8f96-7c9b-edff-75829a5c3ec3,female,white,not hispanic or latino,f,s,never married,Stoughton,Massachusetts,english (united states),0.1220706203419565,10.877929379658044,12.9,0,,33,23,9
+99979851-cefc-7345-ad80-b42346bd3913,female,white,not hispanic or latino,f,s,never married,Woburn,Massachusetts,english (united states),0.0023491872495428,10.997650812750456,13.4,0,,30,18,6
+55c7f8c3-6dad-9220-01db-08d68de96901,female,white,not hispanic or latino,f,s,never married,Rockland,Massachusetts,english (united states),1.0701353042829935,9.929864695717006,18.1,1,12.3,26,16,7
+abc45bec-b36e-3f75-e1d9-8773646608f3,female,american indian or alaska native,hispanic or latino,f,m,married,Lynn,Baja California,spanish,0.0167168376239885,54.98328316237601,57.1,0,,23,34,2
+62d3b19d-b0fb-0877-be1f-c0a7a1336c1f,female,white,hispanic or latino,f,m,married,Boston,San Jose,spanish,5.3601988538916565,60.63980114610834,68.1,0,,95,61,87
+4c56fc47-dd7b-f9a9-5b67-3e9c423df4a4,female,white,not hispanic or latino,f,s,never married,Somerset,Massachusetts,english (united states),0.0,11.0,13.3,0,,26,17,9
+59919746-ac2b-39c7-c49a-77834553de92,male,white,not hispanic or latino,m,s,never married,Plymouth,Massachusetts,english (united states),0.0167734631202119,47.98322653687979,49.8,0,,23,17,9
+32c9951c-7e30-de8f-ad34-1f4960b0f3c2,male,white,not hispanic or latino,m,s,never married,Monroe,Massachusetts,english (united states),1.0983217097026796,6.901678290297321,12.1,1,8.6,27,21,9
+6e68a0df-693f-019c-6dbb-f0261912a5b0,male,white,not hispanic or latino,m,m,married,Uxbridge,Massachusetts,english (united states),0.8236351873823183,45.176364812617685,47.9,0,,24,26,4
+4732cd0b-4a2f-47ae-9429-4145ff60b008,female,white,not hispanic or latino,f,s,never married,Quincy,Massachusetts,english (united states),0.0185633585108614,15.981436641489138,17.9,0,,26,24,6
+0e27d10b-017b-c31e-0d73-8ca801a05741,female,black or african american,not hispanic or latino,f,s,never married,Boston,Massachusetts,english (united states),0.0789400433427657,7.921059956657234,10.5,0,,28,22,6
+03739c7b-f301-72ac-95f7-bbfadd9b7fc0,female,white,not hispanic or latino,f,m,married,Winchester,Massachusetts,english (united states),0.270655708841463,46.72934429115854,49.1,0,,36,17,6
+d5821a49-e96b-b7b8-e341-f02593d45ec6,male,black or african american,not hispanic or latino,m,m,married,Beverly,Massachusetts,english (united states),5.034445651464504,41.9655543485355,48.6,0,,27,26,10
+e3fcf2da-3191-d27e-b907-28b7967efb60,male,white,not hispanic or latino,m,m,married,Paxton,Occitanie,french (france),0.5687119508415565,44.43128804915845,46.6,0,,21,23,3
+0e458987-b418-917f-9a6b-21183c8e3f66,female,white,not hispanic or latino,f,s,never married,Amherst Center,Massachusetts,english (united states),0.0,14.0,16.4,0,,26,18,8
+644fcabf-fba4-1e7e-4643-38b424cc12f1,male,white,not hispanic or latino,m,s,never married,Norwood,Massachusetts,english (united states),0.7488254764544336,52.251174523545565,55.2,0,,80,74,205
+afdae0ff-9a53-31a1-2fb3-551d3541cafc,female,asian,not hispanic or latino,f,s,never married,Walpole,Massachusetts,english (united states),0.0,19.0,21.1,0,,23,25,6
+d68d697f-eed3-8350-e261-54095d2a7ce4,male,white,not hispanic or latino,m,s,never married,Easton,Massachusetts,english (united states),0.0006122107609236,8.999387789239076,10.7,0,,29,23,3
+dad8af8a-5ebe-b331-6289-2dee22208e65,female,white,not hispanic or latino,f,s,never married,Northampton,Massachusetts,english (united states),0.0,15.0,17.3,0,,25,14,7
+217525af-d27c-1c3f-315c-8d70d32fc909,male,white,not hispanic or latino,m,s,never married,Billerica,Massachusetts,english (united states),0.0,11.0,13.1,0,,29,24,8
+e0eb1a30-ad70-0d50-a5dd-d6955985515e,male,white,not hispanic or latino,m,s,never married,Bedford,Massachusetts,english (united states),0.0,16.0,17.7,0,,24,18,4
+c34a4016-a2cb-3362-7340-f67c2f18dac1,male,white,not hispanic or latino,m,w,widowed,Medford,Massachusetts,english (united states),0.4080578004321062,52.591942199567896,55.1,0,,18,23,3
+04106167-bfd1-888c-f1bf-fc319296515e,male,white,not hispanic or latino,m,s,never married,Egremont,Massachusetts,english (united states),0.001926328165549,10.998073671834453,13.3,0,,30,21,7
+7ef9ddef-8028-d29d-3ed5-cdef654bffe5,male,white,not hispanic or latino,m,m,married,Monson,Hesse,german (germany),0.0585079178435146,40.941492082156486,43.2,0,,22,28,8
+7bf45f22-9a78-06e4-419b-0e510e809abe,male,white,not hispanic or latino,m,s,never married,North Attleborough,Massachusetts,english (united states),0.0,9.0,10.9,0,,27,18,6
+8c7a1b32-0a6f-0be4-85b0-9aac1ebfd736,male,white,not hispanic or latino,m,s,never married,Salem,Hesse,german (germany),0.0,17.0,18.8,0,,23,18,4
+03289eed-0508-c96b-e70a-5a16a5e89249,male,white,not hispanic or latino,m,w,widowed,Lowell,Massachusetts,english (united states),0.3749158960306779,57.62508410396932,70.4,1,59.1,132,45,66
+fc0acba6-c366-0ce1-0667-3099406f1f73,female,asian,hispanic or latino,f,s,never married,Boston,Chihuahua,spanish,0.0,7.0,9.4,0,,27,18,6
+4ce5f37c-da93-803e-fba7-fae5c458be86,female,asian,not hispanic or latino,f,s,never married,Quincy,Massachusetts,english (united states),0.0,22.0,23.6,0,,25,23,6
+f58d1fb5-5591-71b0-e3fe-3735feadb88a,male,white,not hispanic or latino,m,s,never married,South Hadley,Massachusetts,english (united states),0.2539291614765679,4.746070838523432,19.3,1,6.8,27,15,11
+2707d176-bc88-13f9-ba69-5647309f5930,male,white,not hispanic or latino,m,s,never married,North Amherst,Massachusetts,english (united states),0.0139404008956834,16.986059599104316,19.4,0,,21,16,6
+ae14bf11-95e4-6a2f-e13a-21ad9cb71153,male,white,not hispanic or latino,m,s,never married,Westford,Massachusetts,english (united states),0.0,20.0,21.6,0,,24,17,5
+d089fcba-1cc5-f7f7-2c70-d233d75e31b6,male,white,not hispanic or latino,m,s,never married,New Bedford,Massachusetts,english (united states),0.0089700071236647,19.99102999287633,22.3,0,,20,20,9
+70a09cf8-5e5f-fa33-655c-bb01c851adae,male,white,not hispanic or latino,m,s,never married,East Douglas,Massachusetts,english (united states),0.0,9.0,11.3,0,,31,22,10
+60d78bbe-b653-e46d-1ab1-635b24c45a79,male,white,not hispanic or latino,m,m,married,East Douglas,Massachusetts,english (united states),7.5002652396276925,22.499734760372306,31.7,0,,35,25,2
+248088a3-908b-0581-f9fa-fdebfb99c902,male,native hawaiian or other pacific islander,not hispanic or latino,m,m,married,Attleboro,Massachusetts,english (united states),0.1220803687719352,50.87791963122807,53.4,0,,21,21,1
+c264c2bb-31f2-65d0-13eb-3bd49936ab60,male,white,not hispanic or latino,m,s,never married,Wellesley,Sicily,italian,0.0,15.0,16.5,0,,21,17,4
+76bf3a41-9b73-7581-481b-2a19650f629b,female,white,not hispanic or latino,f,m,married,Melrose,Massachusetts,english (united states),0.5956469384609234,60.40435306153908,69.0,1,61.7,135,34,55
+688332cb-e92c-9679-825f-1d1e58a167ed,male,white,not hispanic or latino,m,d,divorced,Bedford,Massachusetts,english (united states),0.0656387936612503,46.93436120633875,49.0,0,,21,22,4
+48121479-7d0c-9af7-f8cc-ef62ea03d56d,female,black or african american,not hispanic or latino,f,m,married,Salem,Massachusetts,english (united states),0.0666536955960186,28.93334630440398,31.4,0,,32,27,2
+d67004dc-139e-9822-85d8-32399f83fdfb,male,white,not hispanic or latino,m,s,never married,Lawrence,Massachusetts,english (united states),0.0788821537741728,14.921117846225828,16.6,0,,26,16,4
+6c50424b-4fbd-6b16-80c0-6663cf18ce97,male,white,not hispanic or latino,m,s,never married,Weymouth,Massachusetts,english (united states),0.0,16.0,18.0,0,,25,17,4
+e468e3f0-9c9c-5374-b953-db1ba26c9617,female,white,not hispanic or latino,f,s,never married,Boston,Massachusetts,english (united states),0.0099956545827715,17.99000434541723,20.2,0,,24,19,7
+9c8a43be-da68-22e6-2edd-dee5f875d2c3,female,white,not hispanic or latino,f,d,divorced,Needham,Massachusetts,english (united states),0.0060809333204085,40.99391906667959,42.7,0,,31,16,3
+6e8dcc9a-29d4-f8e2-436e-9646506ce0d7,female,white,not hispanic or latino,f,s,never married,Peabody,Massachusetts,english (united states),0.0201225859665061,9.979877414033494,11.9,0,,33,27,10
+0d887c2a-615c-fadc-c1b0-bf191ec12d51,male,black or african american,not hispanic or latino,m,m,married,Boston,Massachusetts,english (united states),0.0485715964302905,26.95142840356971,29.4,0,,19,31,6
+98b29475-c028-0a58-e08f-0cd93982a198,male,white,not hispanic or latino,m,m,married,Gloucester,Massachusetts,english (united states),0.7203892804164027,31.2796107195836,34.5,0,,24,25,2
+34134d68-b926-f69c-5721-c8666d57e123,female,white,not hispanic or latino,f,m,married,Attleboro,Massachusetts,english (united states),0.0096074099343206,45.99039259006568,48.0,0,,21,24,2
+6b3b45e9-ece5-2a5b-8cdc-dda82d814f9b,female,white,not hispanic or latino,f,s,never married,Belmont,Massachusetts,english (united states),0.4877082741699863,63.51229172583001,66.4,0,,56,38,156
+55878203-8cb2-9d44-13c5-5d6cae7d8191,male,white,not hispanic or latino,m,s,never married,Northborough,Massachusetts,english (united states),0.0027297890779316,15.997270210922068,17.9,0,,23,13,6
+42baae42-72d2-a513-1009-144b830bafd8,female,asian,not hispanic or latino,f,s,never married,Brookline,Daegu,korean,0.0,4.0,6.3,0,,22,11,7
+c2381706-b47f-e298-812e-6c7adc380182,male,white,not hispanic or latino,m,s,never married,Boston,Massachusetts,english (united states),0.0163897232951397,45.98361027670486,47.8,0,,20,28,3
+67abade3-d58e-9cdf-acd1-822b390137c4,male,white,not hispanic or latino,m,s,never married,Sturbridge,Massachusetts,english (united states),1.5800881390224435,10.419911860977557,75.4,1,13.3,27,17,6
+0005a479-d128-178d-4aac-fefe1b0cc77e,female,white,not hispanic or latino,f,s,never married,Holbrook,Massachusetts,english (united states),0.0,9.0,10.8,0,,27,23,3
+262a9259-a92b-eddf-ca19-ca9724bafd4a,female,other,not hispanic or latino,f,s,never married,Southborough,Massachusetts,english (united states),0.0,16.0,18.3,0,,23,14,4
+de08cf25-7377-62b2-5167-abb0553932a9,male,white,not hispanic or latino,m,s,never married,Greenfield,Massachusetts,english (united states),0.0068613191912706,19.99313868080873,22.3,0,,24,25,2
+b3fd85df-874c-ed0b-79d5-17586259967c,female,white,not hispanic or latino,f,s,never married,Greenfield,Massachusetts,english (united states),0.0,4.0,8.7,1,5.1,28,16,12
+44a768e0-cb42-a90e-4eb4-1c1c817bc0a3,male,white,hispanic or latino,m,s,never married,Templeton,Massachusetts,english (united states),0.2289280856276835,42.77107191437232,84.1,1,44.3,18,20,12
+5ec34217-9f90-8ee8-e619-80408b29e7c7,female,white,not hispanic or latino,f,m,married,Springfield,Massachusetts,english (united states),0.0793850116358658,48.920614988364136,50.9,0,,20,25,2
+4d7fb757-cfc7-a12c-3746-b3ba218719ef,female,white,not hispanic or latino,f,s,never married,Haverhill,Massachusetts,english (united states),8.538250206908048,38.461749793091954,49.1,0,,74,74,91
+9149068a-3e2c-cafb-2afd-0d696db30ab4,male,asian,not hispanic or latino,m,d,divorced,Lexington,Massachusetts,english (united states),0.2735965844640932,41.72640341553591,43.7,0,,22,26,1
+167fbecf-254d-79ba-1db6-729b27cc95dc,male,white,not hispanic or latino,m,m,married,Ocean Grove,Massachusetts,english (united states),0.0266576374080604,51.97334236259194,53.8,0,,19,16,3
+2e13ebf3-cf3f-7b4e-19e9-bcc9d0863126,male,white,not hispanic or latino,m,s,never married,Lowell,Massachusetts,english (united states),0.0733959971626646,12.926604002837337,15.4,0,,24,16,5
+dec7c1d1-b0b8-be1c-fda2-97765f60dc23,male,white,not hispanic or latino,m,s,never married,Quincy,Massachusetts,english (united states),0.0,18.0,19.7,0,,18,17,3
+50034f40-633b-a2b5-b733-5f84fc7a9410,male,white,not hispanic or latino,m,s,never married,Lancaster,Massachusetts,english (united states),0.0,23.0,25.2,0,,20,16,3
+780ec78c-22a0-fcdb-17c6-ae9b2fcace9c,female,white,not hispanic or latino,f,s,never married,Southampton,Massachusetts,english (united states),0.184870345119311,25.81512965488069,28.3,0,,26,19,3
+e990e3df-1096-7910-8afd-750c34172cad,female,white,not hispanic or latino,f,m,married,Newton,Massachusetts,english (united states),0.001926328165549,30.99807367183445,33.3,0,,22,15,4
+5b5ca29e-7af1-9a09-970b-fd9415ff0dba,female,white,not hispanic or latino,f,s,never married,Weymouth,Massachusetts,english (united states),0.0852752819953635,10.914724718004637,13.1,0,,30,22,10
+aff5855f-d411-2f08-57b6-025559937742,male,white,not hispanic or latino,m,s,never married,Everett,Massachusetts,english (united states),0.0657344719554987,6.934265528044501,9.0,0,,27,13,19
+51875571-ce2b-5ff1-940a-ff22710516c2,male,white,not hispanic or latino,m,s,never married,Mansfield Center,Massachusetts,english (united states),0.0549590505459038,7.945040949454096,9.6,0,,27,12,17
+4393513e-bcd7-0ac1-e53a-84ce7d2bad2c,female,black or african american,not hispanic or latino,f,m,married,Lynnfield,Massachusetts,english (united states),6.871662358016457,73.12833764198355,81.9,0,,260,273,568
+6be6dbc4-b4fa-be8d-bc6f-1439800193f2,female,white,hispanic or latino,f,m,married,Lawrence,Saint Andrew Parish,spanish,2.5558757541068973,76.44412424589311,81.4,0,,79,65,90
+b3b79d99-930b-7dc9-47fb-effb43d111d1,male,white,hispanic or latino,m,s,never married,Brockton,Massachusetts,english (united states),0.0,20.0,21.8,0,,22,17,2
+8ad36af5-d106-7a9b-bb1a-854b9281eb53,male,white,not hispanic or latino,m,s,never married,Easton,Massachusetts,english (united states),0.0028086366159953,6.997191363384005,9.4,0,,25,18,4
+300c0f60-7bf4-8840-1300-fcc7c66cc76e,female,white,not hispanic or latino,f,s,never married,Brookline,Massachusetts,english (united states),0.0,18.0,20.0,0,,23,16,5
+441536fd-9913-a743-8c28-4ba46bf4b2b8,female,white,not hispanic or latino,f,s,never married,Orange,Massachusetts,english (united states),0.0307622935164998,15.9692377064835,18.3,0,,35,24,6
+6099312c-bb96-dbc6-c51c-00ca66e0273a,male,white,not hispanic or latino,m,m,married,Newton,Massachusetts,english (united states),0.2926675380740912,48.70733246192591,50.9,0,,20,26,6
+eec78951-d5de-941d-e5f2-6b6626b3dfb3,male,black or african american,not hispanic or latino,m,s,never married,Boston,Massachusetts,english (united states),0.0,9.0,10.9,0,,26,18,3
+79df222f-faa6-391f-f65b-680cb82383ad,male,white,not hispanic or latino,m,m,married,North Plymouth,Massachusetts,english (united states),0.0956469336934792,46.90435306630652,48.5,0,,17,22,13
+b70e8196-505f-2eff-21fa-73afaddf5120,female,black or african american,not hispanic or latino,f,m,married,Amherst,Massachusetts,english (united states),1.030923392792188,37.96907660720781,41.0,0,,30,21,7
+e6f4c961-e65e-a608-4939-1f86e6a512c1,female,white,not hispanic or latino,f,s,never married,Worcester,Massachusetts,english (united states),0.0,9.0,11.2,0,,26,21,6
+ddd9dc23-e28f-9a8f-af7b-e8e809bd9e77,male,white,not hispanic or latino,m,s,never married,Hanson,Massachusetts,english (united states),0.778127492067435,32.22187250793257,34.5,0,,24,28,4
+ce6970c3-4329-f069-087f-7f60063b75a0,female,white,not hispanic or latino,f,d,divorced,Attleboro,Massachusetts,english (united states),1.875333128166421,90.12466687183358,110.7,1,92.7,59,74,143
+ca662dae-6397-5034-0f86-87fd7e0a7182,female,asian,not hispanic or latino,f,m,married,Chicopee,Massachusetts,english (united states),0.0,49.0,51.0,0,,29,19,9
+bbe4430f-7166-7dc8-0979-7e5ef8c633b2,male,white,not hispanic or latino,m,s,never married,North Reading,Massachusetts,english (united states),0.0,16.0,18.2,0,,23,14,4
+03926e64-e37e-ce38-3e00-bcce65159ac8,male,white,not hispanic or latino,m,s,never married,Merrimac,Massachusetts,english (united states),0.0,6.0,8.3,0,,25,12,7
+698647eb-1819-4f8e-8e30-fbac0c1fe8b3,female,white,hispanic or latino,f,s,never married,Plymouth,Massachusetts,english (united states),0.0,16.0,18.1,0,,23,16,9
+ad634079-c15f-8a99-31a5-f9427a1889a4,male,white,not hispanic or latino,m,s,never married,Leominster,Massachusetts,english (united states),0.0258458860255479,42.97415411397445,44.6,0,,18,30,6
+b6cb52b0-9f48-971a-6560-84ffb202d0b9,male,asian,not hispanic or latino,m,m,married,Framingham,Gujarat,hindi,0.0301111036679772,29.969888896332023,31.9,0,,19,20,2
+8f235fdf-befc-6529-a572-e69348ecaa35,female,white,not hispanic or latino,f,s,never married,Hanson,Massachusetts,english (united states),0.001565074792378,9.998434925207622,12.5,0,,26,17,5
+da1f951e-ede3-bd47-4bf9-5838f5dbbb18,male,white,hispanic or latino,m,d,divorced,Lawrence,Massachusetts,english (united states),1.9147993926916185,47.08520060730838,50.5,0,,20,21,6
+4212dadb-f41c-7ff0-fcc8-39a900769f54,female,white,not hispanic or latino,f,s,never married,Worcester,Massachusetts,english (united states),0.0367460654843975,10.963253934515604,12.7,0,,24,20,8
+c8c6c3b2-18fe-6bc7-9001-b78606159285,male,white,not hispanic or latino,m,s,never married,Methuen,Massachusetts,english (united states),0.0,13.0,15.3,0,,24,15,5
+aac94e24-daa5-7a64-c514-4aea8674fc6c,male,black or african american,not hispanic or latino,m,m,married,Mattapoisett,Massachusetts,english (united states),26.839013716742627,45.16098628325737,110.8,1,73.1,79,76,105
+e9f613b1-d652-efd4-c786-dd00cb19dd9b,female,white,not hispanic or latino,f,s,never married,Orange,Massachusetts,english (united states),0.0086179200543624,11.991382079945636,13.8,0,,24,11,8
+12b66f6f-89ce-866e-208b-473d814a7f6c,female,white,not hispanic or latino,f,m,married,Danvers,Massachusetts,english (united states),0.0,53.0,55.4,0,,20,18,1
+6ba692ff-46fa-326f-be7e-efc2106c3d46,female,white,not hispanic or latino,f,m,married,Littleton,Massachusetts,english (united states),10.743101937004296,38.2568980629957,51.0,0,,23,24,2
+08b3d6d2-696d-0746-a0d3-c2a5d463f7ba,female,white,not hispanic or latino,f,m,married,Chesterfield,Massachusetts,english (united states),0.169096181955592,37.830903818044405,40.2,0,,22,16,22
+53ad38f1-7425-21da-3885-770177bfb1e3,male,white,not hispanic or latino,m,s,never married,Carlisle,Massachusetts,english (united states),0.0,25.0,27.2,0,,32,12,2
+db8bf256-3b32-250e-1a64-462236a64289,male,white,not hispanic or latino,m,s,never married,Foxborough,Massachusetts,english (united states),0.217748748298956,23.782251251701044,26.1,0,,25,19,3
+8f6a5351-f3f0-2144-a213-3c767a9210c1,male,white,not hispanic or latino,m,m,married,Cambridge,Massachusetts,english (united states),0.0435182296807053,43.95648177031929,45.7,0,,16,14,3
+73c66565-1b7f-5b57-4029-83de693606a4,female,white,not hispanic or latino,f,s,never married,Amherst Center,Massachusetts,english (united states),0.0024622628726749,18.997537737127324,20.6,0,,24,18,7
+00dade31-b0db-bdad-a62a-9ef50c6c853b,female,white,not hispanic or latino,f,s,never married,Greenfield,Massachusetts,english (united states),0.001565074792378,6.998434925207622,8.7,0,,26,14,8
+de064367-b981-212e-7640-35b1c6fc7b50,male,white,not hispanic or latino,m,s,never married,Walpole,Massachusetts,english (united states),0.3635166166009441,13.636483383399057,15.5,0,,22,15,10
+b8d25985-5c5d-9a52-108c-b93401c347a9,female,white,not hispanic or latino,f,m,married,Arlington,Massachusetts,english (united states),19.752988572059447,53.24701142794055,107.2,1,74.3,99,53,251
+92053b9f-875a-fe89-1b55-f7a91485d670,male,black or african american,hispanic or latino,m,m,married,Revere,Puerto Rico,spanish,0.3529723483998398,30.64702765160016,32.6,0,,17,25,5
+ca424f09-df70-f4a9-986f-8e11f4dd838b,male,white,not hispanic or latino,m,m,married,Lawrence,Massachusetts,english (united states),0.0,51.0,52.8,0,,21,25,5
+f516f20e-7fc0-3ab2-f56d-f7cbf541f2b8,male,white,not hispanic or latino,m,d,divorced,Boston,Massachusetts,english (united states),0.1145867536295714,40.885413246370426,43.4,0,,21,21,4
+b4f78ec4-0726-81cf-b229-e11a6be88204,male,white,not hispanic or latino,m,s,never married,Framingham,Massachusetts,english (united states),0.0,9.0,10.9,0,,28,19,6
+c42c7d23-0cca-2033-4348-6d119e603bd1,male,white,not hispanic or latino,m,s,never married,Boston,Massachusetts,english (united states),0.2875319332135228,23.71246806678648,25.5,0,,19,26,7
+c737f17b-ea5a-fc1f-da1e-56aa173afcbe,male,white,not hispanic or latino,m,s,never married,Franklin,Massachusetts,english (united states),0.0394633104617507,42.96053668953825,45.1,0,,35,17,4
+09131b07-cdd4-9d4c-17df-b30de401f751,male,white,hispanic or latino,m,s,never married,Haverhill,Francisco Morazán,spanish,0.0357416216845278,25.96425837831547,28.1,0,,19,28,7
+193f9a89-a40f-aae9-0e02-e52de78cbe8d,female,white,not hispanic or latino,f,s,never married,Braintree,Massachusetts,english (united states),0.0,7.0,9.4,0,,27,13,6
+260c19df-efea-a275-9b07-26ff4a7aefa2,female,asian,not hispanic or latino,f,s,never married,Newton,Massachusetts,english (united states),0.0039559923258967,6.996044007674104,82.8,1,8.2,27,13,6
+8443c7e5-1486-3182-5e33-72c194dc458b,female,white,not hispanic or latino,f,s,never married,Leominster,Massachusetts,english (united states),0.0,7.0,9.2,0,,27,23,4
+2a76c0e3-1e73-2109-3d5e-8a8871fe35d7,male,white,not hispanic or latino,m,m,married,Randolph,Massachusetts,english (united states),0.2177130271270571,66.78228697287294,69.2,0,,139,34,84
+ec6afd1b-0c5f-2878-1a86-9e308252b30b,male,asian,not hispanic or latino,m,s,never married,Haverhill,Massachusetts,english (united states),0.0036806533862161,6.996319346613784,9.0,0,,24,14,4
+4c3d7d35-6b5e-697e-46cb-b3fd1184875e,female,white,not hispanic or latino,f,s,never married,Quincy,Massachusetts,english (united states),0.0,11.0,13.3,0,,23,14,9
+90492245-5b35-6b44-88ea-7fa05b1a4700,female,white,not hispanic or latino,f,s,never married,Worcester,Massachusetts,english (united states),0.0,7.0,33.9,1,7.8,27,21,4
+250996df-70c9-0b34-449f-dad53f64a2ba,male,asian,not hispanic or latino,m,s,never married,Boston,Shanghai Municipality,chinese,0.1312502242022037,35.868749775797795,38.4,0,,20,20,2
+e5b40b82-031b-610f-787e-2a4242efcfea,female,white,not hispanic or latino,f,s,never married,Edgartown,Massachusetts,english (united states),0.0137927190097298,8.98620728099027,10.9,0,,27,16,8
+3f17104b-9e71-9b54-a839-cb6082c90baa,male,white,hispanic or latino,m,s,never married,Springfield,Saint Andrew Parish,spanish,0.0047510945601115,6.9952489054398885,8.9,0,,24,16,7
+29442135-1b79-40ae-6873-be4c5e184b7d,female,white,not hispanic or latino,f,s,never married,Dover,Massachusetts,english (united states),0.0,13.0,14.8,0,,22,11,9
+8e8b4dab-8c2d-1c03-f2fc-9630114d4934,male,white,hispanic or latino,m,m,married,Woburn,Massachusetts,english (united states),0.0573888239457596,44.94261117605424,46.5,0,,17,25,3
+0f7bc894-9d65-90b9-9711-9c4f402f05d3,male,black or african american,not hispanic or latino,m,s,never married,Beverly,Massachusetts,english (united states),0.0043655189358868,16.995634481064112,18.5,0,,26,19,6
+5b7d7806-2f55-1bbd-b135-7757f7f866fd,male,white,not hispanic or latino,m,s,never married,Billerica,Massachusetts,english (united states),0.0311189378171585,12.968881062182842,14.9,0,,30,17,4
+5d45e219-8b8b-5298-3646-a50b0e3743b3,female,white,not hispanic or latino,f,s,never married,East Douglas,Massachusetts,english (united states),0.3548382648213229,0.645161735178677,65.1,1,1.8,173,16,131
+120f111f-5e37-3f14-6eab-fce7dd0310d4,male,white,not hispanic or latino,m,s,never married,Brookline,Massachusetts,english (united states),0.0,36.0,38.1,0,,17,19,7
+30e8d8cc-b346-178f-fed7-fbd513f65842,female,white,hispanic or latino,f,m,married,New Bedford,Panama,spanish,26.4010165382915,17.5989834617085,46.3,0,,22,25,4
+4d04636f-8324-5146-8d50-a62dce06a0d3,male,white,not hispanic or latino,m,s,never married,Boston,Massachusetts,english (united states),0.3066286506182605,11.69337134938174,13.6,0,,26,15,10
+d6a1b6aa-65cf-c530-3c93-01431e9f2e45,male,white,not hispanic or latino,m,m,married,Shrewsbury,Massachusetts,english (united states),0.3407563087176758,39.65924369128233,42.1,0,,19,22,2
+d1d97803-1dff-bf3f-0bec-ca0b3c442cca,female,white,not hispanic or latino,f,s,never married,Quincy,Massachusetts,english (united states),0.1062547043104121,12.893745295689587,14.6,0,,23,18,5
+05ef94d4-2f84-67cf-061b-fa3288a39d8f,male,white,not hispanic or latino,m,s,never married,Natick,Massachusetts,english (united states),0.0080072614859576,25.991992738514043,27.8,0,,17,23,4
+ae2ec2a5-4d29-11eb-abb2-032464acdf2c,male,white,not hispanic or latino,m,s,never married,Halifax,Massachusetts,english (united states),0.0030880795765617,9.996911920423438,12.4,0,,25,15,11
+88ae3803-d9e7-0a43-7d4e-7f215dac232b,male,white,not hispanic or latino,m,m,married,Haverhill,Massachusetts,english (united states),0.1578426087158259,30.84215739128417,32.8,0,,17,24,2
+ef653409-8652-a307-0985-02984a8ea46b,male,white,not hispanic or latino,m,s,never married,Weymouth,Massachusetts,english (united states),0.0,12.0,13.6,0,,24,10,5
+6ac86759-750c-0a37-ff83-8f5e0420b3de,female,white,not hispanic or latino,f,m,married,Carver,Massachusetts,english (united states),0.1797430889880258,52.82025691101197,55.2,0,,19,21,2
+e67138dd-0e16-47f3-4788-2ec62ebbde37,female,asian,not hispanic or latino,f,s,never married,Boston,Seoul,korean,2.934395241386084,67.06560475861392,71.5,0,,59,64,83
+2df6d290-91eb-d801-daaa-4ea1c995e37e,male,white,not hispanic or latino,m,s,never married,Pembroke,Massachusetts,english (united states),0.0070404237506215,15.992959576249378,17.9,0,,19,17,5
+b02ff106-ed32-9ab0-3513-caef1b2b66a7,male,white,not hispanic or latino,m,s,never married,Monroe,Massachusetts,english (united states),0.1166001327414775,9.883399867258522,12.1,0,,24,11,6
+78a53775-ed93-6626-1ae9-16c1b580ebb1,female,white,not hispanic or latino,f,s,never married,Tewksbury,Massachusetts,english (united states),0.0086179200543624,12.991382079945636,14.8,0,,24,12,10
+b9c319c3-5a7d-69a7-ba09-368625f2bb88,male,white,hispanic or latino,m,s,never married,Fall River,Massachusetts,english (united states),0.3396567405395418,23.660343259460458,25.7,0,,17,23,6
+493afe73-6b41-eee2-63ad-35b4c5dee676,male,white,not hispanic or latino,m,s,never married,Cheshire,Massachusetts,english (united states),0.1626983044609372,43.83730169553906,46.1,0,,20,21,3
+0bb087fd-7b01-9873-ec38-d4909d45142c,female,white,not hispanic or latino,f,m,married,Leicester,Massachusetts,english (united states),0.0922390711310949,48.9077609288689,51.0,0,,20,24,3
+49960a5b-c811-a6d9-f799-2dcb0f104cbb,male,white,not hispanic or latino,m,s,never married,New Bedford,Massachusetts,english (united states),0.0,6.0,59.0,1,7.3,25,17,8
+8358e275-a599-57ea-e683-b550190e872e,male,white,not hispanic or latino,m,s,never married,Montague,Massachusetts,english (united states),0.0,6.0,8.4,0,,26,18,3
+16737f34-4d44-7b88-f78a-2f188ef889a3,male,white,not hispanic or latino,m,m,married,Hanson,Massachusetts,english (united states),0.1126372684763123,43.88736273152369,46.3,0,,21,25,1
+577f3227-ebed-daf7-d6ca-463fb43d1cce,female,white,not hispanic or latino,f,s,never married,Springfield,Massachusetts,english (united states),0.0,17.0,19.1,0,,18,12,5
+33f93a20-0423-c7c1-f3c4-16814cf33326,male,white,not hispanic or latino,m,m,married,Haverhill,Massachusetts,english (united states),5.595014201388387,42.40498579861161,50.5,1,48.3,98,33,73
+57da9e7c-5852-84ce-715e-0f28ceaeb675,male,white,not hispanic or latino,m,s,never married,Southampton,Massachusetts,english (united states),0.0,23.0,25.0,0,,19,23,4
+3c31e377-b33c-3d19-c979-00e0f82fa33e,female,white,not hispanic or latino,f,s,never married,Ocean Bluff-Brant Rock,Massachusetts,english (united states),0.4697123559030361,3.530287644096964,27.2,1,5.6,23,16,9
+9dc1a078-0447-75bd-bcb3-e7923df6d5ad,female,white,not hispanic or latino,f,s,never married,Rochester,Massachusetts,english (united states),0.0,14.0,15.7,0,,18,14,5
+ca5adbb8-2900-565a-c31b-e26a899eb5d6,male,white,not hispanic or latino,m,s,never married,Boston,Massachusetts,english (united states),0.1183462855862422,23.88165371441376,26.4,0,,19,20,2
+b5b5d8d6-7003-ff1f-881d-5b6e696297a5,male,white,not hispanic or latino,m,m,married,Revere,Massachusetts,english (united states),0.9424902394201686,26.05750976057983,29.5,0,,17,22,3
+3691f270-8bd5-a987-e54e-ad38f7208b65,male,black or african american,not hispanic or latino,m,m,married,New Bedford,Massachusetts,english (united states),0.1012905883730077,28.898709411626992,31.3,0,,16,29,5
+a2ab8d3d-3707-4f3f-9350-4fd82218d750,male,white,not hispanic or latino,m,m,married,Somerville,Massachusetts,english (united states),0.1316055229114457,28.868394477088557,31.4,0,,18,17,5
+2ec3264f-a7af-02c1-d4ab-73827a6295f3,male,asian,not hispanic or latino,m,s,never married,Turners Falls,Cần Thơ,vietnamese,0.0039559923258967,15.996044007674104,17.7,0,,19,12,4
+a9eff9e3-583f-6aca-75c3-34952cf5fd38,female,white,not hispanic or latino,f,s,never married,Braintree,Massachusetts,english (united states),0.0046768556016483,5.995323144398352,7.6,0,,26,19,2
+0fbf11b0-76df-aa33-ed7f-228e25fa8009,female,white,not hispanic or latino,f,s,never married,Natick,Massachusetts,english (united states),0.0,11.0,13.1,0,,22,10,5
+03ddf534-ee8b-1aea-f620-8d6db515d4e4,female,white,not hispanic or latino,f,s,never married,Dartmouth,Massachusetts,english (united states),0.2653275322369325,47.73467246776307,62.1,1,49.3,144,35,45
+b7e27bc5-4978-3de3-0306-827f41a37ca4,male,white,not hispanic or latino,m,s,never married,Bellingham,Campania,italian,0.0,8.0,9.7,0,,22,11,2
+9de4d90a-96c3-58b9-8993-928b2864bcf3,male,white,not hispanic or latino,m,s,never married,Norton,Massachusetts,english (united states),0.0,26.0,27.5,0,,17,17,3
+692ece06-7c15-8af2-e26c-84466d9922e0,male,white,hispanic or latino,m,s,never married,Boston,Massachusetts,english (united states),0.0,10.0,11.7,0,,25,17,5
+9cec7dbb-c2de-950d-72d2-3d606b5c760f,male,black or african american,hispanic or latino,m,s,never married,Boston,Jalisco,spanish,0.0562985155564348,24.943701484443565,26.9,0,,16,27,2
+051814be-3245-09c1-fe45-8feb887c23cb,male,asian,not hispanic or latino,m,s,never married,North Brookfield,Massachusetts,english (united states),0.2230293209349385,21.776970679065062,28.5,1,23.4,19,16,1
+c95878e5-9197-63b6-ae7f-7f8653b6a5c5,male,white,hispanic or latino,m,s,never married,Boston,Massachusetts,english (united states),0.0292085745736906,36.97079142542631,38.6,0,,18,20,2
+03baab01-6a0f-a17d-5fc5-d15b058bb20c,male,black or african american,not hispanic or latino,m,s,never married,Boston,Massachusetts,english (united states),0.0030880795765617,11.996911920423438,13.8,0,,21,13,9
+ca2728f0-9506-d2be-1134-3551063e5935,male,white,not hispanic or latino,m,s,never married,Boston,Massachusetts,english (united states),0.0060809333204085,25.99391906667959,27.9,0,,18,18,2
+fb2cee1f-1663-9ad8-7412-7713bf20b366,male,white,not hispanic or latino,m,s,never married,Belchertown,Massachusetts,english (united states),0.0,6.0,8.5,0,,22,12,3
+d9dc197e-e90b-98f8-5375-6add964c800d,female,white,not hispanic or latino,f,s,never married,Easton,Massachusetts,english (united states),0.0,12.0,14.2,0,,21,10,6
+6f3ec64a-c315-2b26-5973-21ef2f09160f,female,white,not hispanic or latino,f,s,never married,Middleborough,Massachusetts,english (united states),0.0006122107609236,22.99938778923908,44.5,1,24.3,153,17,45
+37ee4f0b-9f2d-7e3f-1924-7cd25c527e4a,male,white,not hispanic or latino,m,s,never married,Winthrop,Massachusetts,english (united states),0.0008823084504462,8.999117691549554,11.2,0,,25,12,4
+8449c605-85f2-3f6a-afd3-0883e6c24c2b,male,white,not hispanic or latino,m,s,never married,Buckland,Massachusetts,english (united states),0.0011302835216847,8.998869716478316,11.2,0,,25,15,5
+89fe5d0c-6834-38ec-dd58-87f4d43f1022,female,white,not hispanic or latino,f,s,never married,Boston,Massachusetts,english (united states),0.0,7.0,9.0,0,,24,17,4
+d40278a6-d0a6-d2fe-ce06-77c7f1342ee0,female,white,not hispanic or latino,f,s,never married,Springfield,Massachusetts,english (united states),0.0,7.0,9.3,0,,23,10,2
+c5f077a2-ceba-5448-77e0-8eb2fa10601d,male,white,not hispanic or latino,m,s,never married,Boston,Massachusetts,english (united states),0.0,5.0,7.3,0,,21,19,6
+6136ec4f-a5d5-ebbb-ea42-06003210d3b1,male,american indian or alaska native,not hispanic or latino,m,s,never married,Chelsea,Massachusetts,english (united states),0.1138346276165215,46.88616537238348,48.9,0,,17,16,2
+cf0317fa-538c-da95-fa7c-eb5466ede656,male,white,not hispanic or latino,m,s,never married,Dartmouth,Massachusetts,english (united states),0.3278183549938797,33.67218164500612,35.5,0,,19,25,5
+bb3cf1b6-713d-2c7c-bb10-0dc5a580dc16,male,black or african american,not hispanic or latino,m,s,never married,Boston,Massachusetts,english (united states),0.0,14.0,16.4,0,,23,15,3
+b6ca2d89-abd9-fce2-38e2-edd0817661af,male,white,not hispanic or latino,m,s,never married,Lowell,Massachusetts,english (united states),0.0008823084504462,22.999117691549557,24.5,0,,15,12,2
+a896dfb3-1be4-c10a-5c09-ab2d251d6350,female,white,not hispanic or latino,f,m,married,Lowell,Massachusetts,english (united states),0.2439137608977734,45.756086239102224,48.4,0,,20,18,3
+fdc013df-49e8-1b9b-9b67-055eec8b4ef7,male,white,not hispanic or latino,m,s,never married,Barnstable,Massachusetts,english (united states),37.814877749116384,30.185122250883616,71.7,1,68.6,583,203,665
+b1126f0d-33ff-972c-8b0e-5b70154499aa,male,white,not hispanic or latino,m,s,never married,Tewksbury,Massachusetts,english (united states),2.627001167077898,43.3729988329221,48.4,0,,53,67,122
+923e8b5b-1be5-d1a2-cdc6-c156c7144481,female,asian,not hispanic or latino,f,s,never married,Boston,Massachusetts,english (united states),0.0030880795765617,15.996911920423438,18.0,0,,20,12,4
+4ab782de-7c15-9907-2801-576460e0db1f,male,black or african american,not hispanic or latino,m,m,married,Ludlow,Massachusetts,english (united states),0.6876479261830054,31.312352073817,33.8,0,,20,22,5
+b3bc2474-b4fc-1d25-0507-f54c8d55fa5c,male,white,not hispanic or latino,m,s,never married,Springfield,Heraklion Prefecture,modern greek (1453-),0.0701730088266812,12.929826991173318,15.5,0,,22,13,4
+f7aad8ce-00d3-45a7-5aa3-c4e2703e7045,male,white,not hispanic or latino,m,s,never married,South Hadley,Massachusetts,english (united states),0.0,17.0,19.3,0,,17,14,2
+7394e0cc-022d-dcc5-e7d8-1242995fbea9,male,white,not hispanic or latino,m,m,married,Everett,Massachusetts,english (united states),0.0,32.0,33.9,0,,19,15,3
+6460927d-424b-296d-855f-19388be97347,female,white,not hispanic or latino,f,s,never married,Acton,Massachusetts,english (united states),0.0039559923258967,7.996044007674103,9.8,0,,23,14,8
+b55868ca-07c0-cd32-1ea4-ab22b6839e31,female,white,not hispanic or latino,f,s,never married,Gardner,Massachusetts,english (united states),0.0,13.0,15.2,0,,22,19,5
+23d22925-7383-3438-ea6e-f346f2d66d5c,female,asian,not hispanic or latino,f,s,never married,Holbrook,Massachusetts,english (united states),0.0,13.0,15.0,0,,17,11,4
+d806cd52-b1e5-aa45-44b2-f0e05341bc8d,male,american indian or alaska native,not hispanic or latino,m,s,never married,Medford,Massachusetts,english (united states),0.2006744241230121,10.799325575876988,12.5,0,,25,19,7
+b0a0e2c6-fd57-500f-bd46-237e0f53324b,female,white,not hispanic or latino,f,s,never married,Leicester,Massachusetts,english (united states),0.0074996218287929,13.992500378171208,16.0,0,,20,15,4
+a4f665c4-b202-4dd4-e13f-585e18bae974,male,asian,not hispanic or latino,m,w,widowed,Walpole,Gia Định,vietnamese,1.1595916650574951,72.84040833494251,99.3,1,75.2,77,64,119
+a91fc8da-be8a-78e6-a950-4bb4235499c6,male,asian,not hispanic or latino,m,m,married,Ashland,Massachusetts,english (united states),0.168512276179296,43.83148772382071,45.6,0,,17,19,1
+001ad05e-1dd2-149e-a9f8-c1a447ced0a8,male,black or african american,not hispanic or latino,m,m,married,Springfield,Massachusetts,english (united states),0.0764467309069562,33.92355326909304,36.5,0,,20,20,2
+c502f43d-b21a-ea2b-19c3-369c4fcbb313,male,white,not hispanic or latino,m,s,never married,Hanover,Massachusetts,english (united states),0.0008823084504462,7.999117691549554,9.7,0,,23,16,4
+48d3dd0f-140a-3598-be4c-2090d4929199,male,white,not hispanic or latino,m,d,divorced,Spencer,Massachusetts,english (united states),0.0028620043635062,37.99713799563649,40.0,0,,20,12,2
+e276aea7-0bcd-8427-ff97-8657a6fd0f28,female,white,not hispanic or latino,f,m,married,Brockton,Massachusetts,english (united states),0.3384782995033057,37.66152170049669,39.8,0,,29,24,8
+298af27a-df66-bc4d-44eb-b7dba4e69e36,female,asian,not hispanic or latino,f,s,never married,Needham,Hong Kong Special Administrative Region,chinese,0.0047510945601115,9.995248905439889,11.8,0,,24,13,8
+768ef2f3-2d1f-2fb7-94bd-c7a16e099f69,female,white,not hispanic or latino,f,s,never married,Blackstone,Massachusetts,english (united states),0.7200782573074144,2.279921742692585,36.7,1,3.8,24,18,10
+7bb026d0-83e2-a9ad-6baa-0af1d0c419f2,male,white,not hispanic or latino,m,s,never married,Millis,Massachusetts,english (united states),0.0039559923258967,3.996044007674103,6.2,0,,21,10,7
+36680140-2888-d4f7-7d40-2fd72f925159,male,white,hispanic or latino,m,s,never married,Rockland,Puerto Rico,spanish,0.0,10.0,12.0,0,,21,13,1
+6788a152-b927-e077-630a-e70dac7e7cff,female,other,not hispanic or latino,f,s,never married,Uxbridge,Massachusetts,english (united states),0.0,10.0,12.4,0,,20,12,3
+12686b8b-4889-a6b8-0df5-2a8655c6f671,male,asian,not hispanic or latino,m,m,married,Holyoke,Massachusetts,english (united states),0.5430387209868606,41.45696127901314,45.8,1,42.9,156,37,37
+c3ef52d7-38ff-0793-9df2-8898983457ca,male,white,not hispanic or latino,m,m,married,Worcester,Massachusetts,english (united states),0.1871319783232996,33.8128680216767,35.9,0,,18,17,3
+3a46995f-0d6d-db33-42b9-1582414dffef,male,white,not hispanic or latino,m,s,never married,Hopkinton,Massachusetts,english (united states),3.632499519636315,6.3675004803636845,12.4,0,,22,14,12
+cb3abe97-f213-c860-f03f-8273dadf4f57,male,white,not hispanic or latino,m,s,never married,Springfield,Massachusetts,english (united states),0.0,13.0,14.8,0,,18,9,1
+a0abc292-e4a9-b9d1-ac18-1c9a0b3015de,male,white,hispanic or latino,m,s,never married,Holden,Ciudad de Buenos Aires,spanish,0.0,12.0,13.8,0,,19,11,3
+27c5216e-c19e-0875-f977-67e00f6934a2,female,white,not hispanic or latino,f,s,never married,West Tisbury,Massachusetts,english (united states),0.005477761773323,6.9945222382266765,9.4,0,,23,13,1
+9d753e87-3fe9-4a4f-d459-ebba3901d459,male,white,hispanic or latino,m,m,married,Groveland,Massachusetts,english (united states),0.0,34.0,35.9,0,,12,17,3
+7d76ca3e-8ed5-31c1-8ea2-003c379bbe9f,male,black or african american,not hispanic or latino,m,s,never married,Boston,Ile-de-France,french (france),0.0,21.0,22.9,0,,16,20,4
+4e9537c0-a909-3910-985d-461708b27928,female,white,not hispanic or latino,f,s,never married,Newton,Massachusetts,english (united states),0.001754325220667,6.998245674779333,9.1,0,,23,11,6
+2b440c6c-29db-af6a-02a2-30a13411bf78,male,white,not hispanic or latino,m,d,divorced,Billerica,Massachusetts,english (united states),0.8466048257485755,40.15339517425142,42.9,0,,17,21,2
+eb046751-88c3-5083-f6b4-c2755de306ac,male,white,not hispanic or latino,m,m,married,Melrose,Massachusetts,english (united states),0.10575128913409,47.89424871086591,50.0,0,,17,19,3
+284d16e8-da91-7db5-c327-3125f028c875,female,white,not hispanic or latino,f,s,never married,Braintree,Massachusetts,english (united states),7.824561907707626,41.17543809229237,51.2,0,,93,64,31
+51e68d81-0170-2a66-1d73-1df6f423a631,male,black or african american,not hispanic or latino,m,m,married,Springfield,Massachusetts,english (united states),0.0729494694224161,33.92705053057758,35.6,0,,16,18,5
+5e0fa25c-355d-eba6-5ba5-a498e7626b1d,male,black or african american,not hispanic or latino,m,s,never married,North Amherst,San Jose,spanish,0.005477761773323,25.99452223822668,28.2,0,,14,25,3
+a0b63e97-b6fd-5fe1-8f2d-2bec915efa97,male,white,not hispanic or latino,m,m,married,Boston,Massachusetts,english (united states),0.0153868147675153,29.984613185232483,32.1,0,,17,20,3
+2d493137-40b1-4032-246e-c8e4f2f28dbd,male,white,not hispanic or latino,m,s,never married,Middleborough,Massachusetts,english (united states),0.0,13.0,14.6,0,,20,11,6
+3c865c64-7112-8dc1-d3a4-a5a102bede45,male,white,not hispanic or latino,m,s,never married,Northborough,Massachusetts,english (united states),1.810617466685927,10.189382533314074,13.5,0,,20,11,3
+8f25b0fa-9ce1-56db-5e6d-1a5e721cf2f5,female,asian,not hispanic or latino,f,s,never married,Chelsea,Massachusetts,english (united states),0.0011302835216847,3.9988697164783154,5.8,0,,20,9,3
+c974c5e9-7f80-ef01-e5dc-258f08014700,male,white,not hispanic or latino,m,s,never married,Barnstable,Massachusetts,english (united states),5.365630812843463,20.634369187156537,71.7,1,26.7,14,23,4
+7b2250a4-6962-94df-a37c-503ed823c14f,female,white,not hispanic or latino,f,s,never married,Malden,Massachusetts,english (united states),0.0,7.0,8.7,0,,20,12,2
+a24c27bd-0ac2-8a77-290e-53978e19ba73,male,white,not hispanic or latino,m,s,never married,Cambridge,Massachusetts,english (united states),0.3396567405395418,24.660343259460458,26.6,0,,17,18,2
+2a757b0d-530b-e782-9ff8-20b3db145f4d,male,black or african american,not hispanic or latino,m,m,married,Boston,Massachusetts,english (united states),0.0163611470369944,33.983638852963004,36.3,0,,15,19,3
+a832f5fa-07a9-e8ef-dc1a-8df6376be9cf,male,black or african american,not hispanic or latino,m,m,married,Springfield,Massachusetts,english (united states),2.5697214041735017,37.4302785958265,41.7,0,,131,48,21
+2da3b9a9-872c-1a9e-9137-382b368b6534,male,asian,not hispanic or latino,m,m,married,Cambridge,Massachusetts,english (united states),0.0452113408673913,32.95478865913261,34.5,0,,18,22,4
+69798f62-9af0-011c-bf80-f01944bd8a21,female,white,not hispanic or latino,f,s,never married,Chelmsford,Massachusetts,english (united states),0.2760363180339891,1.723963681966011,24.9,1,2.9,20,11,6
+c2b46135-180d-1227-66d3-c1281d7e0f2c,male,white,not hispanic or latino,m,s,never married,Newton,Massachusetts,english (united states),0.0,4.0,5.6,0,,19,16,0
+b973c1db-22d4-d531-2d09-f73a6a75c7d4,male,white,not hispanic or latino,m,m,married,Springfield,Massachusetts,english (united states),0.3278183549938797,33.67218164500612,35.6,0,,18,20,4
+0a6f874f-5196-ce20-415e-f40972300213,male,black or african american,not hispanic or latino,m,m,married,Nantucket,Massachusetts,english (united states),0.358953738129061,33.64104626187094,36.0,0,,15,16,4
+1fea71f0-e849-703b-1ca4-284c3f20e3af,male,white,not hispanic or latino,m,s,never married,Framingham,Massachusetts,english (united states),0.0052037914678507,12.994796208532147,15.2,0,,17,7,2
+7e1e93f8-2031-7073-b428-b300a71d0b5f,female,white,not hispanic or latino,f,s,never married,Weymouth,Massachusetts,english (united states),0.0039559923258967,5.996044007674104,7.5,0,,18,13,2
+00cbb03e-9551-3437-fd0d-8a98d4fb87c4,female,white,not hispanic or latino,f,m,married,Everett,Massachusetts,english (united states),0.1202439943140353,31.87975600568597,34.3,0,,20,17,5
+9953bd74-1fe7-06c2-558d-7364b687b040,male,white,hispanic or latino,m,s,never married,Worcester,El Salvador,spanish,0.1175478431157905,24.88245215688421,27.3,0,,16,22,5
+30dfc392-b177-4307-ca8b-93a03efe1d96,male,white,not hispanic or latino,m,d,divorced,Dunstable,Massachusetts,english (united states),0.0874327829457797,37.91256721705422,39.7,0,,18,18,6
+843129e5-d84b-595c-a6bc-eaae4cf17be6,female,white,not hispanic or latino,f,m,married,Abington,Massachusetts,english (united states),2.590239615494318,41.40976038450568,45.9,0,,53,73,48
+54a6f9f9-8f70-4897-015c-3762e169e70f,male,white,not hispanic or latino,m,s,never married,Boston,Massachusetts,english (united states),0.0039559923258967,23.996044007674104,26.3,0,,12,16,1
+3a245cb0-77c7-1e23-7d0a-3dadd56c574b,male,white,not hispanic or latino,m,m,married,Saugus,Massachusetts,english (united states),0.0099535867823327,43.99004641321767,67.6,1,44.9,17,18,0
+fd9d76df-cada-868c-6ec8-9bef440aa28e,male,white,not hispanic or latino,m,s,never married,Marlborough,Massachusetts,english (united states),0.3152112624967146,26.68478873750329,28.6,0,,13,16,2
+29be9031-4319-e6bd-afa6-8cff1679a09d,male,white,not hispanic or latino,m,m,married,Boston,Massachusetts,english (united states),0.5123397552449703,35.48766024475503,38.2,0,,14,20,3
+0b01a2f1-c42f-819a-3a6d-c66dffc7d3d1,male,white,not hispanic or latino,m,m,married,Norfolk,Massachusetts,english (united states),0.1220706203419565,26.87792937965804,29.2,0,,13,17,2
+35c8a401-4339-3151-6910-a2af623543e1,male,white,not hispanic or latino,m,m,married,Winchester,Massachusetts,english (united states),0.0061026880864012,39.9938973119136,42.1,0,,15,17,2
+7a324e41-8d68-4f34-d98f-81b3ceb6dbf2,male,white,not hispanic or latino,m,s,never married,Boston,Massachusetts,english (united states),0.3574162168452788,25.64258378315472,28.4,0,,11,19,1
+cdd9f42a-68e0-3579-e3c0-4caa49348864,male,white,not hispanic or latino,m,s,never married,East Longmeadow,Massachusetts,english (united states),0.0,2.0,4.3,0,,20,11,9
+ef72326d-684e-4775-aeb6-40a08a63fe04,male,white,not hispanic or latino,m,s,never married,Marlborough,Massachusetts,english (united states),0.0,27.0,28.9,0,,10,17,3
+a22725f8-01d3-0784-1196-7c4223d4ad45,male,white,not hispanic or latino,m,s,never married,Deerfield,Massachusetts,english (united states),0.0,3.0,5.5,0,,18,10,5
+699c2f48-dd7a-197d-b40a-3cb88c6826ff,male,white,not hispanic or latino,m,d,divorced,Agawam,Massachusetts,english (united states),0.3255263719039474,69.67447362809605,72.2,0,,70,38,39
+055fa9e6-988b-6b78-232c-fad885741b4d,female,white,not hispanic or latino,f,s,never married,Granby,Massachusetts,english (united states),0.0859015476480434,5.914098452351957,7.7,0,,20,11,3
+c555dbdb-666e-815c-0935-f5786fa82251,male,american indian or alaska native,not hispanic or latino,m,s,never married,Lancaster,Massachusetts,english (united states),0.1292759117834916,1.8707240882165084,31.5,1,2.7,17,8,7
+bb472e08-18a3-1a91-6340-560b73822f4b,male,white,not hispanic or latino,m,s,never married,Revere,Massachusetts,english (united states),0.0021427376632326,4.997857262336767,6.6,0,,18,12,3
+b7f77169-73d0-1b2b-3a9a-cd61c3a055e4,female,asian,not hispanic or latino,f,s,never married,Newton,Massachusetts,english (united states),0.0021427376632326,3.997857262336767,6.4,0,,16,11,2
+08eed99a-c2c5-99e7-9d28-912ea9123a3d,female,white,not hispanic or latino,f,s,never married,Newbury,Massachusetts,english (united states),0.0,4.0,6.0,0,,18,12,7
+f7e84b6f-64c2-636f-b8af-599fcebffd98,male,white,not hispanic or latino,m,s,never married,Holliston,Massachusetts,english (united states),0.0,7.0,8.7,0,,18,10,2
+8f6019e1-4a7e-2b3a-e8a7-6f0e63635471,male,white,hispanic or latino,m,m,married,Wilmington,Massachusetts,english (united states),0.0101686440288085,35.98983135597119,37.9,0,,18,20,2
+7120bb51-3461-0abc-f913-ba980496274d,female,white,hispanic or latino,f,s,never married,Plymouth,Kingston,spanish,0.0,5.0,6.8,0,,19,8,4
+aab91768-4ec3-4c91-e67f-31916a784409,female,white,not hispanic or latino,f,s,never married,Fall River,Massachusetts,english (united states),0.0,4.0,5.6,0,,16,6,4
+18d4b2a0-006a-0367-2e62-d991e8c30ef5,female,white,hispanic or latino,f,s,never married,Boston,Massachusetts,english (united states),0.0,5.0,6.7,0,,19,13,4
+529921a6-e8d1-6ade-8924-9f5b1e058a8d,male,white,not hispanic or latino,m,m,married,Quincy,Massachusetts,english (united states),0.6999471057796289,84.30005289422037,102.0,1,86.0,112,40,45
+8638eb91-3d03-45da-6e59-2fed20eeec8a,male,white,not hispanic or latino,m,m,married,Groton,Massachusetts,english (united states),0.0,29.0,30.9,0,,12,16,2
+cd6eb284-c281-f17d-15f7-8de4a0cb4b4e,male,white,not hispanic or latino,m,m,married,Seekonk,Massachusetts,english (united states),0.0,29.0,30.6,0,,12,16,3
+e62c13a4-4352-c3f0-2a22-ccc89d7c167e,male,white,not hispanic or latino,m,s,never married,Acton,Massachusetts,english (united states),0.5755808393510768,9.424419160648924,12.3,0,,20,10,3
+ca1550c6-354d-922f-9e28-313014b42bae,male,white,not hispanic or latino,m,m,married,Hull,Massachusetts,english (united states),0.0236891032234993,31.9763108967765,33.7,0,,13,16,2
+ddfa516a-3f42-af6c-5779-548d6943e116,male,asian,not hispanic or latino,m,m,married,Boston,Macao Special Administrative Region of the People's Republic of China,chinese,0.1960479209900139,31.803952079009985,38.4,1,33.7,15,19,2
+20739a99-aa18-628a-773d-5541f34c2d87,male,white,not hispanic or latino,m,m,married,Northborough,Massachusetts,english (united states),0.3256046374412041,34.6743953625588,37.4,0,,12,14,2
+606fadb4-d517-218c-c66f-d22f86a25e46,male,white,not hispanic or latino,m,s,never married,Reading,Massachusetts,english (united states),0.0061401382723346,25.993859861727664,28.2,0,,12,12,1
+f0109c6d-0aac-6fee-96cc-17c8fc34fd63,male,white,not hispanic or latino,m,m,married,Wilmington,Massachusetts,english (united states),0.0581316308532012,32.9418683691468,35.3,0,,13,15,3
+8b2f60fb-85d9-610f-02b6-1c521b30c897,male,white,not hispanic or latino,m,m,married,Blackstone,Massachusetts,english (united states),0.1425580974346924,40.857441902565306,42.7,0,,12,12,0
+c16b9aea-2b5f-3866-22a1-01dea645c9e1,male,white,not hispanic or latino,m,m,married,Tewksbury,Larissa Prefecture,modern greek (1453-),22.36791420021788,10.63208579978212,34.6,0,,15,19,2
+ea620f0a-2183-ce58-7991-3fbcacbebc03,female,white,not hispanic or latino,f,m,married,Barnstable,Massachusetts,english (united states),1.560649632776866,72.43935036722313,75.9,0,,93,54,67
+912a7de2-c733-8c45-6ed3-bd947a0db4c8,male,american indian or alaska native,not hispanic or latino,m,s,never married,Randolph,Massachusetts,english (united states),0.0,4.0,5.8,0,,16,9,2
+899fb79e-be97-7eed-53e2-38101ff1ec07,male,white,not hispanic or latino,m,s,never married,Wilmington,Massachusetts,english (united states),0.0244884304369446,2.9755115695630554,5.0,0,,17,10,2
+2ff5b5a6-d177-3b18-8e85-efa8aa817da5,male,white,not hispanic or latino,m,m,married,Malden,Massachusetts,english (united states),0.0012244215218472,28.998775578478156,30.9,0,,13,17,3
+8315cf2f-e936-aa5c-5969-1bbd11ec7dc6,male,american indian or alaska native,not hispanic or latino,m,s,never married,Lancaster,Massachusetts,english (united states),0.0903913648823111,29.90960863511769,31.5,0,,10,13,3
+39202a9b-6777-8c80-f408-7e64f012dbd7,male,white,not hispanic or latino,m,m,married,Chelmsford,Massachusetts,english (united states),0.0,29.0,31.4,0,,11,17,2
+e63e0583-c953-1ff2-6efa-3f427a11c129,male,white,not hispanic or latino,m,m,married,Waltham,Massachusetts,english (united states),0.0,36.0,38.4,0,,13,14,0
+987da908-13a2-8c15-5122-6b933c808a0a,male,white,not hispanic or latino,m,s,never married,Warren,Massachusetts,english (united states),0.089073132442977,37.91092686755702,40.3,0,,12,13,2
+7b8eec89-f575-3680-09f4-1206b0b1d5af,male,black or african american,not hispanic or latino,m,s,never married,Blackstone,Massachusetts,english (united states),0.0,4.0,5.6,0,,16,10,5
+aeb6fd40-c0da-23a8-7b46-6c9fe558d7b2,female,white,hispanic or latino,f,s,never married,Worcester,Jalisco,spanish,0.0,3.0,5.0,0,,16,12,6
+b5521466-d3d1-49d9-7d99-7e9997cc26a0,male,white,not hispanic or latino,m,s,never married,Brookline,Massachusetts,english (united states),0.0,3.0,4.8,0,,16,5,3
+b97ce5cb-4d9a-7232-572f-10ec7224a142,female,white,not hispanic or latino,f,s,never married,North Adams,Massachusetts,english (united states),0.4532938783314283,20.54670612166857,23.4,0,,147,44,42
+5c8c94f5-acc7-fd76-215e-c2e1cd20078b,male,asian,not hispanic or latino,m,s,never married,North Brookfield,Massachusetts,english (united states),0.0352923380178491,25.96470766198215,28.5,0,,9,13,2
+192de97c-efdb-dc26-fb13-b861c93ebc74,male,white,not hispanic or latino,m,s,never married,Boston,Massachusetts,english (united states),0.0058160022287743,0.9941839977712256,3.0,0,,14,14,5
+a1dc266a-15a7-2681-596e-286029200769,female,white,not hispanic or latino,f,s,never married,Stoneham,Massachusetts,english (united states),0.0,3.0,4.5,0,,16,9,3
+469b5740-2d94-fc2f-5ef1-3eec6e06a705,male,white,not hispanic or latino,m,s,never married,Tisbury,Massachusetts,english (united states),0.0,4.0,6.3,0,,15,7,1
+8aab92b5-8868-8071-f468-f51cab264ff7,male,white,not hispanic or latino,m,s,never married,Leominster,Massachusetts,english (united states),0.0021427376632326,2.997857262336767,4.6,0,,14,6,3
+5643145b-f36e-8944-eba2-82fecc31f77e,male,white,not hispanic or latino,m,s,never married,Boston,Massachusetts,english (united states),0.001565074792378,40.99843492520762,43.3,0,,13,16,0
+fb41ef7b-d9f3-8c00-542e-9e14f15c6334,male,white,not hispanic or latino,m,s,never married,Concord,Massachusetts,english (united states),0.0,2.0,4.3,0,,15,6,2
+6331fb9d-a120-ddf0-5984-7cf037d52aa8,male,white,not hispanic or latino,m,m,married,Westport,Massachusetts,english (united states),0.0,33.0,34.6,0,,9,10,1
+21f1a568-04e9-ca55-6c22-6d3ce0afda58,male,white,not hispanic or latino,m,m,married,Westport,Massachusetts,english (united states),0.6050108463466277,29.394989153653373,32.0,0,,15,18,1
+c6576d8c-cdd9-6a81-5353-edfd1f009e13,male,white,not hispanic or latino,m,m,married,Fall River,Massachusetts,english (united states),0.3327663643511274,28.667233635648877,30.8,0,,16,16,2

@@ -1,0 +1,6 @@
+table,status,quasi_identifiers,n_records,n_groups,min_k,mean_k,max_k,pct_k_ge_5,pct_k_ge_10
+patients,ok,gender|race|ethnicity|birth_sex|marital_code|marital_status|city|birth_place_state|language|age_at_death,1000,934.0,1.0,1.07,6.0,1.6,0.0
+encounters,no_qi_found,,63866,,,,,,
+observations,no_qi_found,,304304,,,,,,
+conditions,no_qi_found,,32196,,,,,,
+medications,no_qi_found,,25100,,,,,,

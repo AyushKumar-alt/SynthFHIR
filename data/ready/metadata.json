@@ -1,0 +1,233 @@
+{
+  "METADATA_SPEC_VERSION": "V1",
+  "tables": {
+    "patients": {
+      "primary_key": "patient_id",
+      "columns": {
+        "patient_id": {
+          "sdtype": "id"
+        },
+        "gender": {
+          "sdtype": "categorical"
+        },
+        "race": {
+          "sdtype": "categorical"
+        },
+        "ethnicity": {
+          "sdtype": "categorical"
+        },
+        "birth_sex": {
+          "sdtype": "categorical"
+        },
+        "marital_code": {
+          "sdtype": "categorical"
+        },
+        "marital_status": {
+          "sdtype": "categorical"
+        },
+        "city": {
+          "sdtype": "categorical"
+        },
+        "birth_place_state": {
+          "sdtype": "categorical"
+        },
+        "language": {
+          "sdtype": "categorical"
+        },
+        "daly": {
+          "sdtype": "numerical"
+        },
+        "qaly": {
+          "sdtype": "numerical"
+        },
+        "age": {
+          "sdtype": "numerical"
+        },
+        "is_deceased": {
+          "sdtype": "boolean"
+        },
+        "age_at_death": {
+          "sdtype": "numerical"
+        },
+        "encounter_count": {
+          "sdtype": "numerical"
+        },
+        "condition_count": {
+          "sdtype": "numerical"
+        },
+        "medication_count": {
+          "sdtype": "numerical"
+        }
+      }
+    },
+    "encounters": {
+      "primary_key": "encounter_id",
+      "columns": {
+        "encounter_id": {
+          "sdtype": "id"
+        },
+        "patient_id": {
+          "sdtype": "id"
+        },
+        "class_code": {
+          "sdtype": "categorical"
+        },
+        "type_display": {
+          "sdtype": "categorical"
+        },
+        "organization_display": {
+          "sdtype": "categorical"
+        },
+        "location_display": {
+          "sdtype": "categorical"
+        },
+        "reason_display": {
+          "sdtype": "categorical"
+        },
+        "discharge_disposition": {
+          "sdtype": "categorical"
+        },
+        "days_since_birth": {
+          "sdtype": "numerical"
+        },
+        "encounter_duration_hours": {
+          "sdtype": "numerical"
+        },
+        "sequence_index": {
+          "sdtype": "numerical"
+        },
+        "days_since_prev_encounter": {
+          "sdtype": "numerical"
+        }
+      }
+    },
+    "observations": {
+      "primary_key": "observation_id",
+      "columns": {
+        "observation_id": {
+          "sdtype": "id"
+        },
+        "patient_id": {
+          "sdtype": "id"
+        },
+        "encounter_id": {
+          "sdtype": "id"
+        },
+        "category": {
+          "sdtype": "categorical"
+        },
+        "loinc_display": {
+          "sdtype": "categorical"
+        },
+        "value_quantity": {
+          "sdtype": "numerical"
+        },
+        "value_unit": {
+          "sdtype": "categorical"
+        },
+        "days_since_birth": {
+          "sdtype": "numerical"
+        },
+        "sequence_index": {
+          "sdtype": "numerical"
+        }
+      }
+    },
+    "conditions": {
+      "primary_key": "condition_id",
+      "columns": {
+        "condition_id": {
+          "sdtype": "id"
+        },
+        "patient_id": {
+          "sdtype": "id"
+        },
+        "encounter_id": {
+          "sdtype": "id"
+        },
+        "snomed_display": {
+          "sdtype": "categorical"
+        },
+        "clinical_status": {
+          "sdtype": "categorical"
+        },
+        "onset_days_since_birth": {
+          "sdtype": "numerical"
+        },
+        "abatement_days_since_birth": {
+          "sdtype": "numerical"
+        },
+        "duration_days": {
+          "sdtype": "numerical"
+        },
+        "is_chronic": {
+          "sdtype": "boolean"
+        },
+        "sequence_index": {
+          "sdtype": "numerical"
+        }
+      }
+    },
+    "medications": {
+      "primary_key": "medication_id",
+      "columns": {
+        "medication_id": {
+          "sdtype": "id"
+        },
+        "patient_id": {
+          "sdtype": "id"
+        },
+        "encounter_id": {
+          "sdtype": "id"
+        },
+        "status": {
+          "sdtype": "categorical"
+        },
+        "rxnorm_display": {
+          "sdtype": "categorical"
+        },
+        "category": {
+          "sdtype": "categorical"
+        },
+        "reason_display": {
+          "sdtype": "categorical"
+        },
+        "days_since_birth": {
+          "sdtype": "numerical"
+        },
+        "is_active": {
+          "sdtype": "boolean"
+        },
+        "sequence_index": {
+          "sdtype": "numerical"
+        }
+      }
+    }
+  },
+  "relationships": [
+    {
+      "parent_table_name": "patients",
+      "parent_primary_key": "patient_id",
+      "child_table_name": "encounters",
+      "child_foreign_key": "patient_id"
+    },
+    {
+      "parent_table_name": "encounters",
+      "parent_primary_key": "encounter_id",
+      "child_table_name": "observations",
+      "child_foreign_key": "encounter_id"
+    },
+    {
+      "parent_table_name": "encounters",
+      "parent_primary_key": "encounter_id",
+      "child_table_name": "conditions",
+      "child_foreign_key": "encounter_id"
+    },
+    {
+      "parent_table_name": "encounters",
+      "parent_primary_key": "encounter_id",
+      "child_table_name": "medications",
+      "child_foreign_key": "encounter_id"
+    }
+  ]
+}

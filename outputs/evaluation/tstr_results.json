@@ -1,0 +1,65 @@
+{
+  "patients": {
+    "status": "ok",
+    "target_column": "is_deceased",
+    "n_train": 1000,
+    "n_test": 998,
+    "accuracy": 0.8697,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "class_balance_train": {
+      "0": 828,
+      "1": 172
+    },
+    "class_balance_test": {
+      "0": 868,
+      "1": 130
+    },
+    "roc_auc": 0.7436
+  },
+  "encounters": {
+    "status": "no_target"
+  },
+  "observations": {
+    "status": "no_target"
+  },
+  "conditions": {
+    "status": "ok",
+    "target_column": "is_chronic",
+    "n_train": 32196,
+    "n_test": 37835,
+    "accuracy": 0.7239,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "class_balance_train": {
+      "0": 25867,
+      "1": 6329
+    },
+    "class_balance_test": {
+      "0": 28414,
+      "1": 9421
+    },
+    "roc_auc": 0.645
+  },
+  "medications": {
+    "status": "ok",
+    "target_column": "is_active",
+    "n_train": 25100,
+    "n_test": 46734,
+    "accuracy": 0.9255,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "class_balance_train": {
+      "0": 22472,
+      "1": 2628
+    },
+    "class_balance_test": {
+      "0": 44058,
+      "1": 2676
+    },
+    "roc_auc": 0.4599
+  }
+}

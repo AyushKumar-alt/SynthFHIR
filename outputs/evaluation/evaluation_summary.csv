@@ -1,0 +1,6 @@
+table,original_rows,synthetic_rows,numeric_similarity,categorical_similarity,correlation_preservation,privacy_score,sdv_quality_score,ks_mean_similarity,kanon_min_k,tstr_f1,tstr_roc_auc,overall_score
+patients,998,1000,0.5735,0.8051,0.522,1.0,,0.5735,1.0,0.0,0.7436,0.718
+encounters,57667,63866,0.275,0.9778,0.9399,1.0,,0.275,,,,0.7638
+observations,303696,304304,0.7326,0.9979,0.9801,1.0,,0.7326,,,,0.9152
+conditions,37835,32196,0.7072,0.4739,0.7014,1.0,,0.7072,,0.0,0.645,0.6946
+medications,46734,25100,0.8145,0.614,,1.0,,0.8145,,0.0,0.4599,0.7857

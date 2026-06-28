@@ -1,0 +1,6 @@
+table,status,target_column,n_train,n_test,accuracy,precision,recall,f1,roc_auc
+patients,ok,is_deceased,1000.0,998.0,0.8697,0.0,0.0,0.0,0.7436
+encounters,no_target,,,,,,,,
+observations,no_target,,,,,,,,
+conditions,ok,is_chronic,32196.0,37835.0,0.7239,0.0,0.0,0.0,0.645
+medications,ok,is_active,25100.0,46734.0,0.9255,0.0,0.0,0.0,0.4599

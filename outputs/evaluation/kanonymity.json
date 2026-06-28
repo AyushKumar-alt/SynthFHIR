@@ -1,0 +1,44 @@
+{
+  "patients": {
+    "status": "ok",
+    "quasi_identifiers": [
+      "gender",
+      "race",
+      "ethnicity",
+      "birth_sex",
+      "marital_code",
+      "marital_status",
+      "city",
+      "birth_place_state",
+      "language",
+      "age_at_death"
+    ],
+    "n_records": 1000,
+    "n_groups": 934,
+    "min_k": 1,
+    "mean_k": 1.07,
+    "max_k": 6,
+    "pct_k_ge_5": 1.6,
+    "pct_k_ge_10": 0.0
+  },
+  "encounters": {
+    "status": "no_qi_found",
+    "n_records": 63866,
+    "quasi_identifiers": []
+  },
+  "observations": {
+    "status": "no_qi_found",
+    "n_records": 304304,
+    "quasi_identifiers": []
+  },
+  "conditions": {
+    "status": "no_qi_found",
+    "n_records": 32196,
+    "quasi_identifiers": []
+  },
+  "medications": {
+    "status": "no_qi_found",
+    "n_records": 25100,
+    "quasi_identifiers": []
+  }
+}

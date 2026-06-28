@@ -1,0 +1,245 @@
+{
+  "patients": {
+    "status": "ok",
+    "columns": [
+      {
+        "table": "patients",
+        "column": "daly",
+        "ks_stat": 0.5002,
+        "ks_p_value": 0.0,
+        "similarity": 0.4998,
+        "n_real": 998,
+        "n_synthetic": 1000,
+        "mean_real": 1.9669,
+        "mean_synth": 3.9706,
+        "std_real": 5.2566,
+        "std_synth": 6.9095
+      },
+      {
+        "table": "patients",
+        "column": "qaly",
+        "ks_stat": 0.2958,
+        "ks_p_value": 0.0,
+        "similarity": 0.7042,
+        "n_real": 998,
+        "n_synthetic": 1000,
+        "mean_real": 40.2646,
+        "mean_synth": 59.1902,
+        "std_real": 21.9726,
+        "std_synth": 25.4798
+      },
+      {
+        "table": "patients",
+        "column": "age",
+        "ks_stat": 0.3281,
+        "ks_p_value": 0.0,
+        "similarity": 0.6719,
+        "n_real": 998,
+        "n_synthetic": 1000,
+        "mean_real": 46.7551,
+        "mean_synth": 25.8035,
+        "std_real": 25.1213,
+        "std_synth": 21.1317
+      },
+      {
+        "table": "patients",
+        "column": "age_at_death",
+        "ks_stat": 0.5385,
+        "ks_p_value": 0.0,
+        "similarity": 0.4615,
+        "n_real": 130,
+        "n_synthetic": 123,
+        "mean_real": 53.5877,
+        "mean_synth": 51.0772,
+        "std_real": 23.6552,
+        "std_synth": 9.668
+      },
+      {
+        "table": "patients",
+        "column": "encounter_count",
+        "ks_stat": 0.3628,
+        "ks_p_value": 0.0,
+        "similarity": 0.6372,
+        "n_real": 998,
+        "n_synthetic": 1000,
+        "mean_real": 57.7826,
+        "mean_synth": 41.346,
+        "std_real": 82.6743,
+        "std_synth": 74.8076
+      },
+      {
+        "table": "patients",
+        "column": "condition_count",
+        "ks_stat": 0.5518,
+        "ks_p_value": 0.0,
+        "similarity": 0.4482,
+        "n_real": 998,
+        "n_synthetic": 1000,
+        "mean_real": 37.9108,
+        "mean_synth": 16.438,
+        "std_real": 38.7541,
+        "std_synth": 23.4979
+      },
+      {
+        "table": "patients",
+        "column": "medication_count",
+        "ks_stat": 0.4081,
+        "ks_p_value": 0.0,
+        "similarity": 0.5919,
+        "n_real": 998,
+        "n_synthetic": 1000,
+        "mean_real": 46.8277,
+        "mean_synth": 72.911,
+        "std_real": 129.2324,
+        "std_synth": 146.6903
+      }
+    ],
+    "mean_ks_stat": 0.4265,
+    "mean_similarity": 0.5735
+  },
+  "encounters": {
+    "status": "ok",
+    "columns": [
+      {
+        "table": "encounters",
+        "column": "days_since_birth",
+        "ks_stat": 0.5146,
+        "ks_p_value": 0.0,
+        "similarity": 0.4854,
+        "n_real": 57667,
+        "n_synthetic": 63866,
+        "mean_real": 17085.4458,
+        "mean_synth": 17206.6955,
+        "std_real": 8758.4793,
+        "std_synth": 311.1955
+      },
+      {
+        "table": "encounters",
+        "column": "encounter_duration_hours",
+        "ks_stat": 0.9002,
+        "ks_p_value": 0.0,
+        "similarity": 0.0998,
+        "n_real": 57667,
+        "n_synthetic": 63866,
+        "mean_real": 5.6455,
+        "mean_synth": 6.0025,
+        "std_real": 52.1676,
+        "std_synth": 1.3858
+      },
+      {
+        "table": "encounters",
+        "column": "days_since_prev_encounter",
+        "ks_stat": 0.7602,
+        "ks_p_value": 0.0,
+        "similarity": 0.2398,
+        "n_real": 56669,
+        "n_synthetic": 62975,
+        "mean_real": 203.8378,
+        "mean_synth": 196.2617,
+        "std_real": 721.455,
+        "std_synth": 26.6138
+      }
+    ],
+    "mean_ks_stat": 0.725,
+    "mean_similarity": 0.275
+  },
+  "observations": {
+    "status": "ok",
+    "columns": [
+      {
+        "table": "observations",
+        "column": "value_quantity",
+        "ks_stat": 0.433,
+        "ks_p_value": 0.0,
+        "similarity": 0.567,
+        "n_real": 303696,
+        "n_synthetic": 304304,
+        "mean_real": 3098.6983,
+        "mean_synth": 3387.402,
+        "std_real": 22709.5021,
+        "std_synth": 8534.8085
+      },
+      {
+        "table": "observations",
+        "column": "days_since_birth",
+        "ks_stat": 0.1019,
+        "ks_p_value": 0.0,
+        "similarity": 0.8981,
+        "n_real": 303696,
+        "n_synthetic": 304304,
+        "mean_real": 20836.5363,
+        "mean_synth": 20808.8533,
+        "std_real": 8357.1411,
+        "std_synth": 8214.5064
+      }
+    ],
+    "mean_ks_stat": 0.2675,
+    "mean_similarity": 0.7326
+  },
+  "conditions": {
+    "status": "ok",
+    "columns": [
+      {
+        "table": "conditions",
+        "column": "onset_days_since_birth",
+        "ks_stat": 0.3143,
+        "ks_p_value": 0.0,
+        "similarity": 0.6857,
+        "n_real": 37835,
+        "n_synthetic": 32196,
+        "mean_real": 16940.0731,
+        "mean_synth": 20883.6737,
+        "std_real": 8627.1558,
+        "std_synth": 4775.5552
+      },
+      {
+        "table": "conditions",
+        "column": "abatement_days_since_birth",
+        "ks_stat": 0.2795,
+        "ks_p_value": 0.0,
+        "similarity": 0.7205,
+        "n_real": 28414,
+        "n_synthetic": 25881,
+        "mean_real": 18136.2308,
+        "mean_synth": 21043.4584,
+        "std_real": 8802.9196,
+        "std_synth": 4101.7402
+      },
+      {
+        "table": "conditions",
+        "column": "duration_days",
+        "ks_stat": 0.2846,
+        "ks_p_value": 0.0,
+        "similarity": 0.7154,
+        "n_real": 28414,
+        "n_synthetic": 25771,
+        "mean_real": 335.4991,
+        "mean_synth": 229.1197,
+        "std_real": 878.52,
+        "std_synth": 222.9444
+      }
+    ],
+    "mean_ks_stat": 0.2928,
+    "mean_similarity": 0.7072
+  },
+  "medications": {
+    "status": "ok",
+    "columns": [
+      {
+        "table": "medications",
+        "column": "days_since_birth",
+        "ks_stat": 0.1855,
+        "ks_p_value": 0.0,
+        "similarity": 0.8145,
+        "n_real": 46734,
+        "n_synthetic": 25100,
+        "mean_real": 22261.9731,
+        "mean_synth": 24539.0685,
+        "std_real": 8032.1114,
+        "std_synth": 4222.4736
+      }
+    ],
+    "mean_ks_stat": 0.1855,
+    "mean_similarity": 0.8145
+  }
+}

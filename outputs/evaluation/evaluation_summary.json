@@ -1,0 +1,2060 @@
+{
+  "generated_at": "2026-06-28T05:44:27.330013",
+  "project_root": "C:\\Users\\GOD\\SynthFHIR",
+  "tables_evaluated": [
+    "patients",
+    "encounters",
+    "observations",
+    "conditions",
+    "medications"
+  ],
+  "global_score": 0.7755,
+  "scores": {
+    "tables": {
+      "patients": {
+        "numeric_similarity": 0.5735,
+        "categorical_similarity": 0.8051,
+        "correlation_preservation": 0.522,
+        "privacy_score": 1.0,
+        "sdv_quality_score": null,
+        "original_rows": 998,
+        "synthetic_rows": 1000,
+        "overall": 0.718
+      },
+      "encounters": {
+        "numeric_similarity": 0.275,
+        "categorical_similarity": 0.9778,
+        "correlation_preservation": 0.9399,
+        "privacy_score": 1.0,
+        "sdv_quality_score": null,
+        "original_rows": 57667,
+        "synthetic_rows": 63866,
+        "overall": 0.7638
+      },
+      "observations": {
+        "numeric_similarity": 0.7326,
+        "categorical_similarity": 0.9979,
+        "correlation_preservation": 0.9801,
+        "privacy_score": 1.0,
+        "sdv_quality_score": null,
+        "original_rows": 303696,
+        "synthetic_rows": 304304,
+        "overall": 0.9152
+      },
+      "conditions": {
+        "numeric_similarity": 0.7072,
+        "categorical_similarity": 0.4739,
+        "correlation_preservation": 0.7014,
+        "privacy_score": 1.0,
+        "sdv_quality_score": null,
+        "original_rows": 37835,
+        "synthetic_rows": 32196,
+        "overall": 0.6946
+      },
+      "medications": {
+        "numeric_similarity": 0.8145,
+        "categorical_similarity": 0.614,
+        "correlation_preservation": null,
+        "privacy_score": 1.0,
+        "sdv_quality_score": null,
+        "original_rows": 46734,
+        "synthetic_rows": 25100,
+        "overall": 0.7857
+      }
+    },
+    "global_score": 0.7755
+  },
+  "dataset_summary": [
+    {
+      "table": "patients",
+      "original_rows": 998,
+      "original_cols": 18,
+      "original_missing_pct": 4.83,
+      "original_dtypes": {
+        "patient_id": "object",
+        "gender": "object",
+        "race": "object",
+        "ethnicity": "object",
+        "birth_sex": "object",
+        "marital_code": "object",
+        "marital_status": "object",
+        "city": "object",
+        "birth_place_state": "object",
+        "language": "object",
+        "daly": "float64",
+        "qaly": "float64",
+        "age": "float64",
+        "is_deceased": "int64",
+        "age_at_death": "float64",
+        "encounter_count": "int64",
+        "condition_count": "int64",
+        "medication_count": "int64"
+      },
+      "synthetic_rows": 1000,
+      "synthetic_cols": 18,
+      "synthetic_missing_pct": 4.87,
+      "synthetic_dtypes": {
+        "patient_id": "object",
+        "gender": "object",
+        "race": "object",
+        "ethnicity": "object",
+        "birth_sex": "object",
+        "marital_code": "object",
+        "marital_status": "object",
+        "city": "object",
+        "birth_place_state": "object",
+        "language": "object",
+        "daly": "float64",
+        "qaly": "float64",
+        "age": "float64",
+        "is_deceased": "bool",
+        "age_at_death": "float64",
+        "encounter_count": "int64",
+        "condition_count": "int64",
+        "medication_count": "int64"
+      },
+      "shared_columns": [
+        "age",
+        "age_at_death",
+        "birth_place_state",
+        "birth_sex",
+        "city",
+        "condition_count",
+        "daly",
+        "encounter_count",
+        "ethnicity",
+        "gender",
+        "is_deceased",
+        "language",
+        "marital_code",
+        "marital_status",
+        "medication_count",
+        "patient_id",
+        "qaly",
+        "race"
+      ],
+      "columns_only_in_original": [],
+      "columns_only_in_synthetic": [],
+      "column_count_match": true,
+      "dtype_mismatches": {
+        "is_deceased": {
+          "original": "int64",
+          "synthetic": "bool"
+        }
+      }
+    },
+    {
+      "table": "encounters",
+      "original_rows": 57667,
+      "original_cols": 12,
+      "original_missing_pct": 11.59,
+      "original_dtypes": {
+        "encounter_id": "object",
+        "patient_id": "object",
+        "class_code": "object",
+        "type_display": "object",
+        "organization_display": "object",
+        "location_display": "object",
+        "reason_display": "object",
+        "discharge_disposition": "object",
+        "days_since_birth": "float64",
+        "encounter_duration_hours": "float64",
+        "sequence_index": "int64",
+        "days_since_prev_encounter": "float64"
+      },
+      "synthetic_rows": 63866,
+      "synthetic_cols": 12,
+      "synthetic_missing_pct": 11.59,
+      "synthetic_dtypes": {
+        "encounter_id": "object",
+        "patient_id": "object",
+        "class_code": "object",
+        "type_display": "object",
+        "organization_display": "object",
+        "location_display": "object",
+        "reason_display": "object",
+        "discharge_disposition": "object",
+        "days_since_birth": "float64",
+        "encounter_duration_hours": "float64",
+        "sequence_index": "int64",
+        "days_since_prev_encounter": "float64"
+      },
+      "shared_columns": [
+        "class_code",
+        "days_since_birth",
+        "days_since_prev_encounter",
+        "discharge_disposition",
+        "encounter_duration_hours",
+        "encounter_id",
+        "location_display",
+        "organization_display",
+        "patient_id",
+        "reason_display",
+        "sequence_index",
+        "type_display"
+      ],
+      "columns_only_in_original": [],
+      "columns_only_in_synthetic": [],
+      "column_count_match": true,
+      "dtype_mismatches": {}
+    },
+    {
+      "table": "observations",
+      "original_rows": 303696,
+      "original_cols": 9,
+      "original_missing_pct": 0.0,
+      "original_dtypes": {
+        "observation_id": "object",
+        "patient_id": "object",
+        "encounter_id": "object",
+        "category": "object",
+        "loinc_display": "object",
+        "value_quantity": "float64",
+        "value_unit": "object",
+        "days_since_birth": "float64",
+        "sequence_index": "int64"
+      },
+      "synthetic_rows": 304304,
+      "synthetic_cols": 9,
+      "synthetic_missing_pct": 0.0,
+      "synthetic_dtypes": {
+        "observation_id": "object",
+        "patient_id": "object",
+        "encounter_id": "object",
+        "category": "object",
+        "loinc_display": "object",
+        "value_quantity": "float64",
+        "value_unit": "object",
+        "days_since_birth": "float64",
+        "sequence_index": "int64"
+      },
+      "shared_columns": [
+        "category",
+        "days_since_birth",
+        "encounter_id",
+        "loinc_display",
+        "observation_id",
+        "patient_id",
+        "sequence_index",
+        "value_quantity",
+        "value_unit"
+      ],
+      "columns_only_in_original": [],
+      "columns_only_in_synthetic": [],
+      "column_count_match": true,
+      "dtype_mismatches": {}
+    },
+    {
+      "table": "conditions",
+      "original_rows": 37835,
+      "original_cols": 10,
+      "original_missing_pct": 4.98,
+      "original_dtypes": {
+        "condition_id": "object",
+        "patient_id": "object",
+        "encounter_id": "object",
+        "snomed_display": "object",
+        "clinical_status": "object",
+        "onset_days_since_birth": "float64",
+        "abatement_days_since_birth": "float64",
+        "duration_days": "float64",
+        "is_chronic": "int64",
+        "sequence_index": "int64"
+      },
+      "synthetic_rows": 32196,
+      "synthetic_cols": 10,
+      "synthetic_missing_pct": 3.96,
+      "synthetic_dtypes": {
+        "condition_id": "object",
+        "patient_id": "object",
+        "encounter_id": "object",
+        "snomed_display": "object",
+        "clinical_status": "object",
+        "onset_days_since_birth": "float64",
+        "abatement_days_since_birth": "float64",
+        "duration_days": "float64",
+        "is_chronic": "bool",
+        "sequence_index": "int64"
+      },
+      "shared_columns": [
+        "abatement_days_since_birth",
+        "clinical_status",
+        "condition_id",
+        "duration_days",
+        "encounter_id",
+        "is_chronic",
+        "onset_days_since_birth",
+        "patient_id",
+        "sequence_index",
+        "snomed_display"
+      ],
+      "columns_only_in_original": [],
+      "columns_only_in_synthetic": [],
+      "column_count_match": true,
+      "dtype_mismatches": {
+        "is_chronic": {
+          "original": "int64",
+          "synthetic": "bool"
+        }
+      }
+    },
+    {
+      "table": "medications",
+      "original_rows": 46734,
+      "original_cols": 10,
+      "original_missing_pct": 4.7,
+      "original_dtypes": {
+        "medication_id": "object",
+        "patient_id": "object",
+        "encounter_id": "object",
+        "status": "object",
+        "rxnorm_display": "object",
+        "category": "object",
+        "reason_display": "object",
+        "days_since_birth": "float64",
+        "is_active": "int64",
+        "sequence_index": "int64"
+      },
+      "synthetic_rows": 25100,
+      "synthetic_cols": 10,
+      "synthetic_missing_pct": 4.11,
+      "synthetic_dtypes": {
+        "medication_id": "object",
+        "patient_id": "object",
+        "encounter_id": "object",
+        "status": "object",
+        "rxnorm_display": "object",
+        "category": "object",
+        "reason_display": "object",
+        "days_since_birth": "float64",
+        "is_active": "bool",
+        "sequence_index": "int64"
+      },
+      "shared_columns": [
+        "category",
+        "days_since_birth",
+        "encounter_id",
+        "is_active",
+        "medication_id",
+        "patient_id",
+        "reason_display",
+        "rxnorm_display",
+        "sequence_index",
+        "status"
+      ],
+      "columns_only_in_original": [],
+      "columns_only_in_synthetic": [],
+      "column_count_match": true,
+      "dtype_mismatches": {
+        "is_active": {
+          "original": "int64",
+          "synthetic": "bool"
+        }
+      }
+    }
+  ],
+  "numeric_results": {
+    "patients": [
+      {
+        "table": "patients",
+        "column": "daly",
+        "ks_stat": 0.5002,
+        "ks_p_value": 0.0,
+        "similarity": 0.4998,
+        "real": {
+          "count": 998,
+          "mean": 1.9669,
+          "std": 5.2566,
+          "min": 0.0,
+          "p25": 0.0298,
+          "median": 0.2584,
+          "p75": 0.8475,
+          "max": 59.1791
+        },
+        "synthetic": {
+          "count": 1000,
+          "mean": 3.9706,
+          "std": 6.9095,
+          "min": 0.0,
+          "p25": 0.6685,
+          "median": 1.0036,
+          "p75": 3.1008,
+          "max": 44.5833
+        }
+      },
+      {
+        "table": "patients",
+        "column": "qaly",
+        "ks_stat": 0.2958,
+        "ks_p_value": 0.0,
+        "similarity": 0.7042,
+        "real": {
+          "count": 998,
+          "mean": 40.2646,
+          "std": 21.9726,
+          "min": 0.6452,
+          "p25": 20.9977,
+          "median": 40.9677,
+          "p75": 57.4119,
+          "max": 108.4122
+        },
+        "synthetic": {
+          "count": 1000,
+          "mean": 59.1902,
+          "std": 25.4798,
+          "min": 0.6742,
+          "p25": 37.8351,
+          "median": 59.0476,
+          "p75": 80.1285,
+          "max": 108.4122
+        }
+      },
+      {
+        "table": "patients",
+        "column": "age",
+        "ks_stat": 0.3281,
+        "ks_p_value": 0.0,
+        "similarity": 0.6719,
+        "real": {
+          "count": 998,
+          "mean": 46.7551,
+          "std": 25.1213,
+          "min": 3.0,
+          "p25": 24.9,
+          "median": 47.1,
+          "p75": 65.1,
+          "max": 110.8
+        },
+        "synthetic": {
+          "count": 1000,
+          "mean": 25.8035,
+          "std": 21.1317,
+          "min": 3.0,
+          "p25": 5.7,
+          "median": 21.7,
+          "p75": 40.625,
+          "max": 99.0
+        }
+      },
+      {
+        "table": "patients",
+        "column": "age_at_death",
+        "ks_stat": 0.5385,
+        "ks_p_value": 0.0,
+        "similarity": 0.4615,
+        "real": {
+          "count": 130,
+          "mean": 53.5877,
+          "std": 23.6552,
+          "min": 1.8,
+          "p25": 42.475,
+          "median": 56.8,
+          "p75": 71.125,
+          "max": 98.5
+        },
+        "synthetic": {
+          "count": 123,
+          "mean": 51.0772,
+          "std": 9.668,
+          "min": 1.8,
+          "p25": 52.9,
+          "median": 53.2,
+          "p75": 53.4,
+          "max": 54.2
+        }
+      },
+      {
+        "table": "patients",
+        "column": "encounter_count",
+        "ks_stat": 0.3628,
+        "ks_p_value": 0.0,
+        "similarity": 0.6372,
+        "real": {
+          "count": 998,
+          "mean": 57.7826,
+          "std": 82.6743,
+          "min": 9.0,
+          "p25": 25.0,
+          "median": 36.0,
+          "p75": 56.0,
+          "max": 749.0
+        },
+        "synthetic": {
+          "count": 1000,
+          "mean": 41.346,
+          "std": 74.8076,
+          "min": 9.0,
+          "p25": 9.0,
+          "median": 21.0,
+          "p75": 41.0,
+          "max": 749.0
+        }
+      },
+      {
+        "table": "patients",
+        "column": "condition_count",
+        "ks_stat": 0.5518,
+        "ks_p_value": 0.0,
+        "similarity": 0.4482,
+        "real": {
+          "count": 998,
+          "mean": 37.9108,
+          "std": 38.7541,
+          "min": 5.0,
+          "p25": 20.0,
+          "median": 30.0,
+          "p75": 40.0,
+          "max": 455.0
+        },
+        "synthetic": {
+          "count": 1000,
+          "mean": 16.438,
+          "std": 23.4979,
+          "min": 5.0,
+          "p25": 5.0,
+          "median": 11.0,
+          "p75": 19.0,
+          "max": 284.0
+        }
+      },
+      {
+        "table": "patients",
+        "column": "medication_count",
+        "ks_stat": 0.4081,
+        "ks_p_value": 0.0,
+        "similarity": 0.5919,
+        "real": {
+          "count": 998,
+          "mean": 46.8277,
+          "std": 129.2324,
+          "min": 0.0,
+          "p25": 6.0,
+          "median": 12.0,
+          "p75": 37.0,
+          "max": 2272.0
+        },
+        "synthetic": {
+          "count": 1000,
+          "mean": 72.911,
+          "std": 146.6903,
+          "min": 0.0,
+          "p25": 21.0,
+          "median": 33.0,
+          "p75": 73.0,
+          "max": 1017.0
+        }
+      }
+    ],
+    "encounters": [
+      {
+        "table": "encounters",
+        "column": "days_since_birth",
+        "ks_stat": 0.5146,
+        "ks_p_value": 0.0,
+        "similarity": 0.4854,
+        "real": {
+          "count": 57667,
+          "mean": 17085.4458,
+          "std": 8758.4793,
+          "min": 0.0,
+          "p25": 9410.0,
+          "median": 18522.0,
+          "p75": 23478.0,
+          "max": 40047.0
+        },
+        "synthetic": {
+          "count": 63866,
+          "mean": 17206.6955,
+          "std": 311.1955,
+          "min": 11455.0,
+          "p25": 17048.0,
+          "median": 17193.0,
+          "p75": 17358.0,
+          "max": 21263.0
+        }
+      },
+      {
+        "table": "encounters",
+        "column": "encounter_duration_hours",
+        "ks_stat": 0.9002,
+        "ks_p_value": 0.0,
+        "similarity": 0.0998,
+        "real": {
+          "count": 57667,
+          "mean": 5.6455,
+          "std": 52.1676,
+          "min": 0.25,
+          "p25": 0.25,
+          "median": 0.73,
+          "p75": 2.35,
+          "max": 2400.25
+        },
+        "synthetic": {
+          "count": 63866,
+          "mean": 6.0025,
+          "std": 1.3858,
+          "min": 0.25,
+          "p25": 5.24,
+          "median": 5.98,
+          "p75": 6.73,
+          "max": 31.8
+        }
+      },
+      {
+        "table": "encounters",
+        "column": "days_since_prev_encounter",
+        "ks_stat": 0.7602,
+        "ks_p_value": 0.0,
+        "similarity": 0.2398,
+        "real": {
+          "count": 56669,
+          "mean": 203.8378,
+          "std": 721.455,
+          "min": 0.0,
+          "p25": 7.0,
+          "median": 14.0,
+          "p75": 99.0,
+          "max": 19464.0
+        },
+        "synthetic": {
+          "count": 62975,
+          "mean": 196.2617,
+          "std": 26.6138,
+          "min": 0.0,
+          "p25": 183.0,
+          "median": 198.0,
+          "p75": 212.0,
+          "max": 567.0
+        }
+      }
+    ],
+    "observations": [
+      {
+        "table": "observations",
+        "column": "value_quantity",
+        "ks_stat": 0.433,
+        "ks_p_value": 0.0,
+        "similarity": 0.567,
+        "real": {
+          "count": 303696,
+          "mean": 3098.6983,
+          "std": 22709.5021,
+          "min": 0.0,
+          "p25": 4.1009,
+          "median": 19.5025,
+          "p75": 92.1,
+          "max": 349374.0
+        },
+        "synthetic": {
+          "count": 304304,
+          "mean": 3387.402,
+          "std": 8534.8085,
+          "min": 0.0,
+          "p25": 1.7004,
+          "median": 155.7107,
+          "p75": 2370.4185,
+          "max": 199847.1347
+        }
+      },
+      {
+        "table": "observations",
+        "column": "days_since_birth",
+        "ks_stat": 0.1019,
+        "ks_p_value": 0.0,
+        "similarity": 0.8981,
+        "real": {
+          "count": 303696,
+          "mean": 20836.5363,
+          "std": 8357.1411,
+          "min": 0.0,
+          "p25": 17556.0,
+          "median": 21525.0,
+          "p75": 25837.0,
+          "max": 40047.0
+        },
+        "synthetic": {
+          "count": 304304,
+          "mean": 20808.8533,
+          "std": 8214.5064,
+          "min": 0.0,
+          "p25": 15193.0,
+          "median": 20800.0,
+          "p75": 26453.0,
+          "max": 40047.0
+        }
+      }
+    ],
+    "conditions": [
+      {
+        "table": "conditions",
+        "column": "onset_days_since_birth",
+        "ks_stat": 0.3143,
+        "ks_p_value": 0.0,
+        "similarity": 0.6857,
+        "real": {
+          "count": 37835,
+          "mean": 16940.0731,
+          "std": 8627.1558,
+          "min": 0.0,
+          "p25": 9482.0,
+          "median": 17948.0,
+          "p75": 22764.0,
+          "max": 40047.0
+        },
+        "synthetic": {
+          "count": 32196,
+          "mean": 20883.6737,
+          "std": 4775.5552,
+          "min": 795.0,
+          "p25": 17131.75,
+          "median": 20264.0,
+          "p75": 24777.25,
+          "max": 37088.0
+        }
+      },
+      {
+        "table": "conditions",
+        "column": "abatement_days_since_birth",
+        "ks_stat": 0.2795,
+        "ks_p_value": 0.0,
+        "similarity": 0.7205,
+        "real": {
+          "count": 28414,
+          "mean": 18136.2308,
+          "std": 8802.9196,
+          "min": 0.0,
+          "p25": 11767.0,
+          "median": 19411.0,
+          "p75": 23828.0,
+          "max": 40047.0
+        },
+        "synthetic": {
+          "count": 25881,
+          "mean": 21043.4584,
+          "std": 4101.7402,
+          "min": 2466.0,
+          "p25": 17852.0,
+          "median": 20567.0,
+          "p75": 24182.0,
+          "max": 39977.0
+        }
+      },
+      {
+        "table": "conditions",
+        "column": "duration_days",
+        "ks_stat": 0.2846,
+        "ks_p_value": 0.0,
+        "similarity": 0.7154,
+        "real": {
+          "count": 28414,
+          "mean": 335.4991,
+          "std": 878.52,
+          "min": 0.0,
+          "p25": 10.0,
+          "median": 28.0,
+          "p75": 371.0,
+          "max": 20398.0
+        },
+        "synthetic": {
+          "count": 25771,
+          "mean": 229.1197,
+          "std": 222.9444,
+          "min": 0.0,
+          "p25": 13.0,
+          "median": 210.0,
+          "p75": 351.0,
+          "max": 2666.0
+        }
+      }
+    ],
+    "medications": [
+      {
+        "table": "medications",
+        "column": "days_since_birth",
+        "ks_stat": 0.1855,
+        "ks_p_value": 0.0,
+        "similarity": 0.8145,
+        "real": {
+          "count": 46734,
+          "mean": 22261.9731,
+          "std": 8032.1114,
+          "min": 7.0,
+          "p25": 18604.0,
+          "median": 22568.0,
+          "p75": 26995.0,
+          "max": 40047.0
+        },
+        "synthetic": {
+          "count": 25100,
+          "mean": 24539.0685,
+          "std": 4222.4736,
+          "min": 7541.0,
+          "p25": 21322.0,
+          "median": 24357.0,
+          "p75": 27625.0,
+          "max": 40047.0
+        }
+      }
+    ]
+  },
+  "categorical_results": {
+    "patients": [
+      {
+        "table": "patients",
+        "column": "gender",
+        "tvd": 0.142,
+        "similarity": 0.858,
+        "n_unique_real": 2,
+        "n_unique_synthetic": 2,
+        "top10_real": {
+          "male": 0.514,
+          "female": 0.486
+        },
+        "top10_synthetic": {
+          "male": 0.656,
+          "female": 0.344
+        }
+      },
+      {
+        "table": "patients",
+        "column": "race",
+        "tvd": 0.0728,
+        "similarity": 0.9272,
+        "n_unique_real": 6,
+        "n_unique_synthetic": 6,
+        "top10_real": {
+          "white": 0.7946,
+          "asian": 0.0952,
+          "black or african american": 0.0872,
+          "other": 0.009,
+          "american indian or alaska native": 0.009,
+          "native hawaiian or other pacific islander": 0.005
+        },
+        "top10_synthetic": {
+          "white": 0.741,
+          "asian": 0.153,
+          "black or african american": 0.068,
+          "other": 0.017,
+          "american indian or alaska native": 0.012,
+          "native hawaiian or other pacific islander": 0.009
+        }
+      },
+      {
+        "table": "patients",
+        "column": "ethnicity",
+        "tvd": 0.0138,
+        "similarity": 0.9862,
+        "n_unique_real": 2,
+        "n_unique_synthetic": 2,
+        "top10_real": {
+          "not hispanic or latino": 0.8978,
+          "hispanic or latino": 0.1022
+        },
+        "top10_synthetic": {
+          "not hispanic or latino": 0.884,
+          "hispanic or latino": 0.116
+        }
+      },
+      {
+        "table": "patients",
+        "column": "birth_sex",
+        "tvd": 0.026,
+        "similarity": 0.974,
+        "n_unique_real": 2,
+        "n_unique_synthetic": 2,
+        "top10_real": {
+          "m": 0.514,
+          "f": 0.486
+        },
+        "top10_synthetic": {
+          "f": 0.512,
+          "m": 0.488
+        }
+      },
+      {
+        "table": "patients",
+        "column": "marital_code",
+        "tvd": 0.067,
+        "similarity": 0.933,
+        "n_unique_real": 4,
+        "n_unique_synthetic": 4,
+        "top10_real": {
+          "s": 0.4589,
+          "m": 0.4118,
+          "d": 0.0942,
+          "w": 0.0351
+        },
+        "top10_synthetic": {
+          "s": 0.5,
+          "m": 0.354,
+          "d": 0.085,
+          "w": 0.061
+        }
+      },
+      {
+        "table": "patients",
+        "column": "marital_status",
+        "tvd": 0.0779,
+        "similarity": 0.9221,
+        "n_unique_real": 4,
+        "n_unique_synthetic": 4,
+        "top10_real": {
+          "never married": 0.4589,
+          "married": 0.4118,
+          "divorced": 0.0942,
+          "widowed": 0.0351
+        },
+        "top10_synthetic": {
+          "married": 0.458,
+          "never married": 0.381,
+          "divorced": 0.108,
+          "widowed": 0.053
+        }
+      },
+      {
+        "table": "patients",
+        "column": "language",
+        "tvd": 0.1598,
+        "similarity": 0.8402,
+        "n_unique_real": 13,
+        "n_unique_synthetic": 13,
+        "top10_real": {
+          "english (united states)": 0.8918,
+          "spanish": 0.0631,
+          "vietnamese": 0.011,
+          "chinese": 0.01,
+          "german (germany)": 0.007,
+          "korean": 0.005,
+          "french (france)": 0.003,
+          "hindi": 0.002,
+          "italian": 0.002,
+          "modern greek (1453-)": 0.002
+        },
+        "top10_synthetic": {
+          "english (united states)": 0.732,
+          "spanish": 0.126,
+          "chinese": 0.026,
+          "vietnamese": 0.024,
+          "korean": 0.023,
+          "german (germany)": 0.02,
+          "french (france)": 0.014,
+          "modern greek (1453-)": 0.008,
+          "polish": 0.008,
+          "italian": 0.008
+        }
+      },
+      {
+        "table": "patients",
+        "column": "is_deceased",
+        "tvd": 1.0,
+        "similarity": 0.0,
+        "n_unique_real": 2,
+        "n_unique_synthetic": 2,
+        "top10_real": {
+          "0": 0.8697,
+          "1": 0.1303
+        },
+        "top10_synthetic": {
+          "False": 0.828,
+          "True": 0.172
+        }
+      }
+    ],
+    "encounters": [
+      {
+        "table": "encounters",
+        "column": "class_code",
+        "tvd": 0.0363,
+        "similarity": 0.9637,
+        "n_unique_real": 5,
+        "n_unique_synthetic": 5,
+        "top10_real": {
+          "AMB": 0.9392,
+          "EMER": 0.0333,
+          "IMP": 0.0174,
+          "HH": 0.0072,
+          "VR": 0.0029
+        },
+        "top10_synthetic": {
+          "AMB": 0.9048,
+          "VR": 0.0372,
+          "EMER": 0.0354,
+          "IMP": 0.0158,
+          "HH": 0.0069
+        }
+      },
+      {
+        "table": "encounters",
+        "column": "discharge_disposition",
+        "tvd": 0.008,
+        "similarity": 0.992,
+        "n_unique_real": 7,
+        "n_unique_synthetic": 7,
+        "top10_real": {
+          "nan": 0.9963,
+          "Discharged to home care or self care (routine discharge)": 0.0027,
+          "Discharge to home": 0.0005,
+          "Expired (i.e. died) in a medical facility; e.g., hospital, SNF, ICF, or free standing hospice": 0.0002,
+          "Discharged/transferred to a facility that provides custodial or supportive care": 0.0001,
+          "Discharged/transferred to Hospice - home": 0.0001,
+          "Discharged home safe": 0.0001,
+          "Transferred to a short term general hospital for inpatient care": 0.0001
+        },
+        "top10_synthetic": {
+          "nan": 0.989,
+          "Discharge to home": 0.0026,
+          "Discharged to home care or self care (routine discharge)": 0.0019,
+          "Transferred to a short term general hospital for inpatient care": 0.0017,
+          "Discharged/transferred to Hospice - home": 0.0014,
+          "Expired (i.e. died) in a medical facility; e.g., hospital, SNF, ICF, or free standing hospice": 0.0014,
+          "Discharged/transferred to a facility that provides custodial or supportive care": 0.001,
+          "Discharged home safe": 0.0009
+        }
+      }
+    ],
+    "observations": [
+      {
+        "table": "observations",
+        "column": "category",
+        "tvd": 0.0008,
+        "similarity": 0.9992,
+        "n_unique_real": 3,
+        "n_unique_synthetic": 3,
+        "top10_real": {
+          "laboratory": 0.473,
+          "vital signs": 0.4325,
+          "survey": 0.0945
+        },
+        "top10_synthetic": {
+          "laboratory": 0.4724,
+          "vital signs": 0.4333,
+          "survey": 0.0943
+        }
+      },
+      {
+        "table": "observations",
+        "column": "loinc_display",
+        "tvd": 0.0031,
+        "similarity": 0.9969,
+        "n_unique_real": 30,
+        "n_unique_synthetic": 30,
+        "top10_real": {
+          "Pain severity - 0-10 verbal numeric rating [Score] - Reported": 0.0752,
+          "Diastolic Blood Pressure": 0.0513,
+          "Systolic Blood Pressure": 0.0513,
+          "Body Weight": 0.0474,
+          "Heart rate": 0.046,
+          "Respiratory rate": 0.046,
+          "Body Height": 0.045,
+          "Body mass index (BMI) [Ratio]": 0.0425,
+          "Glomerular filtration rate/1.73 sq M.predicted [Volume Rate/Area] in Serum or Plasma by Creatinine-based formula (MDRD)": 0.0359,
+          "What was your best estimate of the total income of all family members from all sources, before taxes, in last year?": 0.0341
+        },
+        "top10_synthetic": {
+          "Pain severity - 0-10 verbal numeric rating [Score] - Reported": 0.0751,
+          "Diastolic Blood Pressure": 0.0516,
+          "Systolic Blood Pressure": 0.0512,
+          "Body Weight": 0.0467,
+          "Respiratory rate": 0.0463,
+          "Heart rate": 0.0459,
+          "Body Height": 0.045,
+          "Body mass index (BMI) [Ratio]": 0.0432,
+          "Glomerular filtration rate/1.73 sq M.predicted [Volume Rate/Area] in Serum or Plasma by Creatinine-based formula (MDRD)": 0.0359,
+          "What was your best estimate of the total income of all family members from all sources, before taxes, in last year?": 0.034
+        }
+      },
+      {
+        "table": "observations",
+        "column": "value_unit",
+        "tvd": 0.0023,
+        "similarity": 0.9977,
+        "n_unique_real": 17,
+        "n_unique_synthetic": 17,
+        "top10_real": {
+          "mg/dL": 0.2484,
+          "mmol/L": 0.1154,
+          "mm[Hg]": 0.1025,
+          "{score}": 0.1014,
+          "/min": 0.0921,
+          "kg": 0.0752,
+          "cm": 0.045,
+          "kg/m2": 0.0425,
+          "/a": 0.0341,
+          "{#}": 0.0341
+        },
+        "top10_synthetic": {
+          "mg/dL": 0.2471,
+          "mmol/L": 0.1154,
+          "mm[Hg]": 0.1035,
+          "{score}": 0.1017,
+          "/min": 0.0923,
+          "kg": 0.0753,
+          "cm": 0.045,
+          "kg/m2": 0.042,
+          "{#}": 0.0344,
+          "/a": 0.0343
+        }
+      }
+    ],
+    "conditions": [
+      {
+        "table": "conditions",
+        "column": "clinical_status",
+        "tvd": 0.0522,
+        "similarity": 0.9478,
+        "n_unique_real": 2,
+        "n_unique_synthetic": 2,
+        "top10_real": {
+          "resolved": 0.751,
+          "active": 0.249
+        },
+        "top10_synthetic": {
+          "resolved": 0.8032,
+          "active": 0.1968
+        }
+      },
+      {
+        "table": "conditions",
+        "column": "is_chronic",
+        "tvd": 1.0,
+        "similarity": 0.0,
+        "n_unique_real": 2,
+        "n_unique_synthetic": 2,
+        "top10_real": {
+          "0": 0.751,
+          "1": 0.249
+        },
+        "top10_synthetic": {
+          "False": 0.8034,
+          "True": 0.1966
+        }
+      }
+    ],
+    "medications": [
+      {
+        "table": "medications",
+        "column": "status",
+        "tvd": 0.0994,
+        "similarity": 0.9006,
+        "n_unique_real": 2,
+        "n_unique_synthetic": 2,
+        "top10_real": {
+          "completed": 0.9427,
+          "active": 0.0573
+        },
+        "top10_synthetic": {
+          "completed": 0.8434,
+          "active": 0.1566
+        }
+      },
+      {
+        "table": "medications",
+        "column": "category",
+        "tvd": 0.0587,
+        "similarity": 0.9413,
+        "n_unique_real": 3,
+        "n_unique_synthetic": 3,
+        "top10_real": {
+          "Community": 0.71,
+          "Outpatient": 0.2088,
+          "Inpatient": 0.0811
+        },
+        "top10_synthetic": {
+          "Community": 0.7139,
+          "Outpatient": 0.1502,
+          "Inpatient": 0.136
+        }
+      },
+      {
+        "table": "medications",
+        "column": "is_active",
+        "tvd": 1.0,
+        "similarity": 0.0,
+        "n_unique_real": 2,
+        "n_unique_synthetic": 2,
+        "top10_real": {
+          "0": 0.9427,
+          "1": 0.0573
+        },
+        "top10_synthetic": {
+          "False": 0.8953,
+          "True": 0.1047
+        }
+      }
+    ]
+  },
+  "correlation_results": {
+    "patients": {
+      "table": "patients",
+      "status": "ok",
+      "n_columns": 7,
+      "columns": [
+        "age",
+        "age_at_death",
+        "condition_count",
+        "daly",
+        "encounter_count",
+        "medication_count",
+        "qaly"
+      ],
+      "mean_correlation_diff": 0.478,
+      "max_correlation_diff": 0.8774,
+      "similarity": 0.522,
+      "corr_real_matrix": [
+        [
+          1.0,
+          0.7155,
+          0.478,
+          0.3297,
+          0.3407,
+          0.3679,
+          0.9003
+        ],
+        [
+          0.7155,
+          1.0,
+          0.4565,
+          0.3739,
+          0.3345,
+          0.3939,
+          0.9406
+        ],
+        [
+          0.478,
+          0.4565,
+          1.0,
+          0.553,
+          0.6813,
+          0.8388,
+          0.3818
+        ],
+        [
+          0.3297,
+          0.3739,
+          0.553,
+          1.0,
+          0.5054,
+          0.5351,
+          0.1057
+        ],
+        [
+          0.3407,
+          0.3345,
+          0.6813,
+          0.5054,
+          1.0,
+          0.7269,
+          0.2115
+        ],
+        [
+          0.3679,
+          0.3939,
+          0.8388,
+          0.5351,
+          0.7269,
+          1.0,
+          0.2439
+        ],
+        [
+          0.9003,
+          0.9406,
+          0.3818,
+          0.1057,
+          0.2115,
+          0.2439,
+          1.0
+        ]
+      ],
+      "corr_synth_matrix": [
+        [
+          1.0,
+          -0.0165,
+          -0.0286,
+          0.092,
+          -0.015,
+          -0.0158,
+          0.0229
+        ],
+        [
+          -0.0165,
+          1.0,
+          0.0003,
+          0.0609,
+          0.0485,
+          0.0495,
+          0.0859
+        ],
+        [
+          -0.0286,
+          0.0003,
+          1.0,
+          0.0111,
+          0.0694,
+          -0.0116,
+          -0.046
+        ],
+        [
+          0.092,
+          0.0609,
+          0.0111,
+          1.0,
+          0.0627,
+          0.014,
+          0.0038
+        ],
+        [
+          -0.015,
+          0.0485,
+          0.0694,
+          0.0627,
+          1.0,
+          -0.0017,
+          0.0002
+        ],
+        [
+          -0.0158,
+          0.0495,
+          -0.0116,
+          0.014,
+          -0.0017,
+          1.0,
+          -0.0081
+        ],
+        [
+          0.0229,
+          0.0859,
+          -0.046,
+          0.0038,
+          0.0002,
+          -0.0081,
+          1.0
+        ]
+      ],
+      "corr_diff_matrix": [
+        [
+          0.0,
+          0.7319,
+          0.5066,
+          0.2377,
+          0.3556,
+          0.3838,
+          0.8774
+        ],
+        [
+          0.7319,
+          0.0,
+          0.4562,
+          0.3131,
+          0.286,
+          0.3444,
+          0.8547
+        ],
+        [
+          0.5066,
+          0.4562,
+          0.0,
+          0.542,
+          0.612,
+          0.8504,
+          0.4278
+        ],
+        [
+          0.2377,
+          0.3131,
+          0.542,
+          0.0,
+          0.4428,
+          0.5211,
+          0.1019
+        ],
+        [
+          0.3556,
+          0.286,
+          0.612,
+          0.4428,
+          0.0,
+          0.7286,
+          0.2112
+        ],
+        [
+          0.3838,
+          0.3444,
+          0.8504,
+          0.5211,
+          0.7286,
+          0.0,
+          0.252
+        ],
+        [
+          0.8774,
+          0.8547,
+          0.4278,
+          0.1019,
+          0.2112,
+          0.252,
+          0.0
+        ]
+      ]
+    },
+    "encounters": {
+      "table": "encounters",
+      "status": "ok",
+      "n_columns": 3,
+      "columns": [
+        "days_since_birth",
+        "days_since_prev_encounter",
+        "encounter_duration_hours"
+      ],
+      "mean_correlation_diff": 0.0601,
+      "max_correlation_diff": 0.0831,
+      "similarity": 0.9399,
+      "corr_real_matrix": [
+        [
+          1.0,
+          -0.1086,
+          0.0365
+        ],
+        [
+          -0.1086,
+          1.0,
+          -0.0105
+        ],
+        [
+          0.0365,
+          -0.0105,
+          1.0
+        ]
+      ],
+      "corr_synth_matrix": [
+        [
+          1.0,
+          -0.0255,
+          -0.0247
+        ],
+        [
+          -0.0255,
+          1.0,
+          -0.0466
+        ],
+        [
+          -0.0247,
+          -0.0466,
+          1.0
+        ]
+      ],
+      "corr_diff_matrix": [
+        [
+          0.0,
+          0.0831,
+          0.0612
+        ],
+        [
+          0.0831,
+          0.0,
+          0.036
+        ],
+        [
+          0.0612,
+          0.036,
+          0.0
+        ]
+      ]
+    },
+    "observations": {
+      "table": "observations",
+      "status": "ok",
+      "n_columns": 2,
+      "columns": [
+        "days_since_birth",
+        "value_quantity"
+      ],
+      "mean_correlation_diff": 0.0199,
+      "max_correlation_diff": 0.0199,
+      "similarity": 0.9801,
+      "corr_real_matrix": [
+        [
+          1.0,
+          0.0026
+        ],
+        [
+          0.0026,
+          1.0
+        ]
+      ],
+      "corr_synth_matrix": [
+        [
+          1.0,
+          -0.0173
+        ],
+        [
+          -0.0173,
+          1.0
+        ]
+      ],
+      "corr_diff_matrix": [
+        [
+          0.0,
+          0.0199
+        ],
+        [
+          0.0199,
+          0.0
+        ]
+      ]
+    },
+    "conditions": {
+      "table": "conditions",
+      "status": "ok",
+      "n_columns": 3,
+      "columns": [
+        "abatement_days_since_birth",
+        "duration_days",
+        "onset_days_since_birth"
+      ],
+      "mean_correlation_diff": 0.2986,
+      "max_correlation_diff": 0.4556,
+      "similarity": 0.7014,
+      "corr_real_matrix": [
+        [
+          1.0,
+          -0.0236,
+          0.9951
+        ],
+        [
+          -0.0236,
+          1.0,
+          -0.1225
+        ],
+        [
+          0.9951,
+          -0.1225,
+          1.0
+        ]
+      ],
+      "corr_synth_matrix": [
+        [
+          1.0,
+          -0.4792,
+          0.9211
+        ],
+        [
+          -0.4792,
+          1.0,
+          -0.4887
+        ],
+        [
+          0.9211,
+          -0.4887,
+          1.0
+        ]
+      ],
+      "corr_diff_matrix": [
+        [
+          0.0,
+          0.4556,
+          0.074
+        ],
+        [
+          0.4556,
+          0.0,
+          0.3662
+        ],
+        [
+          0.074,
+          0.3662,
+          0.0
+        ]
+      ]
+    },
+    "medications": {
+      "table": "medications",
+      "status": "insufficient_numeric_columns_synthetic"
+    }
+  },
+  "privacy_results": {
+    "patients": {
+      "table": "patients",
+      "status": "ok",
+      "n_synthetic_rows": 1000,
+      "synthetic_duplicate_rows": 0,
+      "synthetic_duplicate_pct": 0.0,
+      "synthetic_unique_rows": 1000,
+      "synthetic_unique_pct": 100.0,
+      "exact_row_overlap": 0,
+      "exact_overlap_pct": 0.0,
+      "columns_compared": [
+        "gender",
+        "race",
+        "ethnicity",
+        "birth_sex",
+        "marital_code",
+        "marital_status",
+        "city",
+        "birth_place_state",
+        "language",
+        "daly",
+        "qaly",
+        "age",
+        "is_deceased",
+        "age_at_death",
+        "encounter_count",
+        "condition_count",
+        "medication_count"
+      ],
+      "privacy_score": 1.0
+    },
+    "encounters": {
+      "table": "encounters",
+      "status": "ok",
+      "n_synthetic_rows": 63866,
+      "synthetic_duplicate_rows": 0,
+      "synthetic_duplicate_pct": 0.0,
+      "synthetic_unique_rows": 63866,
+      "synthetic_unique_pct": 100.0,
+      "exact_row_overlap": 0,
+      "exact_overlap_pct": 0.0,
+      "columns_compared": [
+        "class_code",
+        "type_display",
+        "organization_display",
+        "location_display",
+        "reason_display",
+        "discharge_disposition",
+        "days_since_birth",
+        "encounter_duration_hours",
+        "days_since_prev_encounter"
+      ],
+      "privacy_score": 1.0
+    },
+    "observations": {
+      "table": "observations",
+      "status": "ok",
+      "n_synthetic_rows": 304304,
+      "synthetic_duplicate_rows": 0,
+      "synthetic_duplicate_pct": 0.0,
+      "synthetic_unique_rows": 304304,
+      "synthetic_unique_pct": 100.0,
+      "exact_row_overlap": 0,
+      "exact_overlap_pct": 0.0,
+      "columns_compared": [
+        "category",
+        "loinc_display",
+        "value_quantity",
+        "value_unit",
+        "days_since_birth"
+      ],
+      "privacy_score": 1.0
+    },
+    "conditions": {
+      "table": "conditions",
+      "status": "ok",
+      "n_synthetic_rows": 32196,
+      "synthetic_duplicate_rows": 0,
+      "synthetic_duplicate_pct": 0.0,
+      "synthetic_unique_rows": 32196,
+      "synthetic_unique_pct": 100.0,
+      "exact_row_overlap": 0,
+      "exact_overlap_pct": 0.0,
+      "columns_compared": [
+        "snomed_display",
+        "clinical_status",
+        "onset_days_since_birth",
+        "abatement_days_since_birth",
+        "duration_days",
+        "is_chronic"
+      ],
+      "privacy_score": 1.0
+    },
+    "medications": {
+      "table": "medications",
+      "status": "ok",
+      "n_synthetic_rows": 25100,
+      "synthetic_duplicate_rows": 0,
+      "synthetic_duplicate_pct": 0.0,
+      "synthetic_unique_rows": 25100,
+      "synthetic_unique_pct": 100.0,
+      "exact_row_overlap": 0,
+      "exact_overlap_pct": 0.0,
+      "columns_compared": [
+        "status",
+        "rxnorm_display",
+        "category",
+        "reason_display",
+        "days_since_birth",
+        "is_active"
+      ],
+      "privacy_score": 1.0
+    }
+  },
+  "sdv_quality_results": {
+    "patients": {
+      "status": "metadata_missing"
+    },
+    "encounters": {
+      "status": "metadata_missing"
+    },
+    "observations": {
+      "status": "metadata_missing"
+    },
+    "conditions": {
+      "status": "metadata_missing"
+    },
+    "medications": {
+      "status": "metadata_missing"
+    }
+  },
+  "ks_results": {
+    "patients": {
+      "status": "ok",
+      "columns": [
+        {
+          "table": "patients",
+          "column": "daly",
+          "ks_stat": 0.5002,
+          "ks_p_value": 0.0,
+          "similarity": 0.4998,
+          "n_real": 998,
+          "n_synthetic": 1000,
+          "mean_real": 1.9669,
+          "mean_synth": 3.9706,
+          "std_real": 5.2566,
+          "std_synth": 6.9095
+        },
+        {
+          "table": "patients",
+          "column": "qaly",
+          "ks_stat": 0.2958,
+          "ks_p_value": 0.0,
+          "similarity": 0.7042,
+          "n_real": 998,
+          "n_synthetic": 1000,
+          "mean_real": 40.2646,
+          "mean_synth": 59.1902,
+          "std_real": 21.9726,
+          "std_synth": 25.4798
+        },
+        {
+          "table": "patients",
+          "column": "age",
+          "ks_stat": 0.3281,
+          "ks_p_value": 0.0,
+          "similarity": 0.6719,
+          "n_real": 998,
+          "n_synthetic": 1000,
+          "mean_real": 46.7551,
+          "mean_synth": 25.8035,
+          "std_real": 25.1213,
+          "std_synth": 21.1317
+        },
+        {
+          "table": "patients",
+          "column": "age_at_death",
+          "ks_stat": 0.5385,
+          "ks_p_value": 0.0,
+          "similarity": 0.4615,
+          "n_real": 130,
+          "n_synthetic": 123,
+          "mean_real": 53.5877,
+          "mean_synth": 51.0772,
+          "std_real": 23.6552,
+          "std_synth": 9.668
+        },
+        {
+          "table": "patients",
+          "column": "encounter_count",
+          "ks_stat": 0.3628,
+          "ks_p_value": 0.0,
+          "similarity": 0.6372,
+          "n_real": 998,
+          "n_synthetic": 1000,
+          "mean_real": 57.7826,
+          "mean_synth": 41.346,
+          "std_real": 82.6743,
+          "std_synth": 74.8076
+        },
+        {
+          "table": "patients",
+          "column": "condition_count",
+          "ks_stat": 0.5518,
+          "ks_p_value": 0.0,
+          "similarity": 0.4482,
+          "n_real": 998,
+          "n_synthetic": 1000,
+          "mean_real": 37.9108,
+          "mean_synth": 16.438,
+          "std_real": 38.7541,
+          "std_synth": 23.4979
+        },
+        {
+          "table": "patients",
+          "column": "medication_count",
+          "ks_stat": 0.4081,
+          "ks_p_value": 0.0,
+          "similarity": 0.5919,
+          "n_real": 998,
+          "n_synthetic": 1000,
+          "mean_real": 46.8277,
+          "mean_synth": 72.911,
+          "std_real": 129.2324,
+          "std_synth": 146.6903
+        }
+      ],
+      "mean_ks_stat": 0.4265,
+      "mean_similarity": 0.5735
+    },
+    "encounters": {
+      "status": "ok",
+      "columns": [
+        {
+          "table": "encounters",
+          "column": "days_since_birth",
+          "ks_stat": 0.5146,
+          "ks_p_value": 0.0,
+          "similarity": 0.4854,
+          "n_real": 57667,
+          "n_synthetic": 63866,
+          "mean_real": 17085.4458,
+          "mean_synth": 17206.6955,
+          "std_real": 8758.4793,
+          "std_synth": 311.1955
+        },
+        {
+          "table": "encounters",
+          "column": "encounter_duration_hours",
+          "ks_stat": 0.9002,
+          "ks_p_value": 0.0,
+          "similarity": 0.0998,
+          "n_real": 57667,
+          "n_synthetic": 63866,
+          "mean_real": 5.6455,
+          "mean_synth": 6.0025,
+          "std_real": 52.1676,
+          "std_synth": 1.3858
+        },
+        {
+          "table": "encounters",
+          "column": "days_since_prev_encounter",
+          "ks_stat": 0.7602,
+          "ks_p_value": 0.0,
+          "similarity": 0.2398,
+          "n_real": 56669,
+          "n_synthetic": 62975,
+          "mean_real": 203.8378,
+          "mean_synth": 196.2617,
+          "std_real": 721.455,
+          "std_synth": 26.6138
+        }
+      ],
+      "mean_ks_stat": 0.725,
+      "mean_similarity": 0.275
+    },
+    "observations": {
+      "status": "ok",
+      "columns": [
+        {
+          "table": "observations",
+          "column": "value_quantity",
+          "ks_stat": 0.433,
+          "ks_p_value": 0.0,
+          "similarity": 0.567,
+          "n_real": 303696,
+          "n_synthetic": 304304,
+          "mean_real": 3098.6983,
+          "mean_synth": 3387.402,
+          "std_real": 22709.5021,
+          "std_synth": 8534.8085
+        },
+        {
+          "table": "observations",
+          "column": "days_since_birth",
+          "ks_stat": 0.1019,
+          "ks_p_value": 0.0,
+          "similarity": 0.8981,
+          "n_real": 303696,
+          "n_synthetic": 304304,
+          "mean_real": 20836.5363,
+          "mean_synth": 20808.8533,
+          "std_real": 8357.1411,
+          "std_synth": 8214.5064
+        }
+      ],
+      "mean_ks_stat": 0.2675,
+      "mean_similarity": 0.7326
+    },
+    "conditions": {
+      "status": "ok",
+      "columns": [
+        {
+          "table": "conditions",
+          "column": "onset_days_since_birth",
+          "ks_stat": 0.3143,
+          "ks_p_value": 0.0,
+          "similarity": 0.6857,
+          "n_real": 37835,
+          "n_synthetic": 32196,
+          "mean_real": 16940.0731,
+          "mean_synth": 20883.6737,
+          "std_real": 8627.1558,
+          "std_synth": 4775.5552
+        },
+        {
+          "table": "conditions",
+          "column": "abatement_days_since_birth",
+          "ks_stat": 0.2795,
+          "ks_p_value": 0.0,
+          "similarity": 0.7205,
+          "n_real": 28414,
+          "n_synthetic": 25881,
+          "mean_real": 18136.2308,
+          "mean_synth": 21043.4584,
+          "std_real": 8802.9196,
+          "std_synth": 4101.7402
+        },
+        {
+          "table": "conditions",
+          "column": "duration_days",
+          "ks_stat": 0.2846,
+          "ks_p_value": 0.0,
+          "similarity": 0.7154,
+          "n_real": 28414,
+          "n_synthetic": 25771,
+          "mean_real": 335.4991,
+          "mean_synth": 229.1197,
+          "std_real": 878.52,
+          "std_synth": 222.9444
+        }
+      ],
+      "mean_ks_stat": 0.2928,
+      "mean_similarity": 0.7072
+    },
+    "medications": {
+      "status": "ok",
+      "columns": [
+        {
+          "table": "medications",
+          "column": "days_since_birth",
+          "ks_stat": 0.1855,
+          "ks_p_value": 0.0,
+          "similarity": 0.8145,
+          "n_real": 46734,
+          "n_synthetic": 25100,
+          "mean_real": 22261.9731,
+          "mean_synth": 24539.0685,
+          "std_real": 8032.1114,
+          "std_synth": 4222.4736
+        }
+      ],
+      "mean_ks_stat": 0.1855,
+      "mean_similarity": 0.8145
+    }
+  },
+  "kanon_results": {
+    "patients": {
+      "status": "ok",
+      "quasi_identifiers": [
+        "gender",
+        "race",
+        "ethnicity",
+        "birth_sex",
+        "marital_code",
+        "marital_status",
+        "city",
+        "birth_place_state",
+        "language",
+        "age_at_death"
+      ],
+      "n_records": 1000,
+      "n_groups": 934,
+      "min_k": 1,
+      "mean_k": 1.07,
+      "max_k": 6,
+      "pct_k_ge_5": 1.6,
+      "pct_k_ge_10": 0.0
+    },
+    "encounters": {
+      "status": "no_qi_found",
+      "n_records": 63866,
+      "quasi_identifiers": []
+    },
+    "observations": {
+      "status": "no_qi_found",
+      "n_records": 304304,
+      "quasi_identifiers": []
+    },
+    "conditions": {
+      "status": "no_qi_found",
+      "n_records": 32196,
+      "quasi_identifiers": []
+    },
+    "medications": {
+      "status": "no_qi_found",
+      "n_records": 25100,
+      "quasi_identifiers": []
+    }
+  },
+  "tstr_results": {
+    "patients": {
+      "status": "ok",
+      "target_column": "is_deceased",
+      "n_train": 1000,
+      "n_test": 998,
+      "accuracy": 0.8697,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "class_balance_train": {
+        "0": 828,
+        "1": 172
+      },
+      "class_balance_test": {
+        "0": 868,
+        "1": 130
+      },
+      "roc_auc": 0.7436
+    },
+    "encounters": {
+      "status": "no_target"
+    },
+    "observations": {
+      "status": "no_target"
+    },
+    "conditions": {
+      "status": "ok",
+      "target_column": "is_chronic",
+      "n_train": 32196,
+      "n_test": 37835,
+      "accuracy": 0.7239,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "class_balance_train": {
+        "0": 25867,
+        "1": 6329
+      },
+      "class_balance_test": {
+        "0": 28414,
+        "1": 9421
+      },
+      "roc_auc": 0.645
+    },
+    "medications": {
+      "status": "ok",
+      "target_column": "is_active",
+      "n_train": 25100,
+      "n_test": 46734,
+      "accuracy": 0.9255,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "class_balance_train": {
+        "0": 22472,
+        "1": 2628
+      },
+      "class_balance_test": {
+        "0": 44058,
+        "1": 2676
+      },
+      "roc_auc": 0.4599
+    }
+  }
+}
